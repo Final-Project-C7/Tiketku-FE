@@ -13,9 +13,9 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Homepage />} />
+          <Route path="/selectflight" element={<SelectFlight />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/selectflight" element={<SelectFlight />} />
           <Route path="/otp" element={<OTP />} />
           <Route path="/forget-password" element={<Forget />} />
           <Route path="/reset-password" element={<Reset />} />

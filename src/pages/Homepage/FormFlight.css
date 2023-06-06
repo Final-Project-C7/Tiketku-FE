@@ -1,18 +1,23 @@
+* {
+  box-sizing: border-box;
+}
+
 .flight-schedule {
   background-color: #ffffff;
   height: 298px;
-  width: 968px;
+  /* width: 968px; */
   border-radius: 12px;
   padding: 24px 0px 24px 0px;
   border: 1px solid #d0d0d0;
   position: absolute;
   z-index: 2;
-  left: 13%;
-  top: 47%;
+  left: 16%;
+  top: 18rem;
 }
 
 .flight-schedule h4 {
   margin-left: 34px;
+  font-size: 20px;
 }
 
 .flight-schedule__text {
@@ -21,8 +26,8 @@
 
 .card-destination,
 .card-date {
-  margin-left: 38px;
-  margin-right: 38px;
+  margin-left: 36px;
+  margin-right: 36px;
 }
 
 .card-destination p,
@@ -34,6 +39,15 @@
 .card-destination h5 {
   font-size: 18px;
   border-bottom: 2px solid #d0d0d0;
+}
+
+.card-destination-to,
+.car-date-passengers {
+  margin-left: -80px;
+}
+
+.card-date .col-8 {
+  margin-left: -20px;
 }
 
 .card-date h5 {
@@ -72,8 +86,9 @@
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   height: 48px;
-  margin-top: 30px;
+  margin-top: 35px;
   border: 0 solid #7126b5 !important;
+  color: #fff !important;
 }
 
 .flight-schedule Button:hover {
@@ -129,4 +144,29 @@
 
 .toggle-switch.checked .toggle-switch-thumb {
   transform: translate(30px, -50%);
+}
+
+@media (max-width: 575px) {
+  .flight-schedule h4 {
+    font-size: 18px;
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+
+  .flight-schedule {
+    height: 81%;
+    top: 30%;
+  }
+
+  .card-destination,
+  .card-date {
+    margin-left: 20px;
+    margin-right: 20px;
+    display: block !important;
+  }
+
+  .card-destination-to,
+  .car-date-passengers {
+    margin-left: 0px;
+  }
 }

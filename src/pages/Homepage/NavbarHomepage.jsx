@@ -11,6 +11,12 @@ const NavbarHomepage = () => {
         <Navbar.Brand href="/">
           <Image className="navbar__img" src="/logo.svg" alt="logo Tiketku" />
         </Navbar.Brand>
+        <Navbar.Brand>
+        <Button className="btn btn-primary lg btn-sign" type="submit">
+          <Image className="login_img" src="/login.svg" alt=""/>
+            Masuk
+          </Button>
+        </Navbar.Brand>
       </Container>
     </Navbar>
   );

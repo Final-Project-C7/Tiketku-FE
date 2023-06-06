@@ -2,3 +2,11 @@
   width: 98px;
   height: 53px;
 }
+.btn-sign, .btn:hover{
+  background: #7126B5;
+  border: none;
+}
+.login_img {
+  padding-right: 5px;
+  width: 20px;
+  height: 20px;

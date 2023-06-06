@@ -2,6 +2,11 @@ import "./SelectFlight.css";
 import { useState } from "react";
 import arrowleft from "/fi_arrow-left.svg";
 import prefixicon from "/Prefix icon.svg";
+import fibox from "/fi_box.svg";
+import chevronright from "/fi_chevron-right.svg";
+import loading from "/Loading.png";
+import heart from "/fi_heart.svg";
+import dollar from "/fi_dollar-sign.svg";
 import NavbarHomepage from "./NavbarHomepage";
 import Button from "react-bootstrap/Button";
 
@@ -85,6 +90,33 @@ function SelectFlight() {
             <img src={prefixicon} alt="Image" className="" />
             <span className="ms-2">Termurah</span>
           </Button>
+        </div>
+
+        <div className="row filter-loading">
+          <div className="col-3 filter-l">
+            <p className="title-filter">Filter</p>
+            <div className="transit d-flex align-items-center">
+              <img src={fibox} alt="Image" className="mr-2" />
+              <p className="m-auto">Transit</p>
+              <img src={chevronright} alt="Image" />
+            </div>
+            <hr className="divider-filter" />
+            <div className="transit d-flex align-items-center">
+              <img src={heart} alt="Image" className="mr-2" />
+              <p className="m-auto">Fasilitas</p>
+              <img src={chevronright} alt="Image" />
+            </div>
+            <hr className="divider-filter" />
+            <div className="transit d-flex align-items-center">
+              <img src={dollar} alt="Image" className="mr-2" />
+              <p className="m-auto">Harga</p>
+              <img src={chevronright} alt="Image" className="arrow-right" />
+            </div>
+          </div>
+          <div className="col-9 text-center">
+            <p className="">Mencari penerbangan terbaik...</p>
+            <img src={loading} />
+          </div>
         </div>
       </div>
     </>

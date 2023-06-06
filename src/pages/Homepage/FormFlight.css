@@ -1,0 +1,132 @@
+.flight-schedule {
+  background-color: #ffffff;
+  height: 298px;
+  width: 968px;
+  border-radius: 12px;
+  padding: 24px 0px 24px 0px;
+  border: 1px solid #d0d0d0;
+  position: absolute;
+  z-index: 2;
+  left: 13%;
+  top: 47%;
+}
+
+.flight-schedule h4 {
+  margin-left: 34px;
+}
+
+.flight-schedule__text {
+  color: #7126b5;
+}
+
+.card-destination,
+.card-date {
+  margin-left: 38px;
+  margin-right: 38px;
+}
+
+.card-destination p,
+.card-date p {
+  font-size: 14px;
+  color: #8a8a8a;
+}
+
+.card-destination h5 {
+  font-size: 18px;
+  border-bottom: 2px solid #d0d0d0;
+}
+
+.card-date h5 {
+  font-size: 16px;
+  border-bottom: 2px solid #d0d0d0;
+}
+
+.card-date h3 {
+  font-size: 16px;
+  color: #8a8a8a;
+}
+
+.card-destination__img,
+.card-date__img {
+  width: 24px;
+  height: 24px;
+}
+
+.card-destination__img-1 {
+  width: 32px;
+  height: 32px;
+}
+
+.card-date__img-1 {
+  width: 12px;
+  height: 20px;
+}
+
+.card-date__text {
+  color: #7126b5;
+  font-size: 14px;
+}
+
+.flight-schedule Button {
+  background-color: #7126b5;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  height: 48px;
+  margin-top: 30px;
+  border: 0 solid #7126b5 !important;
+}
+
+.flight-schedule Button:hover {
+  background-color: #7126b5;
+}
+
+.flight-schedule Button:active {
+  background-color: #7126b5 !important;
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 20px;
+  border-radius: 15px;
+  background-color: #ccc;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.toggle-switch.checked {
+  background-color: #2196f3;
+}
+
+.toggle-switch-track {
+  position: absolute;
+  top: 50%;
+  width: 60px;
+  height: 30px;
+  border-radius: 20px;
+  background-color: #d0d0d0;
+  transform: translateY(-50%);
+  transition: background-color 0.3s;
+}
+
+.toggle-switch-thumb {
+  position: absolute;
+  top: 50%;
+  left: 2px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background-color: #fff;
+  transform: translateY(-50%);
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s;
+}
+
+.toggle-switch.checked .toggle-switch-track {
+  background-color: #4b1979;
+}
+
+.toggle-switch.checked .toggle-switch-thumb {
+  transform: translate(30px, -50%);
+}

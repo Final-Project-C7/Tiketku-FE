@@ -2,11 +2,50 @@
   width: 98px;
   height: 53px;
 }
-.btn-sign, .btn:hover{
-  background: #7126B5;
+
+.btn-sign {
+  width: 105px;
+  height: 48px;
+  color: #fff !important;
+}
+
+.btn-sign,
+.btn:hover {
+  background: #7126b5;
   border: none;
 }
+
 .login_img {
   padding-right: 5px;
   width: 20px;
   height: 20px;
+}
+
+.nav-search {
+  background-color: #eeeeee;
+}
+
+.nav-search input {
+  height: 25px;
+  width: 380px;
+  border: 0;
+  background-color: transparent;
+}
+
+.nav-search input:focus {
+  outline-style: none !important;
+}
+
+.nav-search Button {
+  background-color: transparent !important;
+  border: 0;
+}
+
+.nav-search Button:hover {
+  background-color: transparent !important;
+}
+
+.nav-search__img {
+  width: 24px;
+  height: 24px;
+}

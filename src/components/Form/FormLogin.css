@@ -1,0 +1,77 @@
+body {
+    font-family: 'Poppins';
+}
+
+h1 {
+    font-size: 24px;
+    color: #000000;
+    letter-spacing: -1px;
+    font-weight: 700;
+    font-family: 'Poppins';
+}
+
+p{
+    font-size: 14px;
+    color: #000000;
+}
+
+.form-control {
+    color: #8A8A8A;
+    border-radius: 16px;
+    border: none;
+    padding: 14px 20px;
+    font-size: 14px;
+}
+
+.input-group-text {
+    border-radius: 16px;
+    background-color: rgba(255, 0, 0, 0);
+}
+
+.input-group>.form-control {
+    border: 1px solid #D0D0D0;
+}
+
+.input-group>.password {
+    border: 1px solid #D0D0D0;
+    border-right: 0px;
+}
+
+.form-control:focus {
+    color: var(--bs-body-color);
+    background-color: var(--bs-body-bg);
+    border-color: #7126B5;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgb(247, 238, 244);
+}
+
+.btn {
+    border: none;
+    padding: 14px 20px;
+    font-size: 14px;
+    background: #7126B5;
+    border-radius: 16px;
+}
+
+.btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active, .btn:hover {
+    background: #4b197a;
+    border: none;
+}
+
+.btn.disabled, .btn:disabled, fieldset:disabled .btn {
+    color: var(--bs-btn-disabled-color);
+    pointer-events: none;
+    background-color: #7126B5;
+    border: none;
+    opacity: var(--bs-btn-disabled-opacity);
+}
+
+a{
+    color: #7126B5;
+    text-decoration: none;
+}
+
+.error-message {
+    color: red;
+    margin-bottom: 10px;
+}

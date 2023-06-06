@@ -1,0 +1,36 @@
+body {
+  font-family: Poppins;
+}
+
+.logo-navbar {
+  width: 98px;
+  height: 53px;
+}
+
+.otp-main {
+  margin-top: 110px;
+  width: 65%;
+}
+
+.arrow-left {
+  width: 24px;
+  height: 24px;
+}
+
+.otp-main-2 {
+  width: 50%;
+}
+
+.otp-main-2 form input {
+  width: 42px;
+  height: 42px;
+  border-radius: 16px;
+  margin-right: 16px;
+  border: 1px solid #d0d0d0;
+}
+
+.btn-otp {
+  background-color: #7126b5;
+  height: 48px;
+  border-radius: 16px;
+}

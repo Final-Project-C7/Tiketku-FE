@@ -58,7 +58,7 @@ function FormRegister() {
             type="tel"
             className="form-control"
             placeholder="+62"
-            aria-label="Email"
+            aria-label="Nomor"
             // value={email}
             onChange={(e) => e.preventDefault}
             required

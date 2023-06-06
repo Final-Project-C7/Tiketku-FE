@@ -2,7 +2,7 @@ import "./FormLogin.css";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import React, { useState } from "react";
 
 function FormLogin() {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -16,7 +16,6 @@ function FormLogin() {
   return (
     <>
       <h1 className="fw-bold mb-4">Masuk</h1>
-
       <form onSubmit={(e) => e.preventDefault}>
         <div>
           <p className="mb-1">Email/No telepon</p>
@@ -61,11 +60,19 @@ function FormLogin() {
           </span>
         </div>
         {/* {error && <p className="error-message">{error}</p>} */}
-        <div className="d-grid gap-2 mt-4">
+        <div className="d-grid gap-2 mt-5">
+              <button
+                className="btn lg sign-up fw-bold"
+                type="submit"
+              >
+                Masuk
+              </button>
+            </div>
+        {/* <div className="d-grid gap-2 mt-4">
           <button className="btn btn-primary lg sign-up" type="submit">
             Masuk
           </button>
-        </div>
+        </div> */}
       </form>
       <p className="mt-5 mb-1 text-center">
         Belum punya akun?{"  "}

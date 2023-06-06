@@ -87,8 +87,8 @@ function FormRegister() {
         </div>
         {/* {error && <p className="error-message">{error}</p>} */}
         <div className="d-grid gap-2 mt-4">
-          <button className="btn btn-primary lg sign-up" type="submit">
-            Masuk
+          <button className="btn lg sign-up" type="submit">
+            Register
           </button>
         </div>
       </form>

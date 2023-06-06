@@ -65,7 +65,7 @@ function FormReset() {
         </div>
         {/* {error && <p className="error-message">{error}</p>} */}
         <div className="d-grid gap-2 mt-4">
-          <button className="btn btn-primary lg sign-up" type="submit">
+          <button className="btn lg sign-up" type="submit">
             Simpan
           </button>
         </div>

@@ -4,8 +4,8 @@ import Register from "./pages/Register";
 import OTP from "./pages/OTP";
 import Forget from "./pages/Forget";
 import Reset from "./pages/Reset";
-import Homepage from "./pages/Homepage/Homepage";
-import SelectFlight from "./components/SelectFlight";
+import SelectFlight from "./pages/SelectFlight";
+import Homepage from "./pages/Homepage";
 
 function App() {
   return (

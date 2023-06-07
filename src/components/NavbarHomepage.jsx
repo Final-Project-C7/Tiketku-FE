@@ -13,14 +13,26 @@ const NavbarHomepage = () => {
         </Navbar.Brand>
         <Navbar.Collapse>
           <Form className="nav-search d-flex ms-3 align-items-center py-1 px-4 rounded-4">
-            <input type="search" placeholder="Cari di sini ..." aria-label="Search" />
+            <input
+              type="search"
+              placeholder="Cari di sini ..."
+              aria-label="Search"
+            />
             <Button>
-              <Image className="nav-search__img" src="/fi_search.png" alt="search" />
+              <Image
+                className="nav-search__img"
+                src="/fi_search.png"
+                alt="search"
+              />
             </Button>
           </Form>
         </Navbar.Collapse>
         <Navbar.Brand>
-          <Button className="btn btn-primary lg btn-sign d-flex align-items-center justify-content-center" type="submit">
+          <Button
+            className="btn btn-primary lg btn-sign d-flex align-items-center justify-content-center"
+            type="submit"
+            href="/login"
+          >
             <Image className="login_img" src="/login.svg" alt="login icon" />
             Masuk
           </Button>

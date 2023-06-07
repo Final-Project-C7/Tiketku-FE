@@ -7,7 +7,7 @@ import chevronright from "/fi_chevron-right.svg";
 import loading from "/Loading.png";
 import heart from "/fi_heart.svg";
 import dollar from "/fi_dollar-sign.svg";
-import NavbarHomepage from "./NavbarHomepage";
+import NavbarHomepage from "../pages/Homepage/NavbarHomepage";
 import Button from "react-bootstrap/Button";
 
 function SelectFlight() {
@@ -17,7 +17,7 @@ function SelectFlight() {
       <div className="container-fluid" id="select-flight">
         <p className="title">Pilih Penerbangan</p>
         <div className="row search-flight justify-content-center">
-          <div className="col-8 title-search d-flex align-items-center">
+          <div className="col-8 lg-8 title-search d-flex align-items-center">
             <img
               src={arrowleft}
               alt="arrow-left"
@@ -29,7 +29,9 @@ function SelectFlight() {
             <p className="ms-3 mt-3">JKT &gt; MLB -2 Penumpang - Economy</p>
           </div>
           <div className="col-3">
-            <Button variant="success btn-search">Ubah Pencarian</Button>
+            <Button variant="success btn-search" className="">
+              Ubah Pencarian
+            </Button>
           </div>
         </div>
         <div className="row">
@@ -98,13 +100,13 @@ function SelectFlight() {
             <div className="transit d-flex align-items-center">
               <img src={fibox} alt="Image" className="mr-2" />
               <p className="m-auto">Transit</p>
-              <img src={chevronright} alt="Image" />
+              <img className="arrow-right" src={chevronright} alt="Image" />
             </div>
             <hr className="divider-filter" />
             <div className="transit d-flex align-items-center">
               <img src={heart} alt="Image" className="mr-2" />
               <p className="m-auto">Fasilitas</p>
-              <img src={chevronright} alt="Image" />
+              <img src={chevronright} alt="Image" className="arrow-right" />
             </div>
             <hr className="divider-filter" />
             <div className="transit d-flex align-items-center">

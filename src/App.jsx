@@ -5,7 +5,7 @@ import OTP from "./pages/OTP";
 import Forget from "./pages/Forget";
 import Reset from "./pages/Reset";
 import Homepage from "./pages/Homepage/Homepage";
-import SelectFlight from "./pages/Homepage/SelectFlight";
+import SelectFlight from "./components/SelectFlight";
 
 function App() {
   return (

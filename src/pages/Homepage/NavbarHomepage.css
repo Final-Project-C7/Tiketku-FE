@@ -41,11 +41,17 @@
   border: 0;
 }
 
-.nav-search Button:hover {
+.nav-search Button:hover,
+.nav-search Button:active {
   background-color: transparent !important;
 }
 
 .nav-search__img {
   width: 24px;
   height: 24px;
+}
+
+.btn-sign__link {
+  color: white !important;
+  text-decoration: none;
 }

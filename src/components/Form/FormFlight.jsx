@@ -16,7 +16,7 @@ const FormFlight = () => {
     setIsChecked(!isChecked);
   };
   return (
-    <div className="flight-form">
+    <div className="container flight-form">
       <div className="flight-schedule shadow col-8">
         <h4 className="fw-bold">
           Pilih Jadwal Penerbangan spesial di <span className="flight-schedule__text">Tiketku!</span>

@@ -7,7 +7,7 @@ import "./NavbarHomepage.css";
 
 const NavbarHomepage = () => {
   return (
-    <Navbar className="fixed-top border-bottom shadow-sm">
+    <Navbar className="fixed-top border-bottom shadow-sm bg-white">
       <Container>
         <Navbar.Brand href="/" className="d-flex">
           <Image className="navbar__img" src="/logo.svg" alt="logo Tiketku" />

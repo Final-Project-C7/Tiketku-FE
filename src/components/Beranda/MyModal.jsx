@@ -15,10 +15,31 @@ function MyModal() {
   } 
 
   .btn-modall{
-    background: #FFFFFF !important;
+    background-color: white !important;
     border-radius: 16px;
-    color : #7126B5 !important;
+    border: 1px solid #A06ECE !important;
+    margin-right: 70px;
+    color: #7126B5 !important;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-size: 15px;
   }
+
+  
+  .btn-modall:hover 
+  {
+    background-color: #A06ECE!important ;
+    color: #ffffff !important;
+  }
+  
+ 
+  
+  .btn-modall:hover img
+   {
+    filter: brightness(0) invert(1) ;
+  }
+
+
 
   .delete-btn:hover, delete-btn:active {
     background-color: transparent !important;
@@ -53,13 +74,22 @@ function MyModal() {
     <>
       <style>{style}</style>
       <Button className="btn-modall" onClick={handleShow}>
-        <img src={prefixicon} alt="Image" className="" /> 
+        <img src={prefixicon} alt="Image" className="" />
         Termurah
       </Button>
 
-      <Modal size="md" show={show} onHide={handleClose} animation={false} centered>
+      <Modal
+        size="md"
+        show={show}
+        onHide={handleClose}
+        animation={false}
+        centered
+      >
         <Modal.Header className="d-flex justify-content-end">
-          <Button className="delete-btn bg-transparent border-0" onClick={handleClose}>
+          <Button
+            className="delete-btn bg-transparent border-0"
+            onClick={handleClose}
+          >
             <Image className="close-btn__img ms-4" src="/close-button.svg" />
           </Button>
         </Modal.Header>

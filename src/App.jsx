@@ -6,6 +6,7 @@ import Forget from "./pages/Forget";
 import Reset from "./pages/Reset";
 import SelectFlight from "./pages/SelectFlight";
 import Homepage from "./pages/Homepage";
+import Soldout from "./pages/soldout";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/otp" element={<OTP />} />
           <Route path="/forget-password" element={<Forget />} />
           <Route path="/reset-password" element={<Reset />} />
+          <Route path="/soldout" element={<Soldout />} />
         </Routes>
       </BrowserRouter>
     </>

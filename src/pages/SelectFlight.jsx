@@ -5,6 +5,7 @@ import FilterPrice from "../components/Filter/FIlterPrice";
 import Filter from "../components/Filter/Filter";
 import Loading from "../components/Loading";
 import NavbarHomepage from "../components/NavbarHomepage";
+import Notfound from "../components/Notfound";
 
 function SelectFlight() {
   return (
@@ -16,10 +17,10 @@ function SelectFlight() {
         <SelectDay />
 
         <div className="d-flex justify-content-end">
-          <FilterPrice/>
+          <FilterPrice />
         </div>
 
-        <div className="row filter-loading">
+        <div className="row filter-loading mt-4">
           <div className="col-3 filter-l">
             <Filter />
           </div>

@@ -24,16 +24,16 @@ const FormFlight = () => {
           <div className="card-destination col-12 d-flex flex-nowrap">
             <div className="col-12 col-sm-7 d-flex">
               <div className="d-flex">
-                <Image className="card-destination__img" src="take-off.svg" alt="flight takeoff" />
+                <Image className="card-destination__img" src="material-symbols_flight-takeoff-sharp.png" alt="flight takeoff" />
                 <p className="col-1 ms-2">From</p>
               </div>
               <ModalFlightFrom />
               <a href="/" className="ms-3">
-                <Image className="card-destination__img-1" src="/return.svg" alt="return" />
+                <Image className="card-destination__img-1" src="/return.png" alt="return" />
               </a>
             </div>
             <div className="card-destination-to col-12 col-sm-5 d-flex">
-              <Image className="card-destination__img" src="/take-off.svg" alt="flight takeoff" />
+              <Image className="card-destination__img" src="/material-symbols_flight-takeoff-sharp.png" alt="flight takeoff" />
               <p className="col-1 ms-2">To</p>
               <ModalFlightTo />
             </div>
@@ -61,8 +61,8 @@ const FormFlight = () => {
             </div>
             <div className="car-date-passengers col-12 col-sm-5 d-flex">
               <div className="col-1 d-flex align-items-center">
-                <Image className="card-date__img-1" src="/Passengers.svg" alt="flight takeoff" />
-                <p className="mt-3 ms-1">To</p>
+                <Image className="card-date__img-1 ms-2" src="/Passenger.png" alt="flight takeoff" />
+                <p className="mt-3 ms-2">To</p>
               </div>
               <div className="col-12 d-flex ms-2 ms-sm-4">
                 <div className="col-4 col-sm-5">

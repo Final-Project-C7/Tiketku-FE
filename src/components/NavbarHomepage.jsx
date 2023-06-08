@@ -21,7 +21,7 @@ const NavbarHomepage = () => {
           </Form>
         </Navbar.Collapse>
         <Navbar.Brand>
-          <Button className="btn btn-primary lg btn-sign d-flex align-items-center justify-content-center" type="submit">
+          <Button className="btn btn-primary lg btn-sign d-flex align-items-center justify-content-center" type="submit" href="/login">
             <Image className="login_img" src="/login.svg" alt="login icon" />
             <Link to="/login" className="btn-sign__link">
               Masuk

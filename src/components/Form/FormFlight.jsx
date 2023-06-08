@@ -4,6 +4,7 @@ import ModalFlightFrom from "../ModalFlightFrom";
 import ModalFlightTo from "../ModalFlightTo.jsx";
 import ModalPassengers from "../ModalPassengers.jsx";
 import ModalSeatClass from "../ModalSeatClass.jsx";
+import { Link } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./FormFlight.css";
@@ -77,7 +78,9 @@ const FormFlight = () => {
             </div>
           </div>
         </div>
-        <Button className="col-12">Cari Penerbangan</Button>
+        <Link to="/selectflight">
+          <Button className="col-12">Cari penerbangan</Button>
+        </Link>
       </div>
     </div>
   );

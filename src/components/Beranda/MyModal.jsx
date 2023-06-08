@@ -1,0 +1,108 @@
+import React, { useState } from "react";
+import { Button, Modal, Image, Form } from "react-bootstrap";
+import prefixicon from "/Prefix icon.svg";
+
+function MyModal() {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const style = `
+  .close-btn__img {
+    width: 18px;
+    height: 18px;
+  } 
+
+  .btn-modall{
+    background: #FFFFFF !important;
+    border-radius: 16px;
+    color : #7126B5 !important;
+  }
+
+  .delete-btn:hover, delete-btn:active {
+    background-color: transparent !important;
+  }
+
+  .delete-btn__img {
+    width: 12px;
+    height: 12px;
+  }
+
+  .seat-class {
+    color: #fff !important;
+    background-color: #4B1979
+  }
+
+  .seat-class__text {
+    color: #7126B5;
+  }
+
+  .save-btn-passengers {
+    background-color: #4B1979 !important;
+    color: #fff !important;
+    border-radius: 12px
+  }
+
+  .txt{
+    color: #7126B5;
+  }
+  `;
+
+  return (
+    <>
+      <style>{style}</style>
+      <Button className="btn-modall" onClick={handleShow}>
+        <img src={prefixicon} alt="Image" className="" /> 
+        Termurah
+      </Button>
+
+      <Modal size="md" show={show} onHide={handleClose} animation={false} centered>
+        <Modal.Header className="d-flex justify-content-end">
+          <Button className="delete-btn bg-transparent border-0" onClick={handleClose}>
+            <Image className="close-btn__img ms-4" src="/close-button.svg" />
+          </Button>
+        </Modal.Header>
+        <Modal.Body>
+          <div className="seat-class">
+            <div className="border-bottom mx-3 pt-2">
+              <p className="mb-2 text-white">Harga - Termurah</p>
+            </div>
+          </div>
+          <div>
+            <div className="border-bottom mx-3 pt-2">
+              <p className="fw-bold mb-2">Durasi - Terpendek</p>
+            </div>
+          </div>
+          <div>
+            <div className="border-bottom mx-3 pt-2">
+              <p className="fw-bold mb-2">Keberangkatan - Paling Awal</p>
+            </div>
+          </div>
+          <div>
+            <div className="border-bottom mx-3 pt-2">
+              <p className="fw-bold mb-2">Keberangkatan - Paling akhir</p>
+            </div>
+          </div>
+          <div>
+            <div className="border-bottom mx-3 pt-2">
+              <p className="fw-bold mb-2">Kedatangan - Paling awal</p>
+            </div>
+          </div>
+          <div>
+            <div className="border-bottom mx-3 pt-2">
+              <p className="fw-bold mb-2">Kedatangan - Paling akhir</p>
+            </div>
+          </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Pilih
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
+  );
+}
+
+export default MyModal;

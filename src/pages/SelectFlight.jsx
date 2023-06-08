@@ -16,9 +16,7 @@ function SelectFlight() {
         <SelectDay />
 
         <div className="d-flex justify-content-end">
-          <Button className="d-flex align-items-center btn-filter mt-3">
-            <FilterPrice />
-          </Button>
+          <FilterPrice/>
         </div>
 
         <div className="row filter-loading">

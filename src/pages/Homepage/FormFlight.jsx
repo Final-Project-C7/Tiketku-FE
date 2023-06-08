@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import { Image, Button } from "react-bootstrap";
+import ModalFlightFrom from "./ModalFlightFrom";
+import ModalFlightTo from "./ModalFlightTo";
+import ModalPassengers from "./ModalPassengers";
+import ModalSeatClass from "./ModalSeatClass";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./FormFlight.css";
@@ -23,7 +27,7 @@ const FormFlight = () => {
                 <Image className="card-destination__img" src="take-off.svg" alt="flight takeoff" />
                 <p className="col-1 ms-2">From</p>
               </div>
-              <h5 className="pb-3 col-7 ms-3">Jakarta (JKTA)</h5>
+              <ModalFlightFrom />
               <a href="/" className="ms-3">
                 <Image className="card-destination__img-1" src="/return.svg" alt="return" />
               </a>
@@ -31,7 +35,7 @@ const FormFlight = () => {
             <div className="card-destination-to col-12 col-sm-5 d-flex">
               <Image className="card-destination__img" src="/take-off.svg" alt="flight takeoff" />
               <p className="col-1 ms-2">To</p>
-              <h5 className="pb-3 col-7 col-sm-10">Melbourne (MLB)</h5>
+              <ModalFlightTo />
             </div>
           </div>
           <div className="card-date col-12 d-flex mt-4">
@@ -63,11 +67,11 @@ const FormFlight = () => {
               <div className="col-12 d-flex ms-2 ms-sm-4">
                 <div className="col-4 col-sm-5">
                   <h3>Passengers</h3>
-                  <h5 className="pb-3">2 Penumpang</h5>
+                  <ModalPassengers />
                 </div>
                 <div className="col-4 col-sm-5 ms-2">
                   <h3>Seat Class</h3>
-                  <h5 className="pb-3">Business</h5>
+                  <ModalSeatClass />
                 </div>
               </div>
             </div>

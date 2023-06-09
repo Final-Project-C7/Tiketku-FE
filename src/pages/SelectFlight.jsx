@@ -6,6 +6,7 @@ import Filter from "../components/Filter/Filter";
 import Loading from "../components/Loading";
 import NavbarHomepage from "../components/NavbarHomepage";
 import Notfound from "../components/Notfound";
+import Result from "../components/Result";
 
 function SelectFlight() {
   return (
@@ -25,7 +26,7 @@ function SelectFlight() {
             <Filter />
           </div>
           <div className="col-9 text-center">
-            <Loading />
+            <Result />
           </div>
         </div>
       </div>

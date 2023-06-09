@@ -5,7 +5,6 @@ import OTP from "./pages/OTP";
 import Forget from "./pages/Forget";
 import Reset from "./pages/Reset";
 import SelectFlight from "./pages/SelectFlight";
-import ResultSelectFlight from "./pages/ResultSelectFlight";
 import Homepage from "./pages/Homepage";
 import Soldout from "./pages/soldout";
 
@@ -15,7 +14,6 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Homepage />} />
-          <Route path="/resultselectflight" element={<ResultSelectFlight />} />
           <Route path="/selectflight" element={<SelectFlight />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />

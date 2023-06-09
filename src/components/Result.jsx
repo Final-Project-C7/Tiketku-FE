@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../pages/ResultSelectFlight.css";
+import "./Result.css";
 import { Card, Button, Row, Col } from "react-bootstrap";
 import loading from "/Airlane.png";
 import koper from "/Koper.svg";

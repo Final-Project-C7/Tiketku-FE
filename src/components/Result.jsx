@@ -24,74 +24,55 @@ function Result() {
         <Card.Title className="title">
           <Col className="col-12 d-flex gap-2">
             <div>
-              <Card.Img
-                variant="top"
-                src={loading}
-                style={{ width: "24px", marginRight: "10px" }}
-              />
+              <Card.Img variant="top" src={loading} style={{ width: "24px", marginRight: "10px" }} />
               Jet Air - Economy
             </div>
             <div className="float-right">
-              <Card.Img
-                variant="top"
-                src={panah}
-                style={{ width: "30px", marginLeft: "500px" }}
-                onClick={handleExpand}
-              />
+              <Card.Img variant="top" src={panah} style={{ width: "30px", marginLeft: "500px" }} onClick={handleExpand} />
             </div>
           </Col>
         </Card.Title>
-        <Row
-          className="d-flex justify-content-between"
-          style={{ marginLeft: "20px", marginTop: 0 }}
-        >
+        <Row className="d-flex justify-content-between" style={{ marginLeft: "20px", marginTop: 0 }}>
           <Col className="col-8 d-flex gap-3 align-items-center">
             <div>
-              <Card.Text className="fw-bold mb-1"> 07:00 </Card.Text>
-              <Card.Text className="fw-bold mb-1"> JKT </Card.Text>
+              <Card.Text className="fw-bold mb-1" style={{ fontSize: "14px" }}>
+                07:00
+              </Card.Text>
+              <Card.Text className="fw-semibold mb-1" style={{ fontSize: "12px" }}>
+                JKT
+              </Card.Text>
             </div>
             <div style={{ width: "100%" }}>
-              <Card.Text
-                className="title-departure text-center"
-                style={{ marginBottom: "1px" }}
-              >
+              <Card.Text className="title-departure text-center" style={{ marginBottom: "1px" }}>
                 4h 0m
               </Card.Text>
-              <hr
-                align="center"
-                color="green"
-                size="2"
-                width="100%"
-                style={{ margin: 0 }}
-              />
-              <Card.Text className="title-departure text-center">
-                Direct
-              </Card.Text>
+              <hr align="center" color="green" size="2" width="100%" style={{ margin: 0 }} />
+              <Card.Text className="title-departure text-center">Direct</Card.Text>
             </div>
             <div className="d-flex gap-3 align-items-center">
               <div>
-                <Card.Text className="fw-bold mb-1"> 11:00 </Card.Text>
-                <Card.Text className="fw-bold mb-1"> MLB </Card.Text>
+                <Card.Text className="fw-bold mb-1" style={{ fontSize: "14px" }}>
+                  11:00
+                </Card.Text>
+                <Card.Text className="fw-semibold mb-1" style={{ fontSize: "12px" }}>
+                  MLB
+                </Card.Text>
               </div>
-              <Card.Img
-                variant="top"
-                src={koper}
-                style={{ width: "24px", marginRight: "10px" }}
-              />
+              <Card.Img variant="top" src={koper} style={{ width: "24px", marginRight: "10px" }} />
             </div>
           </Col>
           <Col className="col-4 d-flex flex-column align-items-end">
             <Card.Text
               className="fw-bold mb-1"
               style={{
-                color: "rgba(113, 38, 181, 0.5)",
+                color: "rgba(113, 38, 181, 1)",
                 fontWeight: "bold",
                 fontSize: "16px",
               }}
             >
               IDR 4.950.000{" "}
             </Card.Text>
-            <Button className="col-3 py-1.5 btn-ticket" variant="primary">
+            <Button className="col-3 py-1.5 btn-ticket text-white" variant="primary">
               Pilih
             </Button>
           </Col>
@@ -99,60 +80,62 @@ function Result() {
         {expanded && (
           <>
             <hr className="divider-ticket" />
-            <div className="detail-flight">
-              <p
-                style={{
-                  color: "#4B1979",
-                  fontSize: "14px",
-                  fontWeight: "700",
-                }}
-              >
+            <div className="detail-flight d-flex flex-column text-start">
+              <p className="mb-2" style={{ color: "#4B1979", fontSize: "14px", fontWeight: "700" }}>
                 Detail Penerbangan
               </p>
               <Row>
-                <Col className="col-6 text-start">
-                  <p>07.00</p>
+                <Col className="text-start">
+                  <div className="d-flex align-items-center">
+                    <p className="mb-0 me-auto" style={{ fontSize: "16px", fontWeight: "700" }}>
+                      07.00
+                    </p>
+                    <p className="mb-0" style={{ color: "#A06ECE", fontSize: "12px", fontWeight: "700" }}>
+                      Keberangkatan
+                    </p>
+                  </div>
+                  <p className="mb-0" style={{ fontSize: "14px", fontWeight: "400" }}>
+                    3 Maret 2023
+                  </p>
+                  <p style={{ fontSize: "14px", fontWeight: "500" }}>Soekarno Hatta - Terminal 1A Domestik</p>
                 </Col>
-                <Col className="col-6 text-end">
-                  <p>Keberangkatan</p>
-                </Col>
-              </Row>
-              <Row>
-                <p>3 Maret 2023</p>
-                <p>Soekarno Hatta - Terminala 1A Domestik</p>
-                <hr className="divider-ticket" />
+                <div className="d-flex justify-content-center mb-3">
+                  <div className="col-8" style={{ borderBottom: "1px solid #D0D0D0" }}></div>
+                </div>
               </Row>
               <Row className="d-flex align-items-center">
-                <Col>
-                  <Card.Img
-                    variant="top"
-                    src={loading}
-                    style={{ width: "24px" }}
-                  />
+                <Col className="col-1">
+                  <Card.Img src={loading} style={{ width: "24px" }} />
                 </Col>
                 <Col>
-                  <p className="fw-bold">Jet Air-Economy</p>
-                  <p className="fw-bold">JT-203</p>
+                  <p className="fw-bold mb-0">Jet Air-Economy</p>
+                  <p className="fw-bold mb-0">JT-203</p>
                   <div className="detail-information">
-                    <p className="fw-bold">Informasi:</p>
-                    <p>Baggage 20kg</p>
-                    <p>Cabin Baggage 7 kg</p>
-                    <p>In Flight Entertainment</p>
+                    <p className="fw-bold mb-0">Informasi:</p>
+                    <p className="mb-0">Baggage 20kg</p>
+                    <p className="mb-0">Cabin Baggage 7 kg</p>
+                    <p className="mb-0">In Flight Entertainment</p>
                   </div>
                 </Col>
-              </Row>
-              <hr className="divider-ticket" />
-              <Row>
-                <Col>
-                  <p>11:00</p>
-                </Col>
-                <Col className="text-end">
-                  <p>Kedatangan</p>
-                </Col>
+                <div className="d-flex justify-content-center my-3">
+                  <div className="col-8" style={{ borderBottom: "1px solid #D0D0D0" }}></div>
+                </div>
               </Row>
               <Row>
-                <p>3 Maret 2023</p>
-                <p>Melbourne International Airport</p>
+                <Col className="text-start">
+                  <div className="d-flex align-items-center">
+                    <p className="mb-0 me-auto" style={{ fontSize: "14px", fontWeight: "700" }}>
+                      11.00
+                    </p>
+                    <p className="mb-0" style={{ color: "#A06ECE", fontSize: "12px", fontWeight: "700" }}>
+                      Keberangkatan
+                    </p>
+                  </div>
+                  <p className="mb-0" style={{ fontSize: "14px", fontWeight: "400" }}>
+                    3 Maret 2023
+                  </p>
+                  <p style={{ fontSize: "14px", fontWeight: "500" }}>Melbourne International Airport</p>
+                </Col>
               </Row>
             </div>
           </>

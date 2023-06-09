@@ -94,7 +94,7 @@ function FormRegister() {
       </form>
       <p className="mt-5 mb-1 text-center">
         Sudah punya akun?{"  "}
-        <Link to="/" className="fw-bold register">
+        <Link to="/login" className="fw-bold register">
           Masuk di sini
         </Link>
       </p>

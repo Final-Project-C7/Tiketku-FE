@@ -182,9 +182,11 @@
   padding: 24px 27px;
 }
 
+
+
 .filter-2 {
-  border: ffffff;
-  border-radius: 16px;
+  border: #ffffff;
+  border-radius: 8px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
 }
 .arrow-right:hover,
@@ -192,4 +194,28 @@
 .arrow-right:focus {
   filter: brightness(0%);
   outline: none;
+}
+
+.btn-ticket {
+  background-color:  #7126B5;
+  border-radius: 12px;
+  width: 100px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.horizontal-divider {
+  border: 1px solid #808080;
+  
+  width: 930px;
+}
+
+.detail-flight {
+ padding-top: 15px;
+ padding-left: 32px;
+ padding-right: 32px;
+}
+
+.detail-information {
+  margin-top:35px;
 }

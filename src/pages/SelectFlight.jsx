@@ -26,7 +26,7 @@ function SelectFlight() {
           <div className="col-3 filter-l">
             <Filter />
           </div>
-          <div className="col-9 text-center">
+          <div className="col-9 text-center mb-5">
             <Loading />
           </div>
         </div>

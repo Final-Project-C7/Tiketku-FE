@@ -46,9 +46,9 @@ function ModalPassengers() {
   return (
     <>
       <style>{style}</style>
-      <h5 className="pb-3" onClick={handleShow} style={{ cursor: "pointer" }}>
-        2 Penumpang
-      </h5>
+      <div className="border-bottom text-dark col-11 pb-3" onClick={handleShow} style={{ cursor: "pointer" }}>
+        <input className="border-0 bg-transparent" style={{ fontSize: "18px" }} value="" disabled hidden />2 Penumpang
+      </div>
 
       <Modal size="md" show={show} onHide={handleClose} animation={false} centered>
         <Modal.Header className="d-flex justify-content-end">

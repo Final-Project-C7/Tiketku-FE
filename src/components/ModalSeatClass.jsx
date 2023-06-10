@@ -41,9 +41,10 @@ function ModalSeatClass() {
   return (
     <>
       <style>{style}</style>
-      <h5 className="pb-3" onClick={handleShow} style={{ cursor: "pointer" }}>
+      <div className="border-bottom text-dark col-11 pb-3" onClick={handleShow} style={{ cursor: "pointer" }}>
+        <input className="border-0 bg-transparent" style={{ fontSize: "18px" }} value="" disabled hidden />
         Business
-      </h5>
+      </div>
 
       <Modal size="md" show={show} onHide={handleClose} animation={false} centered>
         <Modal.Header className="d-flex justify-content-end">

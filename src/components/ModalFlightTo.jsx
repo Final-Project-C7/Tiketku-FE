@@ -45,10 +45,10 @@ function ModalFlightTo() {
   return (
     <>
       <style>{style}</style>
-      <h5 className="pb-3 col-7 col-sm-10" onClick={handleShow} style={{ cursor: "pointer" }}>
+      <div className="border-bottom text-dark col-10 pb-3" onClick={handleShow} style={{ cursor: "pointer" }}>
+        <input className="border-0 bg-transparent" style={{ fontSize: "18px" }} value="" disabled hidden />
         Melbourne (MLB)
-      </h5>
-
+      </div>
       <Modal size="lg" show={show} onHide={handleClose} animation={false} centered>
         <Modal.Header>
           <Modal.Body>

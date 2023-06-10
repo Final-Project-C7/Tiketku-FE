@@ -35,7 +35,7 @@ const DestinasiFav = () => {
         </a>
       </div>
       <div className="destinasi-card d-flex justify-content-center flex-wrap mb-5 mx-4">
-        <Card className="shadow" style={{ width: "18.65%" }}>
+        <Card className="shadow" style={{ width: "18.47%" }}>
           <Card.Img variant="top" className="p-2 pb-0" src="/Frame-152.svg" />
           <Card.Body className="pt-2">
             <Card.Text className="destinasi-card__text-1 fw-bold mb-1">Jakarta &rarr; Bangkok</Card.Text>
@@ -46,7 +46,7 @@ const DestinasiFav = () => {
             </Card.Text>
           </Card.Body>
         </Card>
-        <Card className="ms-3 shadow" style={{ width: "18.65%" }}>
+        <Card className="ms-3 shadow" style={{ width: "18.47%" }}>
           <Card.Img variant="top" className="p-2 pb-0" src="/Frame-152.svg" />
           <Card.Body className="pt-2">
             <Card.Text className="destinasi-card__text-1 fw-bold mb-1">Jakarta &rarr; Bangkok</Card.Text>
@@ -57,7 +57,7 @@ const DestinasiFav = () => {
             </Card.Text>
           </Card.Body>
         </Card>
-        <Card className="ms-3 shadow" style={{ width: "18.65%" }}>
+        <Card className="ms-3 shadow" style={{ width: "18.47%" }}>
           <Card.Img variant="top" className="p-2 pb-0" src="/frame154.svg" />
           <Card.Body className="pt-3">
             <Card.Text className="destinasi-card__text-1 fw-bold mb-1">Jakarta &rarr; Sydney</Card.Text>
@@ -68,7 +68,7 @@ const DestinasiFav = () => {
             </Card.Text>
           </Card.Body>
         </Card>
-        <Card className="ms-3 shadow" style={{ width: "18.65%" }}>
+        <Card className="ms-3 shadow" style={{ width: "18.47%" }}>
           <Card.Img variant="top" className="p-2 pb-0" src="/frame154.svg" />
           <Card.Body className="pt-3">
             <Card.Text className="destinasi-card__text-1 fw-bold mb-1">Jakarta &rarr; Sydney</Card.Text>
@@ -79,7 +79,7 @@ const DestinasiFav = () => {
             </Card.Text>
           </Card.Body>
         </Card>
-        <Card className="ms-3 shadow" style={{ width: "18.65%" }}>
+        <Card className="ms-3 shadow" style={{ width: "18.47%" }}>
           <Card.Img variant="top" className="p-2 pb-0" src="/Frame-152.svg" />
           <Card.Body className="pt-2">
             <Card.Text className="destinasi-card__text-1 fw-bold mb-1">Jakarta &rarr; Bangkok</Card.Text>

@@ -1,11 +1,6 @@
-.flight-form {
-  /* margin-bottom: 100rem; */
-}
-
 .flight-schedule {
   background-color: #ffffff;
-  height: 298px;
-  /* width: 968px; */
+  height: 306px;
   border-radius: 12px;
   padding: 24px 0px 24px 0px;
   border: 1px solid #d0d0d0;
@@ -99,51 +94,47 @@
   background-color: #7126b5 !important;
 }
 
-.toggle-switch {
+.switch {
   position: relative;
   display: inline-block;
-  width: 60px;
-  height: 20px;
-  border-radius: 15px;
-  background-color: #ccc;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.toggle-switch.checked {
-  background-color: #2196f3;
-}
-
-.toggle-switch-track {
-  position: absolute;
-  top: 50%;
-  width: 60px;
+  /* width: 50px; */
   height: 30px;
-  border-radius: 20px;
-  background-color: #d0d0d0;
-  transform: translateY(-50%);
+}
+
+.switch input {
+  opacity: 0;
+  width: 50px;
+}
+
+.slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  border-radius: 24px;
   transition: background-color 0.3s;
 }
 
-.toggle-switch-thumb {
+.slider:before {
   position: absolute;
-  top: 50%;
-  left: 2px;
-  width: 26px;
-  height: 26px;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
   border-radius: 50%;
-  background-color: #fff;
-  transform: translateY(-50%);
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s;
 }
 
-.toggle-switch.checked .toggle-switch-track {
+input:checked + .slider {
   background-color: #4b1979;
 }
 
-.toggle-switch.checked .toggle-switch-thumb {
-  transform: translate(30px, -50%);
+input:checked + .slider:before {
+  transform: translateX(19px);
 }
 
 @media (max-width: 575px) {

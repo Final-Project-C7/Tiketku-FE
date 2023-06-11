@@ -7,6 +7,7 @@ import Reset from "./pages/Reset";
 import SelectFlight from "./pages/SelectFlight";
 import Homepage from "./pages/Homepage";
 import NavbarUser from "./components/NavbarUser";
+import CheckoutCustomerData from "./components/CheckoutCustomerData";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/otp" element={<OTP />} />
           <Route path="/forget-password" element={<Forget />} />
           <Route path="/reset-password" element={<Reset />} />
+          <Route path="/checkout" element={<CheckoutCustomerData />} />
         </Routes>
       </BrowserRouter>
     </>

@@ -46,7 +46,7 @@ function ModalFlightFrom() {
     <>
       <style>{style}</style>
       <div className="border-bottom text-dark col-7 pb-3" onClick={handleShow} style={{ cursor: "pointer" }}>
-        <input className="border-0 bg-transparent" style={{ fontSize: "18px" }} value="" disabled hidden />
+        <input className="border-0 bg-transparent" style={{ fontSize: "18px" }} defaultValue="" disabled hidden />
         Jakarta (JKTA)
       </div>
 

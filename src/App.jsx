@@ -8,6 +8,7 @@ import SelectFlight from "./pages/SelectFlight";
 import Homepage from "./pages/Homepage";
 import NavbarUser from "./components/NavbarUser";
 import CheckoutCustomerData from "./components/CheckoutCustomerData";
+import Payment from "./components/Payment";
 
 function App() {
   return (
@@ -17,12 +18,13 @@ function App() {
           <Route path="/" element={<Homepage />} />
           <Route path="/user" element={<NavbarUser />} />
           <Route path="/selectflight" element={<SelectFlight />} />
+          <Route path="/checkout" element={<CheckoutCustomerData />} />
+          <Route path="/payment" element={<Payment />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/otp" element={<OTP />} />
           <Route path="/forget-password" element={<Forget />} />
           <Route path="/reset-password" element={<Reset />} />
-          <Route path="/checkout" element={<CheckoutCustomerData />} />
         </Routes>
       </BrowserRouter>
     </>

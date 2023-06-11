@@ -6,6 +6,7 @@ import Forget from "./pages/Forget";
 import Reset from "./pages/Reset";
 import SelectFlight from "./pages/SelectFlight";
 import Homepage from "./pages/Homepage";
+import NavbarUser from "./components/NavbarUser";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Homepage />} />
+          <Route path="/user" element={<NavbarUser />} />
           <Route path="/selectflight" element={<SelectFlight />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />

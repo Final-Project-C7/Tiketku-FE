@@ -47,7 +47,7 @@ function ModalPassengers() {
     <>
       <style>{style}</style>
       <div className="border-bottom text-dark col-11 pb-3" onClick={handleShow} style={{ cursor: "pointer" }}>
-        <input className="border-0 bg-transparent" style={{ fontSize: "18px" }} value="" disabled hidden />2 Penumpang
+        <input className="border-0 bg-transparent" style={{ fontSize: "18px" }} defaultValue="" disabled hidden />2 Penumpang
       </div>
 
       <Modal size="md" show={show} onHide={handleClose} animation={false} centered>

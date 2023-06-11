@@ -1,0 +1,59 @@
+.checkout-breadcrumbs {
+  width: 67%;
+  margin-top: 7rem;
+}
+
+.checkout-breadcrumbs h4 {
+  font-size: 20px;
+}
+
+.checkout-breadcrumbs h5 {
+  font-size: 16px;
+}
+
+.checkout-breadcrumbs__alert h5 {
+  background-color: #ff0000;
+}
+
+.payment {
+  width: 64%;
+}
+
+.payment h4 {
+  font-size: 20px;
+}
+
+.payment-data__img {
+  width: 15px;
+  height: 8px;
+}
+
+.payment-data__expanded {
+  width: 70%;
+}
+
+.payment-data__logo {
+  width: 40px;
+  height: 25px;
+}
+
+.payment-data__expanded p {
+  font-size: 14px;
+}
+
+.payment-booking-code h4 {
+  font-size: 18px;
+}
+
+.payment-booking-code h5 {
+  font-size: 16px;
+}
+
+.payment-booking-code p {
+  font-size: 14px;
+}
+
+.payment-booking-code__img {
+  width: 24px;
+  height: 24px;
+}

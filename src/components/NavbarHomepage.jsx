@@ -9,8 +9,10 @@ const NavbarHomepage = () => {
   return (
     <Navbar className="fixed-top border-bottom shadow-sm bg-white">
       <Container>
-        <Navbar.Brand href="/" className="d-flex">
-          <Image className="navbar__img" src="/logo.svg" alt="logo Tiketku" />
+        <Navbar.Brand className="d-flex">
+          <Link to="/">
+            <Image className="navbar__img" src="/logo.svg" alt="logo Tiketku" />
+          </Link>
         </Navbar.Brand>
         <Navbar.Collapse>
           <Form className="nav-search d-flex ms-3 align-items-center py-1 px-4 rounded-4">
@@ -21,7 +23,7 @@ const NavbarHomepage = () => {
           </Form>
         </Navbar.Collapse>
         <Navbar.Brand>
-          <Button className="btn btn-primary lg btn-sign d-flex align-items-center justify-content-center" type="submit" href="/login">
+          <Button className="btn btn-primary lg btn-sign d-flex align-items-center justify-content-center" type="submit">
             <Image className="login_img" src="/login.svg" alt="login icon" />
             <Link to="/login" className="btn-sign__link">
               Masuk

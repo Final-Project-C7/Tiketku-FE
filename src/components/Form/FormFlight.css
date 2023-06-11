@@ -41,6 +41,10 @@
   margin-left: -80px;
 }
 
+.card-date input:focus {
+  outline-style: none;
+}
+
 .card-date .col-8 {
   margin-left: -20px;
 }

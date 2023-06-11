@@ -39,8 +39,10 @@ const OTP = () => {
     <div>
       <Navbar className="fixed-top border-bottom shadow-sm">
         <Container>
-          <Navbar.Brand href="/">
-            <img className="logo-navbar" src={logo} alt="logo" />
+          <Navbar.Brand>
+            <Link to="/">
+              <img className="logo-navbar" src={logo} alt="logo" />
+            </Link>
           </Navbar.Brand>
         </Container>
       </Navbar>
@@ -52,20 +54,11 @@ const OTP = () => {
       <div className="container otp-main-2">
         <h1 className="fw-bold">Masukkan OTP</h1>
         <p className="text-center mt-5 mb-4">
-          Ketik 6 digit kode yang dikirimkan ke{" "}
-          <span className="fw-bolder">J*****@gmail.com</span>
+          Ketik 6 digit kode yang dikirimkan ke <span className="fw-bolder">J*****@gmail.com</span>
         </p>
         <form className="text-center">
           {otp.map((value, index) => (
-            <input
-              key={index}
-              type="text"
-              maxLength={1}
-              value={value}
-              onChange={(event) => handleChange(index, event)}
-              onPaste={handlePaste}
-              className="text-center"
-            />
+            <input key={index} type="text" maxLength={1} value={value} onChange={(event) => handleChange(index, event)} onPaste={handlePaste} className="text-center" />
           ))}
           <p className="mt-3 mb-5">Kirim Ulang OTP dalam 60 detik</p>
           <Button className="btn-otp col-12 mt-5">Simpan</Button>

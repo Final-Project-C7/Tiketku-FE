@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Image, Button, Form } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import ModalFlightFrom from "../ModalFlightFrom";
 import ModalFlightTo from "../ModalFlightTo";
 import ModalPassengers from "../ModalPassengers";
 import ModalSeatClass from "../ModalSeatClass";
-import { Link } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./FormFlight.css";
@@ -35,9 +35,9 @@ const FormFlight = () => {
                 <p className="col-1 ms-2">From</p>
               </div>
               <ModalFlightFrom />
-              <a href="/" className="ms-3">
+              <Link to="/" className="ms-3">
                 <Image className="card-destination__img-1" src="/return.svg" alt="return" />
-              </a>
+              </Link>
             </div>
             <div className="card-destination-to col-12 col-sm-5 d-flex">
               <Image className="card-destination__img" src="/take-off.svg" alt="flight takeoff" />
@@ -55,12 +55,12 @@ const FormFlight = () => {
                 <div className="col-5">
                   <h3 className="mb-0">Departure</h3>
                   {/* <h5 className="pb-3 col-12">1 Maret 2023</h5> */}
-                  <input className="border-0 border-bottom pb-3 mt-1 col-12" type="date" value="1 Maret 2023" />
+                  <input className="border-0 border-bottom pb-3 mt-1 col-12" type="date" />
                 </div>
                 <div className="col-5 ms-4">
                   <h3 className="mb-0">Return</h3>
                   {/* <h5 className="card-date__text pb-3 col-12">Pilih Tanggal</h5> */}
-                  <input className="border-0 border-bottom pb-3 mt-1 col-12" type="date" value="1 Maret 2023" />
+                  <input className="border-0 border-bottom pb-3 mt-1 col-12" type="date" />
                 </div>
                 <label className="switch">
                   <input type="checkbox" checked={isChecked} onChange={handleToggle} />

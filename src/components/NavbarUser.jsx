@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./NavbarHomepage.css";
 
+
 const NavbarUser = () => {
   return (
     <Navbar className="fixed-top border-bottom shadow-sm bg-white">

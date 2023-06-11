@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Image, Button, Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./DestinasiFav.css";
@@ -9,30 +10,30 @@ const DestinasiFav = () => {
     <div className="destinasi-fav position-relative d-flex flex-column">
       <h5 className="fw-bold">Destinasi Favorit</h5>
       <div className="d-flex mb-5">
-        <a href="/" className="destinasi-fav__category-1 d-flex align-items-center justify-content-center text-white text-decoration-none mt-2 p-1">
+        <Link to="/" className="destinasi-fav__category-1 d-flex align-items-center justify-content-center text-white text-decoration-none mt-2 p-1">
           <Image className="destinasi-fav__search-img me-2" src="/search.svg" alt="search" />
           Semua
-        </a>
-        <a href="/" className="destinasi-fav__category-2 d-flex align-items-center justify-content-center text-decoration-none ms-3 mt-2 p-1">
+        </Link>
+        <Link to="/" className="destinasi-fav__category-2 d-flex align-items-center justify-content-center text-decoration-none ms-3 mt-2 p-1">
           <Image className="destinasi-fav__search-img me-2" src="/search.svg" alt="search" />
           Asia
-        </a>
-        <a href="/" className="destinasi-fav__category-2 d-flex align-items-center justify-content-center text-decoration-none ms-3 mt-2 p-1">
+        </Link>
+        <Link to="/" className="destinasi-fav__category-2 d-flex align-items-center justify-content-center text-decoration-none ms-3 mt-2 p-1">
           <Image className="destinasi-fav__search-img me-2" src="/search.svg" alt="search" />
           Amerika
-        </a>
-        <a href="/" className="destinasi-fav__category-2 d-flex align-items-center justify-content-center text-decoration-none ms-3 mt-2 p-1">
+        </Link>
+        <Link to="/" className="destinasi-fav__category-2 d-flex align-items-center justify-content-center text-decoration-none ms-3 mt-2 p-1">
           <Image className="destinasi-fav__search-img me-2" src="/search.svg" alt="search" />
           Australia
-        </a>
-        <a href="/" className="destinasi-fav__category-2 d-flex align-items-center justify-content-center text-decoration-none ms-3 mt-2 p-1">
+        </Link>
+        <Link to="/" className="destinasi-fav__category-2 d-flex align-items-center justify-content-center text-decoration-none ms-3 mt-2 p-1">
           <Image className="destinasi-fav__search-img me-2" src="/search.svg" alt="search" />
           Eropa
-        </a>
-        <a href="/" className="destinasi-fav__category-2 d-flex align-items-center justify-content-center text-decoration-none ms-3 mt-2 p-1">
+        </Link>
+        <Link to="/" className="destinasi-fav__category-2 d-flex align-items-center justify-content-center text-decoration-none ms-3 mt-2 p-1">
           <Image className="destinasi-fav__search-img me-2" src="/search.svg" alt="search" />
           Afrika
-        </a>
+        </Link>
       </div>
       <div className="destinasi-card d-flex justify-content-center flex-wrap mb-5 mx-4">
         <Card className="shadow" style={{ width: "18.47%" }}>

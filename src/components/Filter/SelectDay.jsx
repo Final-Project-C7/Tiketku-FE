@@ -18,7 +18,7 @@ function SelectDay() {
           <p className="ms-3 mt-3">JKT &gt; MLB -2 Penumpang - Economy</p>
         </div>
         <div className="col-3">
-          <Button variant="success btn-search" className="">
+          <Button variant="s btn-search" className="">
             Ubah Pencarian
           </Button>
         </div>

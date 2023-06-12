@@ -1,0 +1,182 @@
+.topriwayat{
+    background-color: #A06ECE !important;
+    border-radius: 16px;
+    padding-left: 20px;
+}
+
+.teks{
+  background-color: #A06ECE !important;
+  padding-left: 30px;
+}
+
+.beranda{
+  font-size: medium;
+}
+
+.checkout-breadcrumbs {
+    padding-left: 50px;
+    width: 67%;
+    margin-top: 7rem;
+  }
+  
+  .checkout-breadcrumbs h4 {
+    font-size: 20px;
+  }
+  
+  .checkout-breadcrumbs h5 {
+    font-size: 16px;
+  }
+  
+  .checkout-breadcrumbs__alert h5 {
+    background-color: #73ca5c;
+  }
+  
+  .checkout-biodata {
+    width: 60%;
+  }
+  
+  .checkout-biodata h4 {
+    font-size: 20px;
+  }
+  
+  .checkout-biodata h5 {
+    font-size: 16px;
+  }
+  
+  .checkout-biodata__checklist {
+    width: 22px;
+    height: 22px;
+  }
+  
+  .checkout-biodata P {
+    font-size: 14px;
+    color: #4b1979;
+  }
+  
+  .checkout-biodata input {
+    font-size: 16px;
+    width: 95%;
+  }
+  
+  .checkout-biodata select:focus {
+    outline-style: none;
+  }
+  
+  .checkout-biodata select {
+    font-size: 16px;
+    width: 95%;
+  }
+  
+  .checkout-biodata input:focus {
+    outline-style: none;
+  }
+  
+  .checkout-biodata__img {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .checkout-biodata__btn-1 {
+    width: 100%;
+    height: 42px;
+    background-color: #d0d0d0 !important;
+    color: white !important;
+    border-radius: 10px !important;
+  }
+  
+  .checkout-biodata__btn-1:hover {
+    background-color: #d0d0d0 !important;
+  }
+  
+  .checkout-biodata__btn-1:focus {
+    background-color: #d0d0d0 !important;
+  }
+
+  .bookingtext{
+    color:#7126B5 !important;
+  }
+  
+  .checkout-biodata__btn-2 {
+    width: 100%;
+    height: 42px;
+    background-color: #7126B5 !important;
+    color: white !important;
+    border-radius: 12px;
+  }
+  
+  .checkout-biodata__btn-2:hover {
+    background-color: #7126B5 !important;
+  }
+  
+  .checkout-biodata__btn-2:focus {
+    background-color: #7126B5 !important;
+  }
+  
+  .switch {
+    position: relative;
+    display: inline-block;
+    /* width: 50px; */
+    height: 25px;
+  }
+  
+  .switch input {
+    opacity: 0;
+    width: 40px;
+  }
+  
+  .slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    border-radius: 24px;
+    transition: background-color 0.3s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 17px;
+    width: 17px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.3s;
+  }
+  
+  input:checked + .slider {
+    background-color: #4b1979;
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(15px);
+  }
+
+  .issue{
+    border-radius: 16px;
+    background-color: #73CA5C !important;
+    border-color: #ccc;
+    
+  }
+  .unpaid{
+    border-radius: 16px;
+    background-color: #FF0000 !important;
+    border-color: #ccc;
+    
+  }
+
+  .btn:hover{
+    background-color: #4b1979 !important;
+  }
+
+  .cardresult{
+    border-color: #4b1979 !important;
+  }
+  .cardresult2{
+    border-color: #4b1979 !important;
+  }
+  
+  

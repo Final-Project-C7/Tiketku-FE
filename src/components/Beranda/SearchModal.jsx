@@ -1,18 +1,24 @@
 import React, { useState } from "react";
 import { Button, Modal, Image, Form } from "react-bootstrap";
 
-function FilterModal() {
+function SearchModal() {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const handleSearch = (event) => {
-    event.preventDefault();
-    const searchTerm = event.target.search.value;
-    onSearch(searchTerm);}
-
   const style = `
+  .modal-history__search {
+    width: 25rem;
+    height: 23rem;
+    margin-left: 54rem;
+    margin-top: -66rem;
+  }
+
+  .history__search:focus {
+    outline-style: none;
+  }
+
   .close-btn__img {
     width: 18px;
     height: 18px;
@@ -41,14 +47,10 @@ function FilterModal() {
     color: #ffffff !important;
   }
   
- 
-  
   .btn-modall:hover img
    {
     filter: brightness(0) invert(1) ;
   }
-
-
 
   .delete-btn:hover, delete-btn:active {
     background-color: transparent !important;
@@ -82,54 +84,39 @@ function FilterModal() {
   return (
     <>
       <style>{style}</style>
-      <div className="history-filter col-2 d-flex ms-3">
-        <Button onClick={handleShow} className="history-filter__btn d-flex bg-white text-dark rounded-5" style={{ height: "30px" }}>
-        <Image src="/history-filter.svg" />
-            <h5  className="ms-2 mb-0">Filter</h5>
-        </Button>
-        <Image className="ms-3" src="/searchriwayat.svg" style={{ cursor: "pointer" }} />
-       </div>
+      <Image className="ms-3" src="/searchriwayat.svg" style={{ cursor: "pointer" }} onClick={handleShow} />
 
-      <Modal
-        size="md"
-        show={show}
-        onHide={handleClose}
-        animation={false}
-        centered
-      >
-        <Modal.Header className="d-flex justify-content-end">
-            <form className="ms-3 align-items-center py-1 px-4 rounded-2">
-                <Image className="" src="/search.svg" alt="search" />
-                <input type="search" placeholder="Masukan Nomor Penerbangan ..." aria-label="Search" />
-            </form>
-          <Button
-            className="delete-btn bg-transparent border-0"
-            onClick={handleClose}
-          >
-            <Image className="close-btn__img ms-4" src="/close-button.svg" />
+      <Modal className="modal-history__search position-relative" show={show} onHide={handleClose} animation={false}>
+        <Modal.Header>
+          <Form className="d-flex align-items-center  rounded-2 col-11 border border-2 py-2 px-3">
+            <Image className="me-2" src="/search.svg" alt="search" />
+            <input className="history__search col-11 border-0 bg-transparent" type="search" placeholder="Masukan Nomor Penerbangan ..." aria-label="Search" />
+          </Form>
+          <Button className="delete-btn bg-transparent border-0" onClick={handleClose}>
+            <Image className="close-btn__img" src="/close-button.svg" />
           </Button>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body style={{ paddingBottom: "5rem" }}>
           <div className="mx-2">
             <div className="d-flex mb-3">
-                <p className="mb-0 me-auto text-dark fw-bold">Pencarian Terkini</p>
-                <p className="mb-0 fw-bold text-danger">Hapus</p>
+              <p className="mb-0 me-auto text-dark fw-bold">Pencarian Terkini</p>
+              <p className="mb-0 fw-bold text-danger">Hapus</p>
             </div>
             <div className="d-flex mb-0">
-                <p className="mb-0 me-auto text-dark">1234ABC</p>
-                <Image className="close-btn__img2 ms-4" src="/closebtn.svg" />
+              <p className="mb-0 me-auto text-dark">1234ABC</p>
+              <Image className="close-btn__img2 ms-4" src="/closebtn.svg" />
             </div>
             <div className="border-bottom border-2 mt-1 mb-3"></div>
             <div className="d-flex mb-0">
-                <p className="mb-0 me-auto text-dark">1234ABC</p>
-                <Image className="close-btn__img2 ms-4" src="/closebtn.svg" />
+              <p className="mb-0 me-auto text-dark">1234ABC</p>
+              <Image className="close-btn__img2 ms-4" src="/closebtn.svg" />
             </div>
             <div className="border-bottom border-2 mt-1 mb-3"></div>
-          </div>    
+          </div>
         </Modal.Body>
       </Modal>
     </>
   );
 }
 
-export default FilterModal;
+export default SearchModal;

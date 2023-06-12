@@ -1,36 +1,34 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { Image, Button, Container, Form, Card } from "react-bootstrap";
 import NavbarUser from "./NavbarUser";
 import HistoryEmpty from "./HistoryEmpty";
 
 import "./Riwayat.css";
 
-
 const Riwayat = () => {
-  const [isChecked, setIsChecked] = useState(false);
-
-  const handleToggle = () => {
-    setIsChecked(!isChecked);
-  };
   return (
     <>
       <NavbarUser />
       <div className="border-bottom shadow-sm">
-        <Container className="checkout-breadcrumbs">
+        <Container className="history">
           <div className="d-flex">
             <h4 className="fw-bold"> Riwayat Pemesanan</h4>
           </div>
-          <div className="d-flex checkout-breadcrumbs__alert mt-2 mb-4 mx-4">
-            <div className="topriwayat col-10 py-3 rounded-4">
-              <div className="text-white">
-                <Image className="arrowleft mr-7" src="./arrow-left.png" alt="arrow left" /> Beranda
-              </div>
-              {/* <h5 className="teks text-white" >Beranda</h5> */}
+          <div className="history-top d-flex align-items-center mx-2 mb-4">
+            <div className="history-top__alert col-10 text-white d-flex px-3 py-2 mt-2">
+              <Link to="/">
+                <Image className="history-top__arrow-left my-2" src="./arrow-left.png" alt="arrow left" />
+              </Link>
+              <h5 className="ms-4 pt-2">Beranda</h5>
             </div>
-            <Button className="btn-filter ms-2 text-dark">
-              <div image scr="./userfilter.svg" alt="" /> Filter
-            </Button>
-            <Image className="ms-0" src="/searchriwayat.svg" />
+            <div className="history-filter col-2 d-flex ms-3">
+              <Button className="history-filter__btn d-flex bg-white text-dark rounded-5" style={{ height: "30px" }}>
+                <Image src="/history-filter.svg" />
+                <h5 className="ms-2 mb-0">Filter</h5>
+              </Button>
+              <Image className="ms-3" src="/searchriwayat.svg" style={{ cursor: "pointer" }} />
+            </div>
           </div>
         </Container>
       </div>
@@ -52,14 +50,14 @@ const Riwayat = () => {
                     <p className="mb-0">5 Maret 2023</p>
                     <p className="mb-0">19:10</p>
                   </div>
-                  <div className="col-4 d-flex flex-column justify-content-center align-items-center">
+                  <div className="col-4 d-flex flex-column justify-content-center align-items-center mb-4">
                     <p className="mb-0">4h 0m</p>
                     <Image src="/Union.svg" />
                   </div>
                   <div className="col-1 text-center">
                     <Image src="/Live-area.svg" />
                   </div>
-                  <div className="col-3 d-flex flex-column justify-content-end">
+                  <div className="col-3 d-flex flex-column">
                     <p className="fw-bold mb-0">Melbourne</p>
                     <p className="mb-0">5 Maret 2023</p>
                     <p className="mb-0">21:10</p>

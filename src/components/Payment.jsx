@@ -41,15 +41,15 @@ const Payment = () => {
         <div className="row d-flex my-5">
           <div className="payment-data col-7">
             <h4 className="fw-bold mb-3">Isi Data Pembayaran</h4>
-            <div className="d-flex align-items-center bg-dark text-white rounded-2 p-3 mb-3">
+            <div className="d-flex align-items-center bg-dark text-white rounded-2 p-3 mb-3" style={{ cursor: "pointer" }}>
               <h5 className="mb-0 me-auto">Gopay</h5>
               <Image className="payment-data__img" src="/arrow-down.svg" />
             </div>
-            <div className="d-flex align-items-center bg-dark text-white rounded-2 p-3 mb-3">
+            <div className="d-flex align-items-center bg-dark text-white rounded-2 p-3 mb-3" style={{ cursor: "pointer" }}>
               <h5 className="mb-0 me-auto">Virtual Account</h5>
               <Image className="payment-data__img" src="/arrow-down.svg" />
             </div>
-            <div className="d-flex align-items-center bg-dark text-white rounded-2 p-3" onClick={handleExpand}>
+            <div className="d-flex align-items-center bg-dark text-white rounded-2 p-3" onClick={handleExpand} style={{ cursor: "pointer" }}>
               <h5 className="mb-0 me-auto">Credit Card</h5>
               <Image className="payment-data__img" src="/arrow-down.svg" />
             </div>

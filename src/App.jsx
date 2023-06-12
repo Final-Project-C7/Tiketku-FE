@@ -6,6 +6,7 @@ import Forget from "./pages/Forget";
 import Reset from "./pages/Reset";
 import SelectFlight from "./pages/SelectFlight";
 import Homepage from "./pages/Homepage";
+import Akun from "./pages/Akun";
 import NavbarUser from "./components/NavbarUser";
 import CheckoutCustomerData from "./components/CheckoutCustomerData";
 import Payment from "./components/Payment";
@@ -18,6 +19,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Homepage />} />
+          <Route path="/akun" element={<Akun />} />
           <Route path="/result" element={<Result />} />
           <Route path="/userhistory" element={<Riwayat />} />
           <Route path="/selectflight" element={<SelectFlight />} />

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Image, Button, Container, Form, Card} from "react-bootstrap";
+import { Image, Button, Container, Form, Card } from "react-bootstrap";
 import NavbarUser from "./NavbarUser";
 
 import "./Riwayat.css";
@@ -20,24 +20,75 @@ const Riwayat = () => {
           </div>
           <div className="d-flex checkout-breadcrumbs__alert mt-2 mb-4 mx-4">
             <div className="topriwayat col-10 py-3 rounded-4">
-              <div className="text-white"><Image className="arrowleft mr-7" src="./arrow-left.png" alt="arrow left" />   Beranda 
+              <div className="text-white">
+                <Image className="arrowleft mr-7" src="./arrow-left.png" alt="arrow left" /> Beranda
               </div>
               {/* <h5 className="teks text-white" >Beranda</h5> */}
             </div>
-            <Button className="btn-filter ms-2 text-dark"><div image scr="./userfilter.svg" alt=""/> Filter</Button>
+            <Button className="btn-filter ms-2 text-dark">
+              <div image scr="./userfilter.svg" alt="" /> Filter
+            </Button>
             <Image className="ms-0" src="/searchriwayat.svg" />
-
-          </div> 
+          </div>
         </Container>
       </div>
       <Container className="checkout-biodata">
         <Form className="row d-flex mt-4">
           <div className="col-7 mt-0">
+            <div className="mb-3">
+              <h5 className="fw-bold">Maret 2023</h5>
+              <div className="p-3 rounded-3" style={{ border: "2px solid rgba(113, 38, 181, 0.75)" }}>
+                <p className="col-2 rounded-5 text-white text-center p-1 mb-4" style={{ backgroundColor: "#FF0000" }}>
+                  Unpaid
+                </p>
+                <div className="d-flex">
+                  <div className="col-1 text-center">
+                    <Image src="/Live-area.svg" />
+                  </div>
+                  <div className="col-3">
+                    <p className="fw-bold mb-0">Jakarta</p>
+                    <p className="mb-0">5 Maret 2023</p>
+                    <p className="mb-0">19:10</p>
+                  </div>
+                  <div className="col-4 d-flex flex-column justify-content-center align-items-center">
+                    <p className="mb-0">4h 0m</p>
+                    <Image src="/Union.svg" />
+                  </div>
+                  <div className="col-1 text-center">
+                    <Image src="/Live-area.svg" />
+                  </div>
+                  <div className="col-3 d-flex flex-column justify-content-end">
+                    <p className="fw-bold mb-0">Melbourne</p>
+                    <p className="mb-0">5 Maret 2023</p>
+                    <p className="mb-0">21:10</p>
+                  </div>
+                </div>
+                <div className="border-bottom border-2 mt-1 mb-3"></div>
+                <div className="d-flex align-items-center">
+                  <div className="col-4">
+                    <p className="fw-bold mb-0">Booking Code:</p>
+                    <p className="mb-0">6723y2GHK</p>
+                  </div>
+                  <div className="col-4 offset-1">
+                    <p className="fw-bold mb-0">Class:</p>
+                    <p className="mb-0">Economy</p>
+                  </div>
+                  <div className="col-3">
+                    <p className="fw-bold mb-0" style={{ color: "#4B1979" }}>
+                      IDR 9.850.000
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <h4 className="fw-bold">Maret 2023</h4>
             <Card className="cardresult mb-2">
               <Card.Body>
                 <Card.Title className="title">
-                  <Button variant="success mb-2" className="issue text-white">Issued</Button>
+                  <Button variant="success mb-2" className="issue text-white">
+                    Issued
+                  </Button>
                 </Card.Title>
                 <div className="mx-2">
                   <div className="d-flex">
@@ -60,11 +111,11 @@ const Riwayat = () => {
                     <div className="d-flex">
                       <p className="me-5 mb-2 fw-bold text-dark">Booking Code</p>
                       <p className="fw-bold mb-2 text-dark">Class</p>
-                    </div>  
+                    </div>
                     <div className="d-flex">
                       <p className="me-5 mb-2">6723y2GHK</p>
                       <p className="mb-2 text-dark">Economy</p>
-                    </div>  
+                    </div>
                   </div>
                 </div>
               </Card.Body>
@@ -73,7 +124,9 @@ const Riwayat = () => {
             <Card className="cardresult2 mb-2">
               <Card.Body>
                 <Card.Title className="title">
-                  <Button variant="danger mb-2" className="unpaid text-white">Unpayment</Button>
+                  <Button variant="danger mb-2" className="unpaid text-white">
+                    Unpayment
+                  </Button>
                 </Card.Title>
                 <div className="mx-2">
                   <div className="d-flex">
@@ -83,7 +136,7 @@ const Riwayat = () => {
                   <div className="d-flex">
                     <p className="mb-0 me-auto text-dark">5 Maret 2023</p>
                     <p className="mb-0 text-dark">5 Maret 2023</p>
-                  </div>   
+                  </div>
                   <p className="text-center mt-0 mb-0 text-dark">04:00</p>
                   <div className="horizontal-divider border-bottom border-1 mt-1 mb-3"></div>
                   <div className="d-flex">
@@ -96,11 +149,11 @@ const Riwayat = () => {
                     <div className="d-flex">
                       <p className="me-5 mb-2 fw-bold text-dark">Booking Code</p>
                       <p className="fw-bold mb-2 text-dark">Class</p>
-                    </div>  
+                    </div>
                     <div className="d-flex">
                       <p className="me-5 mb-2">6723y2GHK</p>
                       <p className="mb-2 text-dark">Economy</p>
-                    </div>  
+                    </div>
                   </div>
                 </div>
               </Card.Body>
@@ -109,7 +162,9 @@ const Riwayat = () => {
             <Card className="cardresult mb-2">
               <Card.Body>
                 <Card.Title className="title">
-                  <Button variant="success mb-2" className="cancelled text-white">Cancelled</Button>
+                  <Button variant="success mb-2" className="cancelled text-white">
+                    Cancelled
+                  </Button>
                 </Card.Title>
                 <div className="mx-2">
                   <div className="d-flex">
@@ -132,11 +187,11 @@ const Riwayat = () => {
                     <div className="d-flex">
                       <p className="me-5 mb-2 fw-bold text-dark">Booking Code</p>
                       <p className="fw-bold mb-2 text-dark">Class</p>
-                    </div>  
+                    </div>
                     <div className="d-flex">
                       <p className="me-5 mb-2">6723y2GHK</p>
                       <p className="mb-2 text-dark">Economy</p>
-                    </div>  
+                    </div>
                   </div>
                 </div>
               </Card.Body>
@@ -147,7 +202,9 @@ const Riwayat = () => {
           <div className="col-5 mt-0">
             <div className="d-flex">
               <h4 className="me-auto fw-bold">Detail Pesanan</h4>
-              <Button variant="success" className="issue text-white">Issued</Button>
+              <Button variant="success" className="issue text-white">
+                Issued
+              </Button>
             </div>
             <div className="d-flex">
               <h6 className="me-1 mb-2">Booking Code :</h6>

@@ -194,5 +194,15 @@
   color: #7126B5;
 }
 
+.sold-out {
+  font-weight: 500;
+  font-size: 14px;
+  font-family: "Poppins", sans-serif; 
+  color: #000000;
+}
+
+.sold-out span {
+  color: #7126B5;
+}
 
   

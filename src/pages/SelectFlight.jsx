@@ -27,7 +27,7 @@ function SelectFlight() {
             <Filter />
           </div>
           <div className="col-9 text-center mb-5">
-            <Loading />
+            <SoldoutComponent />
           </div>
         </div>
       </div>

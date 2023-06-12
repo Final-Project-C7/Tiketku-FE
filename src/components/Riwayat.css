@@ -197,5 +197,24 @@
     padding-right: 10px;
     border-radius: 16px;
   }
+
+  .empty {
+    font-weight: 500;
+    font-size: 14px;
+    font-family: "Poppins", sans-serif; 
+    color: #000000;
+  }
+  
+  .empty span {
+    color: #000000;
+  }
+
+  .history-empty {
+    width: 347px;
+    height: 48px;
+    background-color: #7126B5 !important;
+    color: white !important;
+    border-radius: 12px;
+  }
   
   

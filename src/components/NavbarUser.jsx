@@ -22,7 +22,7 @@ const NavbarUser = () => {
           </Form>
         </Navbar.Collapse>
         <Navbar.Brand>
-            <Link to="/">
+            <Link to="/userhistory">
                 <Image className="navu" src="/navu1.jpg" alt="login icon" />
             </Link>
             <Link to="/">

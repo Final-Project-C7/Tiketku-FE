@@ -9,6 +9,8 @@ import Homepage from "./pages/Homepage";
 import NavbarUser from "./components/NavbarUser";
 import CheckoutCustomerData from "./components/CheckoutCustomerData";
 import Payment from "./components/Payment";
+import Riwayat from "./components/Riwayat";
+import Result from "./components/Result";
 
 function App() {
   return (
@@ -16,7 +18,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Homepage />} />
-          <Route path="/user" element={<NavbarUser />} />
+          <Route path="/result" element={<Result />} />
+          <Route path="/userhistory" element={<Riwayat />} />
           <Route path="/selectflight" element={<SelectFlight />} />
           <Route path="/checkout" element={<CheckoutCustomerData />} />
           <Route path="/payment" element={<Payment />} />

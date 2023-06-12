@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { Image, Button, Container, Form, Card } from "react-bootstrap";
 import NavbarUser from "./NavbarUser";
+import HistoryEmpty from "./HistoryEmpty";
 
 import "./Riwayat.css";
+
 
 const Riwayat = () => {
   const [isChecked, setIsChecked] = useState(false);

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Image, Button, Container, Form, Card, Col } from "react-bootstrap";
+import { Image, Button, Container, Form, Card} from "react-bootstrap";
 import NavbarUser from "./NavbarUser";
 
 import "./Riwayat.css";
@@ -18,11 +18,15 @@ const Riwayat = () => {
           <div className="d-flex">
             <h4 className="fw-bold"> Riwayat Pemesanan</h4>
           </div>
-          <div className="checkout-breadcrumbs__alert mt-2 mb-4 mx-4">
+          <div className="d-flex checkout-breadcrumbs__alert mt-2 mb-4 mx-4">
             <div className="topriwayat col-10 py-3 rounded-4">
-              <Image className="arrowleft" src="/fi_arrow-left.svg" alt="arrow left" />
+              <div className="text-white"><Image className="arrowleft mr-7" src="./arrow-left.png" alt="arrow left" />   Beranda 
+              </div>
               {/* <h5 className="teks text-white" >Beranda</h5> */}
             </div>
+            <Button className="btn-filter ms-2 text-dark"><div image scr="./userfilter.svg" alt=""/> Filter</Button>
+            <Image className="ms-0" src="/searchriwayat.svg" />
+
           </div> 
         </Container>
       </div>
@@ -30,7 +34,7 @@ const Riwayat = () => {
         <Form className="row d-flex mt-4">
           <div className="col-7 mt-0">
             <h4 className="fw-bold">Maret 2023</h4>
-            <Card className="cardresult">
+            <Card className="cardresult mb-2">
               <Card.Body>
                 <Card.Title className="title">
                   <Button variant="success mb-2" className="issue text-white">Issued</Button>
@@ -44,6 +48,8 @@ const Riwayat = () => {
                     <p className="mb-0 me-auto text-dark">5 Maret 2023</p>
                     <p className="mb-0 text-dark">5 Maret 2023</p>
                   </div>
+                  <p className="text-center mt-0 mb-0 text-dark">04:00</p>
+                  <div className="horizontal-divider border-bottom border-1 mt-1 mb-3"></div>
                   <div className="d-flex">
                     <p className="mb-0 me-auto text-dark">19:10</p>
                     <p className="mb-0 text-dark">21:10</p>
@@ -64,7 +70,7 @@ const Riwayat = () => {
               </Card.Body>
             </Card>
 
-            <Card className="cardresult2">
+            <Card className="cardresult2 mb-2">
               <Card.Body>
                 <Card.Title className="title">
                   <Button variant="danger mb-2" className="unpaid text-white">Unpayment</Button>
@@ -77,7 +83,45 @@ const Riwayat = () => {
                   <div className="d-flex">
                     <p className="mb-0 me-auto text-dark">5 Maret 2023</p>
                     <p className="mb-0 text-dark">5 Maret 2023</p>
+                  </div>   
+                  <p className="text-center mt-0 mb-0 text-dark">04:00</p>
+                  <div className="horizontal-divider border-bottom border-1 mt-1 mb-3"></div>
+                  <div className="d-flex">
+                    <p className="mb-0 me-auto text-dark">19:10</p>
+                    <p className="mb-0 text-dark">21:10</p>
                   </div>
+                  <div className="border-bottom my-2"></div>
+
+                  <div className="mx-2">
+                    <div className="d-flex">
+                      <p className="me-5 mb-2 fw-bold text-dark">Booking Code</p>
+                      <p className="fw-bold mb-2 text-dark">Class</p>
+                    </div>  
+                    <div className="d-flex">
+                      <p className="me-5 mb-2">6723y2GHK</p>
+                      <p className="mb-2 text-dark">Economy</p>
+                    </div>  
+                  </div>
+                </div>
+              </Card.Body>
+            </Card>
+
+            <Card className="cardresult mb-2">
+              <Card.Body>
+                <Card.Title className="title">
+                  <Button variant="success mb-2" className="cancelled text-white">Cancelled</Button>
+                </Card.Title>
+                <div className="mx-2">
+                  <div className="d-flex">
+                    <h5 className="mb-0 me-auto text-dark fw-bold">Jakarta</h5>
+                    <h5 className="mb-0 fw-bold text-dark">Melbourne</h5>
+                  </div>
+                  <div className="d-flex">
+                    <p className="mb-0 me-auto text-dark">5 Maret 2023</p>
+                    <p className="mb-0 text-dark">5 Maret 2023</p>
+                  </div>
+                  <p className="text-center mt-0 mb-0 text-dark">04:00</p>
+                  <div className="horizontal-divider border-bottom border-1 mt-1 mb-3"></div>
                   <div className="d-flex">
                     <p className="mb-0 me-auto text-dark">19:10</p>
                     <p className="mb-0 text-dark">21:10</p>

@@ -23,7 +23,7 @@ function FormLogin() {
         <div className="input-group mb-3">
           <input
             type="email"
-            className="form-control"
+            className="login__form form-control"
             placeholder="Contoh: johndoe@gmail.com"
             aria-label="Email"
             // value={email}
@@ -49,7 +49,7 @@ function FormLogin() {
             type={passwordInputType}
             placeholder="Masukkan password"
             aria-label="Password"
-            className="form-control password"
+            className="login__form form-control password"
             // value={password}
             onChange={(e) => e.preventDefault}
             required
@@ -61,13 +61,10 @@ function FormLogin() {
         </div>
         {/* {error && <p className="error-message">{error}</p>} */}
         <div className="d-grid gap-2 mt-5">
-              <button
-                className="btn lg sign-up fw-bold"
-                type="submit"
-              >
-                Masuk
-              </button>
-            </div>
+          <button className="login__btn btn lg sign-up fw-bold" type="submit">
+            Masuk
+          </button>
+        </div>
         {/* <div className="d-grid gap-2 mt-4">
           <button className="btn btn-primary lg sign-up" type="submit">
             Masuk

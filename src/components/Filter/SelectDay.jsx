@@ -25,50 +25,50 @@ function SelectDay() {
       </div>
 
       <div className="row">
-        <div className="col-12 d-flex justify-content-center  btn-flight">
-          <Button variant="secondary" className="">
+        <div className="col-12 d-flex justify-content-center btn-flight">
+          <Button variant="secondary" className="select-day__btn">
             <p>
               Selasa <span>01/03/2023</span>
             </p>
           </Button>
           <hr className="vertical-divider" />
-          <Button variant="secondary" className=" ">
+          <Button variant="secondary" className="select-day__btn ">
             <p>
               Rabu <span>02/03/2023</span>{" "}
             </p>
           </Button>
           <hr className="vertical-divider" />
-          <Button variant="secondary" className="">
+          <Button variant="secondary" className="select-day__btn">
             <p>
               Kamis <span>03/03/2023</span>{" "}
             </p>
           </Button>
           <hr className="vertical-divider" />
-          <Button variant="secondary" className="">
+          <Button variant="secondary" className="select-day__btn">
             <p>
               Jumat <span>04/03/2023</span>{" "}
             </p>
           </Button>
           <hr className="vertical-divider" />
-          <Button variant="secondary" className="">
+          <Button variant="secondary" className="select-day__btn">
             <p>
               Sabtu <span>05/03/2023</span>{" "}
             </p>
           </Button>
           <hr className="vertical-divider" />
-          <Button variant="secondary" className="">
+          <Button variant="secondary" className="select-day__btn">
             <p>
               Minggu <span>06/03/2023</span>{" "}
             </p>
           </Button>
           <hr className="vertical-divider" />
-          <Button variant="secondary" className="">
+          <Button variant="secondary" className="select-day__btn">
             <p>
               Senin <span>07/03/2023</span>{" "}
             </p>
           </Button>
           <hr className="vertical-divider " />
-          <Button variant="secondary" className="">
+          <Button variant="secondary" className="select-day__btn">
             <p>
               Selasa <span>08/03/2023</span>{" "}
             </p>

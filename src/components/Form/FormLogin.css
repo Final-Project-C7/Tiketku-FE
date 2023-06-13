@@ -1,78 +1,81 @@
-body {
-    font-family: 'Poppins';
-}
-
 h1 {
-    font-size: 24px;
-    color: #000000;
-    letter-spacing: -1px;
-    font-weight: 700;
-    font-family: 'Poppins';
+  font-size: 24px;
+  color: #000000;
+  letter-spacing: -1px;
+  font-weight: 700;
+  font-family: "Poppins";
 }
 
-p{
-    font-size: 14px;
-    color: #000000;
+p {
+  font-size: 14px;
+  color: #000000;
 }
 
-.form-control {
-    color: #8A8A8A;
-    border-radius: 16px;
-    border: none;
-    padding: 14px 20px;
-    font-size: 14px;
+.login__form {
+  color: #8a8a8a;
+  border-radius: 16px;
+  border: none;
+  padding: 14px 20px;
+  font-size: 14px;
 }
 
 .input-group-text {
-    border-radius: 16px;
-    background-color: rgba(255, 0, 0, 0);
+  border-radius: 16px;
+  background-color: rgba(255, 0, 0, 0);
 }
 
-.input-group>.form-control {
-    border: 1px solid #D0D0D0;
+.input-group > .login__form {
+  border: 1px solid #d0d0d0;
 }
 
-.input-group>.password {
-    border: 1px solid #D0D0D0;
-    border-right: 0px;
+.input-group > .password {
+  border: 1px solid #d0d0d0;
+  border-right: 0px;
 }
 
-.form-control:focus {
-    color: var(--bs-body-color);
-    background-color: var(--bs-body-bg);
-    border-color: #7126B5 !important;
-    outline: 0;
-    box-shadow: 0 0 0 0.25rem rgb(247, 238, 244);
+.login__form:focus {
+  color: var(--bs-body-color);
+  background-color: var(--bs-body-bg);
+  border-color: #7126b5 !important;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgb(247, 238, 244);
 }
 
-.btn {
-    border: none;
-    padding: 14px 20px;
-    font-size: 14px;
-    background: #7126B5 !important;
-    border-radius: 16px;
-    color: #D0D0D0 !important;
+.login__btn {
+  border: none;
+  padding: 14px 20px;
+  font-size: 14px;
+  background: #7126b5 !important;
+  border-radius: 16px;
+  color: #d0d0d0 !important;
 }
 
-.btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active, .btn:hover {
-    background: #4b197a !important;
-    border: none;
+.btn-check:checked + .login__btn,
+.btn.active,
+.btn.show,
+.login__btn:first-child:active,
+:not(.btn-check) + .login__btn:active,
+.login__btn:hover {
+  background: #4b197a !important;
+  border: none;
 }
 
-.btn.disabled, .btn:disabled, fieldset:disabled .btn {
-    color: var(--bs-btn-disabled-color);
-    pointer-events: none;
-    background-color: #7126B5 !important;
-    border: none;
-    opacity: var(--bs-btn-disabled-opacity);
+.btn.disabled,
+.login__btn:disabled,
+fieldset:disabled .login__btn {
+  color: var(--bs-btn-disabled-color);
+  pointer-events: none;
+  background-color: #7126b5 !important;
+  border: none;
+  opacity: var(--bs-btn-disabled-opacity);
 }
 
-a{
-    color: #7126B5 !important;
-    text-decoration: none;
+a {
+  color: #7126b5 !important;
+  text-decoration: none;
 }
 
 .error-message {
-    color: red;
-    margin-bottom: 10px;
+  color: red;
+  margin-bottom: 10px;
 }

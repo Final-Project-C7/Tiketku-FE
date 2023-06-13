@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Image, Button, Container, Form, Card } from "react-bootstrap";
 import NavbarUser from "./NavbarUser";
 import SearchModal from "./Beranda/SearchModal";
+import FilterModal from "./Beranda/FilterModal";
 
 import "./Riwayat.css";
 
@@ -23,10 +24,11 @@ const Riwayat = () => {
               <h5 className="ms-4 pt-2">Beranda</h5>
             </div>
             <div className="history-filter col-2 d-flex ms-3">
-              <Button className="history-filter__btn d-flex bg-white text-dark rounded-5" style={{ height: "30px" }}>
+              {/* <Button className="history-filter__btn d-flex bg-white text-dark rounded-5" style={{ height: "30px" }}>
                 <Image src="/history-filter.svg" />
                 <h5 className="ms-2 mb-0">Filter</h5>
-              </Button>
+              </Button> */}
+              <FilterModal/>
               <SearchModal />
             </div>
           </div>

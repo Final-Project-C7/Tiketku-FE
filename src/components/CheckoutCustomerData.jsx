@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Image, Button, Container, Form } from "react-bootstrap";
 import NavbarHomepage from "./NavbarHomepage";
+import SeatCustomer from "./SeatCustomer";
 
 import "./CheckoutCustomerData.css";
 
@@ -43,8 +44,8 @@ const CheckoutCustomerData = () => {
             <div className="border rounded-1 p-4 mb-4">
               <h4 className="fw-bold">Isi Data Pemesan</h4>
               <div className="mt-4">
-                <div className="d-flex align-items-start bg-dark rounded-top-3 pb-2 pt-3 ">
-                  <h5 className="me-auto text-white ms-4">Data Diri Pemesan</h5>
+                <div className="d-flex align-items-start bg-dark rounded-top-4 py-3 ">
+                  <h5 className="me-auto text-white ms-4 mb-0">Data Diri Pemesan</h5>
                   <Image className="checkout-biodata__checklist me-4" src="/Suffix.svg" alt="checklist logo" />
                 </div>
                 <div className="mx-4 mt-3">
@@ -83,8 +84,8 @@ const CheckoutCustomerData = () => {
             <div className="border rounded-1 p-4 mb-3">
               <h4 className="fw-bold">Isi Data Penumpang </h4>
               <div className="mt-4">
-                <div className="d-flex align-items-start bg-dark rounded-top-3 pb-2 pt-3 ">
-                  <h5 className="me-auto text-white ms-4">Data Diri Penumpang 1 - Adult</h5>
+                <div className="d-flex align-items-start bg-dark rounded-top-4 py-3 ">
+                  <h5 className="me-auto text-white ms-4 mb-0">Data Diri Penumpang 1 - Adult</h5>
                   <Image className="checkout-biodata__checklist me-4" src="/Suffix.svg" alt="checklist logo" />
                 </div>
                 <div className="mx-4 mt-3">
@@ -150,8 +151,8 @@ const CheckoutCustomerData = () => {
                 </div>
               </div>
               <div className="mt-4">
-                <div className="d-flex align-items-start bg-dark rounded-top-3 pb-2 pt-3 ">
-                  <h5 className="me-auto text-white ms-4">Data Diri Penumpang 2 - Adult</h5>
+                <div className="d-flex align-items-start bg-dark rounded-top-3 py-3 ">
+                  <h5 className="me-auto text-white ms-4 mb-0">Data Diri Penumpang 2 - Adult</h5>
                   <Image className="checkout-biodata__checklist me-4" src="/Suffix.svg" alt="checklist logo" />
                 </div>
                 <div className="mx-4 mt-3">
@@ -214,6 +215,18 @@ const CheckoutCustomerData = () => {
                   <div className="border rounded-1 border-2 mb-2">
                     <input className="border-0 opacity-50 mx-2 p-2" type="date" />
                   </div>
+                </div>
+              </div>
+            </div>
+            <div className="border rounded-1 p-4 mb-4">
+              <h4 className="fw-bold">Pilih Kursi</h4>
+              <div className="mt-4">
+                <div className="d-flex align-items-start bg-dark rounded-top-2 py-3 ">
+                  <p className="me-auto text-white ms-4 mb-0">Economy - 2 Seats Chosen</p>
+                  <Image className="checkout-biodata__checklist me-4" src="/Suffix.svg" alt="checklist logo" />
+                </div>
+                <div className="mx-4 mt-3">
+                  <SeatCustomer />
                 </div>
               </div>
             </div>

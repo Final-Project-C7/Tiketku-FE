@@ -8,6 +8,10 @@ function ModalPassengers() {
   const handleShow = () => setShow(true);
 
   const style = `
+  .modal-passengers {
+    margin-top: -15rem;
+    margin-left: 17rem;
+  }
   .close-btn__img {
     width: 18px;
     height: 18px;
@@ -50,9 +54,9 @@ function ModalPassengers() {
         <input className="border-0 bg-transparent" style={{ fontSize: "18px" }} defaultValue="" disabled hidden />2 Penumpang
       </div>
 
-      <Modal size="md" show={show} onHide={handleClose} animation={false} centered>
+      <Modal size="md" className="modal-passengers position-relative" show={show} onHide={handleClose}>
         <Modal.Header className="d-flex justify-content-end">
-          <Button className="delete-btn bg-transparent border-0" onClick={handleClose}>
+          <Button className="delete-btn bg-transparent border-0 p-0" onClick={handleClose}>
             <Image className="close-btn__img ms-4" src="/close-button.svg" />
           </Button>
         </Modal.Header>

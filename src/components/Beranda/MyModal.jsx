@@ -14,7 +14,7 @@ function MyModal() {
     height: 18px;
   } 
 
-  .btn-modall{
+  .btn-modall {
     background-color: white !important;
     border-radius: 16px;
     border: 1px solid #A06ECE !important;
@@ -26,20 +26,14 @@ function MyModal() {
   }
 
   
-  .btn-modall:hover 
-  {
+  .btn-modall:hover {
     background-color: #A06ECE!important ;
     color: #ffffff !important;
   }
   
- 
-  
-  .btn-modall:hover img
-   {
+  .btn-modall:hover img {
     filter: brightness(0) invert(1) ;
   }
-
-
 
   .delete-btn:hover, delete-btn:active {
     background-color: transparent !important;
@@ -65,7 +59,7 @@ function MyModal() {
     border-radius: 12px
   }
 
-  .txt{
+  .txt {
     color: #7126B5;
   }
   `;
@@ -78,18 +72,9 @@ function MyModal() {
         Termurah
       </Button>
 
-      <Modal
-        size="md"
-        show={show}
-        onHide={handleClose}
-        animation={false}
-        centered
-      >
+      <Modal size="md" show={show} onHide={handleClose} animation={false} centered>
         <Modal.Header className="d-flex justify-content-end">
-          <Button
-            className="delete-btn bg-transparent border-0"
-            onClick={handleClose}
-          >
+          <Button className="delete-btn bg-transparent border-0" onClick={handleClose}>
             <Image className="close-btn__img ms-4" src="/close-button.svg" />
           </Button>
         </Modal.Header>
@@ -126,7 +111,7 @@ function MyModal() {
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button className="footer-btn" variant="secondary" onClick={handleClose}>
             Pilih
           </Button>
         </Modal.Footer>

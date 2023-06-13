@@ -3,7 +3,7 @@
   height: 53px;
 }
 
-.navu{
+.navu {
   width: 40px;
   padding-right: 15px;
 }
@@ -15,7 +15,7 @@
 }
 
 .btn-sign,
-.btn:hover {
+.btn-sign:hover {
   background: #7126b5;
   border: none;
 }

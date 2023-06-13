@@ -10,12 +10,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./FormFlight.css";
 
 const FormFlight = () => {
-  // const [isChecked, setIsChecked] = useState(false);
-
-  // const handleToggle = () => {
-  //   setIsChecked(!isChecked);
-  // };
-
   const [isChecked, setIsChecked] = useState(false);
 
   const handleToggle = () => {
@@ -54,12 +48,10 @@ const FormFlight = () => {
               <div className="col-8 d-flex me-5">
                 <div className="col-5">
                   <h3 className="mb-0">Departure</h3>
-                  {/* <h5 className="pb-3 col-12">1 Maret 2023</h5> */}
                   <input className="border-0 border-bottom pb-3 mt-1 col-12" type="date" />
                 </div>
                 <div className="col-5 ms-4">
                   <h3 className="mb-0">Return</h3>
-                  {/* <h5 className="card-date__text pb-3 col-12">Pilih Tanggal</h5> */}
                   <input className="border-0 border-bottom pb-3 mt-1 col-12" type="date" />
                 </div>
                 <label className="switch">

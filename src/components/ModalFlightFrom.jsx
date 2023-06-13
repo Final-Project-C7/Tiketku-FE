@@ -8,6 +8,10 @@ function ModalFlightFrom() {
   const handleShow = () => setShow(true);
 
   const style = `
+  .modal-flight-from {
+    margin-top: -21rem;
+  }
+
   .modal-search {
     border: 1px solid #D0D0D0;
   }
@@ -50,44 +54,42 @@ function ModalFlightFrom() {
         Jakarta (JKTA)
       </div>
 
-      <Modal size="lg" show={show} onHide={handleClose} animation={false} centered>
-        <Modal.Header>
-          <Modal.Body>
-            <div className="d-flex align-items-center">
-              <Form className="modal-search d-flex py-1 px-1 rounded-2 col-11">
-                <Button className="delete-btn bg-transparent border-0">
-                  <Image className="modal-search__img " src="/search.svg" alt="search" />
-                </Button>
-                <input className="bg-transparent border-0 col-11" type="search" placeholder="Masukkan Kota atau Negara" aria-label="Search" />
-              </Form>
-              <Button className="delete-btn bg-transparent border-0" onClick={handleClose}>
-                <Image className="close-btn__img ms-4" src="/close-button.svg" />
-              </Button>
-            </div>
-            <div className="d-flex mt-4">
-              <h5 className="me-auto">Pencarian Terkini</h5>
-              <h5 className="text-danger">Hapus</h5>
-            </div>
-            <div className="d-flex align-items-center border-bottom mt-3">
-              <p className="history__text me-auto">Jakarta</p>
+      <Modal size="lg" className="modal-flight-from position-relative" show={show} onHide={handleClose}>
+        <Modal.Body>
+          <div className="d-flex align-items-center">
+            <Form className="modal-search d-flex py-1 px-1 rounded-2 col-11 me-auto">
               <Button className="delete-btn bg-transparent border-0">
-                <Image className="delete-btn__img" src="close-button.svg" alt="delete icon" />
+                <Image className="modal-search__img " src="/search.svg" alt="search" />
               </Button>
-            </div>
-            <div className="d-flex align-items-center border-bottom mt-3">
-              <p className="history__text me-auto">Jakarta</p>
-              <Button className="delete-btn bg-transparent border-0">
-                <Image className="delete-btn__img" src="close-button.svg" alt="delete icon" />
-              </Button>
-            </div>
-            <div className="d-flex align-items-center border-bottom mt-3">
-              <p className="history__text me-auto">Jakarta</p>
-              <Button className="delete-btn bg-transparent border-0">
-                <Image className="delete-btn__img" src="close-button.svg" alt="delete icon" />
-              </Button>
-            </div>
-          </Modal.Body>
-        </Modal.Header>
+              <input className="bg-transparent border-0 col-11" type="search" placeholder="Masukkan Kota atau Negara" aria-label="Search" />
+            </Form>
+            <Button className="delete-btn bg-transparent border-0" onClick={handleClose}>
+              <Image className="close-btn__img" src="/close-button.svg" />
+            </Button>
+          </div>
+          <div className="d-flex mt-4">
+            <h5 className="me-auto">Pencarian Terkini</h5>
+            <h5 className="text-danger">Hapus</h5>
+          </div>
+          <div className="d-flex align-items-center border-bottom mt-3">
+            <p className="history__text me-auto">Jakarta</p>
+            <Button className="delete-btn bg-transparent border-0">
+              <Image className="delete-btn__img" src="close-button.svg" alt="delete icon" />
+            </Button>
+          </div>
+          <div className="d-flex align-items-center border-bottom mt-3">
+            <p className="history__text me-auto">Jakarta</p>
+            <Button className="delete-btn bg-transparent border-0">
+              <Image className="delete-btn__img" src="close-button.svg" alt="delete icon" />
+            </Button>
+          </div>
+          <div className="d-flex align-items-center border-bottom mt-3">
+            <p className="history__text me-auto">Jakarta</p>
+            <Button className="delete-btn bg-transparent border-0">
+              <Image className="delete-btn__img" src="close-button.svg" alt="delete icon" />
+            </Button>
+          </div>
+        </Modal.Body>
       </Modal>
     </>
   );

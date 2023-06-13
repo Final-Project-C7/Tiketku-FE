@@ -13,8 +13,82 @@ function FormRegister() {
 
   const passwordInputType = passwordVisible ? "text" : "password";
 
+  const style = `
+    .register__btn {
+      border: none;
+      padding: 14px 20px;
+      font-size: 14px;
+      background: #7126b5 !important;
+      border-radius: 16px;
+      color: #d0d0d0 !important;
+    }
+
+    .input-group-text {
+      border-radius: 16px;
+      background-color: rgba(255, 0, 0, 0);
+    }
+    
+    .input-group > .register__form {
+      border: 1px solid #d0d0d0;
+    }
+    
+    .input-group > .password {
+      border: 1px solid #d0d0d0;
+      border-right: 0px;
+    }
+    
+    .register__form:focus {
+      color: var(--bs-body-color);
+      background-color: var(--bs-body-bg);
+      border-color: #7126b5 !important;
+      outline: 0;
+      box-shadow: 0 0 0 0.25rem rgb(247, 238, 244);
+    }
+    
+    .register__btn {
+      border: none;
+      padding: 14px 20px;
+      font-size: 14px;
+      background: #7126b5 !important;
+      border-radius: 16px;
+      color: #d0d0d0 !important;
+    }
+    
+    .btn-check:checked + .register__btn,
+    .btn.active,
+    .btn.show,
+    .register__btn:first-child:active,
+    :not(.btn-check) + .register__btn:active,
+    .register__btn:hover {
+      background: #4b197a !important;
+      border: none;
+    }
+    
+    .btn.disabled,
+    .register__btn:disabled,
+    fieldset:disabled .register__btn {
+      color: var(--bs-btn-disabled-color);
+      pointer-events: none;
+      background-color: #7126b5 !important;
+      border: none;
+      opacity: var(--bs-btn-disabled-opacity);
+    }
+    
+    a {
+      color: #7126b5 !important;
+      text-decoration: none;
+    }
+    
+    .error-message {
+      color: red;
+      margin-bottom: 10px;
+    }
+    
+  `;
+
   return (
     <>
+      <style>{style}</style>
       <h1 className="fw-bold mb-4">Daftar</h1>
 
       <form onSubmit={(e) => e.preventDefault}>
@@ -24,7 +98,7 @@ function FormRegister() {
         <div className="input-group mb-3">
           <input
             type="text"
-            className="form-control"
+            className="register__form form-control"
             placeholder="Nama Lengkap"
             aria-label="Name"
             // value={email}
@@ -40,7 +114,7 @@ function FormRegister() {
         <div className="input-group mb-3">
           <input
             type="email"
-            className="form-control"
+            className="register__form form-control"
             placeholder="Contoh: johndoe@gmail.com"
             aria-label="Email"
             // value={email}
@@ -56,7 +130,7 @@ function FormRegister() {
         <div className="input-group mb-3">
           <input
             type="tel"
-            className="form-control"
+            className="register__form form-control"
             placeholder="+62"
             aria-label="Nomor"
             // value={email}
@@ -75,7 +149,7 @@ function FormRegister() {
             type={passwordInputType}
             placeholder="Masukkan password"
             aria-label="Password"
-            className="form-control password"
+            className="register__form form-control password"
             // value={password}
             onChange={(e) => e.preventDefault}
             required
@@ -87,7 +161,7 @@ function FormRegister() {
         </div>
         {/* {error && <p className="error-message">{error}</p>} */}
         <div className="d-grid gap-2 mt-4">
-          <button className="btn lg sign-up" type="submit">
+          <button className="register__btn btn lg sign-up" type="submit">
             Register
           </button>
         </div>

@@ -74,14 +74,14 @@
   border: none;
 }
 
-.btn:hover,
-.btn:focus {
+.btn-ticket:hover,
+.btn-ticket:focus {
   background-color: #a06ece !important;
   border-color: #a06ece !important;
   color: white !important;
 }
 
-.btn:active {
+.btn-ticket:active {
   background-color: #a06ece !important;
   border-color: #a06ece !important;
   color: white !important;

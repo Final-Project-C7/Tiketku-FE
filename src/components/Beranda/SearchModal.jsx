@@ -9,10 +9,9 @@ function SearchModal() {
 
   const style = `
   .modal-history__search {
-    width: 25rem;
-    height: 23rem;
-    margin-left: 54rem;
-    margin-top: -66rem;
+    width: 27rem;
+    margin-left: 53rem;
+    margin-top: 12rem;
   }
 
   .history__search:focus {
@@ -86,7 +85,7 @@ function SearchModal() {
       <style>{style}</style>
       <Image className="ms-3" src="/searchriwayat.svg" style={{ cursor: "pointer" }} onClick={handleShow} />
 
-      <Modal className="modal-history__search position-relative" show={show} onHide={handleClose} animation={false}>
+      <Modal size="md" className="modal-history__search" show={show} onHide={handleClose} animation={false}>
         <Modal.Header>
           <Form className="d-flex align-items-center  rounded-2 col-11 border border-2 py-2 px-3">
             <Image className="me-2" src="/search.svg" alt="search" />

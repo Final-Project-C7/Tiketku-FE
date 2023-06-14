@@ -113,6 +113,7 @@
 .history-filter__btn:hover,
 .checkout-biodata__btn-21:hover {
   background-color: #4b1979 !important;
+  color: white !important;
 }
 
 .cardresult {

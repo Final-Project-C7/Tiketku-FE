@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Image, Button, Container } from "react-bootstrap";
+import { Image, Button, Container, Form } from "react-bootstrap";
 import NavbarUser from "../components/NavbarUser";
 import "./Akun.css";
 
 function Akun() {
-    return (
-        <>
-        <NavbarUser />
-        <div className="border-bottom shadow-sm">
+  return (
+    <>
+      <NavbarUser />
+      <div className="border-bottom shadow-sm">
         <Container className="akun">
           <div className="d-flex">
             <h4 className="fw-bold"> Akun</h4>
@@ -24,48 +24,57 @@ function Akun() {
         </Container>
       </div>
       <Container>
-          <div className="row filter-akun mt-4" style={{marginLeft: "120px"}}>
-            <div className="col-5">
-              <Image src="fi_edit-3.svg" style={{marginRight: "10px"}}/> Ubah Profil<br />
-              <Image src="divider.svg" /> <br />
-              <Image src="fi_settings.svg" style={{marginRight: "10px"}} /> Pengaturan Akun<br />
-              <Image src="divider.svg" /> <br />
-              <Image src="fi_log-out.svg" style={{marginRight: "10px"}} /> Keluar<br />
-              <Image src="divider.svg" />
+        <div className="filter-akun row mt-4 mx-auto" style={{ marginLeft: "120px" }}>
+          <div className="col-5">
+            <div className="border-bottom pb-3 mb-3">
+              <Image src="fi_edit-3.svg" style={{ marginRight: "10px" }} /> Ubah Profil
             </div>
-            <div className="col-7">
+            <div className="border-bottom pb-3 mb-3">
+              <Image src="fi_settings.svg" style={{ marginRight: "10px" }} /> Pengaturan Akun
+            </div>
+            <div className="border-bottom pb-3 mb-3">
+              <Image src="fi_log-out.svg" style={{ marginRight: "10px" }} /> Keluar
+            </div>
+          </div>
+          <div className="col-7">
             <div className="border rounded-1 p-4 mb-4">
               <h4 className="fw-bold">Ubah Data Profil</h4>
-              <div className="mt-4">
-                <div className="d-flex align-items-start bg rounded-top-4 py-3 " style={{background: "#A06ECE"}}>
+              <Form className="mt-4">
+                <div className="d-flex align-items-start bg rounded-top-4 py-3 " style={{ background: "#A06ECE" }}>
                   <h5 className="me-auto text-white ms-4 mb-0">Data Diri</h5>
                 </div>
                 <div className="mx-4 mt-3">
-                  <p className="fw-bold mb-1" style={{color: "#4B1979"}}>Nama Lengkap</p>
-                  <div className="border rounded-1 border-2 mb-2">
-                    <input className="border-0 mx-2 p-2" type="text" defaultValue="Harry" />
+                  <p className="fw-bold mb-1" style={{ color: "#4B1979" }}>
+                    Nama Lengkap
+                  </p>
+                  <div className="border rounded-1 border-2 mb-2 p-2">
+                    <input className="account__input col-12 border-0" type="text" defaultValue="Harry" />
                   </div>
                 </div>
                 <div className="mx-4 mt-3">
-                  <p className="fw-bold mb-1" style={{color: "#4B1979"}}>Nomor Telepon</p>
-                  <div className="border rounded-1 border-2 mb-2">
-                    <input className="border-0 mx-2 p-2" type="text" defaultValue="+62 897823232" />
+                  <p className="fw-bold mb-1" style={{ color: "#4B1979" }}>
+                    Nomor Telepon
+                  </p>
+                  <div className="border rounded-1 border-2 mb-2 p-2">
+                    <input className="account__input col-12 border-0" type="text" defaultValue="+62 897823232" />
                   </div>
                 </div>
                 <div className="mx-4 mt-3 pb-3">
-                  <p className="fw-bold mb-1" style={{color: "#4B1979"}}>Email</p>
-                  <div className="border rounded-1 border-2 mb-2">
-                    <input className="border-0 mx-2 p-2" type="email" defaultValue="Johndoe@gmail.com" />
+                  <p className="fw-bold mb-1" style={{ color: "#4B1979" }}>
+                    Email
+                  </p>
+                  <div className="border rounded-1 border-2 mb-2 p-2">
+                    <input className="account__input col-12 border-0" type="email" defaultValue="Johndoe@gmail.com" />
                   </div>
                 </div>
                 <Button className="save-btn-akun offset-5 col-5">Simpan</Button>
-              </div>
-            </div>
+              </Form>
             </div>
           </div>
-        </Container>
-        </>
-    )
+        </div>
+      </Container>
+    </>
+  );
 }
 
 export default Akun;

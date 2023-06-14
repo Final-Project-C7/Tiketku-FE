@@ -1,23 +1,32 @@
 .akun {
-    width: 67%;
-    margin-top: 7rem;
+  width: 67%;
+  margin-top: 7rem;
 }
 .akun-top__alert {
-    background-color: #a06ece !important;
-    border-radius: 12px;
+  background-color: #a06ece !important;
+  border-radius: 12px;
 }
 .akun-top__arrow-left {
-    width: 25px;
-    height: 20px;
+  width: 25px;
+  height: 20px;
 }
+
+.filter-akun {
+  width: 75%;
+}
+
+.account__input:focus {
+  outline-style: none !important;
+}
+
 .save-btn-akun {
-    background-color: #4B1979 !important;
-    color: #fff !important;
-    border-radius: 12px;
-    -webkit-border-radius: 12px;
-    -moz-border-radius: 12px;
-    -ms-border-radius: 12px;
-    -o-border-radius: 12px;
-    width: 150px;
-    height: 48px;
+  background-color: #4b1979 !important;
+  color: #fff !important;
+  border-radius: 12px;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  -ms-border-radius: 12px;
+  -o-border-radius: 12px;
+  width: 150px;
+  height: 48px;
 }

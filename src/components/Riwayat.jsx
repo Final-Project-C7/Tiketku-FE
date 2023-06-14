@@ -15,7 +15,7 @@ const Riwayat = () => {
           <div className="d-flex">
             <h4 className="fw-bold"> Riwayat Pemesanan</h4>
           </div>
-          <Header/>
+          <Header />
         </Container>
       </div>
       <Container className="checkout-biodata">

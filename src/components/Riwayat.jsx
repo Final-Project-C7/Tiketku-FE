@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Image, Button, Container, Form, Card } from "react-bootstrap";
 import NavbarUser from "./NavbarUser";
-import SearchModal from "./Beranda/SearchModal";
-import FilterModal from "./Beranda/FilterModal";
+import Header from "./Header";
 
 import "./Riwayat.css";
 
@@ -16,22 +15,7 @@ const Riwayat = () => {
           <div className="d-flex">
             <h4 className="fw-bold"> Riwayat Pemesanan</h4>
           </div>
-          <div className="history-top d-flex align-items-center mx-2 mb-4">
-            <div className="history-top__alert col-10 text-white d-flex px-3 py-2 mt-2">
-              <Link to="/">
-                <Image className="history-top__arrow-left my-2" src="./arrow-left.png" alt="arrow left" />
-              </Link>
-              <h5 className="ms-4 pt-2">Beranda</h5>
-            </div>
-            <div className="history-filter col-2 d-flex ms-3">
-              {/* <Button className="history-filter__btn d-flex bg-white text-dark rounded-5" style={{ height: "30px" }}>
-                <Image src="/history-filter.svg" />
-                <h5 className="ms-2 mb-0">Filter</h5>
-              </Button> */}
-              <FilterModal/>
-              <SearchModal />
-            </div>
-          </div>
+          <Header/>
         </Container>
       </div>
       <Container className="checkout-biodata">

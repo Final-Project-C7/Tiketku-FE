@@ -78,8 +78,8 @@ const FormFlight = () => {
             </div>
           </div>
         </div>
-        <Link to="/selectflight">
-          <Button className="flight-schedule__btn col-12 border-0 mt-5" type="submit">
+        <Link to="/flight">
+          <Button className="col-12 border-0 mt-5" type="submit">
             Cari penerbangan
           </Button>
         </Link>

@@ -217,3 +217,14 @@
 .detail-information {
   margin-top: 15px;
 }
+
+.title1{
+  font-weight: 700;
+  font-size: 20px !important;
+  font-family: "Poppins", sans-serif;
+  margin-bottom: 32px;
+}
+
+title{
+  font-size:16px !important;
+}

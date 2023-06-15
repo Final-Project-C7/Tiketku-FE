@@ -12,6 +12,7 @@ import Payment from "./components/Payment";
 import Riwayat from "./components/Riwayat";
 import Result from "./components/Result";
 import NotifikasiLogin from "./components/NotifikasiLogin";
+import Flight from "./pages/Flight";
 
 function App() {
   return (
@@ -19,16 +20,17 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Homepage />} />
-          <Route path="/selectflight" element={<SelectFlight />} />
+          <Route path="/flight" element={<Flight />} />
+          <Route path="/soldout" element={<SelectFlight />} />
           <Route path="/result" element={<Result />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/otp" element={<OTP />} />
           <Route path="/forget-password" element={<Forget />} />
           <Route path="/reset-password" element={<Reset />} />
-          <Route path="/useraccount" element={<Akun />} />  
-          <Route path="/userhistory" element={<Riwayat />} />
-          <Route path="/usernotifikasi" element={<NotifikasiLogin />} />  
+          <Route path="/account" element={<Akun />} />  
+          <Route path="/history" element={<Riwayat />} />
+          <Route path="/notifikasi" element={<NotifikasiLogin />} />  
           <Route path="/checkout" element={<CheckoutCustomerData />} />
           <Route path="/payment" element={<Payment />} />  
         </Routes>

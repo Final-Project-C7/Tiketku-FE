@@ -11,7 +11,7 @@ import CheckoutCustomerData from "./components/CheckoutCustomerData";
 import Payment from "./components/Payment";
 import Riwayat from "./components/Riwayat";
 import Result from "./components/Result";
-import Notifikasi from "./components/NotifikasiLogin";
+import NotifikasiLogin from "./components/NotifikasiLogin";
 
 function App() {
   return (
@@ -30,7 +30,7 @@ function App() {
           <Route path="/otp" element={<OTP />} />
           <Route path="/forget-password" element={<Forget />} />
           <Route path="/reset-password" element={<Reset />} />
-          <Route path="/notifikasilogin" element={<Notifikasi />} />
+          <Route path="/notifikasilogin" element={<NotifikasiLogin />} />
         </Routes>
       </BrowserRouter>
     </>

@@ -14,10 +14,14 @@
   color: #fff !important;
 }
 
-.btn-sign,
-.btn-sign:hover {
-  background: #7126b5;
+.btn-sign {
+  background: #7126b5 !important;
   border: none;
+}
+
+.btn-sign:hover,
+.btn-sign:active {
+  background: #4b1979 !important;
 }
 
 .login_img {

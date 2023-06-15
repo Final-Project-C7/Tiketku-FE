@@ -17,7 +17,7 @@ const style = `
   }
   `;
 
-const Notifikasi = () => {
+const NotifikasiLogin = () => {
   return (
     <>
       <style>{style}</style>
@@ -155,4 +155,4 @@ const Notifikasi = () => {
   );
 };
 
-export default Notifikasi;
+export default NotifikasiLogin;

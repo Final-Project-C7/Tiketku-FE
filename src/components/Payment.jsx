@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Image, Button, Container } from "react-bootstrap";
-import NavbarHomepage from "./NavbarHomepage";
+import NavbarUser from "./NavbarUser";
+import NotifModal from "./Beranda/NotifModal";
 
 import "./Payment.css";
 
@@ -12,7 +13,7 @@ const Payment = () => {
   };
   return (
     <>
-      <NavbarHomepage />
+      <NavbarUser />
       <div className="border-bottom shadow-sm">
         <Container className="checkout-breadcrumbs">
           <div className="d-flex">
@@ -93,9 +94,10 @@ const Payment = () => {
                     </div>
                   </div>
                 </div>
-                <Button className="col-12 text-white rounded-4 border-0 py-3">
+                <NotifModal/>
+                {/* <Button className="col-12 text-white rounded-4 border-0 py-3">
                   <h4 className="mb-0">Bayar</h4>
-                </Button>
+                </Button> */}
               </>
             )}
           </div>

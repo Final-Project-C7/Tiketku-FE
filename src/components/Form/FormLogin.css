@@ -3,7 +3,7 @@ h1 {
   color: #000000;
   letter-spacing: -1px;
   font-weight: 700;
-  font-family: "Poppins";
+  font-family: "Poppins" !important;
 }
 
 p {

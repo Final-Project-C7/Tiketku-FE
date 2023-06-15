@@ -4,6 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 
+import "./FormLogin.css"
+
 function FormForget() {
   const [passwordVisible, setPasswordVisible] = useState(false);
 
@@ -36,7 +38,7 @@ function FormForget() {
 
         {/* {error && <p className="error-message">{error}</p>} */}
         <div className="d-grid gap-2 mt-4">
-          <button className="btn lg sign-up" type="submit">
+          <button className="login__btn lg sign-up" type="submit">
             Reset Password
           </button>
         </div>

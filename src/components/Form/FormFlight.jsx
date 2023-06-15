@@ -15,7 +15,22 @@ const FormFlight = () => {
   const handleToggle = () => {
     setIsChecked(!isChecked);
   };
+
+  const style = `
+  .flight-btn{
+    background-color: #4b1979;
+  }
+
+  .flight-btn:hover,
+  .flight-btn:active {
+  background-color: #4b1979 !important;
+  }
+
+  `;
+
   return (
+    <>
+    <style>{style}</style>
     <Form className="flight-form">
       <div className="flight-schedule shadow col-8">
         <h4 className="fw-bold">
@@ -79,12 +94,13 @@ const FormFlight = () => {
           </div>
         </div>
         <Link to="/flight">
-          <Button className="col-12 border-0 mt-5" type="submit">
+          <Button className="flight-btn col-12 border-0 mt-5" type="submit">
             Cari penerbangan
           </Button>
         </Link>
       </div>
     </Form>
+    </>
   );
 };
 

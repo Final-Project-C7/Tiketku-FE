@@ -23,12 +23,12 @@ const NavbarHomepage = () => {
           </Form>
         </Navbar.Collapse>
         <Navbar.Brand>
-          <Button className="btn btn-primary lg btn-sign d-flex align-items-center justify-content-center" type="submit">
-            <Image className="login_img" src="/login.svg" alt="login icon" />
-            <Link to="/login" className="btn-sign__link">
+          <Link to="/login" className="btn-sign__link">
+            <Button className="btn-sign d-flex align-items-center justify-content-center" type="submit">
+              <Image className="login_img" src="/login.svg" alt="login icon" />
               Masuk
-            </Link>
-          </Button>
+            </Button>
+          </Link>
         </Navbar.Brand>
       </Container>
     </Navbar>

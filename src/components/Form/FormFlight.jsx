@@ -48,14 +48,14 @@ const FormFlight = () => {
               <div className="col-8 d-flex me-5">
                 <div className="col-5">
                   <h3 className="mb-0">Departure</h3>
-                  <input className="border-0 border-bottom pb-3 mt-1 col-12" type="date" />
+                  <input className="card-date__input border-0 border-bottom pb-3 mt-1 col-12" type="date" />
                 </div>
                 <div className="col-5 ms-4">
                   <h3 className="mb-0">Return</h3>
-                  <input className="border-0 border-bottom pb-3 mt-1 col-12" type="date" />
+                  <input className="card-date__input border-0 border-bottom pb-3 mt-1 col-12" type="date" />
                 </div>
-                <label className="switch">
-                  <input type="checkbox" checked={isChecked} onChange={handleToggle} />
+                <label className="switch" style={{ cursor: "pointer" }}>
+                  <input className="switch__input" type="checkbox" checked={isChecked} onChange={handleToggle} />
                   <span className="slider"></span>
                 </label>
               </div>

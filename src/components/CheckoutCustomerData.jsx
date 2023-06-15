@@ -6,11 +6,20 @@ import SeatCustomer from "./SeatCustomer";
 import "./CheckoutCustomerData.css";
 
 const CheckoutCustomerData = () => {
-  const [isChecked, setIsChecked] = useState(false);
+  const [isChecked1, setIsChecked1] = useState(false);
+  const [isChecked2, setIsChecked2] = useState(false);
+  const [isChecked3, setIsChecked3] = useState(false);
 
-  const handleToggle = () => {
-    setIsChecked(!isChecked);
+  const handleSwitchToggle1 = () => {
+    setIsChecked1(!isChecked1);
   };
+  const handleSwitchToggle2 = () => {
+    setIsChecked2(!isChecked2);
+  };
+  const handleSwitchToggle3 = () => {
+    setIsChecked3(!isChecked3);
+  };
+
   return (
     <>
       <NavbarHomepage />
@@ -56,7 +65,7 @@ const CheckoutCustomerData = () => {
                   <div className="d-flex">
                     <p className="me-auto mb-0">Punya Nama Keluarga?</p>
                     <label className="switch me-1">
-                      <input className="switch__input" type="checkbox" checked={isChecked} onChange={handleToggle} />
+                      <input className="switch__input" type="checkbox" checked={isChecked1} onChange={handleSwitchToggle1} />
                       <span className="slider"></span>
                     </label>
                   </div>
@@ -106,7 +115,7 @@ const CheckoutCustomerData = () => {
                   <div className="d-flex">
                     <p className="me-auto mb-0">Punya Nama Keluarga?</p>
                     <label className="switch me-1">
-                      <input className="switch__input" type="checkbox" checked={isChecked} onChange={handleToggle} />
+                      <input className="switch__input" type="checkbox" checked={isChecked2} onChange={handleSwitchToggle2} />
                       <span className="slider"></span>
                     </label>
                   </div>
@@ -173,7 +182,7 @@ const CheckoutCustomerData = () => {
                   <div className="d-flex">
                     <p className="me-auto mb-0">Punya Nama Keluarga?</p>
                     <label className="switch me-1">
-                      <input className="switch__input" type="checkbox" checked={isChecked} onChange={handleToggle} />
+                      <input className="switch__input" type="checkbox" checked={isChecked3} onChange={handleSwitchToggle3} />
                       <span className="slider"></span>
                     </label>
                   </div>

@@ -19,7 +19,7 @@ function SelectFlight() {
         <SelectDay />
 
         <div className="d-flex justify-content-end">
-          <FilterPrice />
+          {/* <FilterPrice /> */}
         </div>
 
         <div className="row filter-loading mt-4">

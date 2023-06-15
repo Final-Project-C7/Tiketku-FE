@@ -1,7 +1,7 @@
 import "./SelectFlight.css";
 import Button from "react-bootstrap/Button";
 import SelectDay from "../components/Filter/SelectDay";
-import FilterPrice from "../components/Filter/FIlterPrice";
+//import FilterPrice from "../components/Filter/FIlterPrice";
 import Filter from "../components/Filter/Filter";
 import Loading from "../components/Loading";
 import NavbarHomepage from "../components/NavbarHomepage";

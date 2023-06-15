@@ -50,9 +50,9 @@ const Payment = () => {
               <h5 className="mb-0 me-auto">Virtual Account</h5>
               <Image className="payment-data__img" src="/arrow-down.svg" />
             </div>
-            <div className="d-flex align-items-center bg-dark text-white rounded-2 p-3" onClick={handleExpand} style={{ cursor: "pointer" }}>
+            <div className={`${expanded ? "payment-data__list" : "bg-dark"} d-flex align-items-center text-white rounded-2 p-3`} onClick={handleExpand} style={{ cursor: "pointer" }}>
               <h5 className="mb-0 me-auto">Credit Card</h5>
-              <Image className="payment-data__img" src="/arrow-down.svg" />
+              {expanded ? <Image className="payment-data__img" src="/arrow-up.svg" /> : <Image className="payment-data__img" src="/arrow-down.svg" />}
             </div>
             {expanded && (
               <>
@@ -94,7 +94,7 @@ const Payment = () => {
                     </div>
                   </div>
                 </div>
-                <NotifModal/>
+                <NotifModal />
                 {/* <Button className="col-12 text-white rounded-4 border-0 py-3">
                   <h4 className="mb-0">Bayar</h4>
                 </Button> */}

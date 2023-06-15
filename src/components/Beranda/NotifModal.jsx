@@ -10,6 +10,14 @@ function NotifModal() {
   const handleShow = () => setShow(true);
 
   const style = `
+  .payment__btn {
+    background-color: #7126B5;
+  }
+
+  .payment__btn:hover, payment__btn:active {
+    background-color: #5b2091 !important;
+  }
+
   .modal-history__search {
     width: 27rem;
     margin-left: 63rem;
@@ -44,36 +52,32 @@ function NotifModal() {
   return (
     <>
       <style>{style}</style>
-      <Button className="col-12 text-white rounded-4 border-0 py-3" onClick={handleShow}>
+      <Button className="payment__btn col-12 text-white rounded-4 border-0 py-3" onClick={handleShow}>
         <h4 className="mb-0">Bayar</h4>
       </Button>
       <Modal size="md" className="modal-history__search" show={show} onHide={handleClose} animation={false}>
         {/* <Modal.Header className="d-flex justify-content-end"> */}
-          <Button className="d-flex bg-transparent border-0 justify-content-end mt-2 mb-2" onClick={handleClose}>
-            <Image className="close-btn__img" src="/close-button.svg" />
-          </Button>
-          <hr className="mt-0 mb-0"/>
+        <Button className="d-flex bg-transparent border-0 justify-content-end mt-2 mb-2" onClick={handleClose}>
+          <Image className="close-btn__img" src="/close-button.svg" />
+        </Button>
+        <hr className="mt-0 mb-0" />
         {/* </Modal.Header> */}
         <Modal.Body style={{ paddingBottom: "3rem" }}>
           <Row>
             <Col className="bel">
-              <div className="txt" style={{ fontSize: "12px", color: "#8A8A8A"}}>
+              <div className="txt" style={{ fontSize: "12px", color: "#8A8A8A" }}>
                 <img src={bel} /> Status Pembayaran (unpaid)
               </div>
             </Col>
-            <Col
-                  md={3}
-                  className="d-flex m-0 p-0"
-                  style={{ fontSize: "12px", color: "#8A8A8A" }}
-                >
-                20 Maret, 14:04
-                <img src={buletijo} className="m-1"/>
+            <Col md={3} className="d-flex m-0 p-0" style={{ fontSize: "12px", color: "#8A8A8A" }}>
+              20 Maret, 14:04
+              <img src={buletijo} className="m-1" />
             </Col>
           </Row>
           <div>
             <p className="txt2 mt-1">Selesaikan pembayaran Anda sebelum tanggal 10 Maret 2023!</p>
           </div>
-          <hr/>          
+          <hr />
         </Modal.Body>
       </Modal>
     </>

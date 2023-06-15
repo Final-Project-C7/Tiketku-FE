@@ -99,9 +99,9 @@
   height: 25px;
 }
 
-.switch input {
-  opacity: 0;
-  width: 40px;
+.switch__input {
+  opacity: 0 !important;
+  width: 40px !important;
 }
 
 .slider {
@@ -127,10 +127,10 @@
   transition: transform 0.3s;
 }
 
-input:checked + .slider {
+.switch__input:checked + .slider {
   background-color: #4b1979;
 }
 
-input:checked + .slider:before {
+.switch__input:checked + .slider:before {
   transform: translateX(15px);
 }

@@ -13,13 +13,13 @@ const NavbarUser = () => {
           <Image className="navbar__img" src="/logo.svg" alt="logo Tiketku" />
         </Navbar.Brand>
         <Navbar.Brand>
-          <Link to="/userhistory">
+          <Link to="/history">
             <Image className="navu" src="/fi_list.svg" alt="login icon" />
           </Link>
-          <Link to="/usernotifikasi">
+          <Link to="/notifikasi">
             <Image className="navu" src="/fi_bell.svg" alt="login icon" />
           </Link>
-          <Link to="/useraccount">
+          <Link to="/account">
             <Image className="navu" src="/fi_user_org.svg" alt="login icon" />
           </Link>
         </Navbar.Brand>

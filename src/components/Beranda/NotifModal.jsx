@@ -39,7 +39,6 @@ function NotifModal() {
     padding-left:35px;
     font-family: poppins;
   }
-
   `;
 
   return (

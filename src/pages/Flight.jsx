@@ -1,4 +1,4 @@
-import "./SelectFlight.css";
+import "./Flight.css";
 import Button from "react-bootstrap/Button";
 import SelectDay from "../components/Filter/SelectDay";
 import Filter from "../components/Filter/Filter";
@@ -9,7 +9,7 @@ import Result from "../components/Result";
 import SoldoutComponent from "../components/Soldout";
 import MyModal from "../components/Beranda/MyModal";
 
-function SelectFlight() {
+function Flight() {
   return (
     <>
       <NavbarHomepage />
@@ -24,7 +24,7 @@ function SelectFlight() {
             <Filter />
           </div>
           <div className="col-9 text-center mb-5">
-            <SoldoutComponent />
+            <Loading />
           </div>
         </div>
       </div>
@@ -32,4 +32,4 @@ function SelectFlight() {
   );
 }
 
-export default SelectFlight;
+export default Flight;

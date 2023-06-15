@@ -8,6 +8,7 @@ import NavbarHomepage from "./NavbarHomepage";
 import SelectDay from "./Filter/SelectDay";
 import MyModal from "./Beranda/MyModal";
 import Filter from "./Filter/Filter";
+import { Link } from "react-router-dom";
 
 function Result() {
   const [expanded, setExpanded] = useState(false);
@@ -93,9 +94,14 @@ function Result() {
                     >
                       IDR 4.950.000{" "}
                     </Card.Text>
-                    <Button className="col-3 py-1.5 btn-ticket text-white" variant="primary">
+                    <Link to="/checkout">
+                      <Button className="col-3 py-1.5 btn-ticket text-white" variant="primary">
+                        Pilih
+                      </Button>
+                    </Link>
+                    {/* <Button className="col-3 py-1.5 btn-ticket text-white" variant="primary">
                       Pilih
-                    </Button>
+                    </Button> */}
                   </Col>
                 </Row>
                 {expanded && (
@@ -184,51 +190,6 @@ function Result() {
                 )}
               </Card.Body>
             </Card>
-            {/* <Card
-              style={{
-                width: "100%",
-                border: expanded ? "2px solid rgba(113, 38, 181, 0.5)" : "none",
-              }}
-              className="filter-2">
-
-              <Card.Body>
-                <Card.Title className="title">
-                  <Col className="col-12 d-flex gap-2">
-                    <Row style={{ width: "100%" }}>
-                      <Col md={4}>
-                        <Card.Img
-                          variant="top"
-                          src={loading}
-                          style={{ width: "24px", marginRight: "10px" }}
-                        />
-                        Jet Air - Economy
-                      </Col>
-                      <Col
-                        md={{ span: 1, offset: 7 }}
-                        className="d-flex justify-content-end"
-                      >
-                      <Card.Img
-                        variant="top"
-                        src={panah}
-                        style={{ width: "30px" }}
-                        onClick={handleExpand}
-                      />
-                      </Col>
-                   </Row>
-                  </Col>
-                </Card.Title>
-                <Row
-                  className="d-flex justify-content-between"
-                  style={{ marginLeft: "20px", marginTop: 0 }}
-                  >
-
-
-                </Row>
-
-
-
-              </Card.Body>
-            </Card> */}
           </div>
         </div>
       </div>

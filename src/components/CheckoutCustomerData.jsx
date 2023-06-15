@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Image, Button, Container, Form } from "react-bootstrap";
 import NavbarHomepage from "./NavbarHomepage";
 import SeatCustomer from "./SeatCustomer";
+import { Link } from "react-router-dom";
 
 import "./CheckoutCustomerData.css";
 
@@ -42,9 +43,9 @@ const CheckoutCustomerData = () => {
               Selesai
             </h4>
           </div>
-          <div className="checkout-breadcrumbs__alert mt-2 mb-4 mx-4">
+          {/* <div className="checkout-breadcrumbs__alert mt-2 mb-4 mx-4">
             <h5 className="col-12 text-center text-white py-3 rounded-4">Data Anda berhasil tersimpan!</h5>
-          </div>
+          </div> */}
         </Container>
       </div>
       <Container className="checkout-biodata">
@@ -296,7 +297,10 @@ const CheckoutCustomerData = () => {
                   IDR 9.850.000
                 </h5>
               </div>
-              <Button className="checkout-biodata__btn-2 border-0 d-flex align-items-center justify-content-center mt-4 py-4">Lanjut Bayar</Button>
+              <Link to="/payment">
+                <Button className="checkout-biodata__btn-2 border-0 d-flex align-items-center justify-content-center mt-4 py-4">Lanjut Bayar</Button>
+              </Link>
+              {/* <Button className="checkout-biodata__btn-2 border-0 d-flex align-items-center justify-content-center mt-4 py-4">Lanjut Bayar</Button> */}
             </div>
           </div>
         </Form>

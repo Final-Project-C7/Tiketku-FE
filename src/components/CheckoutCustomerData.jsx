@@ -56,7 +56,7 @@ const CheckoutCustomerData = () => {
                   <div className="d-flex">
                     <p className="me-auto mb-0">Punya Nama Keluarga?</p>
                     <label className="switch me-1">
-                      <input type="checkbox" checked={isChecked} onChange={handleToggle} />
+                      <input className="switch__input" type="checkbox" checked={isChecked} onChange={handleToggle} />
                       <span className="slider"></span>
                     </label>
                   </div>
@@ -106,7 +106,7 @@ const CheckoutCustomerData = () => {
                   <div className="d-flex">
                     <p className="me-auto mb-0">Punya Nama Keluarga?</p>
                     <label className="switch me-1">
-                      <input type="checkbox" checked={isChecked} onChange={handleToggle} />
+                      <input className="switch__input" type="checkbox" checked={isChecked} onChange={handleToggle} />
                       <span className="slider"></span>
                     </label>
                   </div>
@@ -173,7 +173,7 @@ const CheckoutCustomerData = () => {
                   <div className="d-flex">
                     <p className="me-auto mb-0">Punya Nama Keluarga?</p>
                     <label className="switch me-1">
-                      <input type="checkbox" checked={isChecked} onChange={handleToggle} />
+                      <input className="switch__input" type="checkbox" checked={isChecked} onChange={handleToggle} />
                       <span className="slider"></span>
                     </label>
                   </div>

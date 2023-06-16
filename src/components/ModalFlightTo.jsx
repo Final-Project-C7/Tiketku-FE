@@ -9,7 +9,8 @@ function ModalFlightTo() {
 
   const style = `
   .modal-flight-to {
-    margin-top: -21rem;
+    margin-top: -40rem;
+    margin-left: 2rem;
   }
 
   .modal-search {
@@ -49,7 +50,7 @@ function ModalFlightTo() {
   return (
     <>
       <style>{style}</style>
-      <div className="border-bottom text-dark col-10 pb-3" onClick={handleShow} style={{ cursor: "pointer" }}>
+      <div className="col-10 border-bottom text-dark fw-bold pb-3" onClick={handleShow} style={{ cursor: "pointer" }}>
         <input className="border-0 bg-transparent" style={{ fontSize: "18px" }} defaultValue="" disabled hidden />
         Melbourne (MLB)
       </div>

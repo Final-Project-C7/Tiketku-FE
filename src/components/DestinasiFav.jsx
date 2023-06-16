@@ -7,7 +7,7 @@ import "./DestinasiFav.css";
 
 const DestinasiFav = () => {
   return (
-    <div className="destinasi-fav position-relative d-flex flex-column">
+    <div className="destinasi-fav position-relative d-flex flex-column mx-auto">
       <h5 className="fw-bold">Destinasi Favorit</h5>
       <div className="d-flex mb-5">
         <Link to="/" className="destinasi-fav__category-1 d-flex align-items-center justify-content-center text-white text-decoration-none mt-2 p-1">

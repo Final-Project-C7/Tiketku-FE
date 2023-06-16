@@ -9,7 +9,8 @@ function ModalFlightFrom() {
 
   const style = `
   .modal-flight-from {
-    margin-top: -21rem;
+    margin-top: -40rem;
+    margin-left: 2rem;
   }
 
   .modal-search {
@@ -49,7 +50,7 @@ function ModalFlightFrom() {
   return (
     <>
       <style>{style}</style>
-      <div className="border-bottom text-dark col-7 pb-3" onClick={handleShow} style={{ cursor: "pointer" }}>
+      <div className="col-7 border-bottom text-dark fw-bold pb-3" onClick={handleShow} style={{ cursor: "pointer" }}>
         <input className="border-0 bg-transparent" style={{ fontSize: "18px" }} defaultValue="" disabled hidden />
         Jakarta (JKTA)
       </div>

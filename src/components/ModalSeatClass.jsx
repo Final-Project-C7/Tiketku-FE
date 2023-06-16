@@ -26,8 +26,8 @@ function ModalSeatClass() {
 
   const style = `
   .modal-seat-class {
-    margin-top: -15rem;
-    margin-left: 17rem;
+    margin-top: -34rem;
+    margin-left: 22rem;
   }
 
   .close-btn__img {
@@ -63,7 +63,7 @@ function ModalSeatClass() {
   return (
     <>
       <style>{style}</style>
-      <div className="border-bottom text-dark col-11 pb-3" onClick={handleShow} style={{ cursor: "pointer" }}>
+      <div className="col-11 border-bottom text-dark fw-bold pb-3" onClick={handleShow} style={{ cursor: "pointer" }}>
         <input className="border-0 bg-transparent" style={{ fontSize: "18px" }} defaultValue="" disabled hidden />
         Business
       </div>

@@ -79,3 +79,13 @@ a {
   color: red;
   margin-bottom: 10px;
 }
+
+.reset-pass__btn {
+  background-color: #7126b5 !important;
+  color: white;
+}
+
+.reset-pass__btn:active,
+.reset-pass__btn:hover {
+  background-color: #4b1979 !important;
+}

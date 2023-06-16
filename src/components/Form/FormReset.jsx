@@ -18,12 +18,10 @@ function FormReset() {
       <h1 className="fw-bold mb-4">Reset Password</h1>
 
       <form onSubmit={(e) => e.preventDefault}>
-        
         <div className="d-flex">
           <div>
             <p style={{ marginBottom: "0px" }}>Masukkan Password Baru</p>
           </div>
-          
         </div>
 
         <div className="input-group mb-2 mt-1">
@@ -45,7 +43,6 @@ function FormReset() {
           <div>
             <p style={{ marginBottom: "0px" }}>Ulangi Password Baru</p>
           </div>
-          
         </div>
 
         <div className="input-group mb-2 mt-1">
@@ -65,12 +62,11 @@ function FormReset() {
         </div>
         {/* {error && <p className="error-message">{error}</p>} */}
         <div className="d-grid gap-2 mt-4">
-          <button className="btn lg sign-up" type="submit">
+          <button className="reset-pass__btn lg sign-up rounded-4 py-2" type="submit">
             Simpan
           </button>
         </div>
       </form>
-      
     </>
   );
 }

@@ -28,9 +28,14 @@
   border: 1px solid #d0d0d0;
 }
 
-.btn-otp {
-  background-color: #7126b5;
+.otp__btn {
+  background-color: #7126b5 !important;
   height: 48px;
   border-radius: 16px;
   color: white !important;
+}
+
+.otp__btn:hover,
+.otp__btn:active {
+  background-color: #4b1979 !important;
 }

@@ -61,7 +61,7 @@ const OTP = () => {
             <input key={index} type="text" maxLength={1} value={value} onChange={(event) => handleChange(index, event)} onPaste={handlePaste} className="text-center" />
           ))}
           <p className="mt-3 mb-5">Kirim Ulang OTP dalam 60 detik</p>
-          <Button className="btn-otp col-12 mt-5">Simpan</Button>
+          <Button className="otp__btn col-12 mt-5">Simpan</Button>
         </form>
       </div>
     </div>

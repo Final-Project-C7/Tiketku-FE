@@ -1,16 +1,49 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Image, Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { DateRange } from "react-date-range";
+import format from "date-fns/format";
+import { addDays } from "date-fns";
 import ModalFlightFrom from "../ModalFlightFrom";
 import ModalFlightTo from "../ModalFlightTo";
 import ModalPassengers from "../ModalPassengers";
 import ModalSeatClass from "../ModalSeatClass";
 
+import "react-date-range/dist/styles.css";
+import "react-date-range/dist/theme/default.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./FormFlight.css";
 
 const FormFlight = () => {
   const [isChecked, setIsChecked] = useState(false);
+  const [range, setRange] = useState([
+    {
+      startDate: new Date(),
+      endDate: addDays(new Date(), 0),
+      key: "selection",
+    },
+  ]);
+
+  const [open, setOpen] = useState(false);
+  const refOne = useRef(null);
+
+  useEffect(() => {
+    document.addEventListener("keydown", hideOnEscape, true);
+    document.addEventListener("click", hideOnClickOutside, true);
+  }, []);
+
+  const hideOnEscape = (e) => {
+    // console.log(e.key)
+    if (e.key === "Escape") {
+      setOpen(false);
+    }
+  };
+
+  const hideOnClickOutside = (e) => {
+    if (refOne.current && !refOne.current.contains(e.target)) {
+      setOpen(false);
+    }
+  };
 
   const handleToggle = () => {
     setIsChecked(!isChecked);
@@ -51,11 +84,28 @@ const FormFlight = () => {
                 <div className="col-8 d-flex me-5">
                   <div className="col-5">
                     <h3 className="mb-0">Departure</h3>
-                    <input className="card-date__input border-0 border-bottom pb-3 mt-1 col-12" type="date" />
+                    <input className="card-date__input border-0 border-bottom pb-3 mt-1 col-12" value={`${format(range[0].startDate, "MM/dd/yyyy")} `} readOnly onClick={() => setOpen((open) => !open)} />
+                  </div>
+                  <div ref={refOne} className="calendarWrap">
+                    {open && (
+                      <DateRange
+                        onChange={(item) => setRange([item.selection])}
+                        editableDateInputs={true}
+                        moveRangeOnFirstSelection={false}
+                        ranges={range}
+                        months={2}
+                        direction="horizontal"
+                        showMonthAndYearPickers={false}
+                        showDateDisplay={false}
+                        preventSnapRefocus={true}
+                        rangeColors={["#7126B5"]}
+                        className="calendarElement rounded-4"
+                      />
+                    )}
                   </div>
                   <div className="col-5 ms-4">
                     <h3 className="mb-0">Return</h3>
-                    <input className="card-date__input border-0 border-bottom pb-3 mt-1 col-12" type="date" />
+                    <input className="card-date__input border-0 border-bottom pb-3 mt-1 col-12" value={`${format(range[0].endDate, "MM/dd/yyyy")} `} onClick={() => setOpen((open) => !open)} />
                   </div>
                   <label className="switch" style={{ cursor: "pointer" }}>
                     <input className="switch__input" type="checkbox" checked={isChecked} onChange={handleToggle} />

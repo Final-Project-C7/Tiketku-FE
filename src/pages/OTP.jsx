@@ -51,17 +51,19 @@ const OTP = () => {
           <img className="arrow-left" src={back} alt="arrow left" />
         </Link>
       </div>
-      <div className="container otp-main-2">
+      <div className="container otp-main-2 mt-4 mt-md-0 ">
         <h1 className="fw-bold">Masukkan OTP</h1>
-        <p className="text-center mt-5 mb-4">
+        <p className="text-center mt-3 mt-sm-5 mb-4">
           Ketik 6 digit kode yang dikirimkan ke <span className="fw-bolder">J*****@gmail.com</span>
         </p>
         <form className="text-center">
-          {otp.map((value, index) => (
-            <input key={index} type="text" maxLength={1} value={value} onChange={(event) => handleChange(index, event)} onPaste={handlePaste} className="text-center" />
-          ))}
+          <div className="d-flex justify-content-center">
+            {otp.map((value, index) => (
+              <input key={index} type="text" maxLength={1} value={value} onChange={(event) => handleChange(index, event)} onPaste={handlePaste} className="text-center" />
+            ))}
+          </div>
           <p className="mt-3 mb-5">Kirim Ulang OTP dalam 60 detik</p>
-          <Button className="otp__btn col-12 mt-5">Simpan</Button>
+          <Button className="otp__btn col-12 rounded-4 border-0 mt-2 mt-sm-5">Simpan</Button>
         </form>
       </div>
     </div>

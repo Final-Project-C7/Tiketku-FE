@@ -48,6 +48,18 @@
   outline-style: none;
 }
 
+.calendarWrap {
+  display: inline-block;
+  position: relative;
+}
+
+.calendarElement {
+  position: absolute;
+  transform: translate(-30%, 17%);
+  border: 1px solid #ccc;
+  z-index: 10;
+}
+
 .card-date .col-8 {
   margin-left: -20px;
 }

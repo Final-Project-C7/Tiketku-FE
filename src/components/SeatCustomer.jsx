@@ -13,13 +13,12 @@ const SeatCustomer = () => {
   };
 
   const style = `
-.seat-picker {
+  .seat-picker {
     text-align: center;
   }
   
   .seat-grid {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
     margin-top: 20px;
@@ -40,14 +39,20 @@ const SeatCustomer = () => {
     background-color: #73CA5C;
     color: white;
   }
-  
+
+  @media screen and (max-width: 576px) {
+    .seat-grid {
+      gap: 5px;
+      margin-top: 10px;
+    }
+  }
 `;
 
   return (
     <>
       <style>{style}</style>
       <div className="seat-picker">
-        <div className="d-flex mx-auto" style={{ width: "62%" }}>
+        <div className="d-flex ms-md-1 mx-lg-auto" style={{ width: "62%" }}>
           <p className="mb-0 ms-2 me-4" style={{ color: "#8A8A8A" }}>
             A
           </p>

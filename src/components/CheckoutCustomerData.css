@@ -134,3 +134,32 @@
 .switch__input:checked + .slider:before {
   transform: translateX(15px);
 }
+
+@media screen and (max-width: 576px) {
+  .checkout-breadcrumbs {
+    width: 100% !important;
+  }
+
+  .checkout-breadcrumbs-1 {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 765px) {
+  .checkout-biodata {
+    width: 90% !important;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .checkout-biodata {
+    width: 85% !important;
+  }
+}
+
+@media screen and (max-width: 1119px) {
+  .checkout-biodata {
+    width: 80% !important;
+  }
+}

@@ -35,8 +35,8 @@
 }
 
 .nav-search input {
-  height: 25px;
-  width: 380px;
+  /* height: 25px;
+  width: 380px; */
   border: 0;
   background-color: transparent;
 }
@@ -63,4 +63,10 @@
 .btn-sign__link {
   color: white !important;
   text-decoration: none;
+}
+
+@media screen and (max-width: 576px) {
+  .nav-search {
+    display: none !important;
+  }
 }

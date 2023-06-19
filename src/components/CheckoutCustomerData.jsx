@@ -26,16 +26,16 @@ const CheckoutCustomerData = () => {
       <NavbarHomepage />
       <div className="border-bottom shadow-sm">
         <Container className="checkout-breadcrumbs">
-          <div className="d-flex">
+          <div className="checkout-breadcrumbs-1 d-flex">
             <h4 className="fw-bold">
               Isi Data Diri
-              <span className="mx-2" style={{ color: "#8A8A8A" }}>
+              <span className="mx-sm-2" style={{ color: "#8A8A8A" }}>
                 &gt;
               </span>
             </h4>
             <h4 className="fw-bold">
               Bayar
-              <span className="mx-2" style={{ color: "#8A8A8A" }}>
+              <span className="mx-sm-2" style={{ color: "#8A8A8A" }}>
                 &gt;
               </span>
             </h4>
@@ -43,14 +43,14 @@ const CheckoutCustomerData = () => {
               Selesai
             </h4>
           </div>
-          {/* <div className="checkout-breadcrumbs__alert mt-2 mb-4 mx-4">
+          <div className="checkout-breadcrumbs__alert mt-2 mb-4 mx-4">
             <h5 className="col-12 text-center text-white py-3 rounded-4">Data Anda berhasil tersimpan!</h5>
-          </div> */}
+          </div>
         </Container>
       </div>
       <Container className="checkout-biodata">
         <Form className="row d-flex mt-4">
-          <div className="col-7">
+          <div className=" col-md-7">
             <div className="border rounded-1 p-4 mb-4">
               <h4 className="fw-bold">Isi Data Pemesan</h4>
               <div className="mt-4">
@@ -242,7 +242,7 @@ const CheckoutCustomerData = () => {
             </div>
             <Button className="checkout-biodata__btn-1 border-0 d-flex align-items-center justify-content-center mt-4 py-4 mb-5">Simpan</Button>
           </div>
-          <div className="col-5 mt-4">
+          <div className="col-md-5 mt-md-0 mt-lg-4">
             <h4 className="fw-bold">Detail Penerbangan</h4>
             <div className="d-flex">
               <h5 className="fw-bold me-auto mb-0">07:00</h5>
@@ -297,10 +297,9 @@ const CheckoutCustomerData = () => {
                   IDR 9.850.000
                 </h5>
               </div>
-              <Link to="/payment">
+              <Link to="/payment" className="text-decoration-none">
                 <Button className="checkout-biodata__btn-2 border-0 d-flex align-items-center justify-content-center mt-4 py-4">Lanjut Bayar</Button>
               </Link>
-              {/* <Button className="checkout-biodata__btn-2 border-0 d-flex align-items-center justify-content-center mt-4 py-4">Lanjut Bayar</Button> */}
             </div>
           </div>
         </Form>

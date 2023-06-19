@@ -52,7 +52,7 @@ const SeatCustomer = () => {
     <>
       <style>{style}</style>
       <div className="seat-picker">
-        <div className="d-flex ms-md-1 mx-lg-auto" style={{ width: "62%" }}>
+        <div className="d-flex mx-auto ms-md-1 mx-lg-auto" style={{ width: "62%" }}>
           <p className="mb-0 ms-2 me-4" style={{ color: "#8A8A8A" }}>
             A
           </p>

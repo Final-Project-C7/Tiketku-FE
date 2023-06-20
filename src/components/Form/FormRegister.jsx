@@ -3,12 +3,49 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
+import axios from "axios";
 
 function FormRegister() {
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError(null);
+
+    try {
+      const response = await axios.post(
+        "https://c7-tiketku.up.railway.app/api/v1/user/register",
+        {
+          name,
+          email,
+          phoneNumber,
+          password,
+        }
+      );
+
+      // Handle successful registration
+      const { newUser, otp } = response.data.data;
+      console.log(newUser); // Do something with newUser
+      console.log(otp); // Do something with otp
+
+      // Reset form fields
+      setName("");
+      setEmail("");
+      setPhoneNumber("");
+      setPassword("");
+    } catch (error) {
+      // Handle registration error
+      setError(error.response.data.message);
+    }
   };
 
   const passwordInputType = passwordVisible ? "text" : "password";
@@ -91,7 +128,7 @@ function FormRegister() {
       <style>{style}</style>
       <h1 className="fw-bold mb-4">Daftar</h1>
 
-      <form onSubmit={(e) => e.preventDefault}>
+      <form onSubmit={handleSubmit}>
         <div>
           <p className="mb-1">Nama</p>
         </div>
@@ -101,8 +138,8 @@ function FormRegister() {
             className="register__form form-control"
             placeholder="Nama Lengkap"
             aria-label="Name"
-            // value={email}
-            onChange={(e) => e.preventDefault}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
             required
             style={{ fontFamily: "Poppins" }}
           />
@@ -117,8 +154,8 @@ function FormRegister() {
             className="register__form form-control"
             placeholder="Contoh: johndoe@gmail.com"
             aria-label="Email"
-            // value={email}
-            onChange={(e) => e.preventDefault}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
             style={{ fontFamily: "Poppins" }}
           />
@@ -133,8 +170,8 @@ function FormRegister() {
             className="register__form form-control"
             placeholder="+62"
             aria-label="Nomor"
-            // value={email}
-            onChange={(e) => e.preventDefault}
+            value={phoneNumber}
+            onChange={(e) => setPhoneNumber(e.target.value)}
             required
             style={{ fontFamily: "Poppins" }}
           />
@@ -150,8 +187,8 @@ function FormRegister() {
             placeholder="Masukkan password"
             aria-label="Password"
             className="register__form form-control password"
-            // value={password}
-            onChange={(e) => e.preventDefault}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             required
             style={{ fontFamily: "Poppins" }}
           />
@@ -159,7 +196,8 @@ function FormRegister() {
             <FontAwesomeIcon icon={passwordVisible ? faEye : faEyeSlash} />
           </span>
         </div>
-        {/* {error && <p className="error-message">{error}</p>} */}
+
+        {error && <p className="error-message">{error}</p>}
         <div className="d-grid gap-2 mt-4">
           <button className="register__btn btn lg sign-up" type="submit">
             Register

@@ -37,7 +37,7 @@ function FormRegister() {
       console.log(newUser); // Do something with newUser
       console.log(otp); // Do something with otp
 
-      // Reset form fields
+      // Reset form field
       setName("");
       setEmail("");
       setPhoneNumber("");

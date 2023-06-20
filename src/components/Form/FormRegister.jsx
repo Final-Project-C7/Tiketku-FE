@@ -43,7 +43,7 @@ function FormRegister() {
       setPhoneNumber("");
       setPassword("");
     } catch (error) {
-      // Handle registration error
+      // Handle registration errorr
       setError(error.response.data.message);
     }
   };

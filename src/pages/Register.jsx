@@ -8,6 +8,7 @@ function Register() {
     padding-left:0px;
   }
   `;
+
   return (
     <>
       <style>{styles}</style>

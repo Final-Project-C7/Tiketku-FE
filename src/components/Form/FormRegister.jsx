@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
+import { Modal, Button } from "react-bootstrap";
 import axios from "axios";
 
 function FormRegister() {
@@ -11,15 +12,23 @@ function FormRegister() {
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(null);
+  const [error, setError] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
 
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError(null);
+
+    setIsLoading(true);
 
     try {
       const response = await axios.post(
@@ -42,10 +51,23 @@ function FormRegister() {
       setEmail("");
       setPhoneNumber("");
       setPassword("");
+      setSuccessMessage("registrasi berhasil");
+      setError("");
+      setShowModal(true);
     } catch (error) {
-      // Handle registration errorr
-      setError(error.response.data.message);
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
+        setError(error.response.data.message);
+      } else {
+        setError("Failed to register");
+      }
+      setSuccessMessage("");
     }
+
+    setIsLoading(false);
   };
 
   const passwordInputType = passwordVisible ? "text" : "password";
@@ -210,6 +232,41 @@ function FormRegister() {
           Masuk di sini
         </Link>
       </p>
+
+      {successMessage && (
+        <Modal
+          show={showModal}
+          onHide={handleCloseModal}
+          backdrop="static"
+          keyboard={false}
+          centered
+        >
+          <Modal.Header>
+            <Modal.Title>Registration Success</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <p>
+              Congratulations {successMessage},
+              <Link
+                to={"https://tiketku-fe-production.up.railway.app/register"}
+                className="fw-bold"
+              >
+                {" "}
+                Click Login
+              </Link>
+            </p>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button
+              style={{ padding: "10px 20px" }}
+              variant="primary"
+              onClick={handleCloseModal}
+            >
+              Close
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      )}
     </>
   );
 }

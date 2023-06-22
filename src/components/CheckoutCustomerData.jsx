@@ -122,9 +122,9 @@ const CheckoutCustomerData = () => {
         </Container>
       </div>
       <Container className="checkout-biodata">
-        <Form className="row d-flex mt-4" onSubmit={handleSubmit}>
+        <div className="row d-flex mt-4" onSubmit={handleSubmit}>
           <div className=" col-md-7">
-            <div className="border rounded-1 p-4 mb-4">
+            <Form className="border rounded-1 p-4 mb-4">
               <h4 className="fw-bold">Isi Data Pemesan</h4>
               <div className="mt-4">
                 <div className="d-flex align-items-start bg-dark rounded-top-4 py-3 ">
@@ -190,8 +190,9 @@ const CheckoutCustomerData = () => {
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="border rounded-1 p-4 mb-3">
+            </Form>
+
+            <Form className="border rounded-1 p-4 mb-3">
               <h4 className="fw-bold">Isi Data Penumpang </h4>
               <div className="mt-4">
                 <div className="d-flex align-items-start bg-dark rounded-top-4 py-3 ">
@@ -318,6 +319,9 @@ const CheckoutCustomerData = () => {
                   </div>
                 </div> */}
               </div>
+            </Form>
+
+            <Form className="border rounded-1 p-4 mb-3">
               <div className="mt-4">
                 <div className="d-flex align-items-start bg-dark rounded-top-3 py-3 ">
                   <h5 className="me-auto text-white ms-4 mb-0">
@@ -422,8 +426,9 @@ const CheckoutCustomerData = () => {
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="border rounded-1 p-4 mb-4">
+            </Form>
+
+            <Form className="border rounded-1 p-4 mb-4">
               <h4 className="fw-bold">Pilih Kursi</h4>
               <div className="mt-4">
                 <div className="d-flex align-items-start bg-dark rounded-top-2 py-3 ">
@@ -438,7 +443,7 @@ const CheckoutCustomerData = () => {
                 </div>
                 <div className="mx-4 mt-3">
                   <SeatCustomer />
-                </div>
+               </div>
               </div>
             </div>
             <Button
@@ -448,6 +453,7 @@ const CheckoutCustomerData = () => {
               Simpan
             </Button>
           </div>
+
           <div className="col-md-5 mt-md-0 mt-lg-4">
             <h4 className="fw-bold">Detail Penerbangan</h4>
             <div className="d-flex">
@@ -521,7 +527,7 @@ const CheckoutCustomerData = () => {
               </Link>
             </div>
           </div>
-        </Form>
+        </div>
       </Container>
     </>
   );

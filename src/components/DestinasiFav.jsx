@@ -5,15 +5,97 @@ import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./DestinasiFav.css";
 
-const DestinasiFav = () => {
+const DestinasiFav = ({ destinations, onFilter }) => {
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  const handleApplyFilter = () => {
+    const filteredDestinations = destinations.filter((destination) =>
+      destination.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    onFilter(filteredDestinations);
+  };
+
   return (
     <div className="destinasi-fav position-relative d-flex flex-column mx-auto">
       <h5 className="fw-bold">Destinasi Favorit</h5>
       <div className="d-flex mb-5">
-        <Link to="/" className="destinasi-fav__category-1 d-flex align-items-center justify-content-center text-white text-decoration-none mt-2 p-1">
+        <Button className="destinasi-fav__category-2 d-flex align-items-center justify-content-center text-dark text-decoration-none mt-2 p-1">
+          <Image className="destinasi-fav__search-img me-2" src="/search.svg" alt="search" />
+          <div 
+          onClick={handleApplyFilter}
+          value={searchQuery}
+          onChange={handleSearchChange}
+          placeholder="Semua"
+          >
+          Semua</div>
+        </Button>
+
+        <Button className="destinasi-fav__category-2 d-flex align-items-center justify-content-center text-dark text-decoration-none mt-2 p-1">
+          <Image className="destinasi-fav__search-img me-2" src="/search.svg" alt="search" />
+          <div 
+          onClick={handleApplyFilter}
+          value={searchQuery}
+          onChange={handleSearchChange}
+          placeholder="Semua"
+          >
+          Asia</div>
+        </Button>
+
+        <Button className="destinasi-fav__category-2 d-flex align-items-center justify-content-center text-dark text-decoration-none mt-2 p-1">
+          <Image className="destinasi-fav__search-img me-2" src="/search.svg" alt="search" />
+          <div 
+          onClick={handleApplyFilter}
+          value={searchQuery}
+          onChange={handleSearchChange}
+          placeholder="Semua"
+          >
+          Amerika</div>
+        </Button>
+
+        <Button className="destinasi-fav__category-2 d-flex align-items-center justify-content-center text-dark text-decoration-none mt-2 p-1">
+          <Image className="destinasi-fav__search-img me-2" src="/search.svg" alt="search" />
+          <div 
+          onClick={handleApplyFilter}
+          value={searchQuery}
+          onChange={handleSearchChange}
+          placeholder="Semua"
+          >
+          Australia</div>
+        </Button>
+
+        <Button className="destinasi-fav__category-2 d-flex align-items-center justify-content-center text-dark text-decoration-none mt-2 p-1">
+          <Image className="destinasi-fav__search-img me-2" src="/search.svg" alt="search" />
+          <div 
+          onClick={handleApplyFilter}
+          value={searchQuery}
+          onChange={handleSearchChange}
+          placeholder="Semua"
+          >
+          Eropa</div>
+        </Button>
+
+        <Button className="destinasi-fav__category-2 d-flex align-items-center justify-content-center text-dark text-decoration-none mt-2 p-1">
+          <Image className="destinasi-fav__search-img me-2" src="/search.svg" alt="search" />
+          <div 
+          onClick={handleApplyFilter}
+          value={searchQuery}
+          onChange={handleSearchChange}
+          placeholder="Semua"
+          >
+          Afrika</div>
+        </Button>
+
+
+
+        {/* <Link to="/" className="destinasi-fav__category-1 d-flex align-items-center justify-content-center text-white text-decoration-none mt-2 p-1">
           <Image className="destinasi-fav__search-img me-2" src="/search.svg" alt="search" />
           Semua
         </Link>
+
         <Link to="/" className="destinasi-fav__category-2 d-flex align-items-center justify-content-center text-decoration-none ms-3 mt-2 p-1">
           <Image className="destinasi-fav__search-img me-2" src="/search.svg" alt="search" />
           Asia
@@ -33,7 +115,8 @@ const DestinasiFav = () => {
         <Link to="/" className="destinasi-fav__category-2 d-flex align-items-center justify-content-center text-decoration-none ms-3 mt-2 p-1">
           <Image className="destinasi-fav__search-img me-2" src="/search.svg" alt="search" />
           Afrika
-        </Link>
+        </Link> */}
+
       </div>
       <div className="destinasi-card d-flex justify-content-center flex-wrap mb-5 mx-4">
         <Card className="shadow" style={{ width: "18.47%" }}>

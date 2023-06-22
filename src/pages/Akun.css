@@ -15,6 +15,16 @@
   width: 75%;
 }
 
+.account-list:hover {
+  background-color: #a06ece;
+  transition: background-color 0.5s;
+  color: white;
+}
+
+.account-list:hover img {
+  filter: brightness(0) invert(1);
+}
+
 .account__input:focus {
   outline-style: none !important;
 }

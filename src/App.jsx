@@ -14,6 +14,8 @@ import Result from "./components/Result";
 import NotifikasiLogin from "./components/NotifikasiLogin";
 import Flight from "./pages/Flight";
 import Admin from "./pages/admin";
+import AdminLogin from "./pages/AdminLogin";
+import AdminRegister from "./pages/AdminRegister";
 import AdminUsers from "./pages/AdminUsers";
 import AdminAirlines from "./pages/AdminAirlines";
 import AdminAirports from "./pages/AdminAirports";
@@ -42,6 +44,8 @@ function App() {
           <Route path="/notifikasi" element={<NotifikasiLogin />} />
           <Route path="/checkout" element={<CheckoutCustomerData />} />
           <Route path="/payment" element={<Payment />} />
+          <Route path="/admin-login" element={<AdminLogin />} />
+          <Route path="/admin-register" element={<AdminRegister />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/admin-users" element={<AdminUsers />} />
           <Route path="/admin-airlines" element={<AdminAirlines />} />

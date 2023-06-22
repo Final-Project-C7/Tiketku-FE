@@ -1,64 +1,53 @@
 import "./FormLogin.css";
-import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import axios from "axios";
+import { Link } from "react-router-dom";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { Button } from "react-bootstrap";
 
-function FormLogin() {
+const FormLogin = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const [passwordVisible, setPasswordVisible] = useState(false);
-  const [error, setError] = useState(null);
-  const [formData, setFormData] = useState({ email: "", password: "" });
-  const [loading, setLoading] = useState(false);
-  const [token, setToken] = useState(null);
-  const [success, setSuccess] = useState(false);
+
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+  };
+
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
 
-  const passwordInputType = passwordVisible ? "text" : "password";
-
-  const handleInputChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleFormSubmit = async (e) => {
-    e.preventDefault();
-    setError(null);
-    setLoading(true);
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
     try {
-      const response = await fetch(
+      const response = await axios.post(
         "https://c7-tiketku.up.railway.app/api/v1/user/login",
         {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
+          email,
+          password,
         }
       );
 
-      const data = await response.json();
+      localStorage.setItem("token", response.data.data.token);
 
-      if (response.ok) {
-        setToken(data.token);
-        setSuccess(true);
-        // Perform any other necessary actions upon successful login
-      } else {
-        setError(data.message || "Something went wrong");
-      }
+      window.location.href = "http://localhost:5173";
     } catch (error) {
-      setError("Something went wrong");
+      setError("Invalid email or password");
     }
-
-    setLoading(false);
   };
 
   return (
     <>
       <h1 className="fw-bold mb-4">Masuk</h1>
-      <form onSubmit={handleFormSubmit}>
+      <form onSubmit={handleSubmit}>
         <div>
           <p className="mb-1">Email/No telepon</p>
         </div>
@@ -69,8 +58,8 @@ function FormLogin() {
             placeholder="Contoh: johndoe@gmail.com"
             aria-label="Email"
             name="email"
-            value={formData.email}
-            onChange={handleInputChange}
+            value={email}
+            onChange={handleEmailChange}
             required
             style={{ fontFamily: "Poppins" }}
           />
@@ -89,13 +78,13 @@ function FormLogin() {
 
         <div className="input-group mb-2 mt-1">
           <input
-            type={passwordInputType}
+            type={passwordVisible ? "text" : "password"}
             placeholder="Masukkan password"
             aria-label="Password"
             className="login__form form-control password"
             name="password"
-            value={formData.password}
-            onChange={handleInputChange}
+            value={password}
+            onChange={handlePasswordChange}
             required
             style={{ fontFamily: "Poppins" }}
           />
@@ -105,16 +94,11 @@ function FormLogin() {
         </div>
         {error && <p className="error-message">{error}</p>}
         <div className="d-grid gap-2 mt-5">
-          <button
-            className="login__btn btn lg sign-up fw-bold"
-            type="submit"
-            disabled={loading}
-          >
-            {loading ? "Loading..." : "Masuk"}
+          <button className="login__btn btn lg sign-up fw-bold" type="submit">
+            Masuk
           </button>
         </div>
       </form>
-      {success && <p>Login successful!</p>}
       <p className="mt-5 mb-1 text-center">
         Belum punya akun?{"  "}
         <Link to="/register" className="fw-bold register">
@@ -123,6 +107,6 @@ function FormLogin() {
       </p>
     </>
   );
-}
+};
 
 export default FormLogin;

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-import loginLogo from "/Group 84.svg";
+import loginLogo from "/Group 92.svg";
+// import logo from "grouplogo.png";
 import FormLogin from "../components/Form/FormLogin";
 
 const Login = () => {

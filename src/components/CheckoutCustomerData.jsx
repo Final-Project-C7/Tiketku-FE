@@ -445,6 +445,7 @@ const CheckoutCustomerData = () => {
                   <SeatCustomer />
                </div>
               </div>
+              </Form>
             </div>
             <Button
               className="checkout-biodata__btn-1 border-0 d-flex align-items-center justify-content-center mt-4 py-4 mb-5"
@@ -527,7 +528,6 @@ const CheckoutCustomerData = () => {
               </Link>
             </div>
           </div>
-        </div>
       </Container>
     </>
   );

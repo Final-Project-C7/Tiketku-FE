@@ -64,4 +64,14 @@
   .nav-search {
     display: none !important;
   }
+
+  .navbar__img {
+    width: 70px;
+    height: 38px;
+  }
+
+  .btn-sign {
+    width: 90px;
+    height: 42px;
+  }
 }

@@ -148,3 +148,22 @@
   color: white !important;
   border-radius: 12px;
 }
+
+@media screen and (max-width: 768px) {
+  .history {
+    width: 100%;
+    margin-top: 5rem;
+  }
+
+  .history-top {
+    width: 70%;
+  }
+
+  /* .history-filter {
+    width: auto;
+  } */
+
+  .checkout-biodata {
+    width: 100%;
+  }
+}

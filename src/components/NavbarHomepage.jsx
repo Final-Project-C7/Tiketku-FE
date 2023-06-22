@@ -11,7 +11,7 @@ const NavbarHomepage = () => {
       <Container>
         <Navbar.Brand className="d-flex">
           <Link to="/">
-            <Image className="navbar__img" src="/logo.svg" alt="logo Tiketku" />
+            <Image className="navbar__img" src="/logofinal.png" alt="logo Tiketku" />
           </Link>
         </Navbar.Brand>
         <Navbar.Collapse>

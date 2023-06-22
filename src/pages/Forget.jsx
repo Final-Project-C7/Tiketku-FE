@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import loginLogo from "/Group 84.svg";
+import loginLogo from "/Group 92.svg";
 import FormForget from "../components/Form/FormForget";
 
 function Register() {

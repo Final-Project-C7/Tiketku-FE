@@ -21,7 +21,7 @@ const NavbarUser = () => {
       <Navbar className="fixed-top border-bottom shadow-sm bg-white">
         <Container>
           <Navbar.Brand href="/" className="d-flex">
-            <Image className="navbar__img" src="/logo.svg" alt="logo Tiketku" />
+            <Image className="navbar__img" src="/logofinal.png" alt="logo Tiketku" />
           </Navbar.Brand>
           <Navbar.Brand>
             <Link to="/history">

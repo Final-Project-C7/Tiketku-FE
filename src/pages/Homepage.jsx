@@ -7,19 +7,23 @@ import DestinasiFav from "../components/DestinasiFav";
 import { useParams, Link } from "react-router-dom";
 
 function Homepage() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // State untuk menyimpan status login pengguna
+
+  useEffect(() => {
+    // Cek apakah pengguna sudah login atau memiliki token di lokal
+    const token = localStorage.getItem("token");
+    if (token) {
+      setIsLoggedIn(true); // Jika ada token, pengguna dianggap sudah login
+    }
+  }, []);
+
   return (
     <>
-      <NavbarHomepage />
+      {isLoggedIn ? <NavbarUser /> : <NavbarHomepage />}
       <FormFlight />
-      <DestinasiFav />
 
-      {/* {isLoggedIn ? (
-        <NavbarLoggedIn /> // Replace with the navbar for logged-in users
-      ) : (
-        <NavbarHomepage />
-      )}
-      <FormFlight onLoginSuccess={handleLoginSuccess} />
-      <DestinasiFav /> */}
+      {/* Tambahkan komponen lain yang diperlukan */}
+      <DestinasiFav />
     </>
   );
 }

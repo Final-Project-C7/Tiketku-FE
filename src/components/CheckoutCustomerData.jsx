@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Image, Button, Container, Form } from "react-bootstrap";
+import { Image, Button, Container, Form, Modal } from "react-bootstrap";
 import NavbarHomepage from "./NavbarHomepage";
 import SeatCustomer from "./SeatCustomer";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 import "./CheckoutCustomerData.css";
 
@@ -10,6 +11,16 @@ const CheckoutCustomerData = () => {
   const [isChecked1, setIsChecked1] = useState(false);
   const [isChecked2, setIsChecked2] = useState(false);
   const [isChecked3, setIsChecked3] = useState(false);
+
+  const [error, setError] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
+  const [name, setName] = useState("")
+  const [born_date, setBornDate] = useState("")
+  const [citizen, setCitizen] = useState("")
+  const [identity_number, setIdentityNumber] = useState("")
+  const [publisher_country, setPublisherCountry] = useState("")
+  const [valid_until, setValidUntil] = useState("")
+  const [booking_id, setBookingId] = useState("")
 
   const handleSwitchToggle1 = () => {
     setIsChecked1(!isChecked1);
@@ -19,6 +30,57 @@ const CheckoutCustomerData = () => {
   };
   const handleSwitchToggle3 = () => {
     setIsChecked3(!isChecked3);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // setIsLoading(true);
+
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/api/v1/passengers",
+        {
+          name,
+          born_date,
+          citizen,
+          identity_number,
+          publisher_country,
+          valid_until,
+          booking_id: "1"
+        }
+      );
+
+      // Handle successful registration
+      const { newPassengers } = response.data.data;
+      console.log(newPassengers); // Do something with newUser
+
+
+      // Reset form field
+      setName("");
+      setBornDate("");
+      setCitizen("");
+      setIdentityNumber("");
+      setPublisherCountry("");
+      setValidUntil("");
+      setBookingId("");
+      setSuccessMessage("registrasi berhasil");
+      setError("");
+      // setShowModal(true);
+    } catch (error) {
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
+        setError(error.response.data.message);
+      } else {
+        setError("Failed to register");
+      }
+      setSuccessMessage("");
+    }
+
+    // setIsLoading(false);
   };
 
   return (
@@ -49,7 +111,7 @@ const CheckoutCustomerData = () => {
         </Container>
       </div>
       <Container className="checkout-biodata">
-        <Form className="row d-flex mt-4">
+        <Form className="row d-flex mt-4" onSubmit={handleSubmit}>
           <div className=" col-md-7">
             <div className="border rounded-1 p-4 mb-4">
               <h4 className="fw-bold">Isi Data Pemesan</h4>
@@ -111,7 +173,7 @@ const CheckoutCustomerData = () => {
                 <div className="mx-4 mt-3">
                   <p className="fw-bold mb-1">Nama Lengkap</p>
                   <div className="border rounded-1 border-2 mb-2">
-                    <input className="border-0 mx-2 p-2" type="text" defaultValue="Harry" />
+                    <input className="border-0 mx-2 p-2" type="text" value={name} onChange={(e) => setName(e.target.value)} />
                   </div>
                   <div className="d-flex">
                     <p className="me-auto mb-0">Punya Nama Keluarga?</p>
@@ -130,35 +192,43 @@ const CheckoutCustomerData = () => {
                 <div className="mx-4 mt-3">
                   <p className="fw-bold mb-1">Tanggal Lahir</p>
                   <div className="border rounded-1 border-2 mb-2">
-                    <input className="border-0 opacity-50 mx-2 p-2" type="date" />
+                    <input className="border-0 opacity-50 mx-2 p-2" type="date" value={born_date} onChange={(e) => setBornDate(e.target.value)} />
                   </div>
                 </div>
                 <div className="mx-4 mt-3">
                   <p className="fw-bold mb-1">Kewarganegaraan</p>
                   <div className="border rounded-1 border-2 mb-2">
-                    <input className="border-0 mx-2 p-2" type="text" defaultValue="Indonesia" />
+                    <input className="border-0 mx-2 p-2" type="text" value={citizen} onChange={(e) => setCitizen(e.target.value)} />
                   </div>
                 </div>
                 <div className="mx-4 mt-3">
                   <p className="fw-bold mb-1">KTP/Paspor</p>
                   <div className="border rounded-1 border-2 mb-2">
-                    <input className="border-0 mx-2 p-2" type="text" />
+                    <input className="border-0 mx-2 p-2" type="text" value={identity_number} onChange={(e) => setIdentityNumber(e.target.value)} />
                   </div>
                 </div>
                 <div className="mx-4 mt-3">
                   <p className="fw-bold mb-1">Negara Penerbit</p>
                   <div className="border rounded-1 border-2 mb-2">
-                    <select className="border-0 mx-2 p-2" name="issuing-country" id="issuing-country">
-                      <option value=""></option>
-                    </select>
+                    <input className="border-0 mx-2 p-2" name="issuing-country" id="issuing-country" value={publisher_country} onChange={(e) => setPublisherCountry(e.target.value)}>
+                      {/* <option value=""></option> */}
+                    </input>
                   </div>
                 </div>
                 <div className="mx-4 mt-3">
                   <p className="fw-bold mb-1">Berlaku Sampai</p>
                   <div className="border rounded-1 border-2 mb-2">
-                    <input className="border-0 opacity-50 mx-2 p-2" type="date" />
+                    <input className="border-0 opacity-50 mx-2 p-2" type="date" value={valid_until} onChange={(e) => setValidUntil(e.target.value)} />
                   </div>
                 </div>
+                {/* <div className="mx-4 mt-3">
+                  <p className="fw-bold mb-1">booking id</p>
+                  <div className="border rounded-1 border-2 mb-2">
+                    <input className="border-0 mx-2 p-2" name="issuing-country" id="issuing-country" value={booking_id} onChange={(e) => setPublisherCountry(e.target.value)}>
+                      <option value=""></option>
+                    </input>
+                  </div>
+                </div> */}
               </div>
               <div className="mt-4">
                 <div className="d-flex align-items-start bg-dark rounded-top-3 py-3 ">
@@ -240,7 +310,7 @@ const CheckoutCustomerData = () => {
                 </div>
               </div>
             </div>
-            <Button className="checkout-biodata__btn-1 border-0 d-flex align-items-center justify-content-center mt-4 py-4 mb-5">Simpan</Button>
+            <Button className="checkout-biodata__btn-1 border-0 d-flex align-items-center justify-content-center mt-4 py-4 mb-5" type="submit">Simpan</Button>
           </div>
           <div className="col-md-5 mt-md-0 mt-lg-4">
             <h4 className="fw-bold">Detail Penerbangan</h4>

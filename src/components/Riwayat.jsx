@@ -13,7 +13,7 @@ const Riwayat = () => {
       <div className="border-bottom shadow-sm">
         <Container className="history">
           <div className="d-flex">
-            <h4 className="fw-bold"> Riwayat Pemesanan</h4>
+            <h4 className="fw-bold pt-3"> Riwayat Pemesanan</h4>
           </div>
           <Header />
         </Container>

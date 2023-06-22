@@ -27,6 +27,58 @@ const FormFlight = () => {
   const [open, setOpen] = useState(false);
   const refOne = useRef(null);
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const departure = document.getElementById("depart").value;
+    const arrival = document.getElementById("arrive").value;
+
+    try {
+      const response = await axios.get(
+        `http://localhost:8000/api/v1/flight/search/${departure}/${arrival}`,
+        {
+          name,
+          born_date,
+          citizen,
+          identity_number,
+          publisher_country,
+          valid_until,
+          booking_id: "1"
+        }
+      );
+
+      // Handle successful registration
+      const { newPassengers } = response.data.data;
+      console.log(newPassengers); // Do something with newUser
+
+
+      // Reset form field
+      setName("");
+      setBornDate("");
+      setCitizen("");
+      setIdentityNumber("");
+      setPublisherCountry("");
+      setValidUntil("");
+      setBookingId("");
+      setSuccessMessage("registrasi berhasil");
+      setError("");
+      // setShowModal(true);
+    } catch (error) {
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
+        setError(error.response.data.message);
+      } else {
+        setError("Failed to register");
+      }
+      setSuccessMessage("");
+    }
+
+    // setIsLoading(false);
+  };
+
   useEffect(() => {
     document.addEventListener("keydown", hideOnEscape, true);
     document.addEventListener("click", hideOnClickOutside, true);
@@ -64,15 +116,15 @@ const FormFlight = () => {
                   <Image className="card-destination__img" src="take-off.svg" alt="flight takeoff" />
                   <p className="col-1 ms-2">From</p>
                 </div>
-                <ModalFlightFrom />
+                <input className="bg-transparent border-0 col-6" type="search" aria-label="Search" id="depart" />
                 <Link to="/" className="ms-3">
                   <Image className="card-destination__img-1" src="/return.svg" alt="return" />
                 </Link>
               </div>
               <div className="card-destination-to col-12 col-sm-5 d-flex">
-                <Image className="card-destination__img" src="/take-off.svg" alt="flight takeoff" />
+                <Image className="card-destination__img" src="/take-off.svg" alt="flight takeoff" id="arrive" />
                 <p className="col-1 ms-2">To</p>
-                <ModalFlightTo />
+                <input className="bg-transparent border-0 col-11" type="search" aria-label="Search" />
               </div>
             </div>
             <div className="card-date col-12 d-flex mt-4">

@@ -9,7 +9,7 @@ function Admin() {
     <>
       <div className="d-flex">
         <div className="side-bar-admin col-2 bg-body-tertiary shadow">
-          <Image className="side-bar-admin__logo p-4" src="logo.svg" />
+          <Image className="side-bar-admin__logo p-4" src="/logofinal.png" />
           <div className="mt-3">
             <Link to="/admin" className="text-decoration-none">
               <div className="side-bar-admin__list side-bar-admin__selected d-flex align-items-center py-3 px-4 mb-1">
@@ -83,7 +83,7 @@ function Admin() {
                     <p className="mb-0">(jumlah) Users</p>
                   </div>
                 </div>
-                <Link to="/" className="text-decoration-none">
+                <Link to="/admin-users" className="text-decoration-none">
                   <p className="text-dark bg-info-subtle text-center mb-0 py-1">Lihat Detail</p>
                 </Link>
               </div>
@@ -95,7 +95,7 @@ function Admin() {
                     <p className="mb-0">(jumlah) Airlines</p>
                   </div>
                 </div>
-                <Link to="/" className="text-decoration-none">
+                <Link to="/admin-airlines" className="text-decoration-none">
                   <p className="text-dark bg-info-subtle text-center mb-0 py-1">Lihat Detail</p>
                 </Link>
               </div>
@@ -107,7 +107,7 @@ function Admin() {
                     <p className="mb-0">(jumlah) Airports</p>
                   </div>
                 </div>
-                <Link to="/" className="text-decoration-none">
+                <Link to="/admin-airports" className="text-decoration-none">
                   <p className="text-dark bg-info-subtle text-center mb-0 py-1">Lihat Detail</p>
                 </Link>
               </div>
@@ -119,7 +119,7 @@ function Admin() {
                     <p className="mb-0">(jumlah) Flights</p>
                   </div>
                 </div>
-                <Link to="/" className="text-decoration-none">
+                <Link to="/admin-flights" className="text-decoration-none">
                   <p className="text-dark bg-info-subtle text-center mb-0 py-1">Lihat Detail</p>
                 </Link>
               </div>
@@ -131,7 +131,7 @@ function Admin() {
                     <p className="mb-0">(jumlah) Bookings</p>
                   </div>
                 </div>
-                <Link to="/" className="text-decoration-none">
+                <Link to="/admin-bookings" className="text-decoration-none">
                   <p className="text-dark bg-info-subtle text-center mb-0 py-1">Lihat Detail</p>
                 </Link>
               </div>
@@ -143,7 +143,7 @@ function Admin() {
                     <p className="mb-0">(jumlah) Passengers</p>
                   </div>
                 </div>
-                <Link to="/" className="text-decoration-none">
+                <Link to="/admin-passengers" className="text-decoration-none">
                   <p className="text-dark bg-info-subtle text-center mb-0 py-1">Lihat Detail</p>
                 </Link>
               </div>
@@ -155,7 +155,7 @@ function Admin() {
                     <p className="mb-0">(jumlah) Seats</p>
                   </div>
                 </div>
-                <Link to="/" className="text-decoration-none">
+                <Link to="/admin-seats" className="text-decoration-none">
                   <p className="text-dark bg-info-subtle text-center mb-0 py-1">Lihat Detail</p>
                 </Link>
               </div>
@@ -167,7 +167,7 @@ function Admin() {
                     <p className="mb-0">(jumlah) Payments</p>
                   </div>
                 </div>
-                <Link to="/" className="text-decoration-none">
+                <Link to="/admin-payments" className="text-decoration-none">
                   <p className="text-dark bg-info-subtle text-center mb-0 py-1">Lihat Detail</p>
                 </Link>
               </div>

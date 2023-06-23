@@ -10,7 +10,7 @@ function AdminUsers() {
     <>
       <div className="d-flex">
         <div className="side-bar-admin col-2 bg-body-tertiary shadow">
-          <Image className="side-bar-admin__logo p-4" src="logo.svg" />
+          <Image className="side-bar-admin__logo p-4" src="/logofinal.png" />
           <div className="mt-3">
             <Link to="/admin" className="text-decoration-none">
               <div className="side-bar-admin__list text-dark d-flex align-items-center py-3 px-4 mb-1">

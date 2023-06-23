@@ -30,17 +30,17 @@ function Result() {
   return (
     <>
       {isLoggedIn ? <NavbarUser /> : <NavbarHomepage />}
-      <div className="container-fluid" id="select-flight">
+      <div className="container" id="select-flight">
         <p className="title1">Pilih Penerbangan</p>
         <SelectDay />
         <div className="d-flex justify-content-end">
           <MyModal />
         </div>
         <div className="row filter-loading mt-4">
-          <div className="col-3 filter-l">
+          <div className="col-12 col-md-3 filter-l">
             <Filter />
           </div>
-          <div className="col-9 text-center mb-5">
+          <div className="col-12 col-md-9 text-center mt-3 mb-5">
             <Card
               style={{
                 width: "100%",
@@ -51,8 +51,9 @@ function Result() {
               <Card.Body>
                 <Card.Title className="title">
                   <Col className="col-12 d-flex gap-2">
-                    <Row style={{ width: "100%" }}>
-                      <Col md={4} className="d-flex align-items-center">
+                    <Row style={{ width: "100%" , height:"100%" }}>
+                        <div className="d-flex col-8 align-items-center">
+
                         <Card.Img
                           variant="top"
                           src={loading}
@@ -64,18 +65,15 @@ function Result() {
                         >
                           Jet Air - Economy
                         </p>
-                      </Col>
-                      <Col
-                        md={{ span: 1, offset: 7 }}
-                        className="d-flex justify-content-end"
-                      >
+                        </div>
+                        <div className="d-flex justify-content-end col-4">
                         <Card.Img
                           variant="top"
                           src={panah}
                           style={{ width: "30px", cursor: "pointer" }}
                           onClick={handleExpand}
                         />
-                      </Col>
+                        </div>
                     </Row>
                   </Col>
                 </Card.Title>
@@ -277,4 +275,4 @@ function Result() {
   );
 }
 
-export default Result;
+export default Result;

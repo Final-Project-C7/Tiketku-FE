@@ -13,7 +13,7 @@ const Riwayat = () => {
       <div className="border-bottom shadow-sm">
         <Container className="history">
           <div className="d-flex">
-            <h4 className="fw-bold pt-3"> Riwayat Pemesanan</h4>
+            <h4 className="fw-bold"> Riwayat Pemesanan</h4>
           </div>
           <Header />
         </Container>
@@ -24,7 +24,7 @@ const Riwayat = () => {
             <div className="mb-3">
               <h4 className="fw-bold">Maret 2023</h4>
               <div className="p-3 rounded-3 mb-2" style={{ border: "2px solid rgba(113, 38, 181, 0.75)" }}>
-                <p className="col-2 rounded-5 text-white text-center p-1 mb-4" style={{ backgroundColor: "#73ca5c" }}>
+                <p className="col-2 rounded-5 text-white text-center p-1 mb-4 text-un" style={{ backgroundColor: "#73ca5c" }}>
                   Issued
                 </p>
                 <div className="d-flex">
@@ -38,7 +38,7 @@ const Riwayat = () => {
                   </div>
                   <div className="col-4 d-flex flex-column justify-content-center align-items-center mb-4">
                     <p className="mb-0">4h 0m</p>
-                    <Image src="/Union.svg" />
+                    <Image src="/Union.svg"/>
                   </div>
                   <div className="col-1 text-center">
                     <Image src="/Live-area.svg" />
@@ -68,7 +68,7 @@ const Riwayat = () => {
               </div>
               <Card className="mb-3">
                 <div className="p-3 rounded-3 mb-2">
-                  <p className="col-2 rounded-5 text-white text-center p-1 mb-4" style={{ backgroundColor: "#ff0000" }}>
+                  <p className="col-2 rounded-5 text-white text-center p-1 mb-4 text-un" style={{ backgroundColor: "#ff0000" }}>
                     Unpaid
                   </p>
                   <div className="d-flex">
@@ -111,10 +111,10 @@ const Riwayat = () => {
                   </div>
                 </div>
               </Card>
-              <h4 className="fw-bold">Februari 2023</h4>
+              <h4 className="fw-bold card-pad">Februari 2023</h4>
               <Card className="mb-2">
                 <div className="p-3 rounded-3 mb-2">
-                  <p className="col-2 rounded-5 text-white text-center p-1 mb-4" style={{ backgroundColor: "#8a8a8a" }}>
+                  <p className="col-2 rounded-5 text-white text-center p-1 mb-4 text-un" style={{ backgroundColor: "#8a8a8a" }}>
                     Cancelled
                   </p>
                   <div className="d-flex">
@@ -159,7 +159,7 @@ const Riwayat = () => {
               </Card>
               <Card>
                 <div className="p-3 rounded-3 mb-2">
-                  <p className="col-2 rounded-5 text-white text-center p-1 mb-4" style={{ backgroundColor: "#73ca5c" }}>
+                  <p className="col-2 rounded-5 text-white text-center p-1 mb-4 text-un" style={{ backgroundColor: "#73ca5c" }}>
                     Issued
                   </p>
                   <div className="d-flex">
@@ -207,9 +207,9 @@ const Riwayat = () => {
 
           {/* DETAIL PESANAN */}
           <div className="col-5 mt-0">
-            <div className="d-flex">
+            <div className="d-flex card-pad-1">
               <h4 className="me-auto fw-bold">Detail Pesanan</h4>
-              <p className="col-2 rounded-5 text-white text-center p-1 mb-4" style={{ backgroundColor: "#73ca5c" }}>
+              <p className="col-2 rounded-5 text-white text-center p-1 mb-4 text-un" style={{ backgroundColor: "#73ca5c" }}>
                 Issued
               </p>
             </div>

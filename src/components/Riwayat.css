@@ -151,19 +151,55 @@
 
 @media screen and (max-width: 768px) {
   .history {
-    width: 100%;
+    width: 80%;
     margin-top: 5rem;
+  }
+
+  .border-bottom {
+    width: 100%;
   }
 
   .history-top {
     width: 70%;
   }
 
-  /* .history-filter {
+  .history-filter {
     width: auto;
-  } */
+  }
 
   .checkout-biodata {
     width: 100%;
+  }
+
+  .text-un {
+    width: 40%;
+  }
+
+  .card-pad {
+    padding-top: 2rem;
+  }
+
+  .card-pad-1 {
+    padding-top: 2rem;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .history {
+    width: 100%;
+    margin-top: 5rem;
+    padding-top: 2rem;
+  }
+
+  .history-top {
+    width: 100%;
+  }
+
+  .checkout-biodata {
+    width: 100%;
+  }
+
+  .text-un {
+    width: 30%;
   }
 }

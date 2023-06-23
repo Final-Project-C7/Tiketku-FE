@@ -1,6 +1,7 @@
 import React from "react";
 import { Navbar, Image, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import FormModalAdminSeats from "../components/Form/FormModalAdminSeats";
 
 import "./AdminUsers.css";
 
@@ -76,7 +77,7 @@ function AdminSeats() {
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item active" aria-current="page">
-                  <Link href="../admin/" class="text-decoration-none text-dark fw-bold d-flex align-items-center">
+                  <Link to="/admin" class="text-decoration-none text-dark fw-bold d-flex align-items-center">
                     <Image className="breadcrumb__img me-1" src="dashboard-icon.svg" /> Dashboard
                   </Link>
                 </li>
@@ -87,11 +88,8 @@ function AdminSeats() {
             </nav>
 
             <div>
-              <h4 className="mb-4">User List</h4>
-              <Button className="btn-primary border-0 d-flex py-2 px-2">
-                <Image className="create-icon" src="/create-icon.svg" />
-                <p className="text-white ms-1 mb-0">Create</p>
-              </Button>
+              <h4 className="mb-4">Seats List</h4>
+              <FormModalAdminSeats />
               <table className="table table-striped-columns">
                 <thead>
                   <tr>

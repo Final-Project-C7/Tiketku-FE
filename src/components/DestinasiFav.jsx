@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Image, Button, Card } from "react-bootstrap";
+import { Image, Button, Card, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -78,7 +78,7 @@ const DestinasiFav = ({ destinations, onFilter }) => {
           Eropa</div>
         </Button>
 
-        <Button className="destinasi-fav__category-2 d-flex align-items-center justify-content-center text-dark text-decoration-none mt-2 p-1">
+        {/* <Button className="destinasi-fav__category-2 d-flex align-items-center justify-content-center text-dark text-decoration-none mt-2 p-1">
           <Image className="destinasi-fav__search-img me-2" src="/search.svg" alt="search" />
           <div 
           onClick={handleApplyFilter}
@@ -87,9 +87,7 @@ const DestinasiFav = ({ destinations, onFilter }) => {
           placeholder="Semua"
           >
           Afrika</div>
-        </Button>
-
-
+        </Button> */}
 
         {/* <Link to="/" className="destinasi-fav__category-1 d-flex align-items-center justify-content-center text-white text-decoration-none mt-2 p-1">
           <Image className="destinasi-fav__search-img me-2" src="/search.svg" alt="search" />
@@ -118,7 +116,9 @@ const DestinasiFav = ({ destinations, onFilter }) => {
         </Link> */}
 
       </div>
-      <div className="destinasi-card d-flex justify-content-center flex-wrap mb-5 mx-4">
+      
+      <Container>
+      <div className="destinasi-card d-flex flex-wrap mb-5">
         <Card className="shadow" style={{ width: "18.47%" }}>
           <Card.Img variant="top" className="p-2 pb-0" src="/Frame-152.svg" />
           <Card.Body className="pt-2">
@@ -141,6 +141,7 @@ const DestinasiFav = ({ destinations, onFilter }) => {
             </Card.Text>
           </Card.Body>
         </Card>
+
         <Card className="ms-3 shadow" style={{ width: "18.47%" }}>
           <Card.Img variant="top" className="p-2 pb-0" src="/frame154.svg" />
           <Card.Body className="pt-3">
@@ -163,7 +164,7 @@ const DestinasiFav = ({ destinations, onFilter }) => {
             </Card.Text>
           </Card.Body>
         </Card>
-        <Card className="ms-3 shadow" style={{ width: "18.47%" }}>
+        {/* <Card className="ms-3 shadow" style={{ width: "18.47%" }}>
           <Card.Img variant="top" className="p-2 pb-0" src="/Frame-152.svg" />
           <Card.Body className="pt-2">
             <Card.Text className="destinasi-card__text-1 fw-bold mb-1">Jakarta &rarr; Bangkok</Card.Text>
@@ -173,8 +174,9 @@ const DestinasiFav = ({ destinations, onFilter }) => {
               Mulai dari <span className="text-danger fw-bold">IDR 950.000</span>
             </Card.Text>
           </Card.Body>
-        </Card>
+        </Card> */}
       </div>
+      </Container>
     </div>
   );
 };

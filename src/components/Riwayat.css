@@ -151,8 +151,9 @@
 
 @media screen and (max-width: 768px) {
   .history {
-    width: 80%;
+    width: 100%;
     margin-top: 5rem;
+    padding-right: 20%;
   }
 
   .border-bottom {
@@ -164,7 +165,7 @@
   }
 
   .history-filter {
-    width: auto;
+    width: 10%;
   }
 
   .checkout-biodata {
@@ -192,11 +193,11 @@
   }
 
   .history-top {
-    width: 100%;
+    width: 80%;
   }
 
   .checkout-biodata {
-    width: 100%;
+    width: 80%;
   }
 
   .text-un {

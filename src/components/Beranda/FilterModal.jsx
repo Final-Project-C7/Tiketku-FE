@@ -17,10 +17,10 @@ function FilterModal() {
   };
 
   const style = `
-  .modal-history__filter {
-    margin-left: 22rem;
-    margin-top: 12rem;
-  }
+  // .modal-history__filter {
+  //   margin-left: 22rem;
+  //   margin-top: 12rem;
+  // }
 
   .close-btn__img {
     width: 18px;
@@ -48,7 +48,7 @@ function FilterModal() {
         <h5 className="ms-2 mb-0">Filter</h5>
       </Button>
 
-      <Modal size="sm" className="modal-history__filter" show={show} onHide={handleClose} animation={false}>
+      <Modal size="sm" className="modal-history__filter" show={show} onHide={handleClose} animation={false} centered>
         <Modal.Header className="d-flex justify-content-end">
           <Button className="delete-btn bg-transparent border-0" onClick={handleClose}>
             <Image className="close-btn__img" src="/close-button.svg" />

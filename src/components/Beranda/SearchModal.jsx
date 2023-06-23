@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button, Modal, Image, Form } from "react-bootstrap";
+import "../Riwayat.css"
 
 function SearchModal() {
   const [show, setShow] = useState(false);
@@ -8,11 +9,11 @@ function SearchModal() {
   const handleShow = () => setShow(true);
 
   const style = `
-  .modal-history__search {
-    width: 27rem;
-    margin-left: 53rem;
-    margin-top: 12rem;
-  }
+  // .modal-history__search {
+  //   width: 27rem;
+  //   margin-left: 53rem;
+  //   margin-top: 12rem;
+  // }
 
   .history__search:focus {
     outline-style: none;
@@ -85,7 +86,7 @@ function SearchModal() {
       <style>{style}</style>
       <Image className="ms-3" src="/searchriwayat.svg" style={{ cursor: "pointer" }} onClick={handleShow} />
 
-      <Modal size="md" className="modal-history__search" show={show} onHide={handleClose} animation={false}>
+      <Modal size="md" className="modal-history__search" show={show} onHide={handleClose} animation={false} centered>
         <Modal.Header>
           <Form className="d-flex align-items-center  rounded-2 col-11 border border-2 py-2 px-3">
             <Image className="me-2" src="/search.svg" alt="search" />

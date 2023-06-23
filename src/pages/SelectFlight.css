@@ -17,7 +17,7 @@
 }
 
 .search-flight {
-  margin-left: 16px;
+  margin-left: 0 !important;
   margin-bottom: 23px;
 }
 
@@ -29,7 +29,7 @@
 
 #select-flight .btn-search {
   background-color: #73ca5c !important;
-  width: 220px;
+  width: 100% !important;
   border: none;
   border-radius: 12px;
   height: 50px;

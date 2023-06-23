@@ -1,6 +1,6 @@
 #select-flight {
   margin-top: 131px;
-  width: 1080px;
+  width: auto !important;
 }
 
 .title {

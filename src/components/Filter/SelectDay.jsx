@@ -5,8 +5,9 @@ import Button from "react-bootstrap/Button";
 function SelectDay() {
   return (
     <>
-      <div className="row search-flight justify-content-center">
-        <div className="col-8 lg-8 title-search d-flex align-items-center">
+    <div className="container-fluid">
+      <div className="row search-flight">
+        <div className="col-12 col-md-8 lg-8 title-search d-flex align-items-center mb-3">
           <img
             src={arrowleft}
             alt="arrow-left"
@@ -17,7 +18,7 @@ function SelectDay() {
           />
           <p className="ms-3 mt-3">JKT &gt; MLB -2 Penumpang - Economy</p>
         </div>
-        <div className="col-3">
+        <div className="col-12 col-md-4">
           <Button variant="s btn-search" className="">
             Ubah Pencarian
           </Button>
@@ -25,7 +26,7 @@ function SelectDay() {
       </div>
 
       <div className="row">
-        <div className="col-12 d-flex justify-content-center btn-flight">
+        <div className="col-12 table-responsive d-flex justify-content-center btn-flight">
           <Button variant="secondary" className="select-day__btn">
             <p>
               Selasa <span>01/03/2023</span>
@@ -76,8 +77,9 @@ function SelectDay() {
         </div>
         <hr className="horizontal-divider mt-3" />
       </div>
+      </div>
     </>
   );
 }
 
-export default SelectDay;
+export default SelectDay;

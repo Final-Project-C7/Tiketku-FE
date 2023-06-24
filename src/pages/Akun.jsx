@@ -114,7 +114,7 @@ function Akun() {
                     <input
                       className="account__input col-12 border-0"
                       type="text"
-                      defaultValue=""
+                      defaultValue="Harry"
                     />
                   </div>
                 </div>
@@ -156,14 +156,14 @@ function Akun() {
             <Modal.Title>Confirm Logout</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <div className="text-center">
+            {/* <div className="text-center">
               <img
                 src="fi_log-out.svg"
                 alt="background"
                 className="img-fluid mt-2 mb-4 mx-auto d-block"
                 style={{ width: "20%" }}
               />
-            </div>
+            </div> */}
             <p>Are you sure you want to logout?</p>
           </Modal.Body>
           <Modal.Footer>

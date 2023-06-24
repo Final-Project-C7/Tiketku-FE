@@ -1,11 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Navbar, Image, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import FormModalAdminPayments from "../components/Form/FormModalAdminPayments";
 
 import "./AdminUsers.css";
 
 function AdminPayments() {
+  const [data, setData] = useState([]);
+  const token = localStorage.getItem("token");
+  const headers = { Authorization: `Bearer ${token}` };
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/api/v1/payments", { headers })
+      .then((response) => {
+        setData(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching Data:", error);
+      });
+  }, []);
   return (
     <>
       <div className="d-flex">
@@ -75,13 +90,13 @@ function AdminPayments() {
           </Navbar.Collapse>
           <div className="container p-4">
             <nav aria-label="breadcrumb">
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item active" aria-current="page">
-                  <Link to="/admin" class="text-decoration-none text-dark fw-bold d-flex align-items-center">
+              <ol className="breadcrumb">
+                <li className="breadcrumb-item active" aria-current="page">
+                  <Link to="/admin" className="text-decoration-none text-dark fw-bold d-flex align-items-center">
                     <Image className="breadcrumb__img me-1" src="dashboard-icon.svg" /> Dashboard
                   </Link>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">
+                <li className="breadcrumb-item active" aria-current="page">
                   Payments
                 </li>
               </ol>
@@ -101,25 +116,27 @@ function AdminPayments() {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>Credit Card</td>
-                    <td>250000</td>
-                    <td>1945-08-17T00:00:00.000Z</td>
-                    <td>
-                      <div className="d-flex">
-                        <Button className="btn-secondary d-flex py-1 px-3">
-                          <Image className="create-icon" src="/edit-icon.svg" />
-                          <p className="text-white ms-1 mb-0">Edit</p>
-                        </Button>
-                        <Button className="btn-danger d-flex py-1 px-3 ms-1">
-                          <Image className="create-icon" src="/delete-icon.svg" />
-                          <p className="text-white ms-1 mb-0">Delete</p>
-                        </Button>
-                      </div>
-                    </td>
-                  </tr>
+                  {data?.data?.payments.map((payment, index) => (
+                    <tr key={payment.id}>
+                      <td>{index + 1}</td>
+                      <td>{payment.booking_id}</td>
+                      <td>{payment.payment_method}</td>
+                      <td>{payment.payment_amount}</td>
+                      <td>{payment.payment_date}</td>
+                      <td>
+                        <div className="d-flex">
+                          <Button className="btn-secondary d-flex py-1 px-3">
+                            <Image className="create-icon" src="/edit-icon.svg" />
+                            <p className="text-white ms-1 mb-0">Edit</p>
+                          </Button>
+                          <Button className="btn-danger d-flex py-1 px-3 ms-1">
+                            <Image className="create-icon" src="/delete-icon.svg" />
+                            <p className="text-white ms-1 mb-0">Delete</p>
+                          </Button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
             </div>

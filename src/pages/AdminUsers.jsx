@@ -1,11 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Navbar, Image, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import FormModalAdminUsers from "../components/Form/FormModalAdminUsers";
 
 import "./AdminUsers.css";
 
 function AdminUsers() {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/api/v1/user")
+      .then((response) => {
+        setData(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching Data:", error);
+      });
+  }, []);
   return (
     <>
       <div className="d-flex">
@@ -75,13 +88,13 @@ function AdminUsers() {
           </Navbar.Collapse>
           <div className="container p-4">
             <nav aria-label="breadcrumb">
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item active" aria-current="page">
-                  <Link to="/admin" class="text-decoration-none text-dark fw-bold d-flex align-items-center">
+              <ol className="breadcrumb">
+                <li className="breadcrumb-item active" aria-current="page">
+                  <Link to="/admin" className="text-decoration-none text-dark fw-bold d-flex align-items-center">
                     <Image className="breadcrumb__img me-1" src="dashboard-icon.svg" /> Dashboard
                   </Link>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">
+                <li className="breadcrumb-item active" aria-current="page">
                   Users
                 </li>
               </ol>
@@ -101,24 +114,26 @@ function AdminUsers() {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>Budi</td>
-                    <td>passwordBudi</td>
-                    <td>081234567890</td>
-                    <td>
-                      <div className="d-flex">
-                        <Button className="btn-secondary d-flex py-1 px-3">
-                          <Image className="create-icon" src="/edit-icon.svg" />
-                          <p className="text-white ms-1 mb-0">Edit</p>
-                        </Button>
-                        <Button className="btn-danger d-flex py-1 px-3 ms-1">
-                          <Image className="create-icon" src="/delete-icon.svg" />
-                          <p className="text-white ms-1 mb-0">Delete</p>
-                        </Button>
-                      </div>
-                    </td>
-                  </tr>
+                  {data?.data?.users.map((user, index) => (
+                    <tr key={user.id}>
+                      <td>{index + 1}</td>
+                      <td>{user.name}</td>
+                      <td>{user.password}</td>
+                      <td>{user.phoneNumber}</td>
+                      <td>
+                        <div className="d-flex">
+                          <Button className="btn-secondary d-flex py-1 px-3">
+                            <Image className="create-icon" src="/edit-icon.svg" />
+                            <p className="text-white ms-1 mb-0">Edit</p>
+                          </Button>
+                          <Button className="btn-danger d-flex py-1 px-3 ms-1">
+                            <Image className="create-icon" src="/delete-icon.svg" />
+                            <p className="text-white ms-1 mb-0">Delete</p>
+                          </Button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
             </div>

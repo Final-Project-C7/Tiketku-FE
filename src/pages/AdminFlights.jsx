@@ -1,11 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Navbar, Image, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import FormModalAdminFlights from "../components/Form/FormModalAdminFlights";
 
 import "./AdminUsers.css";
 
 function AdminFlights() {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/api/v1/flight")
+      .then((response) => {
+        setData(response.data); // Mengakses properti 'users' dari respons data
+      })
+      .catch((error) => {
+        console.error("Error fetching Data:", error);
+      });
+  }, []);
   return (
     <>
       <div className="d-flex">
@@ -75,13 +88,13 @@ function AdminFlights() {
           </Navbar.Collapse>
           <div className="container p-4">
             <nav aria-label="breadcrumb">
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item active" aria-current="page">
-                  <Link to="/admin" class="text-decoration-none text-dark fw-bold d-flex align-items-center">
+              <ol className="breadcrumb">
+                <li className="breadcrumb-item active" aria-current="page">
+                  <Link to="/admin" className="text-decoration-none text-dark fw-bold d-flex align-items-center">
                     <Image className="breadcrumb__img me-1" src="dashboard-icon.svg" /> Dashboard
                   </Link>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">
+                <li className="breadcrumb-item active" aria-current="page">
                   Flights
                 </li>
               </ol>
@@ -95,10 +108,11 @@ function AdminFlights() {
                   <tr>
                     <th>No</th>
                     <th>Airline ID</th>
-                    <th>Airline ID</th>
+                    <th>Admin ID</th>
                     <th>Flight Code</th>
                     <th>Departure</th>
                     <th>Arrival</th>
+                    <th>Seat ID</th>
                     <th>Economy Class Price</th>
                     <th>Premium Economy Price</th>
                     <th>Business Price</th>
@@ -109,32 +123,35 @@ function AdminFlights() {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>112</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>250000</td>
-                    <td>350000</td>
-                    <td>450000</td>
-                    <td>550000</td>
-                    <td>2022-10-17T00:00:00.000Z</td>
-                    <td>2022-10-17T00:00:00.000Z</td>
-                    <td>
-                      <div className="">
-                        <Button className="btn-secondary d-flex py-1 px-3">
-                          <Image className="create-icon" src="/edit-icon.svg" />
-                          <p className="text-white ms-1 mb-0">Edit</p>
-                        </Button>
-                        <Button className="btn-danger d-flex py-1 px-3 mt-1">
-                          <Image className="create-icon" src="/delete-icon.svg" />
-                          <p className="text-white ms-1 mb-0">Delete</p>
-                        </Button>
-                      </div>
-                    </td>
-                  </tr>
+                  {data?.data?.map((flight, index) => (
+                    <tr key={flight.id}>
+                      <td>{index + 1}</td>
+                      <td>{flight.airline_id}</td>
+                      <td>{flight.admin_id}</td>
+                      <td>{flight.flight_code}</td>
+                      <td>{flight.departure}</td>
+                      <td>{flight.arrival}</td>
+                      <td>{flight.seat_id}</td>
+                      <td>{flight.economyClass_price}</td>
+                      <td>{flight.premiumEconomy_price}</td>
+                      <td>{flight.business_price}</td>
+                      <td>{flight.firstClass_price}</td>
+                      <td>{flight.departure_time}</td>
+                      <td>{flight.arrival_time}</td>
+                      <td>
+                        <div className="">
+                          <Button className="btn-secondary d-flex py-1 px-3">
+                            <Image className="create-icon" src="/edit-icon.svg" />
+                            <p className="text-white ms-1 mb-0">Edit</p>
+                          </Button>
+                          <Button className="btn-danger d-flex py-1 px-3 mt-1">
+                            <Image className="create-icon" src="/delete-icon.svg" />
+                            <p className="text-white ms-1 mb-0">Delete</p>
+                          </Button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
             </div>

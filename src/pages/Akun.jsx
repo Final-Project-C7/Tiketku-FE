@@ -152,28 +152,21 @@ function Akun() {
           onHide={cancelLogoutHandler}
           centered
         >
-          <Modal.Header closeButton>
-            <Modal.Title>Confirm Logout</Modal.Title>
-          </Modal.Header>
           <Modal.Body>
-            <div className="text-center">
-              <img
-                src="fi_log-out.svg"
-                alt="background"
-                className="img-fluid mt-2 mb-4 mx-auto d-block"
-                style={{ width: "20%" }}
-              />
+            <p className="mb-3">Are you sure you want to logout?</p>
+            <div className="d-flex justify-content-end gap-2">
+              <Button variant="secondary" onClick={cancelLogoutHandler}>
+                Cancel
+              </Button>
+              <Button
+                variant="primary"
+                className="logout-button"
+                onClick={confirmLogoutHandler}
+              >
+                Logout
+              </Button>
             </div>
-            <p>Are you sure you want to logout?</p>
           </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={cancelLogoutHandler}>
-              Cancel
-            </Button>
-            <Button variant="primary" onClick={confirmLogoutHandler}>
-              Logout
-            </Button>
-          </Modal.Footer>
         </Modal>
       </Container>
     </>

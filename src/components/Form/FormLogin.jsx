@@ -1,5 +1,5 @@
 import "./FormLogin.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -11,6 +11,20 @@ const FormLogin = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const [isLoading, setIsLoading] = useState(false); // New state variable for loading
+  const [showError, setShowError] = useState(false);
+
+  useEffect(() => {
+    let timer;
+    if (error) {
+      setShowError(true);
+      timer = setTimeout(() => {
+        setError("");
+        setShowError(false);
+      }, 3000); // Waktu penundaan, dalam milidetik (di sini 5000ms atau 5 detik)
+    }
+    return () => clearTimeout(timer);
+  }, [error]);
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -26,6 +40,7 @@ const FormLogin = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setIsLoading(true); // Start loading
 
     try {
       const response = await axios.post(
@@ -42,6 +57,8 @@ const FormLogin = () => {
     } catch (error) {
       setError("Invalid email or password");
     }
+
+    setIsLoading(false); // Stop loading
   };
 
   return (
@@ -92,10 +109,23 @@ const FormLogin = () => {
             <FontAwesomeIcon icon={passwordVisible ? faEye : faEyeSlash} />
           </span>
         </div>
-        {error && <p className="error-message">{error}</p>}
+        {error && (
+          <Button
+            variant="danger"
+            className="error-button d-flex justify-content-center error-message fade-out align-items-center"
+            onClick={() => setError("")}
+            style={{ width: "200px", fontSize: "13px", textAlign: "center" }}
+          >
+            {error}
+          </Button>
+        )}
         <div className="d-grid gap-2 mt-5">
-          <button className="login__btn btn lg sign-up fw-bold" type="submit">
-            Masuk
+          <button
+            className="login__btn btn lg sign-up fw-bold"
+            type="submit"
+            disabled={isLoading}
+          >
+            {isLoading ? "Loading..." : "Masuk"}
           </button>
         </div>
       </form>

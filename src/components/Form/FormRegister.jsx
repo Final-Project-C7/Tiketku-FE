@@ -1,9 +1,9 @@
-import "./FormLogin.css";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
+import loadingGif from "/loading-regis.gif";
 import axios from "axios";
 
 function FormRegister() {
@@ -13,22 +13,31 @@ function FormRegister() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [successMessage, setSuccessMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [showError, setShowError] = useState(false);
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
 
-  const handleCloseModal = () => {
-    setShowModal(false);
-  };
+  useEffect(() => {
+    let timer;
+    if (error) {
+      setShowError(true);
+      timer = setTimeout(() => {
+        setError("");
+        setShowError(false);
+      }, 3000); // Waktu penundaan, dalam milidetik (di sini 5000ms atau 5 detik)
+    }
+    return () => clearTimeout(timer);
+  }, [error]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     setIsLoading(true);
+    setShowModal(true); // Menampilkan modal saat loading dimulai
 
     try {
       const response = await axios.post(
@@ -41,6 +50,8 @@ function FormRegister() {
         }
       );
 
+      localStorage.setItem("email", email);
+
       // Handle successful registration
       const { newUser, otp } = response.data.data;
       console.log(newUser); // Do something with newUser
@@ -51,9 +62,13 @@ function FormRegister() {
       setEmail("");
       setPhoneNumber("");
       setPassword("");
-      setSuccessMessage("registrasi berhasil");
       setError("");
-      setShowModal(true);
+
+      // Generate the OTP URL with the email as a parameter
+      const otpUrl = `/otp`;
+
+      // Navigate to OTP page
+      window.location.href = otpUrl;
     } catch (error) {
       if (
         error.response &&
@@ -64,10 +79,10 @@ function FormRegister() {
       } else {
         setError("Failed to register");
       }
-      setSuccessMessage("");
     }
 
     setIsLoading(false);
+    setShowModal(false); // Menutup modal setelah loading selesai
   };
 
   const passwordInputType = passwordVisible ? "text" : "password";
@@ -139,12 +154,26 @@ function FormRegister() {
     }
     
     .error-message {
-      color: red;
+      color: white;
+      margin-top: 7px
       margin-bottom: 10px;
     }
     
+    .fade-out {
+      animation: fadeOut 3s ease-out;
+      animation-fill-mode: forwards;
+    }
+    
+    /* Animasi fade-out */
+    @keyframes fadeOut {
+      from {
+        opacity: 1;
+      }
+      to {
+        opacity: 0;
+      }
+    }
   `;
-
   return (
     <>
       <style>{style}</style>
@@ -219,54 +248,41 @@ function FormRegister() {
           </span>
         </div>
 
-        {error && <p className="error-message">{error}</p>}
+        {showError && (
+          <Button
+            variant="danger"
+            className="error-button d-flex justify-content-center error-message fade-out align-items-center"
+            onClick={() => setError("")}
+            style={{ width: "150px", fontSize: "13px", textAlign: "center" }}
+          >
+            {error}
+          </Button>
+        )}
+
         <div className="d-grid gap-2 mt-4">
           <button className="register__btn btn lg sign-up" type="submit">
             Register
           </button>
         </div>
       </form>
+
+      <Modal
+        show={showModal}
+        centered
+        className="d-flex align-items-center justify-content-center"
+      >
+        <Modal.Body style={{ width: "200px" }} className="text-center">
+          <img src={loadingGif} alt="loading" style={{ width: "100%" }} />
+          <p>Please Wait...</p>
+        </Modal.Body>
+      </Modal>
+
       <p className="mt-5 mb-1 text-center">
         Sudah punya akun?{"  "}
         <Link to="/login" className="fw-bold register">
           Masuk di sini
         </Link>
       </p>
-
-      {successMessage && (
-        <Modal
-          show={showModal}
-          onHide={handleCloseModal}
-          backdrop="static"
-          keyboard={false}
-          centered
-        >
-          <Modal.Header>
-            <Modal.Title>Registration Success</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <p>
-              Congratulations {successMessage},
-              <Link
-                to={"https://tiketku-fe-production.up.railway.app/register"}
-                className="fw-bold"
-              >
-                {" "}
-                Click Login
-              </Link>
-            </p>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button
-              style={{ padding: "10px 20px" }}
-              variant="primary"
-              onClick={handleCloseModal}
-            >
-              Close
-            </Button>
-          </Modal.Footer>
-        </Modal>
-      )}
     </>
   );
 }

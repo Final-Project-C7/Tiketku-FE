@@ -24,6 +24,7 @@ import AdminBookings from "./pages/AdminBookings";
 import AdminPassengers from "./pages/AdminPassengers";
 import AdminSeats from "./pages/AdminSeats";
 import AdminPayments from "./pages/AdminPayments";
+import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
   return (
@@ -55,6 +56,7 @@ function App() {
           <Route path="/admin-passengers" element={<AdminPassengers />} />
           <Route path="/admin-seats" element={<AdminSeats />} />
           <Route path="/admin-payments" element={<AdminPayments />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>
     </>

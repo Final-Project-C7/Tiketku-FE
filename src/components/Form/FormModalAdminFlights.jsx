@@ -54,14 +54,14 @@ function FormModalAdminFlights() {
       setFirstClassPrice("");
       setDepartureTime("");
       setArrivalTime("");
-      setSuccessMessage("create user success");
+      setSuccessMessage("Success to create flight");
       setError("");
       window.location.reload();
     } catch (error) {
       if (error.response && error.response.data && error.response.data.message) {
         setError(error.response.data.message);
       } else {
-        setError("Failed to create user");
+        setError("Failed to create flight");
       }
       setSuccessMessage("");
     }

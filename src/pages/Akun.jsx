@@ -114,7 +114,7 @@ function Akun() {
                     <input
                       className="account__input col-12 border-0"
                       type="text"
-                      defaultValue=""
+                      defaultValue="Harry"
                     />
                   </div>
                 </div>
@@ -153,6 +153,7 @@ function Akun() {
           centered
         >
           <Modal.Body>
+
             <p className="mb-3">Are you sure you want to logout?</p>
             <div className="d-flex justify-content-end gap-2">
               <Button variant="secondary" onClick={cancelLogoutHandler}>
@@ -166,6 +167,7 @@ function Akun() {
                 Logout
               </Button>
             </div>
+
           </Modal.Body>
         </Modal>
       </Container>

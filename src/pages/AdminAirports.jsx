@@ -1,16 +1,37 @@
-import React from "react";
-import { Navbar, Image, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Navbar, Image, Button, Dropdown } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 import FormModalAdminAirports from "../components/Form/FormModalAirports";
 
 import "./AdminUsers.css";
 
 function AdminAirports() {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/api/v1/airports")
+      .then((response) => {
+        setData(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching Data:", error);
+      });
+  }, []);
+
+  const navigateTo = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigateTo("/admin-login");
+  };
+
   return (
     <>
       <div className="d-flex">
         <div className="side-bar-admin col-2 bg-body-tertiary shadow">
-          <Image className="side-bar-admin__logo p-4" src="logo.svg" />
+          <Image className="side-bar-admin__logo p-4" src="/logofinal.png" />
           <div className="mt-3">
             <Link to="/admin" className="text-decoration-none">
               <div className="side-bar-admin__list text-dark d-flex align-items-center py-3 px-4 mb-1">
@@ -71,17 +92,24 @@ function AdminAirports() {
         <div className="col-10">
           <Navbar.Collapse className="navbar-admin Container d-flex p-4">
             <h4 className="me-auto mb-0">Airports</h4>
-            <Image className="me-3" src="/fi_user_org.svg" />
+            <Dropdown>
+              <Dropdown.Toggle variant="transparent" id="dropdown-basic" className="border-0">
+                <Image src="/fi_user_org.svg" />
+              </Dropdown.Toggle>
+              <Dropdown.Menu className="btn bg-danger" onClick={handleLogout}>
+                <Dropdown.Item className="bg-danger text-white text-center">Logout</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
           </Navbar.Collapse>
           <div className="container p-4">
             <nav aria-label="breadcrumb">
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item active" aria-current="page">
-                  <Link to="/admin" class="text-decoration-none text-dark fw-bold d-flex align-items-center">
+              <ol className="breadcrumb">
+                <li className="breadcrumb-item active" aria-current="page">
+                  <Link to="/admin" className="text-decoration-none text-dark fw-bold d-flex align-items-center">
                     <Image className="breadcrumb__img me-1" src="dashboard-icon.svg" /> Dashboard
                   </Link>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">
+                <li className="breadcrumb-item active" aria-current="page">
                   Airports
                 </li>
               </ol>
@@ -102,25 +130,27 @@ function AdminAirports() {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>Soekarno-Hatta International Airport</td>
-                    <td>Jakarta</td>
-                    <td>Indonesia</td>
-                    <td>https://ik.imagekit.io/test123/IMG-1685202069643_V3uz9HkYJ.png</td>
-                    <td>
-                      <div className="d-flex">
-                        <Button className="btn-secondary d-flex py-1 px-3">
-                          <Image className="create-icon" src="/edit-icon.svg" />
-                          <p className="text-white ms-1 mb-0">Edit</p>
-                        </Button>
-                        <Button className="btn-danger d-flex py-1 px-3 ms-1">
-                          <Image className="create-icon" src="/delete-icon.svg" />
-                          <p className="text-white ms-1 mb-0">Delete</p>
-                        </Button>
-                      </div>
-                    </td>
-                  </tr>
+                  {data?.data?.airport.map((airport, index) => (
+                    <tr key={airport.id}>
+                      <td>{index + 1}</td>
+                      <td>{airport.airport_name}</td>
+                      <td>{airport.city}</td>
+                      <td>{airport.country}</td>
+                      <td>{airport.imgURL}</td>
+                      <td>
+                        <div className="d-flex">
+                          <Button className="btn-secondary d-flex py-1 px-3">
+                            <Image className="create-icon" src="/edit-icon.svg" />
+                            <p className="text-white ms-1 mb-0">Edit</p>
+                          </Button>
+                          <Button className="btn-danger d-flex py-1 px-3 ms-1">
+                            <Image className="create-icon" src="/delete-icon.svg" />
+                            <p className="text-white ms-1 mb-0">Delete</p>
+                          </Button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
             </div>

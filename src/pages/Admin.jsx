@@ -1,15 +1,117 @@
-import React from "react";
-import { Navbar, Image } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Navbar, Image, Dropdown } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 import "./Admin.css";
 
 function Admin() {
+  const [users, setUsers] = useState([]);
+  const [airlines, setAirlines] = useState([]);
+  const [airports, setAirports] = useState([]);
+  const [flights, setFlights] = useState([]);
+  const [bookings, setBookings] = useState([]);
+  const [passengers, setPassengers] = useState([]);
+  const [seats, setSeats] = useState([]);
+  const [payments, setPayments] = useState([]);
+
+  const token = localStorage.getItem("token");
+  const headers = { Authorization: `Bearer ${token}` };
+
+  useEffect(() => {
+    // get all users
+    axios
+      .get("http://localhost:8000/api/v1/user")
+      .then((response) => {
+        setUsers(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+
+    // get all airlines
+    axios
+      .get("http://localhost:8000/api/v1/airline")
+      .then((response) => {
+        setAirlines(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+
+    // get all airports
+    axios
+      .get("http://localhost:8000/api/v1/airports")
+      .then((response) => {
+        setAirports(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+
+    // get all flights
+    axios
+      .get("http://localhost:8000/api/v1/flight")
+      .then((response) => {
+        setFlights(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+
+    // get all bookings
+    axios
+      .get("http://localhost:8000/api/v1/bookings", { headers })
+      .then((response) => {
+        setBookings(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+
+    // get all passengers
+    axios
+      .get("http://localhost:8000/api/v1/passengers", { headers })
+      .then((response) => {
+        setPassengers(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+
+    // get all seats
+    axios
+      .get("http://localhost:8000/api/v1/seats", { headers })
+      .then((response) => {
+        setSeats(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+
+    // get all payments
+    axios
+      .get("http://localhost:8000/api/v1/payments", { headers })
+      .then((response) => {
+        setPayments(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
+  const navigateTo = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigateTo("/admin-login");
+  };
+
   return (
     <>
       <div className="d-flex">
         <div className="side-bar-admin col-2 bg-body-tertiary shadow">
-          <Image className="side-bar-admin__logo p-4" src="logo.svg" />
+          <Image className="side-bar-admin__logo p-4" src="/logofinal.png" />
           <div className="mt-3">
             <Link to="/admin" className="text-decoration-none">
               <div className="side-bar-admin__list side-bar-admin__selected d-flex align-items-center py-3 px-4 mb-1">
@@ -70,7 +172,14 @@ function Admin() {
         <div className="col-10">
           <Navbar.Collapse className="navbar-admin Container d-flex p-4">
             <h4 className="me-auto mb-0">Dashboard</h4>
-            <Image className="me-3" src="/fi_user_org.svg" />
+            <Dropdown>
+              <Dropdown.Toggle variant="transparent" id="dropdown-basic" className="border-0">
+                <Image src="/fi_user_org.svg" />
+              </Dropdown.Toggle>
+              <Dropdown.Menu className="btn bg-danger" onClick={handleLogout}>
+                <Dropdown.Item className="bg-danger text-white text-center">Logout</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
           </Navbar.Collapse>
           <div className="container p-4">
             <h1>Welcome to Admin Page</h1>
@@ -80,10 +189,10 @@ function Admin() {
                   <Image className="main-admin__icon col-4" src="users-icon.svg" />
                   <div className="col-8 ms-4">
                     <h4 className="mb-0">Users</h4>
-                    <p className="mb-0">(jumlah) Users</p>
+                    <p className="mb-0">{users.data?.users.length} Users</p>
                   </div>
                 </div>
-                <Link to="/" className="text-decoration-none">
+                <Link to="/admin-users" className="text-decoration-none">
                   <p className="text-dark bg-info-subtle text-center mb-0 py-1">Lihat Detail</p>
                 </Link>
               </div>
@@ -92,10 +201,10 @@ function Admin() {
                   <Image className="main-admin__icon col-4" src="airlines-icon.svg" />
                   <div className="col-8 ms-4">
                     <h4 className="mb-0">Airlines</h4>
-                    <p className="mb-0">(jumlah) Airlines</p>
+                    <p className="mb-0">{airlines.data?.airlinesData.length} Airlines</p>
                   </div>
                 </div>
-                <Link to="/" className="text-decoration-none">
+                <Link to="/admin-airlines" className="text-decoration-none">
                   <p className="text-dark bg-info-subtle text-center mb-0 py-1">Lihat Detail</p>
                 </Link>
               </div>
@@ -104,10 +213,10 @@ function Admin() {
                   <Image className="main-admin__icon col-4" src="airport-icon.svg" />
                   <div className="col-8 ms-4">
                     <h4 className="mb-0">Airports</h4>
-                    <p className="mb-0">(jumlah) Airports</p>
+                    <p className="mb-0">{airports.data?.airport.length} Airports</p>
                   </div>
                 </div>
-                <Link to="/" className="text-decoration-none">
+                <Link to="/admin-airports" className="text-decoration-none">
                   <p className="text-dark bg-info-subtle text-center mb-0 py-1">Lihat Detail</p>
                 </Link>
               </div>
@@ -116,10 +225,10 @@ function Admin() {
                   <Image className="main-admin__icon col-4" src="flight-icon.svg" />
                   <div className="col-8 ms-4">
                     <h4 className="mb-0">Flights</h4>
-                    <p className="mb-0">(jumlah) Flights</p>
+                    <p className="mb-0">{flights.data?.length} Flights</p>
                   </div>
                 </div>
-                <Link to="/" className="text-decoration-none">
+                <Link to="/admin-flights" className="text-decoration-none">
                   <p className="text-dark bg-info-subtle text-center mb-0 py-1">Lihat Detail</p>
                 </Link>
               </div>
@@ -128,10 +237,10 @@ function Admin() {
                   <Image className="main-admin__icon col-4" src="booking-icon.svg" />
                   <div className="col-8 ms-4">
                     <h4 className="mb-0">Bookings</h4>
-                    <p className="mb-0">(jumlah) Bookings</p>
+                    <p className="mb-0">{bookings.data?.bookings.length} Bookings</p>
                   </div>
                 </div>
-                <Link to="/" className="text-decoration-none">
+                <Link to="/admin-bookings" className="text-decoration-none">
                   <p className="text-dark bg-info-subtle text-center mb-0 py-1">Lihat Detail</p>
                 </Link>
               </div>
@@ -140,10 +249,10 @@ function Admin() {
                   <Image className="main-admin__icon col-4" src="passengers-icon.svg" />
                   <div className="col-8 ms-4">
                     <h4 className="mb-0">Passengers</h4>
-                    <p className="mb-0">(jumlah) Passengers</p>
+                    <p className="mb-0">{passengers.data?.passengers.length} Passengers</p>
                   </div>
                 </div>
-                <Link to="/" className="text-decoration-none">
+                <Link to="/admin-passengers" className="text-decoration-none">
                   <p className="text-dark bg-info-subtle text-center mb-0 py-1">Lihat Detail</p>
                 </Link>
               </div>
@@ -152,10 +261,10 @@ function Admin() {
                   <Image className="main-admin__icon col-4" src="seats-icon.svg" />
                   <div className="col-8 ms-4">
                     <h4 className="mb-0">Seats</h4>
-                    <p className="mb-0">(jumlah) Seats</p>
+                    <p className="mb-0">{seats.data?.seats.length} Seats</p>
                   </div>
                 </div>
-                <Link to="/" className="text-decoration-none">
+                <Link to="/admin-seats" className="text-decoration-none">
                   <p className="text-dark bg-info-subtle text-center mb-0 py-1">Lihat Detail</p>
                 </Link>
               </div>
@@ -164,10 +273,10 @@ function Admin() {
                   <Image className="main-admin__icon col-4" src="payment-icon.svg" />
                   <div className="col-8 ms-4">
                     <h4 className="mb-0">Payments</h4>
-                    <p className="mb-0">(jumlah) Payments</p>
+                    <p className="mb-0">{payments.data?.payments.length} Payments</p>
                   </div>
                 </div>
-                <Link to="/" className="text-decoration-none">
+                <Link to="/admin-payments" className="text-decoration-none">
                   <p className="text-dark bg-info-subtle text-center mb-0 py-1">Lihat Detail</p>
                 </Link>
               </div>

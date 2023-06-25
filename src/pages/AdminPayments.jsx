@@ -1,16 +1,38 @@
-import React from "react";
-import { Navbar, Image, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Navbar, Image, Button, Dropdown } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 import FormModalAdminPayments from "../components/Form/FormModalAdminPayments";
 
 import "./AdminUsers.css";
 
 function AdminPayments() {
+  const [data, setData] = useState([]);
+  const token = localStorage.getItem("token");
+  const headers = { Authorization: `Bearer ${token}` };
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/api/v1/payments", { headers })
+      .then((response) => {
+        setData(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching Data:", error);
+      });
+  }, []);
+
+  const navigateTo = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigateTo("/admin-login");
+  };
   return (
     <>
       <div className="d-flex">
         <div className="side-bar-admin col-2 bg-body-tertiary shadow">
-          <Image className="side-bar-admin__logo p-4" src="logo.svg" />
+          <Image className="side-bar-admin__logo p-4" src="logofinal.png" />
           <div className="mt-3">
             <Link to="/admin" className="text-decoration-none">
               <div className="side-bar-admin__list text-dark d-flex align-items-center py-3 px-4 mb-1">
@@ -70,18 +92,25 @@ function AdminPayments() {
         </div>
         <div className="col-10">
           <Navbar.Collapse className="navbar-admin Container d-flex p-4">
-            <h4 className="me-auto mb-0">Payments</h4>
-            <Image className="me-3" src="/fi_user_org.svg" />
+            <h4 className="me-auto mb-0">Airports</h4>
+            <Dropdown>
+              <Dropdown.Toggle variant="transparent" id="dropdown-basic" className="border-0">
+                <Image src="/fi_user_org.svg" />
+              </Dropdown.Toggle>
+              <Dropdown.Menu className="btn bg-danger" onClick={handleLogout}>
+                <Dropdown.Item className="bg-danger text-white text-center">Logout</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
           </Navbar.Collapse>
           <div className="container p-4">
             <nav aria-label="breadcrumb">
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item active" aria-current="page">
-                  <Link to="/admin" class="text-decoration-none text-dark fw-bold d-flex align-items-center">
+              <ol className="breadcrumb">
+                <li className="breadcrumb-item active" aria-current="page">
+                  <Link to="/admin" className="text-decoration-none text-dark fw-bold d-flex align-items-center">
                     <Image className="breadcrumb__img me-1" src="dashboard-icon.svg" /> Dashboard
                   </Link>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">
+                <li className="breadcrumb-item active" aria-current="page">
                   Payments
                 </li>
               </ol>
@@ -101,25 +130,27 @@ function AdminPayments() {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>Credit Card</td>
-                    <td>250000</td>
-                    <td>1945-08-17T00:00:00.000Z</td>
-                    <td>
-                      <div className="d-flex">
-                        <Button className="btn-secondary d-flex py-1 px-3">
-                          <Image className="create-icon" src="/edit-icon.svg" />
-                          <p className="text-white ms-1 mb-0">Edit</p>
-                        </Button>
-                        <Button className="btn-danger d-flex py-1 px-3 ms-1">
-                          <Image className="create-icon" src="/delete-icon.svg" />
-                          <p className="text-white ms-1 mb-0">Delete</p>
-                        </Button>
-                      </div>
-                    </td>
-                  </tr>
+                  {data?.data?.payments.map((payment, index) => (
+                    <tr key={payment.id}>
+                      <td>{index + 1}</td>
+                      <td>{payment.booking_id}</td>
+                      <td>{payment.payment_method}</td>
+                      <td>{payment.payment_amount}</td>
+                      <td>{payment.payment_date}</td>
+                      <td>
+                        <div className="d-flex">
+                          <Button className="btn-secondary d-flex py-1 px-3">
+                            <Image className="create-icon" src="/edit-icon.svg" />
+                            <p className="text-white ms-1 mb-0">Edit</p>
+                          </Button>
+                          <Button className="btn-danger d-flex py-1 px-3 ms-1">
+                            <Image className="create-icon" src="/delete-icon.svg" />
+                            <p className="text-white ms-1 mb-0">Delete</p>
+                          </Button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
             </div>

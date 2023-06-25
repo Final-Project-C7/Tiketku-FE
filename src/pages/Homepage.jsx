@@ -24,6 +24,7 @@ function Homepage() {
 
       {/* Tambahkan komponen lain yang diperlukan */}
       <DestinasiFav />
+      <p></p>
     </>
   );
 }

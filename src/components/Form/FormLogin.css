@@ -77,7 +77,8 @@ a {
 
 .error-message {
   color: red;
-  margin-bottom: 10px;
+  margin-bottom: -16px;
+  margin-top: 12px
 }
 
 .reset-pass__btn {
@@ -88,4 +89,21 @@ a {
 .reset-pass__btn:active,
 .reset-pass__btn:hover {
   background-color: #4b1979 !important;
+}
+
+
+
+.fade-out {
+  animation: fadeOut 3s ease-out;
+  animation-fill-mode: forwards;
+}
+
+/* Animasi fade-out */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }

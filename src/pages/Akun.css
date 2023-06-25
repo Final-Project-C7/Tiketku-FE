@@ -72,6 +72,11 @@
   }
 }
 
+.logout-button {
+  background-color: #a06ece;
+  border-color: #a06ece;
+}
+
 @media (min-widht: 1200px) {
   untuk tampilan layar lebih besar
   .akun {

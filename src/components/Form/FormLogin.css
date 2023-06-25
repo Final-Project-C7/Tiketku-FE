@@ -41,7 +41,6 @@ p {
   box-shadow: 0 0 0 0.25rem rgb(247, 238, 244);
 }
 
-
 .login__btn {
   border: none;
   padding: 14px 20px;
@@ -52,8 +51,8 @@ p {
 }
 
 .btn-check:checked + .login__btn,
-.btn.active,
-.btn.show,
+.login__btn.active,
+.login__btn.show,
 .login__btn:first-child:active,
 :not(.btn-check) + .login__btn:active,
 .login__btn:hover {

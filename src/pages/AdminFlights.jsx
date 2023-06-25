@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Navbar, Image, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Navbar, Image, Button, Dropdown } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import FormModalAdminFlights from "../components/Form/FormModalAdminFlights";
 
@@ -13,12 +13,19 @@ function AdminFlights() {
     axios
       .get("http://localhost:8000/api/v1/flight")
       .then((response) => {
-        setData(response.data); // Mengakses properti 'users' dari respons data
+        setData(response.data);
       })
       .catch((error) => {
         console.error("Error fetching Data:", error);
       });
   }, []);
+
+  const navigateTo = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigateTo("/admin-login");
+  };
   return (
     <>
       <div className="d-flex">
@@ -84,7 +91,14 @@ function AdminFlights() {
         <div className="col-10">
           <Navbar.Collapse className="navbar-admin Container d-flex p-4">
             <h4 className="me-auto mb-0">Flights</h4>
-            <Image className="me-3" src="/fi_user_org.svg" />
+            <Dropdown>
+              <Dropdown.Toggle variant="transparent" id="dropdown-basic" className="border-0">
+                <Image src="/fi_user_org.svg" />
+              </Dropdown.Toggle>
+              <Dropdown.Menu className="btn bg-danger" onClick={handleLogout}>
+                <Dropdown.Item className="bg-danger text-white text-center">Logout</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
           </Navbar.Collapse>
           <div className="container p-4">
             <nav aria-label="breadcrumb">

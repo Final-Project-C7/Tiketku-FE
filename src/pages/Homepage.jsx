@@ -5,6 +5,7 @@ import NavbarUser from "../components/NavbarUser";
 import FormFlight from "../components/Form/FormFlight";
 import DestinasiFav from "../components/DestinasiFav";
 import { useParams, Link } from "react-router-dom";
+import Footer from "../components/Footer";
 
 function Homepage() {
   const [isLoggedIn, setIsLoggedIn] = useState(false); // State untuk menyimpan status login pengguna
@@ -21,10 +22,9 @@ function Homepage() {
     <>
       {isLoggedIn ? <NavbarUser /> : <NavbarHomepage />}
       <FormFlight />
-
       {/* Tambahkan komponen lain yang diperlukan */}
       <DestinasiFav />
-      <p></p>
+      <Footer/>
     </>
   );
 }

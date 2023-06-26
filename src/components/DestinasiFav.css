@@ -3,9 +3,6 @@
   width: 66%;
 }
 
-.destinasi-card{
-  width: 108% !important;
-}
 
 .destinasi-fav__search-img {
   width: 20px;
@@ -41,37 +38,30 @@
   color: #7126b5;
 }
 
-@media (max-width: 768px) {
-  /* untuk tampilan lebih kecil */
-  .destinasi-fav {
-    width: 90%;
-    margin-top: 4rem;
-    padding-top: 2rem;
+.col{
+  padding-left: 0px !important;
+}
+
+@media screen and (max-width: 768px) {
+  .col {
+    width: 50% !important;
+    margin-bottom: 5px !important;
+
+  }
+  .destinasi-fav__category-2{
+    width : 10% !important;
+  }
+  .text__card{
+    width : 30% !important;
+  }
+  
+}
+@media screen and (max-width: 1200px) {
+  .col {
+    width: 70%;
+    margin-bottom: 10px !important;
 
   }
 
+  
 }
-
-@media (max-width: 768px) {
-  /* untuk tampilan lebih kecil */
-  .destinasi-fav__category-2 {
-    width: 90%;
-    margin-top: 4rem;
-    padding-top: 2rem;
-
-  }
-
-}
-
-@media (max-width: 768px) {
-  /* untuk tampilan lebih kecil */
-  .shadow {
-    width: 40% !important;
-    margin-bottom: 10px;
-    margin-left: 15px;
-
-  }
-
-}
-
-

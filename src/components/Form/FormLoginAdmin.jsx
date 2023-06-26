@@ -30,13 +30,10 @@ function FormLoginAdmin() {
 
     try {
       setLoading(true); // Atur loading menjadi true saat memulai pengiriman permintaan
-      const response = await axios.post(
-        "http://localhost:8000/api/v1/admin/login",
-        {
-          email,
-          password,
-        }
-      );
+      const response = await axios.post("http://localhost:8000/api/v1/admin/login", {
+        email,
+        password,
+      });
 
       localStorage.setItem("token", response.data.data.token);
 
@@ -55,17 +52,7 @@ function FormLoginAdmin() {
           <p className="mb-1">Email</p>
         </div>
         <div className="input-group mb-3">
-          <input
-            type="email"
-            className="login__form form-control"
-            placeholder="Contoh: johndoe@gmail.com"
-            aria-label="Email"
-            name="email"
-            value={email}
-            onChange={handleEmailChange}
-            required
-            style={{ fontFamily: "Poppins" }}
-          />
+          <input type="email" className="login__form form-control" placeholder="Contoh: johndoe@gmail.com" aria-label="Email" name="email" value={email} onChange={handleEmailChange} required style={{ fontFamily: "Poppins" }} />
         </div>
         <div className="d-flex">
           <div>
@@ -88,6 +75,7 @@ function FormLoginAdmin() {
             name="password"
             value={password}
             onChange={handlePasswordChange}
+            autocomplete="off"
             required
             style={{ fontFamily: "Poppins" }}
           />
@@ -97,11 +85,7 @@ function FormLoginAdmin() {
         </div>
         {error && <p className="error-message">{error}</p>}
         <div className="d-grid gap-2 mt-5">
-          <button
-            className="login__btn btn lg sign-up fw-bold"
-            type="submit"
-            disabled={loading}
-          >
+          <button className="login__btn btn lg sign-up fw-bold" type="submit" disabled={loading}>
             {loading ? "Loading..." : "Masuk"}
           </button>
         </div>

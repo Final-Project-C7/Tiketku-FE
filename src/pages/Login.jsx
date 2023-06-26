@@ -3,6 +3,7 @@ import axios from "axios";
 import loginLogo from "/Group 92.svg";
 // import logo from "grouplogo.png";
 import FormLogin from "../components/Form/FormLogin";
+import "./Login.css"
 
 const Login = () => {
   const styles = `
@@ -48,9 +49,9 @@ const Login = () => {
   return (
     <>
       <style>{styles}</style>
-      <div className="container-fluid d-flex flex-column justify-content-end">
+      <div className="container-fluid justify-content-end">
         <div className="row align-items-center">
-          <div className="col-md-6">
+          <div className="col-md-6 d-none d-md-block">
             <img
               src={loginLogo}
               alt="background"
@@ -62,8 +63,10 @@ const Login = () => {
             />
           </div>
 
-          <div className="col-md-5 ms-5 me-xxl-5 ps-xxl-4">
+          <div className="log col-md-6 col-lg-5 col-md-5 mx-auto">
+          <div className="row">
             <FormLogin />
+          </div>
           </div>
         </div>
       </div>

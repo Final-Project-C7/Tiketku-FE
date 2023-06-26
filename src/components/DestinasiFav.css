@@ -38,3 +38,30 @@
   color: #7126b5;
 }
 
+.col{
+  padding-left: 0px !important;
+}
+
+@media screen and (max-width: 768px) {
+  .col {
+    width: 50% !important;
+    margin-bottom: 5px !important;
+
+  }
+  .destinasi-fav__category-2{
+    width : 10% !important;
+  }
+  .text__card{
+    width : 30% !important;
+  }
+  
+}
+@media screen and (max-width: 1200px) {
+  .col {
+    width: 70%;
+    margin-bottom: 10px !important;
+
+  }
+
+  
+}

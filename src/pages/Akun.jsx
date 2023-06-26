@@ -7,28 +7,57 @@ import NavbarUser from "../components/NavbarUser";
 import "./Akun.css";
 
 function Akun() {
+  const [user, setUser] = useState(null);
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+  const [showUpdateModal, setShowUpdateModal] = useState(false); // State untuk menampilkan modal update
+  const [updatedUser, setUpdatedUser] = useState({}); // Set initial value to empty object
 
-  // const [data, setData] = useState({});
-  // let params = useParams();
+  useEffect(() => {
+    // Fungsi untuk mengambil data pengguna berdasarkan token
+    const getUserData = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        const response = await axios.get(
+          "http://localhost:8000/api/v1/user/user-info",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        setUser(response.data.data.user);
+      } catch (error) {
+        // Handle error jika terjadi masalah saat mengambil data pengguna
+        console.log("Error:", error);
+      }
+    };
 
-  // useEffect(() => {
-  //   const token = localStorage.getItem("token");
-  //   const headers = { Authorization: `Bearer ${token}` };
-  //   axios
-  //     .get(`https://c7-tiketku.up.railway.app/api/v1/user/${params.id}`, {
-  //       headers,
-  //     })
-  //     .then(function (response) {
-  //       console.log(response.data.data);
-  //       setData(response.data.data);
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error.message);
-  //     });
-  // }, [setData]);
-  // console.log("ini params");
-  // console.log(params.id);
+    getUserData();
+  }, []);
+
+  const saveProfile = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      const response = await axios.put(
+        "http://localhost:8000/api/v1/user/update",
+        updatedUser,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      // Handle the response if needed
+      console.log(response.data);
+
+      // Update the user state with the updated user data
+
+      setShowUpdateModal(true);
+    } catch (error) {
+      // Handle error if update fails
+      console.log("Error:", error);
+    }
+  };
 
   const logoutHandler = () => {
     // Menampilkan modal konfirmasi saat logout
@@ -114,7 +143,13 @@ function Akun() {
                     <input
                       className="account__input col-12 border-0"
                       type="text"
-                      defaultValue="Harry"
+                      defaultValue={user ? user.name : ""}
+                      onChange={(e) =>
+                        setUpdatedUser((prevUser) => ({
+                          ...prevUser,
+                          name: e.target.value,
+                        }))
+                      }
                     />
                   </div>
                 </div>
@@ -126,7 +161,13 @@ function Akun() {
                     <input
                       className="account__input col-12 border-0"
                       type="text"
-                      defaultValue="+62 897823232"
+                      defaultValue={user ? user.phoneNumber : ""}
+                      onChange={(e) =>
+                        setUpdatedUser((prevUser) => ({
+                          ...prevUser,
+                          phoneNumber: e.target.value,
+                        }))
+                      }
                     />
                   </div>
                 </div>
@@ -138,11 +179,23 @@ function Akun() {
                     <input
                       className="account__input col-12 border-0"
                       type="email"
-                      defaultValue="Johndoe@gmail.com"
+                      defaultValue={user ? user.email : ""}
+                      readOnly
+                      onChange={(e) =>
+                        setUpdatedUser((prevUser) => ({
+                          ...prevUser,
+                          email: e.target.value,
+                        }))
+                      }
                     />
                   </div>
                 </div>
-                <Button className="save-btn-akun offset-5 col-5">Simpan</Button>
+                <Button
+                  className="save-btn-akun offset-5 col-5"
+                  onClick={saveProfile}
+                >
+                  Simpan
+                </Button>
               </Form>
             </div>
           </div>
@@ -153,7 +206,6 @@ function Akun() {
           centered
         >
           <Modal.Body>
-
             <p className="mb-3">Are you sure you want to logout?</p>
             <div className="d-flex justify-content-end gap-2">
               <Button variant="secondary" onClick={cancelLogoutHandler}>
@@ -167,7 +219,35 @@ function Akun() {
                 Logout
               </Button>
             </div>
+          </Modal.Body>
+        </Modal>
 
+        <Modal
+          show={showUpdateModal}
+          onHide={() => setShowUpdateModal(false)}
+          centered
+        >
+          <Modal.Body className="text-center">
+            {" "}
+            {/* Tambahkan kelas CSS text-center */}
+            <p className="mb-0 mt-3 fw-bold" style={{ fontSize: "17px" }}>
+              Update successful
+            </p>
+            <div className="d-flex justify-content-end gap-2">
+              <Button
+                variant="primary"
+                onClick={() => setShowUpdateModal(false)}
+                style={{
+                  width: "100px",
+                  background: "#ffffff",
+                  color: "#7126b5",
+                  borderColor: "#ffffff",
+                  fontWeight: "bold",
+                }}
+              >
+                OK
+              </Button>
+            </div>
           </Modal.Body>
         </Modal>
       </Container>

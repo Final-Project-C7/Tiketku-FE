@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Navbar, Image, Button, Dropdown } from "react-bootstrap";
+import { Navbar, Image, Button, Dropdown, Modal } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import FormModalAdminAirlines from "../components/Form/FormModalAdminAirlines";
@@ -8,6 +8,9 @@ import "./AdminUsers.css";
 
 function AdminAirlines() {
   const [data, setData] = useState([]);
+  const [isDeleted, setIsDeleted] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [deleteAirlineId, setDeleteAirlineId] = useState(null);
 
   useEffect(() => {
     axios
@@ -26,6 +29,31 @@ function AdminAirlines() {
     localStorage.removeItem("token");
     navigateTo("/admin-login");
   };
+
+  const confirmDelete = async () => {
+    try {
+      await axios.delete(`http://localhost:8000/api/v1/airline/${deleteAirlineId}`);
+      setIsDeleted(true);
+      console.log("Data berhasil dihapus");
+      window.location.reload();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleShow = (airlineId) => {
+    setDeleteAirlineId(airlineId);
+    setShowModal(true);
+  };
+
+  const handleClose = () => {
+    setShowModal(false);
+    setDeleteAirlineId(null);
+  };
+
+  if (isDeleted) {
+    return null;
+  }
 
   return (
     <>
@@ -141,7 +169,7 @@ function AdminAirlines() {
                             <Image className="create-icon" src="/edit-icon.svg" />
                             <p className="text-white ms-1 mb-0">Edit</p>
                           </Button>
-                          <Button className="btn-danger d-flex py-1 px-3 ms-1">
+                          <Button className="btn-danger d-flex py-1 px-3 ms-1" onClick={() => handleShow(airline.id)}>
                             <Image className="create-icon" src="/delete-icon.svg" />
                             <p className="text-white ms-1 mb-0">Delete</p>
                           </Button>
@@ -155,6 +183,25 @@ function AdminAirlines() {
           </div>
         </div>
       </div>
+      <Modal show={showModal} onHide={handleClose} centered>
+        <Modal.Header closeButton>
+          <Modal.Title>Confirm Delete</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <div className="text-center">
+            <Image src="delete-icon.svg" alt="delete icon" className="col-2 mb-2" style={{ filter: "invert(59%) sepia(8%) saturate(14%) hue-rotate(321deg) brightness(87%) contrast(90%)", opacity: "30%" }} />
+            <p className="mb-0">Are you sure you want to delete this airline?</p>
+          </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Cancel
+          </Button>
+          <Button className="btn-delete" variant="danger" onClick={confirmDelete}>
+            Delete
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 }

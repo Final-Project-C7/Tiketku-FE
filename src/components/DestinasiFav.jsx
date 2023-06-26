@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Image, Button, Card, Container } from "react-bootstrap";
+import { Image, Button, Card, Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -30,6 +30,7 @@ const DestinasiFav = ({ destinations, onFilter }) => {
           value={searchQuery}
           onChange={handleSearchChange}
           placeholder="Semua"
+          className="text__card"
           >
           Semua</div>
         </Button>
@@ -40,7 +41,8 @@ const DestinasiFav = ({ destinations, onFilter }) => {
           onClick={handleApplyFilter}
           value={searchQuery}
           onChange={handleSearchChange}
-          placeholder="Semua"
+          placeholder="Asia"
+          className="text__card"
           >
           Asia</div>
         </Button>
@@ -118,7 +120,65 @@ const DestinasiFav = ({ destinations, onFilter }) => {
       </div>
       
       <Container>
-      <div className="destinasi-card d-flex flex-wrap mb-5">
+        <Row className="mb-5">
+          <Col className="col col-3 d-flex">
+          <Card className="shadow" style={{ width: "95%" }}>
+            <Card.Img variant="top" className="p-2 pb-0" src="/Frame-152.svg" />
+            <Card.Body className="pt-2">
+              <Card.Text className="destinasi-card__text-1 fw-bold mb-1">Jakarta &rarr; Bangkok</Card.Text>
+              <Card.Text className="destinasi-card__text-2 fw-bold mb-1">AirAsia</Card.Text>
+              <Card.Text className="destinasi-card__text-2 mb-1 text-black">20 - 30 Maret 2023</Card.Text>
+              <Card.Text className="destinasi-card__text-1 mb-1 text-black">
+                Mulai dari <span className="text-danger fw-bold">IDR 950.000</span>
+              </Card.Text>
+            </Card.Body>
+          </Card>
+          </Col>
+
+          <Col className="col col-3 d-flex">
+          <Card className="shadow" style={{ width: "95%", heigh: "70%" }}>
+            <Card.Img variant="top" className="p-2 pb-0" src="/Frame-152.svg" />
+            <Card.Body className="pt-2">
+              <Card.Text className="destinasi-card__text-1 fw-bold mb-1">Jakarta &rarr; Bangkok</Card.Text>
+              <Card.Text className="destinasi-card__text-2 fw-bold mb-1">AirAsia</Card.Text>
+              <Card.Text className="destinasi-card__text-2 mb-1 text-black">20 - 30 Maret 2023</Card.Text>
+              <Card.Text className="destinasi-card__text-1 mb-1 text-black">
+                Mulai dari <span className="text-danger fw-bold">IDR 950.000</span>
+              </Card.Text>
+            </Card.Body>
+          </Card>
+          </Col>
+
+          <Col className="col col-3 d-flex">
+          <Card className="shadow" style={{ width: "95%" }}>
+            <Card.Img variant="top" className="p-2 pb-0" src="/Frame-152.svg" />
+            <Card.Body className="pt-2">
+              <Card.Text className="destinasi-card__text-1 fw-bold mb-1">Jakarta &rarr; Bangkok</Card.Text>
+              <Card.Text className="destinasi-card__text-2 fw-bold mb-1">AirAsia</Card.Text>
+              <Card.Text className="destinasi-card__text-2 mb-1 text-black">20 - 30 Maret 2023</Card.Text>
+              <Card.Text className="destinasi-card__text-1 mb-1 text-black">
+                Mulai dari <span className="text-danger fw-bold">IDR 950.000</span>
+              </Card.Text>
+            </Card.Body>
+          </Card>
+          </Col>
+
+          <Col className="col col-3 d-flex">
+          <Card className="shadow" style={{ width: "95%" }}>
+            <Card.Img variant="top" className="p-2 pb-0" src="/Frame-152.svg" />
+            <Card.Body className="pt-2">
+              <Card.Text className="destinasi-card__text-1 fw-bold mb-1">Jakarta &rarr; Bangkok</Card.Text>
+              <Card.Text className="destinasi-card__text-2 fw-bold mb-1">AirAsia</Card.Text>
+              <Card.Text className="destinasi-card__text-2 mb-1 text-black">20 - 30 Maret 2023</Card.Text>
+              <Card.Text className="destinasi-card__text-1 mb-1 text-black">
+                Mulai dari <span className="text-danger fw-bold">IDR 950.000</span>
+              </Card.Text>
+            </Card.Body>
+          </Card>
+          </Col>  
+        </Row>
+
+      {/* <div className="destinasi-card flex-wrap mb-5">
         <Card className="shadow" style={{ width: "18.47%" }}>
           <Card.Img variant="top" className="p-2 pb-0" src="/Frame-152.svg" />
           <Card.Body className="pt-2">
@@ -144,7 +204,7 @@ const DestinasiFav = ({ destinations, onFilter }) => {
 
         <Card className="ms-3 shadow" style={{ width: "18.47%" }}>
           <Card.Img variant="top" className="p-2 pb-0" src="/frame154.svg" />
-          <Card.Body className="pt-3">
+          <Card.Body className="pt-2">
             <Card.Text className="destinasi-card__text-1 fw-bold mb-1">Jakarta &rarr; Sydney</Card.Text>
             <Card.Text className="destinasi-card__text-2 fw-bold mb-1">AirAsia</Card.Text>
             <Card.Text className="destinasi-card__text-2 mb-1 text-black">5 - 25 Maret 2023</Card.Text>
@@ -155,7 +215,7 @@ const DestinasiFav = ({ destinations, onFilter }) => {
         </Card>
         <Card className="ms-3 shadow" style={{ width: "18.47%" }}>
           <Card.Img variant="top" className="p-2 pb-0" src="/frame154.svg" />
-          <Card.Body className="pt-3">
+          <Card.Body className="pt-2">
             <Card.Text className="destinasi-card__text-1 fw-bold mb-1">Jakarta &rarr; Sydney</Card.Text>
             <Card.Text className="destinasi-card__text-2 fw-bold mb-1">AirAsia</Card.Text>
             <Card.Text className="destinasi-card__text-2 mb-1 text-black">5 - 25 Maret 2023</Card.Text>
@@ -175,7 +235,7 @@ const DestinasiFav = ({ destinations, onFilter }) => {
             </Card.Text>
           </Card.Body>
         </Card>
-      </div>
+      </div> */}
       </Container>
     </div>
   );

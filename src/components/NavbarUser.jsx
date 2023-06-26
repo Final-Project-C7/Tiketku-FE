@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Navbar, Image, Button, Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 const style = `
@@ -15,6 +15,7 @@ const style = `
 `;
 
 const NavbarUser = () => {
+  const location = useLocation();
   return (
     <>
       <style>{style}</style>
@@ -25,13 +26,13 @@ const NavbarUser = () => {
           </Navbar.Brand>
           <Navbar.Brand>
             <Link to="/history">
-              <Image className="navu icon-color" src="/fi-list.svg" alt="login icon" />
+              <Image className={`navu ${location.pathname === "/history" ? "icon-color" : ""}`} src="/fi-list.svg" alt="login icon" />
             </Link>
             <Link to="/notifikasi">
-              <Image className="navu icon-color" src="/fi_bell.svg" alt="login icon" />
+              <Image className={`navu ${location.pathname === "/notifikasi" ? "icon-color" : ""}`} src="/fi_bell.svg" alt="login icon" />
             </Link>
             <Link to="/account">
-              <Image className="navu icon-color" src="/fi_user_org.svg" alt="login icon" />
+              <Image className={`navu ${location.pathname === "/account" ? "icon-color" : ""}`} src="/fi_user_org.svg" alt="login icon" />
             </Link>
           </Navbar.Brand>
         </Container>

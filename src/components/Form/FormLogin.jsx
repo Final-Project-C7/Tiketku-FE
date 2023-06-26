@@ -63,7 +63,7 @@ const FormLogin = () => {
 
   return (
     <>
-      <h1 className="fw-bold mb-4">Masuk</h1>
+      <h1 className="login fw-bold mb-4">Masuk</h1>
       <form onSubmit={handleSubmit}>
         <div>
           <p className="mb-1">Email/No telepon</p>
@@ -129,7 +129,7 @@ const FormLogin = () => {
           </button>
         </div>
       </form>
-      <p className="mt-5 mb-1 text-center">
+      <p className="account mt-5 mb-1 text-center">
         Belum punya akun?{"  "}
         <Link to="/register" className="fw-bold register">
           Daftar di sini

@@ -107,3 +107,23 @@ a {
     opacity: 0;
   }
 }
+
+@media screen and (max-width: 786px) {
+  .login {
+    padding-top: 20%;
+  }
+
+  .account {
+    padding-top: 50%;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .login {
+    padding-top: 20%;
+  }
+
+  .account {
+    padding-top: 10%;
+  }
+}

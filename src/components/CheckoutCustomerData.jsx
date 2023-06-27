@@ -3,12 +3,18 @@ import { Image, Button, Container, Form, Modal } from "react-bootstrap";
 import NavbarHomepage from "./NavbarHomepage";
 import NavbarUser from "../components/NavbarUser";
 import SeatCustomer from "./SeatCustomer";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
 
 import "./CheckoutCustomerData.css";
 
-const CheckoutCustomerData = () => {
+const CheckoutCustomerData = (props) => {
+
+  // uselocation dari react router untuk ambil data dari overan state di LINK resultFlight
+  const location = useLocation()
+  console.log(location)
+  console.log(location?.state?.business_price)
+
   const [isChecked1, setIsChecked1] = useState(false);
   const [isChecked2, setIsChecked2] = useState(false);
   const [isChecked3, setIsChecked3] = useState(false);
@@ -93,6 +99,7 @@ const CheckoutCustomerData = () => {
           <div className="checkout-breadcrumbs-1 d-flex">
             <h4 className="fw-bold">
               Isi Data Diri
+              <h1>{location?.state?.business_price}</h1>
               <span className="mx-sm-2" style={{ color: "#8A8A8A" }}>
                 &gt;
               </span>
@@ -212,9 +219,8 @@ const CheckoutCustomerData = () => {
                 <div className="mx-4 mt-3">
                   <p className="fw-bold mb-1">Negara Penerbit</p>
                   <div className="border rounded-1 border-2 mb-2">
-                    <select className="border-0 mx-2 p-2" name="issuing-country" id="issuing-country" value={publisher_country} onChange={(e) => setPublisherCountry(e.target.value)}>
-                      {/* <option value=""></option> */}
-                    </select>
+                    <input className="border-0 mx-2 p-2" name="issuing-country" id="issuing-country" value={publisher_country} onChange={(e) => setPublisherCountry(e.target.value)}>
+                    </input>
                   </div>
                 </div>
                 <div className="mx-4 mt-3">

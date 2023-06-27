@@ -34,7 +34,7 @@ function App() {
           <Route path="/" element={<Homepage />} />
           <Route path="/flight" element={<Flight />} />
           <Route path="/soldout" element={<SelectFlight />} />
-          <Route path="/result" element={<Result />} />
+          <Route path="/result/:depart/:arrive" element={<Result />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/otp" element={<OTP />} />

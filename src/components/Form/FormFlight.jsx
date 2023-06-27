@@ -39,14 +39,12 @@ const FormFlight = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.get(
-        `http://localhost:8000/api/v1/flight/search/${departure}/${arrival}`,
-      );
+      const response = await axios.get(`http://localhost:8000/api/v1/flight/search/${departure}/${arrival}`);
 
-      console.log(response)
+      console.log(response);
       // navigate("/result")
     } catch (error) {
-      console.error(error)
+      console.error(error);
     }
   };
 
@@ -74,37 +72,37 @@ const FormFlight = () => {
 
   return (
     <>
-      <Image className="banner" src="/banner-homepage.svg" alt="banner" />
+      <Image className="banner" src="/img-banner.svg" alt="banner" />
       <div>
-        <Form className="flight-schedule shadow col-8 mx-auto" onSubmit={handleSubmit}>
-          <h4 className="fw-bold">
+        <Form className="flight-schedule shadow col-10 col-sm-8 mx-auto pt-sm-4" onSubmit={handleSubmit}>
+          <h4 className="fw-bold pt-4 pt-sm-0 ms-4">
             Pilih Jadwal Penerbangan spesial di <span className="flight-schedule__text">Travelesia!</span>
           </h4>
           <div className="row mt-4">
-            <div className="card-destination col-12 d-flex flex-nowrap mb-3">
+            <div className="card-destination col-12 d-flex flex-wrap mb-3 mx-4">
               <div className="col-sm-7 d-flex">
                 <div className="d-flex me-3">
                   <Image className="card-destination__img" src="take-off.svg" alt="flight takeoff" />
                   <p className="col-1 ms-2">From</p>
                 </div>
                 <input className="bg-transparent border-0 col-6" type="search" aria-label="Search" value={depart} onChange={(e) => setDepart(e.target.value)} />
-                <Link to="/" className="ms-3">
+                {/* <Link to="/" className="ms-3">
                   <Image className="card-destination__img-1" src="/return.svg" alt="return" />
-                </Link>
+                </Link> */}
               </div>
               <div className="card-destination-to col-12 col-sm-5 d-flex">
                 <Image className="card-destination__img" src="/take-off.svg" alt="flight takeoff" id="arrive" />
                 <p className="col-1 ms-2">To</p>
-                <input className="bg-transparent border-0 col-11" type="search" aria-label="Search" value={arrive} onChange={(e) => setArrive(e.target.value)} />
+                <input className="bg-transparent border-0 col-6" type="search" aria-label="Search" value={arrive} onChange={(e) => setArrive(e.target.value)} />
               </div>
             </div>
-            <div className="card-date col-12 d-flex mt-4">
+            <div className="card-date col-12 d-flex flex-wrap mt-sm-4 mx-4">
               <div className="col-sm-7 d-flex">
                 <div className="col-2 d-flex align-items-center">
                   <Image className="card-date__img" src="/Date.svg" alt="Date" />
                   <p className="ms-2 mt-3">Date</p>
                 </div>
-                <div className="col-8 d-flex me-5">
+                <div className="col-8 d-flex ms-1 ms-sm-0 me-sm-5">
                   <div className="col-5">
                     <h3 className="mb-0">Departure</h3>
                     <input className="card-date__input border-0 border-bottom pb-3 mt-1 col-12" value={`${format(range[0].startDate, "MM/dd/yyyy")} `} readOnly onClick={() => setOpen((open) => !open)} />
@@ -126,27 +124,27 @@ const FormFlight = () => {
                       />
                     )}
                   </div>
-                  <div className="col-5 ms-4">
+                  <div className="col-sm-5 ms-3 ms-sm-4">
                     <h3 className="mb-0">Return</h3>
                     <input className="card-date__input border-0 border-bottom pb-3 mt-1 col-12" value={`${format(range[0].endDate, "MM/dd/yyyy")} `} onClick={() => setOpen((open) => !open)} />
                   </div>
-                  <label className="switch" style={{ cursor: "pointer" }}>
+                  {/* <label className="switch" style={{ cursor: "pointer" }}>
                     <input className="switch__input" type="checkbox" checked={isChecked} onChange={handleToggle} />
                     <span className="slider"></span>
-                  </label>
+                  </label> */}
                 </div>
               </div>
-              <div className="car-date-passengers col-12 col-sm-5 d-flex">
+              <div className="car-date-passengers col-12 col-sm-5 d-flex flex-wrap mt-2 mt-sm-0">
                 <div className="col-1 d-flex align-items-center">
                   <Image className="card-date__img-1" src="/Passengers.svg" alt="flight takeoff" />
                   <p className="mt-3">To</p>
                 </div>
-                <div className="col-12 d-flex ms-2 ms-sm-4">
-                  <div className="col-4 col-sm-5">
+                <div className="col-9 d-flex ms-4 ms-ms-4">
+                  <div className="col-6 col-sm-5">
                     <h3 className="mb-1">Passengers</h3>
                     <ModalPassengers />
                   </div>
-                  <div className="col-4 col-sm-5 ms-2">
+                  <div className="col-4 col-sm-5">
                     <h3 className="mb-1">Seat Class</h3>
                     <ModalSeatClass />
                   </div>

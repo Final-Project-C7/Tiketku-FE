@@ -62,7 +62,8 @@
 
 @media screen and (max-width: 576px) {
   .nav-search {
-    display: none !important;
+    width: 70%;
+    /* margin-right: 20px; */
   }
 
   .navbar__img {
@@ -73,5 +74,11 @@
   .btn-sign {
     width: 90px;
     height: 42px;
+  }
+}
+
+@media screen and (max-width: 765px) {
+  .nav-search {
+    width: 60%;
   }
 }

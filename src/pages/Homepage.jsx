@@ -22,9 +22,8 @@ function Homepage() {
     <>
       {isLoggedIn ? <NavbarUser /> : <NavbarHomepage />}
       <FormFlight />
-      {/* Tambahkan komponen lain yang diperlukan */}
       <DestinasiFav />
-      <Footer/>
+      <Footer />
     </>
   );
 }

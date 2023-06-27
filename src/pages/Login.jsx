@@ -3,7 +3,7 @@ import axios from "axios";
 import loginLogo from "/Group 92.svg";
 // import logo from "grouplogo.png";
 import FormLogin from "../components/Form/FormLogin";
-import "./Login.css"
+import "./Login.css";
 
 const Login = () => {
   const styles = `

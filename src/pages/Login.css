@@ -1,3 +1,38 @@
 .log {
     justify-content: start;
 }
+
+.login {
+    margin-bottom: 4%;
+}
+
+.regis {
+    margin-bottom: 4%;
+}
+
+.input-group {
+    margin-bottom: 2%;
+}
+
+@media screen and (max-width: 786px) {
+    .pass {
+        padding-left: 2%;
+    }
+    
+    .account {
+        padding-top: 30%;
+    }
+    
+    .login {
+        padding-left: 2%;
+        padding-top: 10%;
+    }
+
+    .regis {
+        padding-top: 10%;
+    }
+
+    .input-group {
+        margin-bottom: 0%;
+    }
+}

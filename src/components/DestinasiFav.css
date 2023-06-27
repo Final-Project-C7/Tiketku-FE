@@ -3,27 +3,43 @@
   width: 66%;
 }
 
+.destinasi-fav__cat::-webkit-scrollbar {
+  display: none !important;
+}
+
+.destinasi-fav__cat {
+  z-ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+  overflow-x: scroll;
+}
 
 .destinasi-fav__search-img {
   width: 20px;
   height: 20px;
 }
 
-.btn-destinasi{
+.btn-destinasi {
   background-color: #7126b5;
   font-family: poppins;
+}
 
+.destinasi-fav__category-1 {
+  /* width: 14%; */
+  /* height: 48px; */
+  border-radius: 12px;
+  margin-left: 20px;
+  background-color: #7126b5;
+  color: white !important;
 }
 
 .destinasi-fav__category-2:hover {
   background-color: #7126b5 !important;
   color: #e2d4f0 !important;
-
 }
 
 .destinasi-fav__category-2 {
-  width: 128px;
-  height: 48px;
+  /* width: 14%; */
+  /* height: 48px; */
   background-color: #e2d4f0 !important;
   border-radius: 12px;
   margin-left: 20px;
@@ -38,7 +54,7 @@
   color: #7126b5;
 }
 
-.col{
+.col {
   padding-left: 0px !important;
 }
 
@@ -46,22 +62,21 @@
   .col {
     width: 50% !important;
     margin-bottom: 5px !important;
+  }
+  .destinasi-fav__category-2 {
+    width: 10% !important;
+  }
+  .text__card {
+    width: 30% !important;
+  }
 
+  .destinasi-fav {
+    width: 85%;
   }
-  .destinasi-fav__category-2{
-    width : 10% !important;
-  }
-  .text__card{
-    width : 30% !important;
-  }
-  
 }
 @media screen and (max-width: 1200px) {
   .col {
     width: 70%;
     margin-bottom: 10px !important;
-
   }
-
-  
 }

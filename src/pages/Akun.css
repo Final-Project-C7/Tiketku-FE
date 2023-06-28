@@ -20,7 +20,11 @@
 .account-list:hover {
   background-color: #a06ece;
   transition: background-color 0.5s;
-  color: white;
+  color: white !important;
+}
+
+.account-list:hover p {
+  color: white !important;
 }
 
 .account-list:hover img {
@@ -62,11 +66,6 @@
     margin-bottom: 3px;
   }
 
-  .col-5,
-  .col-7 {
-    width: 100%;
-  }
-
   .save-btn-akun {
     width: 50%;
   }
@@ -78,10 +77,8 @@
 }
 
 @media (min-widht: 1200px) {
-  untuk tampilan layar lebih besar
-  .akun {
+  untuk tampilan layar lebih besar .akun {
     width: 80%;
     margin-top: 10rem;
   }
 }
-

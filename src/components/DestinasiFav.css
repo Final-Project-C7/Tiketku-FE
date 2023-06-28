@@ -45,6 +45,10 @@
   margin-left: 20px;
 }
 
+.destinasi-card {
+  width: 90%;
+}
+
 .destinasi-card__text-1 {
   font-size: 12px;
 }

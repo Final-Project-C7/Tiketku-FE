@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Navbar, Image, Button, Dropdown, Modal } from "react-bootstrap";
-import { Link, useNavigate, Navigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import FormModalAdminSeats from "../components/Form/FormModalAdminSeats";
 
@@ -211,7 +211,7 @@ function AdminSeats() {
           </Modal>
         </div>
       ) : (
-        <Navigate to="/admin-login" state={{ from: location }} />
+        navigateTo("/admin-login")
       )}
     </>
   );

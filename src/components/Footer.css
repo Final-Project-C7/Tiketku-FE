@@ -2,21 +2,30 @@ body {
   font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
-h1, h2, h3, h4, h5, h6,
-.h1, .h2, .h3, .h4, .h5, .h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
   font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 a {
-  -webkit-transition: .3s all ease;
-  -o-transition: .3s all ease;
-  transition: .3s all ease;
+  -webkit-transition: 0.3s all ease;
+  -o-transition: 0.3s all ease;
+  transition: 0.3s all ease;
 }
-a, a:hover {
+a,
+a:hover {
   text-decoration: none !important;
 }
-
-
 
 .footer-48201 {
   padding: 7rem 0;
@@ -26,7 +35,6 @@ a, a:hover {
   padding-right: 155px;
 
   color: #fff !important;
-  
 }
 .footer-48201 .footer-site-logo {
   font-size: 1.5rem;
@@ -56,7 +64,6 @@ a, a:hover {
 .footer-48201 .social li a {
   color: #fff !important;
   padding: 7px;
-  
 }
 .footer-48201 .social li a:hover {
   color: #fff !important;
@@ -65,7 +72,7 @@ a, a:hover {
   border-top: 1px solid #fff;
 }
 
-.footer-48201 .copyright p{
+.footer-48201 .copyright p {
   color: white;
   margin-bottom: -20px;
 }
@@ -85,17 +92,12 @@ a, a:hover {
   justify-content: center;
 }
 
-
 .modal-wide-team {
   max-width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  
-  
 }
-
-
 
 .modal-wide .modal-content {
   text-align: center;
@@ -174,14 +176,13 @@ a, a:hover {
 }
 
 .img-wrapper {
-  
 }
 
 .team-card {
   display: flex;
+  justify-content: center;
   flex-direction: column;
   align-items: center;
-  
 }
 
 .social-media-links {
@@ -214,18 +215,15 @@ a, a:hover {
 }
 
 .team-img {
-  width: 100%;
+  width: 14rem;
   border-radius: 50%;
-  width: 200px;
+  object-fit: cover;
 }
 
 .team-card-container {
   width: 280px;
   margin: 0 0 40px 0;
 }
-
-
-
 
 @media (max-width: 500px) {
   .outer-container {
@@ -236,5 +234,3 @@ a, a:hover {
     text-align: center;
   }
 }
-
-

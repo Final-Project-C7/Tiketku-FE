@@ -53,7 +53,7 @@ function ModalSeatClass() {
   return (
     <>
       <style>{style}</style>
-      <div className="col-11 border-bottom text-dark fw-bold pb-3" onClick={handleShow} style={{ cursor: "pointer" }}>
+      <div className="col-11 border-bottom text-dark fw-bold pt-0 pb-3" onClick={handleShow} style={{ cursor: "pointer" }}>
         <input className="border-0 bg-transparent" style={{ fontSize: "18px" }} defaultValue="" disabled hidden />
         Business
       </div>
@@ -68,7 +68,7 @@ function ModalSeatClass() {
           {seatOptions.map((seat, index) => (
             <div key={index} className={`border-bottom d-flex align-items-center px-3 py-2 ${selectedSeat === index ? "seat-class-selected" : ""}`} onClick={() => handleSeatClick(index)} style={{ cursor: "pointer" }}>
               <div className="me-auto">
-                <p className={`fw-bold mb-2 ${selectedSeat === index ? "text-white" : ""}`}>{seat.name}</p>
+                <p className={`fw-bold pt-0 mb-2 ${selectedSeat === index ? "text-white" : ""}`}>{seat.name}</p>
                 <p className={`seat-class__text mb-0 ${selectedSeat === index ? "text-white" : ""}`}>{seat.price}</p>
               </div>
               {selectedSeat === index && <Image src="/Suffix.svg" alt="checklist logo" />}

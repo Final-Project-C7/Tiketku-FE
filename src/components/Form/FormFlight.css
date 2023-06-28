@@ -186,3 +186,9 @@
     margin-top: -1rem;
   }
 }
+
+@media (max-width: 768px) {
+  .flight-schedule {
+    margin-top: -2rem;
+  }
+}

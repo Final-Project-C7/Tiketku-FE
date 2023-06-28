@@ -78,7 +78,7 @@ a {
 .error-message {
   color: red;
   margin-bottom: -16px;
-  margin-top: 12px
+  margin-top: 12px;
 }
 
 .reset-pass__btn {
@@ -90,8 +90,6 @@ a {
 .reset-pass__btn:hover {
   background-color: #4b1979 !important;
 }
-
-
 
 .fade-out {
   animation: fadeOut 3s ease-out;
@@ -117,7 +115,7 @@ a {
     padding-top: 50%;
   }
 
-  .fw-bold {
+  . {
     padding-top: 20%;
   }
 
@@ -131,7 +129,9 @@ a {
     padding-left: 2%;
   }
 
-  .login__btn {
+  .login__btn,
+  .login,
+  .register {
     width: 100%;
   }
 

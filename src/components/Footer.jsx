@@ -87,10 +87,10 @@ export default function Footer() {
             <MDBCol md="4" lg="3" xl="3" className='mx-auto mb-md-0 mb-4'>
               <h6 className='text-uppercase fw-bold mb-4'>Contact Us</h6>
               <p>
-                <Image className="footer__img fw-bold me-1" src="/email.png" alt="" />@c7binaracademy
+                <Image className="footer__img me-1" src="/email.png" alt="" />@c7binaracademy
               </p>
               <p>
-                <Image className="footer__img fw-bold me-1" src="/wa.png" alt="" />+6285666666666
+                <Image className="footer__img me-1" src="/wa.png" alt="" />+6285666666666
               </p>
             </MDBCol>
 

@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import { Button, Modal, Image, Form } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 function ModalPassengers() {
   const [show, setShow] = useState(false);
   const [num1, setNum1] = useState(0);
   const [num2, setNum2] = useState(0);
   const [num3, setNum3] = useState(0);
+
+  let totalPassengers = num1 + num2;
+
+  console.log(totalPassengers)
 
   let incToggle1 = () => {
     setNum1(Number(num1) + 1);
@@ -98,7 +103,7 @@ function ModalPassengers() {
     <>
       <style>{style}</style>
       <div className="col-11 border-bottom text-dark fw-bold pb-3" onClick={handleShow} style={{ cursor: "pointer" }}>
-        <input className="border-0 bg-transparent" style={{ fontSize: "18px" }} defaultValue="" disabled hidden />2 Penumpang
+        <input className="border-0 bg-transparent" style={{ fontSize: "18px" }} defaultValue="" disabled hidden /> {totalPassengers} Penumpang
       </div>
 
       <Modal size="md" show={show} onHide={handleClose} centered>
@@ -163,9 +168,11 @@ function ModalPassengers() {
                 </div>
               </div>
             </div>
-            <Button type="submit" className="save-btn-passengers offset-7 col-5 mt-2 py-3">
-              Simpan
-            </Button>
+            <Link to="/" state={totalPassengers}>
+              <Button type="submit" className="save-btn-passengers offset-7 col-5 mt-2 py-3">
+                Simpan
+              </Button>
+            </Link>
           </Form>
         </Modal.Body>
       </Modal>

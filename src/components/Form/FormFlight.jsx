@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Image, Button, Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { DateRange } from "react-date-range";
 import format from "date-fns/format";
 import { addDays } from "date-fns";
@@ -70,6 +70,10 @@ const FormFlight = () => {
     setIsChecked(!isChecked);
   };
 
+  const location = useLocation()
+  console.log(location.state)
+
+
   return (
     <>
       <Image className="banner" src="/img-banner.svg" alt="banner" />
@@ -128,10 +132,10 @@ const FormFlight = () => {
                     <h3 className="mb-0">Return</h3>
                     <input className="card-date__input border-0 border-bottom pb-3 mt-1 col-12" value={`${format(range[0].endDate, "MM/dd/yyyy")} `} onClick={() => setOpen((open) => !open)} />
                   </div>
-                  {/* <label className="switch" style={{ cursor: "pointer" }}>
+                  <label className="switch" style={{ cursor: "pointer" }}>
                     <input className="switch__input" type="checkbox" checked={isChecked} onChange={handleToggle} />
                     <span className="slider"></span>
-                  </label> */}
+                  </label>
                 </div>
               </div>
               <div className="car-date-passengers col-12 col-sm-5 d-flex flex-wrap mt-2 mt-sm-0">

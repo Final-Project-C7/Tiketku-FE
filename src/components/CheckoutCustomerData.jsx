@@ -43,8 +43,6 @@ const CheckoutCustomerData = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // setIsLoading(true);
-
     try {
       const response = await axios.post("http://localhost:8000/api/v1/passengers", {
         name,
@@ -79,8 +77,6 @@ const CheckoutCustomerData = (props) => {
       }
       setSuccessMessage("");
     }
-
-    // setIsLoading(false);
   };
 
   useEffect(() => {
@@ -99,7 +95,7 @@ const CheckoutCustomerData = (props) => {
           <div className="checkout-breadcrumbs-1 d-flex">
             <h4 className="fw-bold">
               Isi Data Diri
-              <h1>{location?.state?.business_price}</h1>
+              {/* <h1>{location?.state?.business_price}</h1> */}
               <span className="mx-sm-2" style={{ color: "#8A8A8A" }}>
                 &gt;
               </span>

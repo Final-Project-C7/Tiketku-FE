@@ -6,7 +6,6 @@
 .flight-schedule {
   background-color: #ffffff;
   border-radius: 12px;
-  padding: 24px 0 0 0;
   border: 1px solid #d0d0d0;
   z-index: 999;
   margin-top: -4rem;
@@ -14,7 +13,7 @@
 }
 
 .flight-schedule h4 {
-  margin-left: 34px;
+  /* margin-left: 34px; */
   font-size: 20px;
 }
 
@@ -24,8 +23,8 @@
 
 .card-destination,
 .card-date {
-  margin-left: 36px;
-  margin-right: 36px;
+  /* margin-left: 36px;
+  margin-right: 36px; */
 }
 
 .card-destination p,
@@ -147,9 +146,19 @@
 
 @media (max-width: 575px) {
   .flight-schedule h4 {
-    font-size: 18px;
+    font-size: 16px;
     margin-left: 30px;
     margin-right: 30px;
+  }
+
+  .card-destination p,
+  .card-date p {
+    font-size: 12px;
+  }
+
+  .card-date h5,
+  .card-date h3 {
+    font-size: 14px;
   }
 
   .flight-schedule {
@@ -167,5 +176,13 @@
   .card-destination-to,
   .car-date-passengers {
     margin-left: 0px;
+  }
+
+  .banner {
+    margin-top: 5.5rem;
+  }
+
+  .flight-schedule {
+    margin-top: -1rem;
   }
 }

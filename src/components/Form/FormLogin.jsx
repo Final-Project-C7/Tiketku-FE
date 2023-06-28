@@ -5,6 +5,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "react-bootstrap";
+import "../../pages/Login.css";
 
 const FormLogin = () => {
   const [email, setEmail] = useState("");
@@ -63,7 +64,7 @@ const FormLogin = () => {
 
   return (
     <>
-      <h1 className="login fw-bold mb-4">Masuk</h1>
+      <h1 className="login fw-bold">Masuk</h1>
       <form onSubmit={handleSubmit}>
         <div>
           <p className="mb-1">Email/No telepon</p>
@@ -82,7 +83,7 @@ const FormLogin = () => {
           />
         </div>
         <div className="d-flex">
-          <div>
+          <div className="pass">
             <p style={{ marginBottom: "0px" }}>Password</p>
           </div>
           <div className="ms-auto">

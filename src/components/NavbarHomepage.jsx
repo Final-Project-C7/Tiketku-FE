@@ -16,7 +16,7 @@ const NavbarHomepage = () => {
         </Navbar.Brand>
         <Navbar.Collapse>
           <Form className="nav-search col-6 col-xxl-5 d-flex align-items-center rounded-4 ms-3 py-1 ps-4 pe-5 pe-lg-4">
-            <input className="col-11" type="search" placeholder="Cari di sini ..." aria-label="Search" />
+            <input className="col-12 col-sm-11" type="search" placeholder="Cari di sini ..." aria-label="Search" />
             <Button>
               <Image className="nav-search__img" src="/search.svg" alt="search" />
             </Button>

@@ -101,9 +101,9 @@ const Payment = () => {
               </>
             )}
           </div>
-          <div className="payment-booking-code col-5">
+          <div className="payment-booking-code col-5 mt-5 mt-md-0">
             <h4 className="fw-bold mb-3">
-              Booking Code:{" "}
+              Booking Code:
               <span className="fw-bold" style={{ color: "#7126B5" }}>
                 6723y2GHK
               </span>

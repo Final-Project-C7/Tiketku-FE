@@ -3,12 +3,17 @@ import { Image, Button, Container, Form, Modal } from "react-bootstrap";
 import NavbarHomepage from "./NavbarHomepage";
 import NavbarUser from "../components/NavbarUser";
 import SeatCustomer from "./SeatCustomer";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
 
 import "./CheckoutCustomerData.css";
 
-const CheckoutCustomerData = () => {
+const CheckoutCustomerData = (props) => {
+  // uselocation dari react router untuk ambil data dari overan state di LINK resultFlight
+  const location = useLocation();
+  console.log(location);
+  console.log(location?.state?.business_price);
+
   const [isChecked1, setIsChecked1] = useState(false);
   const [isChecked2, setIsChecked2] = useState(false);
   const [isChecked3, setIsChecked3] = useState(false);
@@ -40,15 +45,18 @@ const CheckoutCustomerData = () => {
     // setIsLoading(true);
 
     try {
-      const response = await axios.post("http://localhost:8000/api/v1/passengers", {
-        name,
-        born_date,
-        citizen,
-        identity_number,
-        publisher_country,
-        valid_until,
-        booking_id: "1",
-      });
+      const response = await axios.post(
+        "http://localhost:8000/api/v1/passengers",
+        {
+          name,
+          born_date,
+          citizen,
+          identity_number,
+          publisher_country,
+          valid_until,
+          booking_id: "1",
+        }
+      );
 
       // Handle successful registration
       const { newPassengers } = response.data.data;
@@ -66,7 +74,11 @@ const CheckoutCustomerData = () => {
       setError("");
       // setShowModal(true);
     } catch (error) {
-      if (error.response && error.response.data && error.response.data.message) {
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
         setError(error.response.data.message);
       } else {
         setError("Failed to register");
@@ -93,6 +105,7 @@ const CheckoutCustomerData = () => {
           <div className="checkout-breadcrumbs-1 d-flex">
             <h4 className="fw-bold">
               Isi Data Diri
+              {/* <h1>{location?.state?.business_price}</h1> */}
               <span className="mx-sm-2" style={{ color: "#8A8A8A" }}>
                 &gt;
               </span>
@@ -108,7 +121,9 @@ const CheckoutCustomerData = () => {
             </h4>
           </div>
           <div className="checkout-breadcrumbs__alert mt-2 mb-4 mx-4">
-            <h5 className="col-12 text-center text-white py-3 rounded-4">Data Anda berhasil tersimpan!</h5>
+            <h5 className="col-12 text-center text-white py-3 rounded-4">
+              Data Anda berhasil tersimpan!
+            </h5>
           </div>
         </Container>
       </div>
@@ -119,18 +134,33 @@ const CheckoutCustomerData = () => {
               <h4 className="fw-bold">Isi Data Pemesan</h4>
               <div className="mt-4">
                 <div className="d-flex align-items-start bg-dark rounded-top-4 py-3 ">
-                  <h5 className="me-auto text-white ms-4 mb-0">Data Diri Pemesan</h5>
-                  <Image className="checkout-biodata__checklist me-4" src="/Suffix.svg" alt="checklist logo" />
+                  <h5 className="me-auto text-white ms-4 mb-0">
+                    Data Diri Pemesan
+                  </h5>
+                  <Image
+                    className="checkout-biodata__checklist me-4"
+                    src="/Suffix.svg"
+                    alt="checklist logo"
+                  />
                 </div>
                 <div className="mx-4 mt-3">
                   <p className="fw-bold mb-1">Nama Lengkap</p>
                   <div className="border rounded-1 border-2 mb-2">
-                    <input className="border-0 mx-2 p-2" type="text" defaultValue="Harry" />
+                    <input
+                      className="border-0 mx-2 p-2"
+                      type="text"
+                      defaultValue="Harry"
+                    />
                   </div>
                   <div className="d-flex">
                     <p className="me-auto mb-0">Punya Nama Keluarga?</p>
                     <label className="switch me-1">
-                      <input className="switch__input" type="checkbox" checked={isChecked1} onChange={handleSwitchToggle1} />
+                      <input
+                        className="switch__input"
+                        type="checkbox"
+                        checked={isChecked1}
+                        onChange={handleSwitchToggle1}
+                      />
                       <span className="slider"></span>
                     </label>
                   </div>
@@ -138,19 +168,31 @@ const CheckoutCustomerData = () => {
                 <div className="mx-4 mt-3">
                   <p className="fw-bold mb-1">Nama Keluarga</p>
                   <div className="border rounded-1 border-2 mb-2">
-                    <input className="border-0 mx-2 p-2" type="text" defaultValue="Potter" />
+                    <input
+                      className="border-0 mx-2 p-2"
+                      type="text"
+                      defaultValue="Potter"
+                    />
                   </div>
                 </div>
                 <div className="mx-4 mt-3">
                   <p className="fw-bold mb-1">Nomor Telepon</p>
                   <div className="border rounded-1 border-2 mb-2">
-                    <input className="border-0 mx-2 p-2" type="text" defaultValue="Potter" />
+                    <input
+                      className="border-0 mx-2 p-2"
+                      type="text"
+                      defaultValue="Potter"
+                    />
                   </div>
                 </div>
                 <div className="mx-4 mt-3 pb-3">
                   <p className="fw-bold mb-1">Email</p>
                   <div className="border rounded-1 border-2 mb-2">
-                    <input className="border-0 mx-2 p-2" type="email" defaultValue="Johndoe@gmail.com" />
+                    <input
+                      className="border-0 mx-2 p-2"
+                      type="email"
+                      defaultValue="Johndoe@gmail.com"
+                    />
                   </div>
                 </div>
               </div>
@@ -159,13 +201,23 @@ const CheckoutCustomerData = () => {
               <h4 className="fw-bold">Isi Data Penumpang </h4>
               <div className="mt-4">
                 <div className="d-flex align-items-start bg-dark rounded-top-4 py-3 ">
-                  <h5 className="me-auto text-white ms-4 mb-0">Data Diri Penumpang 1 - Adult</h5>
-                  <Image className="checkout-biodata__checklist me-4" src="/Suffix.svg" alt="checklist logo" />
+                  <h5 className="me-auto text-white ms-4 mb-0">
+                    Data Diri Penumpang 1 - Adult
+                  </h5>
+                  <Image
+                    className="checkout-biodata__checklist me-4"
+                    src="/Suffix.svg"
+                    alt="checklist logo"
+                  />
                 </div>
                 <div className="mx-4 mt-3">
                   <p className="fw-bold mb-1">Title</p>
                   <div className="border rounded-1 border-2 mb-2">
-                    <select className="border-0 mx-2 p-2" name="title" id="title">
+                    <select
+                      className="border-0 mx-2 p-2"
+                      name="title"
+                      id="title"
+                    >
                       <option value="mr">Mr.</option>
                       <option value="ms">Ms.</option>
                       <option value="mrs">Mrs</option>
@@ -175,12 +227,22 @@ const CheckoutCustomerData = () => {
                 <div className="mx-4 mt-3">
                   <p className="fw-bold mb-1">Nama Lengkap</p>
                   <div className="border rounded-1 border-2 mb-2">
-                    <input className="border-0 mx-2 p-2" type="text" value={name} onChange={(e) => setName(e.target.value)} />
+                    <input
+                      className="border-0 mx-2 p-2"
+                      type="text"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                    />
                   </div>
                   <div className="d-flex">
                     <p className="me-auto mb-0">Punya Nama Keluarga?</p>
                     <label className="switch me-1">
-                      <input className="switch__input" type="checkbox" checked={isChecked2} onChange={handleSwitchToggle2} />
+                      <input
+                        className="switch__input"
+                        type="checkbox"
+                        checked={isChecked2}
+                        onChange={handleSwitchToggle2}
+                      />
                       <span className="slider"></span>
                     </label>
                   </div>
@@ -188,51 +250,89 @@ const CheckoutCustomerData = () => {
                 <div className="mx-4 mt-3">
                   <p className="fw-bold mb-1">Nama Keluarga</p>
                   <div className="border rounded-1 border-2 mb-2">
-                    <input className="border-0 mx-2 p-2" type="text" defaultValue="Potter" />
+                    <input
+                      className="border-0 mx-2 p-2"
+                      type="text"
+                      defaultValue="Potter"
+                    />
                   </div>
                 </div>
                 <div className="mx-4 mt-3">
                   <p className="fw-bold mb-1">Tanggal Lahir</p>
                   <div className="border rounded-1 border-2 mb-2">
-                    <input className="border-0 opacity-50 mx-2 p-2" type="date" value={born_date} onChange={(e) => setBornDate(e.target.value)} />
+                    <input
+                      className="border-0 opacity-50 mx-2 p-2"
+                      type="date"
+                      value={born_date}
+                      onChange={(e) => setBornDate(e.target.value)}
+                    />
                   </div>
                 </div>
                 <div className="mx-4 mt-3">
                   <p className="fw-bold mb-1">Kewarganegaraan</p>
                   <div className="border rounded-1 border-2 mb-2">
-                    <input className="border-0 mx-2 p-2" type="text" value={citizen} onChange={(e) => setCitizen(e.target.value)} />
+                    <input
+                      className="border-0 mx-2 p-2"
+                      type="text"
+                      value={citizen}
+                      onChange={(e) => setCitizen(e.target.value)}
+                    />
                   </div>
                 </div>
                 <div className="mx-4 mt-3">
                   <p className="fw-bold mb-1">KTP/Paspor</p>
                   <div className="border rounded-1 border-2 mb-2">
-                    <input className="border-0 mx-2 p-2" type="text" value={identity_number} onChange={(e) => setIdentityNumber(e.target.value)} />
+                    <input
+                      className="border-0 mx-2 p-2"
+                      type="text"
+                      value={identity_number}
+                      onChange={(e) => setIdentityNumber(e.target.value)}
+                    />
                   </div>
                 </div>
                 <div className="mx-4 mt-3">
                   <p className="fw-bold mb-1">Negara Penerbit</p>
                   <div className="border rounded-1 border-2 mb-2">
-                    <select className="border-0 mx-2 p-2" name="issuing-country" id="issuing-country" value={publisher_country} onChange={(e) => setPublisherCountry(e.target.value)}>
-                      {/* <option value=""></option> */}
-                    </select>
+                    <input
+                      className="border-0 mx-2 p-2"
+                      name="issuing-country"
+                      id="issuing-country"
+                      value={publisher_country}
+                      onChange={(e) => setPublisherCountry(e.target.value)}
+                    ></input>
                   </div>
                 </div>
                 <div className="mx-4 mt-3">
                   <p className="fw-bold mb-1">Berlaku Sampai</p>
                   <div className="border rounded-1 border-2 mb-2">
-                    <input className="border-0 opacity-50 mx-2 p-2" type="date" value={valid_until} onChange={(e) => setValidUntil(e.target.value)} />
+                    <input
+                      className="border-0 opacity-50 mx-2 p-2"
+                      type="date"
+                      value={valid_until}
+                      onChange={(e) => setValidUntil(e.target.value)}
+                    />
                   </div>
                 </div>
               </div>
               <Form className="mt-4">
                 <div className="d-flex align-items-start bg-dark rounded-top-3 py-3 ">
-                  <h5 className="me-auto text-white ms-4 mb-0">Data Diri Penumpang 2 - Adult</h5>
-                  <Image className="checkout-biodata__checklist me-4" src="/Suffix.svg" alt="checklist logo" />
+                  <h5 className="me-auto text-white ms-4 mb-0">
+                    Data Diri Penumpang 2 - Adult
+                  </h5>
+                  <Image
+                    className="checkout-biodata__checklist me-4"
+                    src="/Suffix.svg"
+                    alt="checklist logo"
+                  />
                 </div>
                 <div className="mx-4 mt-3">
                   <p className="fw-bold mb-1">Title</p>
                   <div className="border rounded-1 border-2 mb-2">
-                    <select className="border-0 mx-2 p-2" name="title" id="title">
+                    <select
+                      className="border-0 mx-2 p-2"
+                      name="title"
+                      id="title"
+                    >
                       <option value="mr">Mr.</option>
                       <option value="ms">Ms.</option>
                       <option value="mrs">Mrs</option>
@@ -242,12 +342,21 @@ const CheckoutCustomerData = () => {
                 <div className="mx-4 mt-3">
                   <p className="fw-bold mb-1">Nama Lengkap</p>
                   <div className="border rounded-1 border-2 mb-2">
-                    <input className="border-0 mx-2 p-2" type="text" defaultValue="Harry" />
+                    <input
+                      className="border-0 mx-2 p-2"
+                      type="text"
+                      defaultValue="Harry"
+                    />
                   </div>
                   <div className="d-flex">
                     <p className="me-auto mb-0">Punya Nama Keluarga?</p>
                     <label className="switch me-1">
-                      <input className="switch__input" type="checkbox" checked={isChecked3} onChange={handleSwitchToggle3} />
+                      <input
+                        className="switch__input"
+                        type="checkbox"
+                        checked={isChecked3}
+                        onChange={handleSwitchToggle3}
+                      />
                       <span className="slider"></span>
                     </label>
                   </div>
@@ -255,19 +364,30 @@ const CheckoutCustomerData = () => {
                 <div className="mx-4 mt-3">
                   <p className="fw-bold mb-1">Nama Keluarga</p>
                   <div className="border rounded-1 border-2 mb-2">
-                    <input className="border-0 mx-2 p-2" type="text" defaultValue="Potter" />
+                    <input
+                      className="border-0 mx-2 p-2"
+                      type="text"
+                      defaultValue="Potter"
+                    />
                   </div>
                 </div>
                 <div className="mx-4 mt-3">
                   <p className="fw-bold mb-1">Tanggal Lahir</p>
                   <div className="border rounded-1 border-2 mb-2">
-                    <input className="border-0 opacity-50 mx-2 p-2" type="date" />
+                    <input
+                      className="border-0 opacity-50 mx-2 p-2"
+                      type="date"
+                    />
                   </div>
                 </div>
                 <div className="mx-4 mt-3">
                   <p className="fw-bold mb-1">Kewarganegaraan</p>
                   <div className="border rounded-1 border-2 mb-2">
-                    <input className="border-0 mx-2 p-2" type="text" defaultValue="Indonesia" />
+                    <input
+                      className="border-0 mx-2 p-2"
+                      type="text"
+                      defaultValue="Indonesia"
+                    />
                   </div>
                 </div>
                 <div className="mx-4 mt-3">
@@ -279,7 +399,11 @@ const CheckoutCustomerData = () => {
                 <div className="mx-4 mt-3">
                   <p className="fw-bold mb-1">Negara Penerbit</p>
                   <div className="border rounded-1 border-2 mb-2">
-                    <select className="border-0 mx-2 p-2" name="issuing-country" id="issuing-country">
+                    <select
+                      className="border-0 mx-2 p-2"
+                      name="issuing-country"
+                      id="issuing-country"
+                    >
                       <option value=""></option>
                     </select>
                   </div>
@@ -287,7 +411,10 @@ const CheckoutCustomerData = () => {
                 <div className="mx-4 mt-3">
                   <p className="fw-bold mb-1">Berlaku Sampai</p>
                   <div className="border rounded-1 border-2 mb-2">
-                    <input className="border-0 opacity-50 mx-2 p-2" type="date" />
+                    <input
+                      className="border-0 opacity-50 mx-2 p-2"
+                      type="date"
+                    />
                   </div>
                 </div>
               </Form>
@@ -296,35 +423,54 @@ const CheckoutCustomerData = () => {
               <h4 className="fw-bold">Pilih Kursi</h4>
               <div className="mt-4">
                 <div className="d-flex align-items-start bg-dark rounded-top-2 py-3 ">
-                  <p className="me-auto text-white ms-4 mb-0">Economy - 2 Seats Chosen</p>
-                  <Image className="checkout-biodata__checklist me-4" src="/Suffix.svg" alt="checklist logo" />
+                  <p className="me-auto text-white ms-4 mb-0">
+                    Economy - 2 Seats Chosen
+                  </p>
+                  <Image
+                    className="checkout-biodata__checklist me-4"
+                    src="/Suffix.svg"
+                    alt="checklist logo"
+                  />
                 </div>
                 <div className="mx-4 mt-3">
                   <SeatCustomer />
                 </div>
               </div>
             </Form>
-            <Button className="checkout-biodata__btn-1 border-0 d-flex align-items-center justify-content-center mt-4 py-4 mb-5">Simpan</Button>
+            <Button className="checkout-biodata__btn-1 border-0 d-flex align-items-center justify-content-center mt-4 py-4 mb-5">
+              Simpan
+            </Button>
           </div>
           <div className="col-md-5 mt-md-0 mt-lg-4">
             <h4 className="fw-bold">Detail Penerbangan</h4>
             <div className="d-flex">
               <h5 className="fw-bold me-auto mb-0">07:00</h5>
-              <p className="fw-bold mb-0" style={{ fontSize: "12px", color: "#a06ece" }}>
+              <p
+                className="fw-bold mb-0"
+                style={{ fontSize: "12px", color: "#a06ece" }}
+              >
                 Keberangkatan
               </p>
             </div>
             <p className="mb-0">3 Maret 2023</p>
-            <p className="fw-medium mb-0">Soekarno Hatta - Terminal 1A Domestik</p>
+            <p className="fw-medium mb-0">
+              Soekarno Hatta - Terminal 1A Domestik
+            </p>
             <div className="border-bottom my-2"></div>
             <div className="d-flex align-items-center">
               <div className="col-1">
                 <Image className="checkout-biodata__img" src="/Image-1.svg" />
               </div>
               <div className="col-12">
-                <p className="fw-bold mb-0">Jet Air - Economy</p>
-                <p className="fw-bold mb-3">JT - 203</p>
-                <p className="fw-bold mb-0">Informasi:</p>
+                <p className="fw-bold mb-0" style={{ padding: "0" }}>
+                  Jet Air - Economy
+                </p>
+                <p className="fw-bold mb-3" style={{ padding: "0" }}>
+                  JT - 203
+                </p>
+                <p className="fw-bold mb-0" style={{ padding: "0" }}>
+                  Informasi:
+                </p>
                 <p className="mb-0">Baggage 20 kg</p>
                 <p className="mb-0">Cabin baggage 7 kg</p>
                 <p className="mb-0">In Flight Entertainment</p>
@@ -333,7 +479,10 @@ const CheckoutCustomerData = () => {
             <div className="border-bottom my-2"></div>
             <div className="d-flex">
               <h5 className="fw-bold me-auto mb-0">11:00</h5>
-              <p className="fw-bold mb-0" style={{ fontSize: "12px", color: "#a06ece" }}>
+              <p
+                className="fw-bold mb-0"
+                style={{ fontSize: "12px", color: "#a06ece" }}
+              >
                 Keberangkatan
               </p>
             </div>
@@ -357,12 +506,17 @@ const CheckoutCustomerData = () => {
               <div className="border-bottom my-2"></div>
               <div className="d-flex">
                 <p className="mb-0 me-auto">Total</p>
-                <h5 className="fw-bold mb-0" style={{ fontSize: "18px", color: "#7126B5" }}>
+                <h5
+                  className="fw-bold mb-0"
+                  style={{ fontSize: "18px", color: "#7126B5" }}
+                >
                   IDR 9.850.000
                 </h5>
               </div>
               <Link to="/payment" className="text-decoration-none">
-                <Button className="checkout-biodata__btn-2 border-0 d-flex align-items-center justify-content-center mt-4 py-4">Lanjut Bayar</Button>
+                <Button className="checkout-biodata__btn-2 border-0 d-flex align-items-center justify-content-center mt-4 py-4">
+                  Lanjut Bayar
+                </Button>
               </Link>
             </div>
           </div>

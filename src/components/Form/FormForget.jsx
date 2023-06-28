@@ -43,7 +43,7 @@ function FormForget() {
           </button>
         </div>
       </form>
-      <p className="mt-5 mb-1 text-center">
+      <p className="form-d mt-5 mb-1 text-center">
         Belum punya akun?{"  "}
         <Link to="/register" className="fw-bold register">
           Daftar di sini

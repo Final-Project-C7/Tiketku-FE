@@ -5,6 +5,7 @@ import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { Modal, Button } from "react-bootstrap";
 import loadingGif from "/loading-regis.gif";
 import axios from "axios";
+import "../../pages/Akun.css"
 
 function FormRegister() {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -177,13 +178,13 @@ function FormRegister() {
   return (
     <>
       <style>{style}</style>
-      <h1 className="fw-bold mb-4">Daftar</h1>
+      <h1 className="regis fw-bold">Daftar</h1>
 
       <form onSubmit={handleSubmit}>
         <div>
           <p className="mb-1">Nama</p>
         </div>
-        <div className="input-group mb-3">
+        <div className="input-group">
           <input
             type="text"
             className="register__form form-control"
@@ -199,7 +200,7 @@ function FormRegister() {
         <div>
           <p className="mb-1">Email</p>
         </div>
-        <div className="input-group mb-3">
+        <div className="input-group">
           <input
             type="email"
             className="register__form form-control"
@@ -215,7 +216,7 @@ function FormRegister() {
         <div>
           <p className="mb-1">Nomor Telepon</p>
         </div>
-        <div className="input-group mb-3">
+        <div className="input-group">
           <input
             type="tel"
             className="register__form form-control"
@@ -232,7 +233,7 @@ function FormRegister() {
           <p className="mb-1">Password</p>
         </div>
 
-        <div className="input-group mb-2 mt-1">
+        <div className="input-group">
           <input
             type={passwordInputType}
             placeholder="Masukkan password"

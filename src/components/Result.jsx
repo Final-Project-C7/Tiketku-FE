@@ -8,13 +8,15 @@ import NavbarHomepage from "./NavbarHomepage";
 import NavbarUser from "../components/NavbarUser";
 import SelectDay from "./Filter/SelectDay";
 import MyModal from "./Beranda/MyModal";
+import { Link, useParams } from "react-router-dom";
+import axios from "axios";
+import ResultFlightList from "./ResultFlightList";
 import Filter from "./Filter/Filter";
-import { Link } from "react-router-dom";
 
 function Result() {
   const [expanded, setExpanded] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false); // State untuk menyimpan status login pengguna
-
+  const [data, setData] = useState();
   useEffect(() => {
     // Cek apakah pengguna sudah login atau memiliki token di lokal
     const token = localStorage.getItem("token");
@@ -26,6 +28,25 @@ function Result() {
   const handleExpand = () => {
     setExpanded(!expanded);
   };
+
+  let { depart, arrive } = useParams()
+  console.log(depart)
+  console.log(arrive)
+
+  useEffect(() => {
+    console.log('useEffect')
+    axios
+      .get(`http://localhost:8000/api/v1/flight/search/${depart}/${arrive}`)
+      .then(function (response) {
+        console.log(response?.data);
+        setData(response?.data?.flight);
+      })
+      .catch(function (error) {
+        console.log(error.message);
+      });
+  }, [setData]);
+
+  console.log(data)
 
   return (
     <>
@@ -40,8 +61,9 @@ function Result() {
           <div className="col-12 col-md-3 filter-l">
             <Filter />
           </div>
-          <div className="col-12 col-md-9 text-center mt-3 mb-5">
-            <Card
+          <ResultFlightList items={data} />
+          {/* <div className="col-12 col-md-9 text-center mt-3 mb-5">             */}
+          {/* <Card
               style={{
                 width: "100%",
                 border: expanded ? "2px solid rgba(113, 38, 181, 0.5)" : "none",
@@ -51,8 +73,8 @@ function Result() {
               <Card.Body>
                 <Card.Title className="title">
                   <Col className="col-12 d-flex gap-2">
-                    <Row style={{ width: "100%" , height:"100%" }}>
-                        <div className="d-flex col-8 align-items-center">
+                    <Row style={{ width: "100%", height: "100%" }}>
+                      <div className="d-flex col-8 align-items-center">
 
                         <Card.Img
                           variant="top"
@@ -65,15 +87,15 @@ function Result() {
                         >
                           Jet Air - Economy
                         </p>
-                        </div>
-                        <div className="d-flex justify-content-end col-4">
+                      </div>
+                      <div className="d-flex justify-content-end col-4">
                         <Card.Img
                           variant="top"
                           src={panah}
                           style={{ width: "30px", cursor: "pointer" }}
                           onClick={handleExpand}
                         />
-                        </div>
+                      </div>
                     </Row>
                   </Col>
                 </Card.Title>
@@ -158,7 +180,7 @@ function Result() {
                     {/* <Button className="col-3 py-1.5 btn-ticket text-white" variant="primary">
                       Pilih
                     </Button> */}
-                  </Col>
+          {/* </Col>
                 </Row>
                 {expanded && (
                   <>
@@ -267,12 +289,12 @@ function Result() {
                   </>
                 )}
               </Card.Body>
-            </Card>
-          </div>
+            </Card> */}
         </div>
       </div>
+      {/* </div > */}
     </>
   );
 }
 
-export default Result;
+export default Result;

@@ -324,7 +324,7 @@ export default function Footer() {
                       <a href="https://www.instagram.com/ratih_s007/" target="_blank">
                         <Image src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/gray-insta.svg" />
                       </a>
-                      <a href="http://www.gmail.com" target="_blank">
+                      <a href="https://www.linkedin.com/in/ratipurwaningsih" target="_blank">
                         <Image src="linked2.png" style={{ width: "25px" }} />
                       </a>
                     </div>

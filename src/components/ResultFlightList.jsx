@@ -17,14 +17,52 @@ import CheckoutCustomerData from "./CheckoutCustomerData";
 
 const ResultFlightList = (props) => {
     const [expanded, setExpanded] = useState(false);
-    const [test, setTest] = useState(false);
-    const [data, setData] = useState({});
-    console.log(props?.items)
+
+    const [user_id, setUserId] = useState("");
+    const [flight_id, setFlightId] = useState("");
+    const [order_date, setOrderDate] = useState("");
+    const [amount, setAmount] = useState("");
+
+
 
     const handleExpand = () => {
         setExpanded(!expanded);
     };
 
+    console.log(user_id)
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            const response = await axios.post("http://localhost:8000/api/v1/bookings", {
+                user_id,
+                flight_id,
+                order_date: new Date(),
+                amount
+            });
+
+            // Handle successful registration
+            const { newPassengers } = response.data.data;
+            console.log(newPassengers); // Do something with newUser
+
+            // Reset form field
+            setUserId("");
+            setFlightId("");
+            setOrderDate("");
+            setAmount("");
+
+            setSuccessMessage("registrasi berhasil");
+            setError("");
+        } catch (error) {
+            if (error.response && error.response.data && error.response.data.message) {
+                setError(error.response.data.message);
+            } else {
+                setError("Failed to register");
+            }
+            setSuccessMessage("");
+        }
+    };
 
     return (
         <>
@@ -58,15 +96,15 @@ const ResultFlightList = (props) => {
                                 <Col className="col-8 d-flex gap-3 align-items-center">
                                     <div>
                                         <Card.Text className="fw-bold mb-1" style={{ fontSize: "14px" }}>
-                                            07:00
+                                            {flight.departure_time}
                                         </Card.Text>
                                         <Card.Text className="fw-semibold mb-1" style={{ fontSize: "12px" }}>
-                                            JKT
+                                            {flight.departureAirport.city}
                                         </Card.Text>
                                     </div>
                                     <div style={{ width: "100%" }}>
                                         <Card.Text className="title-departure text-center" style={{ marginBottom: "1px" }}>
-                                            4h 0m
+                                            {/* 4h 0m */}
                                         </Card.Text>
                                         <hr align="center" color="green" size="2" width="100%" style={{ margin: 0 }} />
                                         <Card.Text className="title-departure text-center">Direct</Card.Text>
@@ -74,10 +112,10 @@ const ResultFlightList = (props) => {
                                     <div className="d-flex gap-3 align-items-center">
                                         <div>
                                             <Card.Text className="fw-bold mb-1" style={{ fontSize: "14px" }}>
-                                                11:00
+                                                {flight.arrival_time}
                                             </Card.Text>
                                             <Card.Text className="fw-semibold mb-1" style={{ fontSize: "12px" }}>
-                                                MLB
+                                                {flight.arrivalAirport.city}
                                             </Card.Text>
                                         </div>
                                         <Card.Img variant="top" src={koper} style={{ width: "24px", marginRight: "10px" }} />
@@ -95,13 +133,10 @@ const ResultFlightList = (props) => {
                                         IDR 4.950.000{" "}
                                     </Card.Text>
                                     <Link to="/checkout" state={flight}>
-                                        <Button className="col-3 py-1.5 btn-ticket text-white" variant="primary">
+                                        <Button className="col-3 py-1.5 btn-ticket text-white" variant="primary" value={flight.id} onClick={(e) => setFlightId(e.target.value)} oncClick={handleSubmit} >
                                             Pilih
                                         </Button>
                                     </Link>
-                                    {/* {<Button className="col-3 py-1.5 btn-ticket text-white" variant="primary">
-                                    Pilih
-                                </Button>} */}
                                 </Col>
                             </Row>
                             {expanded && (
@@ -122,7 +157,7 @@ const ResultFlightList = (props) => {
                                             <Col className="text-start">
                                                 <div className="d-flex align-items-center">
                                                     <p className="mb-0 me-auto" style={{ fontSize: "16px", fontWeight: "700" }}>
-                                                        07.00
+                                                        {flight.departure_time}
                                                     </p>
                                                     <p
                                                         className="mb-0"
@@ -136,9 +171,9 @@ const ResultFlightList = (props) => {
                                                     </p>
                                                 </div>
                                                 <p className="mb-0" style={{ fontSize: "14px", fontWeight: "400" }}>
-                                                    3 Maret 2023
+                                                    {flight.departure_time}
                                                 </p>
-                                                <p style={{ fontSize: "14px", fontWeight: "500" }}>Soekarno Hatta - Terminal 1A Domestik</p>
+                                                <p style={{ fontSize: "14px", fontWeight: "500" }}>{flight.departureAirport.airport_name}</p>
                                             </Col>
                                             <div className="d-flex justify-content-center mb-3">
                                                 <div className="col-8" style={{ borderBottom: "1px solid #D0D0D0" }}></div>
@@ -149,12 +184,12 @@ const ResultFlightList = (props) => {
                                                 <Card.Img src={loading} style={{ width: "24px" }} />
                                             </Col>
                                             <Col>
-                                                <p className="fw-bold mb-0">Jet Air-Economy</p>
-                                                <p className="fw-bold mb-0">JT-203</p>
+                                                <p className="fw-bold mb-0">{flight.airline.airline_name} - Kelas</p>
+                                                <p className="fw-bold mb-0">{flight.flight_code}</p>
                                                 <div className="detail-information">
                                                     <p className="fw-bold mb-0">Informasi:</p>
-                                                    <p className="mb-0">Baggage 20kg</p>
-                                                    <p className="mb-0">Cabin Baggage 7 kg</p>
+                                                    <p className="mb-0">Baggage {flight.airline.baggage} Kg</p>
+                                                    <p className="mb-0">Cabin Baggage {flight.airline.cabin_baggage} kg</p>
                                                     <p className="mb-0">In Flight Entertainment</p>
                                                 </div>
                                             </Col>
@@ -166,7 +201,7 @@ const ResultFlightList = (props) => {
                                             <Col className="text-start">
                                                 <div className="d-flex align-items-center">
                                                     <p className="mb-0 me-auto" style={{ fontSize: "14px", fontWeight: "700" }}>
-                                                        11.00
+                                                        {flight.arrival_time}
                                                     </p>
                                                     <p
                                                         className="mb-0"
@@ -180,9 +215,9 @@ const ResultFlightList = (props) => {
                                                     </p>
                                                 </div>
                                                 <p className="mb-0" style={{ fontSize: "14px", fontWeight: "400" }}>
-                                                    3 Maret 2023
+                                                    {flight.arrival_time}
                                                 </p>
-                                                <p style={{ fontSize: "14px", fontWeight: "500" }}>Melbourne International Airport</p>
+                                                <p style={{ fontSize: "14px", fontWeight: "500" }}>{flight.arrivalAirport.airport_name}</p>
                                             </Col>
                                         </Row>
                                     </div>

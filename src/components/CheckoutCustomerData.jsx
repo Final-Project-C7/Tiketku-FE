@@ -42,8 +42,6 @@ const CheckoutCustomerData = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // setIsLoading(true);
-
     try {
       const response = await axios.post(
         "http://localhost:8000/api/v1/passengers",
@@ -85,8 +83,6 @@ const CheckoutCustomerData = (props) => {
       }
       setSuccessMessage("");
     }
-
-    // setIsLoading(false);
   };
 
   useEffect(() => {

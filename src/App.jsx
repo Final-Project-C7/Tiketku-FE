@@ -25,6 +25,8 @@ import AdminPassengers from "./pages/AdminPassengers";
 import AdminSeats from "./pages/AdminSeats";
 import AdminPayments from "./pages/AdminPayments";
 import NotFoundPage from "./pages/NotFoundPage";
+import ContactUs from "./pages/ContactUs";
+import AboutUs from "./components/AboutUs";
 
 function App() {
   return (
@@ -56,6 +58,8 @@ function App() {
           <Route path="/admin-passengers" element={<AdminPassengers />} />
           <Route path="/admin-seats" element={<AdminSeats />} />
           <Route path="/admin-payments" element={<AdminPayments />} />
+          <Route path="/contact-us" element={<ContactUs />} />
+          <Route path="/about-us" element={<AboutUs />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>

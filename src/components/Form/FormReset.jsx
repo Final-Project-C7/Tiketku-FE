@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
+import "../../pages/Login.css"
 
 function FormReset() {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -15,10 +16,10 @@ function FormReset() {
 
   return (
     <>
-      <h1 className="fw-bold mb-4">Reset Password</h1>
+      <h1 className="reset fw-bold">Reset Password</h1>
 
       <form onSubmit={(e) => e.preventDefault}>
-        <div className="d-flex">
+        <div className="d-flex input-pw mt-4">
           <div>
             <p style={{ marginBottom: "0px" }}>Masukkan Password Baru</p>
           </div>
@@ -39,7 +40,7 @@ function FormReset() {
             <FontAwesomeIcon icon={passwordVisible ? faEye : faEyeSlash} />
           </span>
         </div>
-        <div className="d-flex">
+        <div className="d-flex input-pw mt-4">
           <div>
             <p style={{ marginBottom: "0px" }}>Ulangi Password Baru</p>
           </div>
@@ -61,7 +62,7 @@ function FormReset() {
           </span>
         </div>
         {/* {error && <p className="error-message">{error}</p>} */}
-        <div className="d-grid gap-2 mt-4">
+        <div className="d-grid gap-2 mt-5">
           <button className="reset-pass__btn lg sign-up rounded-4 py-2" type="submit">
             Simpan
           </button>

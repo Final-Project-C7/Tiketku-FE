@@ -102,8 +102,10 @@ function ModalPassengers() {
   return (
     <>
       <style>{style}</style>
+ integration-api
       <div className="col-11 border-bottom text-dark fw-bold pb-3" onClick={handleShow} style={{ cursor: "pointer" }}>
         <input className="border-0 bg-transparent" style={{ fontSize: "18px" }} defaultValue="" disabled hidden /> {totalPassengers} Penumpang
+
       </div>
 
       <Modal size="md" show={show} onHide={handleClose} centered>
@@ -115,7 +117,7 @@ function ModalPassengers() {
         <Modal.Body>
           <Form>
             <div className="row d-flex align-items-center border-bottom mx-2">
-              <div className="col-6 fw-bold">
+              <div className="col-6 fw-bold pt-0">
                 <Image className="passengers__img me-3" src="/Passengers-Dewasa.svg" />
                 DEWASA
                 <p className="passengers__text offset-2 fw-normal">(12 tahun keatas)</p>
@@ -133,7 +135,7 @@ function ModalPassengers() {
               </div>
             </div>
             <div className="row d-flex align-items-center border-bottom mx-2 mt-2">
-              <div className="col-6 fw-bold">
+              <div className="col-6 fw-bold pt-0">
                 <Image className="passengers__img me-3" src="/Passengers-Anak.svg" />
                 ANAK
                 <p className="passengers__text offset-2 fw-normal">(2 - 11 tahun)</p>
@@ -151,7 +153,7 @@ function ModalPassengers() {
               </div>
             </div>
             <div className="row d-flex align-items-center border-bottom mx-2 mt-2">
-              <div className="col-6 fw-bold">
+              <div className="col-6 fw-bold pt-0">
                 <Image className="passengers__img me-3" src="/Passengers-Bayi.svg" />
                 BAYI
                 <p className="passengers__text offset-2 fw-normal">(Dibawah 2 tahun)</p>

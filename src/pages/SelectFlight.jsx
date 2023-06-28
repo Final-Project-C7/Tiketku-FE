@@ -13,17 +13,17 @@ function SelectFlight() {
   return (
     <>
       <NavbarHomepage />
-      <div className="container-fluid" id="select-flight">
+      <div className="container" id="select-flight">
         <h4 className="title">Pilih Penerbangan</h4>
         <SelectDay />
         <div className="d-flex justify-content-end">
           <MyModal/>
         </div>
         <div className="row filter-loading mt-4">
-          <div className="col-3 filter-l">
+          <div className="col-12 col-md-3 col-sm-12 filter-l">
             <Filter />
           </div>
-          <div className="col-9 text-center mb-5">
+          <div className="col-12 col-md-9 col-sm-12 text-center mb-5">
             <SoldoutComponent />
           </div>
         </div>
@@ -32,4 +32,4 @@ function SelectFlight() {
   );
 }
 
-export default SelectFlight;
+export default SelectFlight;

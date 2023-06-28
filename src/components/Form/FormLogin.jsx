@@ -44,13 +44,10 @@ const FormLogin = () => {
     setIsLoading(true); // Start loading
 
     try {
-      const response = await axios.post(
-        "http://localhost:8000/api/v1/user/login",
-        {
-          email,
-          password,
-        }
-      );
+      const response = await axios.post("http://localhost:8000/api/v1/user/login", {
+        email,
+        password,
+      });
 
       localStorage.setItem("token", response.data.data.token);
 
@@ -70,17 +67,7 @@ const FormLogin = () => {
           <p className="mb-1">Email/No telepon</p>
         </div>
         <div className="input-group mb-3">
-          <input
-            type="email"
-            className="login__form form-control"
-            placeholder="Contoh: johndoe@gmail.com"
-            aria-label="Email"
-            name="email"
-            value={email}
-            onChange={handleEmailChange}
-            required
-            style={{ fontFamily: "Poppins" }}
-          />
+          <input type="email" className="login__form form-control" placeholder="Contoh: johndoe@gmail.com" aria-label="Email" name="email" value={email} onChange={handleEmailChange} required style={{ fontFamily: "Poppins" }} />
         </div>
         <div className="d-flex">
           <div className="pass">
@@ -111,21 +98,12 @@ const FormLogin = () => {
           </span>
         </div>
         {error && (
-          <Button
-            variant="danger"
-            className="error-button d-flex justify-content-center error-message fade-out align-items-center"
-            onClick={() => setError("")}
-            style={{ width: "200px", fontSize: "13px", textAlign: "center" }}
-          >
+          <Button variant="danger" className="error-button d-flex justify-content-center error-message fade-out align-items-center" onClick={() => setError("")} style={{ width: "200px", fontSize: "13px", textAlign: "center" }}>
             {error}
           </Button>
         )}
         <div className="d-grid gap-2 mt-5">
-          <button
-            className="login__btn btn lg sign-up fw-bold"
-            type="submit"
-            disabled={isLoading}
-          >
+          <button className="login__btn btn lg sign-up fw-bold" type="submit" disabled={isLoading}>
             {isLoading ? "Loading..." : "Masuk"}
           </button>
         </div>

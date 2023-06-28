@@ -17,14 +17,11 @@ function Akun() {
     const getUserData = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get(
-          "http://localhost:8000/api/v1/user/user-info",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const response = await axios.get("http://localhost:8000/api/v1/user/user-info", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         setUser(response.data.data.user);
       } catch (error) {
         // Handle error jika terjadi masalah saat mengambil data pengguna
@@ -38,15 +35,11 @@ function Akun() {
   const saveProfile = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.put(
-        "http://localhost:8000/api/v1/user/update",
-        updatedUser,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await axios.put("http://localhost:8000/api/v1/user/update", updatedUser, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       // Handle the response if needed
       console.log(response.data);
 
@@ -88,11 +81,7 @@ function Akun() {
           <div className="akun-top d-flex align-items-center mx-2 mb-4">
             <div className="akun-top__alert col-12 text-white d-flex px-3 py-2 mt-2">
               <Link to="/">
-                <Image
-                  className="akun-top__arrow-left my-2"
-                  src="./arrow-left.png"
-                  alt="arrow left"
-                />
+                <Image className="akun-top__arrow-left my-2" src="./arrow-left.png" alt="arrow left" />
               </Link>
               <h5 className="ms-4 pt-2">Beranda</h5>
             </div>
@@ -100,39 +89,33 @@ function Akun() {
         </Container>
       </div>
       <Container>
-        <div
-          className="filter-akun row mt-4 mx-auto"
-          style={{ marginLeft: "120px" }}
-        >
+        <div className="filter-akun row mt-4 mx-auto" style={{ marginLeft: "120px" }}>
           <div className="col-5">
-            <div className="border-bottom account-list pb-3 mb-3">
-              <Image src="fi_edit-3.svg" style={{ marginRight: "10px" }} /> Ubah
-              Profil
+            <div className="account-list p-3 pb-1 mb-3 rounded-3">
+              <div className="d-flex border-bottom pb-3">
+                <Image className="me-3" src="fi_edit-3.svg" />
+                <p className="mb-0">Ubah Profil</p>
+              </div>
             </div>
-            <div className="border-bottom account-list pb-3 mb-3">
-              <Image src="fi_settings.svg" style={{ marginRight: "10px" }} />{" "}
-              Pengaturan Akun
+            <div className="account-list p-3 pb-1 mb-3 rounded-3">
+              <div className="d-flex border-bottom pb-3">
+                <Image className="me-3" src="fi_settings.svg" />
+                <p className="mb-0">Pengaturan Akun</p>
+              </div>
             </div>
-            {/* <div className="border-bottom pb-3 mb-3">
-              <Image src="fi_log-out.svg" style={{ marginRight: "10px" }} />{" "}
-              Keluar
-            </div> */}
-            <div
-              onClick={logoutHandler}
-              className="border-bottom account-list pb-3 mb-3"
-            >
-              <Image src="fi_log-out.svg" style={{ marginRight: "10px" }} />{" "}
-              Keluar
+
+            <div onClick={logoutHandler} className="account-list p-3 pb-1 mb-3 rounded-3">
+              <div className="d-flex border-bottom pb-3">
+                <Image className="me-3" src="fi_log-out.svg" />
+                <p className="mb-0">Keluar</p>
+              </div>
             </div>
           </div>
           <div className="col-7">
             <div className="border rounded-1 p-4 mb-4">
               <h4 className="fw-bold">Ubah Data Profil</h4>
               <Form className="mt-4">
-                <div
-                  className="d-flex align-items-start bg rounded-top-4 py-3 "
-                  style={{ background: "#A06ECE" }}
-                >
+                <div className="d-flex align-items-start bg rounded-top-4 py-3 " style={{ background: "#A06ECE" }}>
                   <h5 className="me-auto text-white ms-4 mb-0">Data Diri</h5>
                 </div>
                 <div className="mx-4 mt-3">
@@ -190,43 +173,28 @@ function Akun() {
                     />
                   </div>
                 </div>
-                <Button
-                  className="save-btn-akun offset-5 col-5"
-                  onClick={saveProfile}
-                >
+                <Button className="save-btn-akun offset-5 col-5" onClick={saveProfile}>
                   Simpan
                 </Button>
               </Form>
             </div>
           </div>
         </div>
-        <Modal
-          show={showConfirmationModal}
-          onHide={cancelLogoutHandler}
-          centered
-        >
+        <Modal show={showConfirmationModal} onHide={cancelLogoutHandler} centered>
           <Modal.Body>
             <p className="mb-3">Are you sure you want to logout?</p>
             <div className="d-flex justify-content-end gap-2">
               <Button variant="secondary" onClick={cancelLogoutHandler}>
                 Cancel
               </Button>
-              <Button
-                variant="primary"
-                className="logout-button"
-                onClick={confirmLogoutHandler}
-              >
+              <Button variant="primary" className="logout-button" onClick={confirmLogoutHandler}>
                 Logout
               </Button>
             </div>
           </Modal.Body>
         </Modal>
 
-        <Modal
-          show={showUpdateModal}
-          onHide={() => setShowUpdateModal(false)}
-          centered
-        >
+        <Modal show={showUpdateModal} onHide={() => setShowUpdateModal(false)} centered>
           <Modal.Body className="text-center">
             {" "}
             {/* Tambahkan kelas CSS text-center */}

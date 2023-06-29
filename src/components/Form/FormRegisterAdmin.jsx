@@ -32,7 +32,7 @@ function FormRegister() {
 
     try {
       const response = await axios.post(
-        "https://https://c7-tiketku.up.railway.app/api/v1/user/register",
+        "https://c7-tiketku.up.railway.app/api/v1/user/register",
         {
           name,
           email,

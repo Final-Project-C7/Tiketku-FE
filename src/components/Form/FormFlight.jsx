@@ -84,14 +84,14 @@ const FormFlight = () => {
           <div className="row mt-4">
             <div className="card-destination col-12 d-flex flex-wrap mb-3 mx-4">
               <div className="col-md-6 d-flex">
-                <div className="col-2 d-flex me-3">
+                <div className="col-2 d-flex me-3 me-md-1">
                   <Image className="card-destination__img" src="take-off.svg" alt="flight takeoff" />
                   <p className="col-1 ms-2">From</p>
                 </div>
                 <ModalFlightFrom departure={depart} setDeparture={setDepart} />
               </div>
-              <div className="col-md-6 d-flex">
-                <div className="col-2 d-flex me-3">
+              <div className="col-md-6 d-flex mt-3 mt-md-0">
+                <div className="col-2 col-xxl-1 d-flex me-3 me-md-0">
                   <Image className="card-destination__img" src="/take-off.svg" alt="flight takeoff" id="arrive" />
                   <p className="col-1 ms-2">To</p>
                 </div>

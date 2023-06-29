@@ -20,7 +20,7 @@ function FormModalAdminSeats() {
       const token = localStorage.getItem("token");
       const headers = { Authorization: `Bearer ${token}` };
       const response = await axios.post(
-        "http://localhost:8000/api/v1/seats",
+        "c7-tiketku.up.railway.app/api/v1/seats",
         {
           seat_number,
           flight_id,
@@ -37,7 +37,11 @@ function FormModalAdminSeats() {
       setError("");
       window.location.reload();
     } catch (error) {
-      if (error.response && error.response.data && error.response.data.message) {
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
         setError(error.response.data.message);
       } else {
         setError("Failed to create user");
@@ -53,7 +57,10 @@ function FormModalAdminSeats() {
 
   return (
     <>
-      <Button className="btn-primary border-0 d-flex py-2 px-2" onClick={handleShow}>
+      <Button
+        className="btn-primary border-0 d-flex py-2 px-2"
+        onClick={handleShow}
+      >
         <Image className="create-icon" src="/create-icon.svg" />
         <p className="text-white ms-1 mb-0">Create</p>
       </Button>
@@ -66,22 +73,43 @@ function FormModalAdminSeats() {
           <Modal.Body>
             <Form.Group className="mb-3">
               <Form.Label>Seat Number</Form.Label>
-              <Form.Control type="number" placeholder="1" autoFocus value={seat_number} onChange={(e) => setSeatNumber(e.target.value)} />
+              <Form.Control
+                type="number"
+                placeholder="1"
+                autoFocus
+                value={seat_number}
+                onChange={(e) => setSeatNumber(e.target.value)}
+              />
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Flight ID</Form.Label>
-              <Form.Control type="number" placeholder="1" value={flight_id} onChange={(e) => setFlightId(e.target.value)} />
+              <Form.Control
+                type="number"
+                placeholder="1"
+                value={flight_id}
+                onChange={(e) => setFlightId(e.target.value)}
+              />
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Booking ID</Form.Label>
-              <Form.Control type="number" placeholder="1" value={booking_id} onChange={(e) => setBookingId(e.target.value)} />
+              <Form.Control
+                type="number"
+                placeholder="1"
+                value={booking_id}
+                onChange={(e) => setBookingId(e.target.value)}
+              />
             </Form.Group>
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>
-            <Button type="submit" onClick={handleClose} variant="primary" disabled={isLoading}>
+            <Button
+              type="submit"
+              onClick={handleClose}
+              variant="primary"
+              disabled={isLoading}
+            >
               {isLoading ? "Saving..." : "Save Changes"}
             </Button>
           </Modal.Footer>

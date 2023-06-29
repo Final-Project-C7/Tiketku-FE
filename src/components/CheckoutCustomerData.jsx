@@ -44,7 +44,7 @@ const CheckoutCustomerData = (props) => {
 
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/v1/passengers",
+        "c7-tiketku.up.railway.app/api/v1/passengers",
         {
           name,
           born_date,

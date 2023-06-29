@@ -29,7 +29,7 @@ const Login = () => {
 
   //   try {
   //     const response = await axios.post(
-  //       "http://localhost:8000/api/v1/auth/login",
+  //       "c7-tiketku.up.railway.app/api/v1/auth/login",
   //       {
   //         email,
   //         password,
@@ -64,9 +64,9 @@ const Login = () => {
           </div>
 
           <div className="log col-md-6 col-lg-5 col-md-5 mx-auto">
-          <div className="row">
-            <FormLogin />
-          </div>
+            <div className="row">
+              <FormLogin />
+            </div>
           </div>
         </div>
       </div>

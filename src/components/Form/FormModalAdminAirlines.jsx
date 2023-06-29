@@ -17,11 +17,14 @@ function FormModalAdminAirlines() {
     setIsLoading(true);
 
     try {
-      const response = await axios.post("http://localhost:8000/api/v1/airline", {
-        airline_name,
-        baggage,
-        cabin_baggage,
-      });
+      const response = await axios.post(
+        "c7-tiketku.up.railway.app/api/v1/airline",
+        {
+          airline_name,
+          baggage,
+          cabin_baggage,
+        }
+      );
 
       // Reset form field
       setAirlineName("");
@@ -31,7 +34,11 @@ function FormModalAdminAirlines() {
       setError("");
       window.location.reload();
     } catch (error) {
-      if (error.response && error.response.data && error.response.data.message) {
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
         setError(error.response.data.message);
       } else {
         setError("Failed to create airline");
@@ -47,7 +54,10 @@ function FormModalAdminAirlines() {
 
   return (
     <>
-      <Button className="btn-primary border-0 d-flex py-2 px-2" onClick={handleShow}>
+      <Button
+        className="btn-primary border-0 d-flex py-2 px-2"
+        onClick={handleShow}
+      >
         <Image className="create-icon" src="/create-icon.svg" />
         <p className="text-white ms-1 mb-0">Create</p>
       </Button>
@@ -60,22 +70,43 @@ function FormModalAdminAirlines() {
           <Modal.Body>
             <Form.Group className="mb-3">
               <Form.Label>Airline Name</Form.Label>
-              <Form.Control type="text" placeholder="Emirates" autoFocus value={airline_name} onChange={(e) => setAirlineName(e.target.value)} />
+              <Form.Control
+                type="text"
+                placeholder="Emirates"
+                autoFocus
+                value={airline_name}
+                onChange={(e) => setAirlineName(e.target.value)}
+              />
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Baggage</Form.Label>
-              <Form.Control type="number" placeholder="20" value={baggage} onChange={(e) => setBaggage(e.target.value)} />
+              <Form.Control
+                type="number"
+                placeholder="20"
+                value={baggage}
+                onChange={(e) => setBaggage(e.target.value)}
+              />
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Cabin Baggage</Form.Label>
-              <Form.Control type="number" placeholder="7" value={cabin_baggage} onChange={(e) => setCabinBaggage(e.target.value)} />
+              <Form.Control
+                type="number"
+                placeholder="7"
+                value={cabin_baggage}
+                onChange={(e) => setCabinBaggage(e.target.value)}
+              />
             </Form.Group>
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>
-            <Button type="submit" onClick={handleClose} variant="primary" disabled={isLoading}>
+            <Button
+              type="submit"
+              onClick={handleClose}
+              variant="primary"
+              disabled={isLoading}
+            >
               {isLoading ? "Saving..." : "Save Changes"}
             </Button>
           </Modal.Footer>

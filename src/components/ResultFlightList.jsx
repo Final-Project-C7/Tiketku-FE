@@ -215,7 +215,14 @@ const ResultFlightList = (props) => {
                             className="mb-0 me-auto"
                             style={{ fontSize: "16px", fontWeight: "700" }}
                           >
-                            {flight.departure_time}
+                            {new Date(flight.departure_time).toLocaleDateString(
+                              "en-GB",
+                              {
+                                day: "2-digit",
+                                month: "2-digit",
+                                year: "numeric",
+                              }
+                            )}
                           </p>
                           <p
                             className="mb-0"
@@ -232,7 +239,11 @@ const ResultFlightList = (props) => {
                           className="mb-0"
                           style={{ fontSize: "14px", fontWeight: "400" }}
                         >
-                          {flight.departure_time}
+                          {flight.departure_time.toLocaleDateString("en-US", {
+                            year: "numeric",
+                            month: "long",
+                            day: "numeric",
+                          })}
                         </p>
                         <p style={{ fontSize: "14px", fontWeight: "500" }}>
                           {flight.departureAirport.airport_name}

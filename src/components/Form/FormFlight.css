@@ -38,11 +38,6 @@
   border-bottom: 2px solid #d0d0d0;
 }
 
-.card-destination-to,
-.car-date-passengers {
-  margin-left: -80px;
-}
-
 .card-date__input:focus {
   outline-style: none;
 }
@@ -173,21 +168,16 @@
     display: block !important;
   }
 
-  .card-destination-to,
-  .car-date-passengers {
-    margin-left: 0px;
-  }
-
   .banner {
     margin-top: 5.5rem;
   }
 
   .flight-schedule {
-    margin-top: -1rem;
+    margin-top: -1rem !important;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1400px) {
   .flight-schedule {
     margin-top: -2rem;
   }

@@ -10,7 +10,7 @@ function ModalPassengers() {
 
   let totalPassengers = num1 + num2;
 
-  console.log(totalPassengers)
+  console.log(totalPassengers);
 
   let incToggle1 = () => {
     setNum1(Number(num1) + 1);
@@ -102,10 +102,9 @@ function ModalPassengers() {
   return (
     <>
       <style>{style}</style>
- integration-api
+      {/* integration-api */}
       <div className="col-11 border-bottom text-dark fw-bold pb-3" onClick={handleShow} style={{ cursor: "pointer" }}>
         <input className="border-0 bg-transparent" style={{ fontSize: "18px" }} defaultValue="" disabled hidden /> {totalPassengers} Penumpang
-
       </div>
 
       <Modal size="md" show={show} onHide={handleClose} centered>
@@ -170,7 +169,7 @@ function ModalPassengers() {
                 </div>
               </div>
             </div>
-            <Link to="/" state={totalPassengers}>
+            <Link to="/" state={totalPassengers} onClick={handleClose}>
               <Button type="submit" className="save-btn-passengers offset-7 col-5 mt-2 py-3">
                 Simpan
               </Button>

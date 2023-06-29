@@ -62,7 +62,7 @@ const OTP = () => {
 
     try {
       const response = await fetch(
-        "c7-tiketku.up.railway.app/api/v1/user/verify",
+        "https://c7-tiketku.up.railway.app/api/v1/user/verify",
         {
           method: "POST",
           headers: {

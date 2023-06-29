@@ -16,7 +16,7 @@ function AdminPayments() {
 
   useEffect(() => {
     axios
-      .get("c7-tiketku.up.railway.app/api/v1/payments", { headers })
+      .get("https://c7-tiketku.up.railway.app/api/v1/payments", { headers })
       .then((response) => {
         setData(response.data);
       })
@@ -35,7 +35,7 @@ function AdminPayments() {
   const confirmDelete = async () => {
     try {
       await axios.delete(
-        `c7-tiketku.up.railway.app/api/v1/payments/${deletePaymentId}`,
+        `https://c7-tiketku.up.railway.app/api/v1/payments/${deletePaymentId}`,
         { headers }
       );
       setIsDeleted(true);

@@ -32,7 +32,7 @@ function FormRegister() {
 
     try {
       const response = await axios.post(
-        "c7-tiketku.up.railway.app/api/v1/admin/register",
+        "https://https://c7-tiketku.up.railway.app/api/v1/user/register",
         {
           name,
           email,
@@ -233,7 +233,7 @@ function FormRegister() {
             <p>
               Congratulations {successMessage},
               <Link
-                to={"https://c7-tiketku.up.railway.app/admin-login"}
+                to={"https://https://c7-tiketku.up.railway.app/admin-login"}
                 className="fw-bold"
               >
                 {" "}

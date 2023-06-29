@@ -36,7 +36,9 @@ function Result() {
   useEffect(() => {
     console.log("useEffect");
     axios
-      .get(`c7-tiketku.up.railway.app/api/v1/flight/search/${depart}/${arrive}`)
+      .get(
+        `https://c7-tiketku.up.railway.app/api/v1/flight/search/${depart}/${arrive}`
+      )
       .then(function (response) {
         console.log(response?.data);
         setData(response?.data?.flight);

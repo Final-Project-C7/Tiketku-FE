@@ -22,7 +22,7 @@ function Admin() {
   useEffect(() => {
     // get all users
     axios
-      .get("c7-tiketku.up.railway.app/api/v1/user")
+      .get("https://c7-tiketku.up.railway.app/api/v1/user")
       .then((response) => {
         setUsers(response.data);
       })
@@ -32,7 +32,7 @@ function Admin() {
 
     // get all airlines
     axios
-      .get("c7-tiketku.up.railway.app/api/v1/airline")
+      .get("https://c7-tiketku.up.railway.app/api/v1/airline")
       .then((response) => {
         setAirlines(response.data);
       })
@@ -42,7 +42,7 @@ function Admin() {
 
     // get all airports
     axios
-      .get("c7-tiketku.up.railway.app/api/v1/airports")
+      .get("https://c7-tiketku.up.railway.app/api/v1/airports")
       .then((response) => {
         setAirports(response.data);
       })
@@ -52,7 +52,7 @@ function Admin() {
 
     // get all flights
     axios
-      .get("c7-tiketku.up.railway.app/api/v1/flight")
+      .get("https://c7-tiketku.up.railway.app/api/v1/flight")
       .then((response) => {
         setFlights(response.data);
       })
@@ -62,7 +62,7 @@ function Admin() {
 
     // get all bookings
     axios
-      .get("c7-tiketku.up.railway.app/api/v1/bookings", { headers })
+      .get("https://c7-tiketku.up.railway.app/api/v1/bookings", { headers })
       .then((response) => {
         setBookings(response.data);
       })
@@ -72,7 +72,7 @@ function Admin() {
 
     // get all passengers
     axios
-      .get("c7-tiketku.up.railway.app/api/v1/passengers", { headers })
+      .get("https://c7-tiketku.up.railway.app/api/v1/passengers", { headers })
       .then((response) => {
         setPassengers(response.data);
       })
@@ -82,7 +82,7 @@ function Admin() {
 
     // get all seats
     axios
-      .get("c7-tiketku.up.railway.app/api/v1/seats", { headers })
+      .get("https://c7-tiketku.up.railway.app/api/v1/seats", { headers })
       .then((response) => {
         setSeats(response.data);
       })
@@ -92,7 +92,7 @@ function Admin() {
 
     // get all payments
     axios
-      .get("c7-tiketku.up.railway.app/api/v1/payments", { headers })
+      .get("https://c7-tiketku.up.railway.app/api/v1/payments", { headers })
       .then((response) => {
         setPayments(response.data);
       })

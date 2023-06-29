@@ -16,7 +16,7 @@ function AdminUsers() {
 
   useEffect(() => {
     axios
-      .get("c7-tiketku.up.railway.app/api/v1/user")
+      .get("https://c7-tiketku.up.railway.app/api/v1/user")
       .then((response) => {
         setData(response.data);
       })
@@ -35,7 +35,7 @@ function AdminUsers() {
   const confirmDelete = async () => {
     try {
       await axios.delete(
-        `c7-tiketku.up.railway.app/api/v1/user/${deleteUserId}`
+        `https://c7-tiketku.up.railway.app/api/v1/user/${deleteUserId}`
       );
       setIsDeleted(true);
       console.log("Data berhasil dihapus");

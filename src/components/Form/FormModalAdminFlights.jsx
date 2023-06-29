@@ -117,7 +117,7 @@ function FormModalAdminFlights() {
             <Form.Group className="mb-3">
               <Form.Label>Flight Code</Form.Label>
               <Form.Control
-                type="number"
+                type="text"
                 placeholder="1"
                 value={flight_code}
                 onChange={(e) => setFlightCode(e.target.value)}

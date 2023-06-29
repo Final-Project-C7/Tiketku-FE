@@ -36,14 +36,11 @@
 }
 
 .save-btn-akun {
-  background-color: #4b1979 !important;
+  background-color: #7126b5 !important;
   color: #fff !important;
-  border-radius: 12px;
-  -webkit-border-radius: 12px;
-  -moz-border-radius: 12px;
-  -ms-border-radius: 12px;
-  -o-border-radius: 12px;
+  border: none !important;
   width: 150px;
+  margin-left: 240px !important;
   height: 48px;
 }
 

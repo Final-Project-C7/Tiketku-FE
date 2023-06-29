@@ -41,7 +41,7 @@ function FormLoginAdmin() {
       localStorage.setItem("token", response.data.data.token);
 
       window.location.href =
-        "https://travelesia-fe-production.up.railway.app//admin";
+        "https://travelesia-fe-production.up.railway.app/admin";
     } catch (error) {
       setError("Invalid email or password");
       setLoading(false);

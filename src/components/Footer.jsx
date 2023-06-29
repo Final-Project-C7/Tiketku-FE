@@ -242,7 +242,7 @@ export default function Footer() {
                     </div>
                     <p className="text-blk name">Danar Zulfian Wirakusumah</p>
                     <p className="text-blk position">Scrum Master</p>
-                    <div className="social-media-links " style={{ marginLeft: "73px" }}>
+                    <div className="social-media-links ">
                       <a href="https://github.com/Danarzlf" target="_blank">
                         <Image src="github-logo.png" style={{ width: "24px" }} />
                       </a>
@@ -266,7 +266,7 @@ export default function Footer() {
                     </div>
                     <p className="text-blk name">Arfin Dwi Octavianto</p>
                     <p className="text-blk position">Front End Developer</p>
-                    <div className="social-media-links" style={{ marginLeft: "73px" }}>
+                    <div className="social-media-links">
                       <a href="https://github.com/arfindwio" target="_blank">
                         <Image src="github-logo.png" style={{ width: "24px" }} />
                       </a>
@@ -290,7 +290,7 @@ export default function Footer() {
                     </div>
                     <p className="text-blk name">Wira Adi Kurniawan</p>
                     <p className="text-blk position">Back End Developer</p>
-                    <div className="social-media-links" style={{ marginLeft: "73px" }}>
+                    <div className="social-media-links">
                       <a href="https://github.com/adikrnwn171" target="_blank">
                         <Image src="github-logo.png" style={{ width: "24px" }} />
                       </a>
@@ -314,7 +314,7 @@ export default function Footer() {
                     </div>
                     <p className="text-blk name">Rati Purwaningsih</p>
                     <p className="text-blk position">Front End Developer</p>
-                    <div className="social-media-links" style={{ marginLeft: "73px" }}>
+                    <div className="social-media-links">
                       <a href="https://github.com/ratipurwaningsih" target="_blank">
                         <Image src="github-logo.png" style={{ width: "24px" }} />
                       </a>
@@ -338,7 +338,7 @@ export default function Footer() {
                     </div>
                     <p className="text-blk name">Rizatul Mas Ulah</p>
                     <p className="text-blk position">Front End Developer</p>
-                    <div className="social-media-links" style={{ marginLeft: "73px" }}>
+                    <div className="social-media-links">
                       <a href="https://github.com/rizagithub" target="_blank">
                         <Image src="github-logo.png" style={{ width: "24px" }} />
                       </a>
@@ -362,7 +362,7 @@ export default function Footer() {
                     </div>
                     <p className="text-blk name">Yunis Isnaini</p>
                     <p className="text-blk position">Front End Developer</p>
-                    <div className="social-media-links" style={{ marginLeft: "73px" }}>
+                    <div className="social-media-links">
                       <a href="https://github.com/yunisisnaini" target="_blank">
                         <Image src="github-logo.png" style={{ width: "24px" }} />
                       </a>

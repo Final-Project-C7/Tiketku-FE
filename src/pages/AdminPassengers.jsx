@@ -17,7 +17,7 @@ function AdminPassengers() {
 
   useEffect(() => {
     axios
-      .get("c7-tiketku.up.railway.app/api/v1/passengers", { headers })
+      .get("https://c7-tiketku.up.railway.app/api/v1/passengers", { headers })
       .then((response) => {
         setData(response.data);
       })
@@ -36,7 +36,7 @@ function AdminPassengers() {
   const confirmDelete = async () => {
     try {
       await axios.delete(
-        `c7-tiketku.up.railway.app/api/v1/passengers/${deletePassengerId}`,
+        `https://c7-tiketku.up.railway.app/api/v1/passengers/${deletePassengerId}`,
         { headers }
       );
       setIsDeleted(true);

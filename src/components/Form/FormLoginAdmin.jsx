@@ -31,7 +31,7 @@ function FormLoginAdmin() {
     try {
       setLoading(true); // Atur loading menjadi true saat memulai pengiriman permintaan
       const response = await axios.post(
-        "c7-tiketku.up.railway.app/api/v1/admin/login",
+        "https://c7-tiketku.up.railway.app/api/v1/admin/login",
         {
           email,
           password,

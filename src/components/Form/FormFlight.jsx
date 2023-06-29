@@ -40,7 +40,7 @@ const FormFlight = () => {
 
     try {
       const response = await axios.get(
-        `c7-tiketku.up.railway.app/api/v1/flight/search/${depart}/${arrive}`
+        `https://c7-tiketku.up.railway.app/api/v1/flight/search/${depart}/${arrive}`
       );
 
       console.log(response);

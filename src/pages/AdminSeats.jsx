@@ -16,7 +16,7 @@ function AdminSeats() {
 
   useEffect(() => {
     axios
-      .get("c7-tiketku.up.railway.app/api/v1/seats", { headers })
+      .get("https://c7-tiketku.up.railway.app/api/v1/seats", { headers })
       .then((response) => {
         setData(response.data);
       })
@@ -35,7 +35,7 @@ function AdminSeats() {
   const confirmDelete = async () => {
     try {
       await axios.delete(
-        `c7-tiketku.up.railway.app/api/v1/seats/${deleteSeatId}`,
+        `https://c7-tiketku.up.railway.app/api/v1/seats/${deleteSeatId}`,
         { headers }
       );
       setIsDeleted(true);

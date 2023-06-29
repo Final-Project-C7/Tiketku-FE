@@ -3,7 +3,7 @@ import axios from "axios";
 const fetchRegister = async () => {
   try {
     const response = await axios.post(
-      "c7-tiketku.up.railway.app/api/v1/user/register",
+      "https://c7-tiketku.up.railway.app/api/v1/user/register",
       {
         name,
         password,

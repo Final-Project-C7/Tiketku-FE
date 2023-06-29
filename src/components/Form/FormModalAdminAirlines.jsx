@@ -18,7 +18,7 @@ function FormModalAdminAirlines() {
 
     try {
       const response = await axios.post(
-        "c7-tiketku.up.railway.app/api/v1/airline",
+        "https://c7-tiketku.up.railway.app/api/v1/airline",
         {
           airline_name,
           baggage,

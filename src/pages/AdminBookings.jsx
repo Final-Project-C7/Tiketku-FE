@@ -16,7 +16,7 @@ function AdminBookings() {
 
   useEffect(() => {
     axios
-      .get("c7-tiketku.up.railway.app/api/v1/bookings", { headers })
+      .get("https://c7-tiketku.up.railway.app/api/v1/bookings", { headers })
       .then((response) => {
         setData(response.data);
       })
@@ -35,7 +35,7 @@ function AdminBookings() {
   const confirmDelete = async () => {
     try {
       await axios.delete(
-        `c7-tiketku.up.railway.app/api/v1/bookings/${deleteBookingId}`,
+        `https://c7-tiketku.up.railway.app/api/v1/bookings/${deleteBookingId}`,
         { headers }
       );
       setIsDeleted(true);

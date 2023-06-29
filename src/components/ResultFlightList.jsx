@@ -32,7 +32,7 @@ const ResultFlightList = (props) => {
 
     try {
       const response = await axios.post(
-        "c7-tiketku.up.railway.app/api/v1/bookings",
+        "https://c7-tiketku.up.railway.app/api/v1/bookings",
         {
           user_id,
           flight_id,

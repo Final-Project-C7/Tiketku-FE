@@ -15,7 +15,7 @@ function AdminAirlines() {
 
   useEffect(() => {
     axios
-      .get("c7-tiketku.up.railway.app/api/v1/airline")
+      .get("https://c7-tiketku.up.railway.app/api/v1/airline")
       .then((response) => {
         setData(response.data);
       })
@@ -34,7 +34,7 @@ function AdminAirlines() {
   const confirmDelete = async () => {
     try {
       await axios.delete(
-        `c7-tiketku.up.railway.app/api/v1/airline/${deleteAirlineId}`
+        `https://c7-tiketku.up.railway.app/api/v1/airline/${deleteAirlineId}`
       );
       setIsDeleted(true);
       console.log("Data berhasil dihapus");

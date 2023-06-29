@@ -31,6 +31,7 @@ const FormFlight = () => {
   const [depart, setDepart] = useState("");
   const [arrive, setArrive] = useState("");
   const [flightData, setFlightData] = useState(null);
+  const [recentSearches, setRecentSearches] = useState([]);
 
   const [open, setOpen] = useState(false);
   const refOne = useRef(null);
@@ -44,6 +45,17 @@ const FormFlight = () => {
       );
 
       console.log(response);
+      setFlightData(response.data); // Memperbarui data penerbangan
+
+      // Memperbarui recentSearches dengan data pencarian terkini
+      const newSearch = {
+        departure: depart,
+        arrival: arrive,
+        date: format(range[0].startDate, "MM/dd/yyyy"),
+      };
+      setRecentSearches((prevSearches) => [newSearch, ...prevSearches]);
+
+      // navigate("/result")
       // navigate("/result")
     } catch (error) {
       console.error(error);
@@ -98,7 +110,11 @@ const FormFlight = () => {
                   />
                   <p className="col-1 ms-2">From</p>
                 </div>
-                <ModalFlightFrom departure={depart} setDeparture={setDepart} />
+                <ModalFlightFrom
+                  departure={depart}
+                  setDeparture={setDepart}
+                  recentSearches={recentSearches}
+                />
               </div>
               <div className="col-md-6 d-flex mt-3 mt-md-0">
                 <div className="col-2 col-xxl-1 d-flex me-3 me-md-0">

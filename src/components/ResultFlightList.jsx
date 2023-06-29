@@ -8,6 +8,7 @@ import NavbarHomepage from "./NavbarHomepage";
 import SelectDay from "./Filter/SelectDay";
 import MyModal from "./Beranda/MyModal";
 import Filter from "./Filter/Filter";
+import Moment from "moment";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import Result from "./Result";
@@ -32,7 +33,7 @@ const ResultFlightList = (props) => {
 
     try {
       const response = await axios.post(
-        "https://c7-tiketku.up.railway.app/api/v1/bookings",
+        "http://localhost:8000/api/v1/bookings",
         {
           user_id,
           flight_id,
@@ -121,7 +122,7 @@ const ResultFlightList = (props) => {
                       className="fw-bold mb-1"
                       style={{ fontSize: "14px" }}
                     >
-                      {flight.departure_time}
+                      {Moment(flight.departure_time).format("HH:mm")}
                     </Card.Text>
                     <Card.Text
                       className="fw-semibold mb-1"
@@ -154,7 +155,7 @@ const ResultFlightList = (props) => {
                         className="fw-bold mb-1"
                         style={{ fontSize: "14px" }}
                       >
-                        {flight.arrival_time}
+                        {Moment(flight.arrival_time).format("HH:mm")}
                       </Card.Text>
                       <Card.Text
                         className="fw-semibold mb-1"
@@ -215,14 +216,7 @@ const ResultFlightList = (props) => {
                             className="mb-0 me-auto"
                             style={{ fontSize: "16px", fontWeight: "700" }}
                           >
-                            {new Date(flight.departure_time).toLocaleDateString(
-                              "en-GB",
-                              {
-                                day: "2-digit",
-                                month: "2-digit",
-                                year: "numeric",
-                              }
-                            )}
+                            {Moment(flight.departure_time).format("HH:mm")}
                           </p>
                           <p
                             className="mb-0"
@@ -239,11 +233,7 @@ const ResultFlightList = (props) => {
                           className="mb-0"
                           style={{ fontSize: "14px", fontWeight: "400" }}
                         >
-                          {flight.departure_time.toLocaleDateString("en-US", {
-                            year: "numeric",
-                            month: "long",
-                            day: "numeric",
-                          })}
+                          {Moment(flight.departure_time).format("DD MMMM YYYY")}
                         </p>
                         <p style={{ fontSize: "14px", fontWeight: "500" }}>
                           {flight.departureAirport.airport_name}
@@ -290,7 +280,7 @@ const ResultFlightList = (props) => {
                             className="mb-0 me-auto"
                             style={{ fontSize: "14px", fontWeight: "700" }}
                           >
-                            {flight.arrival_time}
+                            {Moment(flight.arrival_time).format("HH:mm")}
                           </p>
                           <p
                             className="mb-0"
@@ -307,7 +297,7 @@ const ResultFlightList = (props) => {
                           className="mb-0"
                           style={{ fontSize: "14px", fontWeight: "400" }}
                         >
-                          {flight.arrival_time}
+                          {Moment(flight.arrival_time).format("DD MMMM YYYY")}
                         </p>
                         <p style={{ fontSize: "14px", fontWeight: "500" }}>
                           {flight.arrivalAirport.airport_name}

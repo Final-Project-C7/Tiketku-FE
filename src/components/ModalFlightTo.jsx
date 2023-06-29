@@ -49,7 +49,7 @@ function ModalFlightTo(props) {
   return (
     <>
       <style>{style}</style>
-      <div className="col-sm-12 col-md-7 border-bottom text-dark fw-bold pb-3 ms-sm-3 ms-md-0 me-5" onClick={handleShow} style={{ cursor: "pointer" }}>
+      <div className="col-sm-12 col-md-7 border-bottom text-dark fw-bold pb-3 ms-sm-3 ms-md-4 ms-xl-0 ms-xxl-4 me-5" onClick={handleShow} style={{ cursor: "pointer" }}>
         <input className="border-0 bg-transparent" type="search" aria-label="Search" value={props.arrival} onChange={(e) => props.setArrival(e.target.value)} disabled hidden />
         {props.arrival === "" ? "Melbourne (MLB)" : props.arrival}
       </div>

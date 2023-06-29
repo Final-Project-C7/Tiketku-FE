@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Navbar, Image, Button, Dropdown, Modal } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, Navigate } from "react-router-dom";
 import axios from "axios";
 import FormModalAdminSeats from "../components/Form/FormModalAdminSeats";
 
@@ -11,7 +11,6 @@ function AdminSeats() {
   const [isDeleted, setIsDeleted] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [deleteSeatId, setDeleteSeatId] = useState(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const token = localStorage.getItem("token");
   const headers = { Authorization: `Bearer ${token}` };
 
@@ -24,10 +23,6 @@ function AdminSeats() {
       .catch((error) => {
         console.error("Error fetching Data:", error);
       });
-
-    if (token) {
-      setIsLoggedIn(true);
-    }
   }, []);
 
   const navigateTo = useNavigate();
@@ -63,7 +58,7 @@ function AdminSeats() {
   }
   return (
     <>
-      {isLoggedIn ? (
+      {token ? (
         <div>
           <div className="d-flex">
             <div className="side-bar-admin col-2 bg-body-tertiary shadow">
@@ -211,7 +206,7 @@ function AdminSeats() {
           </Modal>
         </div>
       ) : (
-        navigateTo("/admin-login")
+        <Navigate to="/admin-login" />
       )}
     </>
   );

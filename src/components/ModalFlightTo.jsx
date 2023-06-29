@@ -1,18 +1,17 @@
 import React, { useState } from "react";
 import { Button, Modal, Image, Form } from "react-bootstrap";
 
-function ModalFlightTo() {
+function ModalFlightTo(props) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const style = `
-  .modal-flight-to {
-    margin-top: -40rem;
-    margin-left: 2rem;
-  }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+  };
 
+  const style = `
   .modal-search {
     border: 1px solid #D0D0D0;
   }
@@ -50,18 +49,18 @@ function ModalFlightTo() {
   return (
     <>
       <style>{style}</style>
-      <div className="col-10 border-bottom text-dark fw-bold pb-3" onClick={handleShow} style={{ cursor: "pointer" }}>
-        <input className="border-0 bg-transparent" style={{ fontSize: "18px" }} defaultValue="" disabled hidden />
-        Melbourne (MLB)
+      <div className="col-sm-12 col-md-7 border-bottom text-dark fw-bold pb-3 ms-sm-3 ms-md-4 ms-xl-0 ms-xxl-4 me-5" onClick={handleShow} style={{ cursor: "pointer" }}>
+        <input className="border-0 bg-transparent" type="search" aria-label="Search" value={props.arrival} onChange={(e) => props.setArrival(e.target.value)} disabled hidden />
+        {props.arrival === "" ? "Melbourne (MLB)" : props.arrival}
       </div>
-      <Modal size="lg" className="modal-flight-to position-relative" show={show} onHide={handleClose}>
+      <Modal size="lg" show={show} onHide={handleClose} centered>
         <Modal.Body>
           <div className="d-flex align-items-center">
-            <Form className="modal-search d-flex py-1 px-1 rounded-2 col-11 me-auto">
-              <Button className="delete-btn bg-transparent border-0">
+            <Form className="modal-search d-flex py-1 px-1 rounded-2 col-11 me-auto" onSubmit={handleSubmit}>
+              <Button className="delete-btn bg-transparent border-0" type="submit" onClick={handleClose}>
                 <Image className="modal-search__img " src="/search.svg" alt="search" />
               </Button>
-              <input className="bg-transparent border-0 col-11" type="search" placeholder="Masukkan Kota atau Negara" aria-label="Search" />
+              <input className="bg-transparent border-0 col-11" type="search" placeholder="Masukkan Kota atau Negara" aria-label="Search" value={props.arrival} onChange={(e) => props.setArrival(e.target.value)} />
             </Form>
             <Button className="delete-btn bg-transparent border-0" onClick={handleClose}>
               <Image className="close-btn__img" src="/close-button.svg" />

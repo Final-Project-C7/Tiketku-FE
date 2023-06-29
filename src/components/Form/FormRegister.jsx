@@ -5,7 +5,7 @@ import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { Modal, Button } from "react-bootstrap";
 import loadingGif from "/loading-regis.gif";
 import axios from "axios";
-import "../../pages/Akun.css";
+import "../../pages/Login.css";
 
 function FormRegister() {
   const [passwordVisible, setPasswordVisible] = useState(false);

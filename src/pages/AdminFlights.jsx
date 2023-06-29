@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Navbar, Image, Button, Dropdown, Modal } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, Navigate } from "react-router-dom";
 import axios from "axios";
 import FormModalAdminFlights from "../components/Form/FormModalAdminFlights";
 
@@ -11,7 +11,7 @@ function AdminFlights() {
   const [isDeleted, setIsDeleted] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [deleteFlightId, setDeleteFlightId] = useState(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
     axios
@@ -22,11 +22,6 @@ function AdminFlights() {
       .catch((error) => {
         console.error("Error fetching Data:", error);
       });
-
-    const token = localStorage.getItem("token");
-    if (token) {
-      setIsLoggedIn(true);
-    }
   }, []);
 
   const navigateTo = useNavigate();
@@ -62,7 +57,7 @@ function AdminFlights() {
   }
   return (
     <>
-      {isLoggedIn ? (
+      {token ? (
         <div>
           <div className="d-flex">
             <div className="side-bar-admin col-2 bg-body-tertiary shadow">
@@ -229,7 +224,7 @@ function AdminFlights() {
           </Modal>
         </div>
       ) : (
-        navigateTo("/admin-login")
+        <Navigate to="/admin-login" />
       )}
     </>
   );

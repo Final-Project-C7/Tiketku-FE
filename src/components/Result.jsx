@@ -29,14 +29,14 @@ function Result() {
     setExpanded(!expanded);
   };
 
-  let { depart, arrive } = useParams()
-  console.log(depart)
-  console.log(arrive)
+  let { depart, arrive } = useParams();
+  console.log(depart);
+  console.log(arrive);
 
   useEffect(() => {
-    console.log('useEffect')
+    console.log("useEffect");
     axios
-      .get(`http://localhost:8000/api/v1/flight/search/${depart}/${arrive}`)
+      .get(`c7-tiketku.up.railway.app/api/v1/flight/search/${depart}/${arrive}`)
       .then(function (response) {
         console.log(response?.data);
         setData(response?.data?.flight);
@@ -46,7 +46,7 @@ function Result() {
       });
   }, [setData]);
 
-  console.log(data)
+  console.log(data);
 
   return (
     <>

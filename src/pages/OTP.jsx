@@ -61,13 +61,16 @@ const OTP = () => {
     const otpString = otp.join(""); // Menggabungkan array OTP menjadi string
 
     try {
-      const response = await fetch("http://localhost:8000/api/v1/user/verify", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, otp: otpString }),
-      });
+      const response = await fetch(
+        "c7-tiketku.up.railway.app/api/v1/user/verify",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, otp: otpString }),
+        }
+      );
 
       if (!response.ok) {
         throw new Error("OTP verification failed");

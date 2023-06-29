@@ -45,7 +45,7 @@ const FormLogin = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/v1/user/login",
+        "c7-tiketku.up.railway.app/api/v1/user/login",
         {
           email,
           password,
@@ -54,7 +54,7 @@ const FormLogin = () => {
 
       localStorage.setItem("token", response.data.data.token);
 
-      window.location.href = "http://localhost:5173";
+      window.location.href = "https://travelesia-fe-production.up.railway.app/";
     } catch (error) {
       setError("Invalid email or password");
     }

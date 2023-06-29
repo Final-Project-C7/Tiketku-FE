@@ -31,7 +31,7 @@ function FormLoginAdmin() {
     try {
       setLoading(true); // Atur loading menjadi true saat memulai pengiriman permintaan
       const response = await axios.post(
-        "http://localhost:8000/api/v1/admin/login",
+        "c7-tiketku.up.railway.app/api/v1/admin/login",
         {
           email,
           password,
@@ -40,7 +40,8 @@ function FormLoginAdmin() {
 
       localStorage.setItem("token", response.data.data.token);
 
-      window.location.href = "http://localhost:5173/admin";
+      window.location.href =
+        "https://travelesia-fe-production.up.railway.app//admin";
     } catch (error) {
       setError("Invalid email or password");
       setLoading(false);

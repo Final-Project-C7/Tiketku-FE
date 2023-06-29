@@ -24,7 +24,10 @@ function FormModalAdminAirports() {
       formData.append("country", country);
       formData.append("image", selectedImage);
 
-      const response = await axios.post("http://localhost:8000/api/v1/airports", formData);
+      const response = await axios.post(
+        "c7-tiketku.up.railway.app/api/v1/airports",
+        formData
+      );
 
       // Reset form field
       setAirportName("");
@@ -35,7 +38,11 @@ function FormModalAdminAirports() {
       setError("");
       window.location.reload();
     } catch (error) {
-      if (error.response && error.response.data && error.response.data.message) {
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
         setError(error.response.data.message);
       } else {
         setError("Failed to create airport");
@@ -55,7 +62,10 @@ function FormModalAdminAirports() {
 
   return (
     <>
-      <Button className="btn-primary border-0 d-flex py-2 px-2" onClick={handleShow}>
+      <Button
+        className="btn-primary border-0 d-flex py-2 px-2"
+        onClick={handleShow}
+      >
         <Image className="create-icon" src="/create-icon.svg" />
         <p className="text-white ms-1 mb-0">Create</p>
       </Button>
@@ -68,15 +78,31 @@ function FormModalAdminAirports() {
           <Modal.Body>
             <Form.Group className="mb-3">
               <Form.Label>Airport Name</Form.Label>
-              <Form.Control type="text" placeholder="Soekarno-Hatta International Airport" autoFocus value={airport_name} onChange={(e) => setAirportName(e.target.value)} />
+              <Form.Control
+                type="text"
+                placeholder="Soekarno-Hatta International Airport"
+                autoFocus
+                value={airport_name}
+                onChange={(e) => setAirportName(e.target.value)}
+              />
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>City</Form.Label>
-              <Form.Control type="text" placeholder="Jakarta" value={city} onChange={(e) => setCity(e.target.value)} />
+              <Form.Control
+                type="text"
+                placeholder="Jakarta"
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+              />
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Country</Form.Label>
-              <Form.Control type="text" placeholder="Indonesia" value={country} onChange={(e) => setCountry(e.target.value)} />
+              <Form.Control
+                type="text"
+                placeholder="Indonesia"
+                value={country}
+                onChange={(e) => setCountry(e.target.value)}
+              />
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Image</Form.Label>
@@ -87,7 +113,12 @@ function FormModalAdminAirports() {
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>
-            <Button type="submit" variant="primary" onClick={handleClose} disabled={isLoading}>
+            <Button
+              type="submit"
+              variant="primary"
+              onClick={handleClose}
+              disabled={isLoading}
+            >
               {isLoading ? "Saving..." : "Save Changes"}
             </Button>
           </Modal.Footer>

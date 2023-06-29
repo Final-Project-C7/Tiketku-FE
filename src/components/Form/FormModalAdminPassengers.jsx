@@ -24,7 +24,7 @@ function FormModalAdminPassengers() {
       const token = localStorage.getItem("token");
       const headers = { Authorization: `Bearer ${token}` };
       const response = await axios.post(
-        "http://localhost:8000/api/v1/passengers",
+        "c7-tiketku.up.railway.app/api/v1/passengers",
         {
           name,
           born_date,
@@ -49,7 +49,11 @@ function FormModalAdminPassengers() {
       setError("");
       window.location.reload();
     } catch (error) {
-      if (error.response && error.response.data && error.response.data.message) {
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
         setError(error.response.data.message);
       } else {
         setError("Failed to create user");
@@ -65,7 +69,10 @@ function FormModalAdminPassengers() {
 
   return (
     <>
-      <Button className="btn-primary border-0 d-flex py-2 px-2" onClick={handleShow}>
+      <Button
+        className="btn-primary border-0 d-flex py-2 px-2"
+        onClick={handleShow}
+      >
         <Image className="create-icon" src="/create-icon.svg" />
         <p className="text-white ms-1 mb-0">Create</p>
       </Button>
@@ -78,38 +85,77 @@ function FormModalAdminPassengers() {
           <Modal.Body>
             <Form.Group className="mb-3">
               <Form.Label>Name</Form.Label>
-              <Form.Control type="text" placeholder="1" autoFocus value={name} onChange={(e) => setName(e.target.value)} />
+              <Form.Control
+                type="text"
+                placeholder="1"
+                autoFocus
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Born Date</Form.Label>
-              <Form.Control type="date" value={born_date} onChange={(e) => setBornDate(e.target.value)} />
+              <Form.Control
+                type="date"
+                value={born_date}
+                onChange={(e) => setBornDate(e.target.value)}
+              />
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Citizen</Form.Label>
-              <Form.Control type="text" placeholder="Indonesia" value={citizen} onChange={(e) => setCitizen(e.target.value)} />
+              <Form.Control
+                type="text"
+                placeholder="Indonesia"
+                value={citizen}
+                onChange={(e) => setCitizen(e.target.value)}
+              />
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Identity Number</Form.Label>
-              <Form.Control type="number" placeholder="081234567890" value={identity_number} onChange={(e) => setIdentityNumber(e.target.value)} />
+              <Form.Control
+                type="number"
+                placeholder="081234567890"
+                value={identity_number}
+                onChange={(e) => setIdentityNumber(e.target.value)}
+              />
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Publisher Country</Form.Label>
-              <Form.Control type="text" placeholder="Indonesia" value={publisher_country} onChange={(e) => setPublisherCountry(e.target.value)} />
+              <Form.Control
+                type="text"
+                placeholder="Indonesia"
+                value={publisher_country}
+                onChange={(e) => setPublisherCountry(e.target.value)}
+              />
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Valid Until</Form.Label>
-              <Form.Control type="date" value={valid_until} onChange={(e) => setValidUntil(e.target.value)} />
+              <Form.Control
+                type="date"
+                value={valid_until}
+                onChange={(e) => setValidUntil(e.target.value)}
+              />
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Booking ID</Form.Label>
-              <Form.Control type="number" placeholder="1" value={booking_id} onChange={(e) => setBookingId(e.target.value)} />
+              <Form.Control
+                type="number"
+                placeholder="1"
+                value={booking_id}
+                onChange={(e) => setBookingId(e.target.value)}
+              />
             </Form.Group>
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>
-            <Button type="submit" onClick={handleClose} variant="primary" disabled={isLoading}>
+            <Button
+              type="submit"
+              onClick={handleClose}
+              variant="primary"
+              disabled={isLoading}
+            >
               {isLoading ? "Saving..." : "Save Changes"}
             </Button>
           </Modal.Footer>

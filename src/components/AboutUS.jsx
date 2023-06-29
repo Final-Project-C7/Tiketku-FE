@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Image } from "react-bootstrap";
+import { Container, Image, Carousel } from "react-bootstrap";
 import NavbarHomepage from "../components/NavbarHomepage";
 import NavbarUser from "../components/NavbarUser";
 
@@ -23,17 +23,6 @@ const AboutUs = () => {
     
   }
 
-  .about-us__img{
-    width: 60%;
-
-    margin-right:20px;
-  }
-
-  .text__left{
-    padding-top:120px;
-  }
-
-  
   `;
 
   return (
@@ -44,25 +33,45 @@ const AboutUs = () => {
         <div className="about-us">
           <h1 className="about-us__text text-center">T R A V E L E S I A</h1>
           <h4 className="text-dark text-center">YOUR BEST TRAVELING PARTNER</h4>
-          <div className="row">
-            <div className="col-8">
-              <Image className="about-us__img mt-3" src="/pesawat2.jpg" alt="about us" />
-            </div>
+          
+          <div className="mt-3">
+            <Carousel>
+              <Carousel.Item>
+                <img
+                  className="mx-auto d-block w-50"
+                  src="./p1.jpg"
+                  alt="First slide"
+                />
+              </Carousel.Item>
+              <Carousel.Item>
+                <img
+                  className="mx-auto d-block w-50"
+                  src="/p2.jpg"
+                  alt="Second slide"
+                />
+              </Carousel.Item>
+              <Carousel.Item>
+                <img
+                  className="mx-auto d-block w-50"
+                  src="/p3.jpg"
+                  alt="Third slide"
+                />
+              </Carousel.Item>
+            </Carousel>
 
-            <div className="text__left col-4 ms-0">  
-              {/* <h5>
-              Platform ini merupakan tempat beli dan booking tiket penerbangan secara online,<br/>
-              baik one way (sekali penerbangan) dan round trip (pulang pergi).<br/>
-              Platform ini membuka dan menyediakan berbagai jenis penerbangan domestik dan mancanegara dengan fitur dan harga terbaik di kelasnya.
-              </h5> */}
-
-            </div>
-
+              {/* <Image className="about-us__img mt-3 mx-auto d-block" src="/pesawat2.jpg" alt="about us" /> */}
           </div>
-          
-          
-          
 
+          <div className="text-center mt-3">  
+              <h5>
+              Welcome to our e-Ticket Airline Application! We are dedicated to providing you with a convenient
+              and hassle-free way to book and manage your flight tickets. Our goal is to make your travel
+              experience seamless and enjoyable from start to finish.
+              At e-Ticket Airline, we understand the importance of efficient and
+              reliable ticketing services. That's why we have developed a user-friendly platform
+              that allows you to search, compare, and book flights with ease. With just a few clicks, you can find the best fares, select your preferred seats, and complete your reservation securely.
+              </h5>
+          </div>
         </div>
 
       </Container>

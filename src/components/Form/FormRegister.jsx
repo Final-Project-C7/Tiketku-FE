@@ -223,7 +223,10 @@ function FormRegister() {
             placeholder="+62"
             aria-label="Nomor"
             value={phoneNumber}
-            onChange={(e) => setPhoneNumber(e.target.value)}
+            onChange={(e) => {
+              const numericValue = e.target.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
+              setPhoneNumber(numericValue);
+            }}
             required
             style={{ fontFamily: "Poppins" }}
           />
@@ -254,7 +257,11 @@ function FormRegister() {
             variant="danger"
             className="error-button d-flex justify-content-center error-message fade-out align-items-center"
             onClick={() => setError("")}
-            style={{ width: "150px", fontSize: "13px", textAlign: "center" }}
+            style={{
+              fontSize: "13px",
+              textAlign: "center",
+              whiteSpace: "nowrap",
+            }}
           >
             {error}
           </Button>

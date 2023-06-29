@@ -13,7 +13,7 @@ import Riwayat from "./components/Riwayat";
 import Result from "./components/Result";
 import NotifikasiLogin from "./components/NotifikasiLogin";
 import Flight from "./pages/Flight";
-import Admin from "./pages/admin";
+import Admin from "./pages/Admin";
 import AdminLogin from "./pages/AdminLogin";
 import AdminRegister from "./pages/AdminRegister";
 import AdminUsers from "./pages/AdminUsers";

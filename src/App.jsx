@@ -26,7 +26,7 @@ import AdminSeats from "./pages/AdminSeats";
 import AdminPayments from "./pages/AdminPayments";
 import NotFoundPage from "./pages/NotFoundPage";
 import ContactUs from "./pages/ContactUs";
-import AboutUs from "./components/AboutUs";
+import AboutUs from "./components/AboutUS";
 
 function App() {
   return (

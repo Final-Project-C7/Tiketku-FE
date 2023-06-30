@@ -46,7 +46,7 @@
 }
 
 .destinasi-card {
-  width: 90%;
+  width: 100%;
 }
 
 .destinasi-card__text-1 {
@@ -58,15 +58,13 @@
   color: #7126b5;
 }
 
-.col {
-  padding-left: 0px !important;
+@media screen and (max-width: 576px) {
+  .container .destinasi-card .destinasi-card__list {
+    width: 49% !important;
+  }
 }
 
 @media screen and (max-width: 768px) {
-  .col {
-    width: 50% !important;
-    margin-bottom: 5px !important;
-  }
   .destinasi-fav__category-2 {
     width: 10% !important;
   }
@@ -74,13 +72,19 @@
     width: 30% !important;
   }
 
-  .destinasi-fav {
-    width: 85%;
+  .container .destinasi-card .destinasi-card__list {
+    width: 29%;
   }
 }
+
 @media screen and (max-width: 1200px) {
-  .col {
-    width: 70%;
-    margin-bottom: 10px !important;
+  .destinasi-card .destinasi-card__list {
+    width: 24%;
+  }
+}
+
+@media screen and (max-width: 1600px) {
+  .destinasi-card__list {
+    width: 19%;
   }
 }

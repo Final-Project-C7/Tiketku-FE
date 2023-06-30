@@ -14,7 +14,7 @@
 .filter-akun {
   width: 100%;
   max-width: 900px; /*batasan lebar maksimum */
-  margin: 0 auto; /*Pusatkan secara horizontal*/
+  margin: 0 auto; /Pusatkan secara horizontal/
 }
 
 .account-list:hover {
@@ -42,15 +42,6 @@
   width: 150px;
   margin-left: 240px !important;
   height: 48px;
-}
-
-.profile {
-  text-align: center;
-}
-
-.prof {
-  align-content: center;
-  padding-top: 5%;
 }
 
 @media (max-width: 768px) {

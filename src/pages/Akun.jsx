@@ -142,17 +142,6 @@ function Akun() {
                 <p className="mb-0 ">Ubah Profil</p>
               </div>
             </div>
-            <div className="account-li  st p-3 pb-1 mb-3 rounded-3">
-              <div
-                className="d-flex border-bottom pb-3"
-                style={{
-                  cursor: "pointer",
-                }}
-              >
-                <Image className="me-3" src="fi_settings.svg" />
-                <p className="mb-0">Pengaturan Akun</p>
-              </div>
-            </div>
 
             <div
               onClick={logoutHandler}

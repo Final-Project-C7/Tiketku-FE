@@ -3,7 +3,7 @@ import { Container, Image } from "react-bootstrap";
 import NavbarHomepage from "../components/NavbarHomepage";
 import NavbarUser from "../components/NavbarUser";
 
-import "./AboutUs.css"
+import "./AboutUs.css";
 
 const AboutUs = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -46,27 +46,23 @@ const AboutUs = () => {
           <h4 className="text-dark text-center">YOUR BEST TRAVELING PARTNER</h4>
           <div className="row">
             <div className="col-8">
-              <Image className="about-us__img mt-3" src="/pesawat2.jpg" alt="about us" />
+              <Image
+                className="about-us__img mt-3"
+                src="/pesawat2.jpg"
+                alt="about us"
+              />
             </div>
 
-            <div className="text__left col-4 ms-0">  
+            <div className="text__left col-4 ms-0">
               {/* <h5>
               Platform ini merupakan tempat beli dan booking tiket penerbangan secara online,<br/>
               baik one way (sekali penerbangan) dan round trip (pulang pergi).<br/>
               Platform ini membuka dan menyediakan berbagai jenis penerbangan domestik dan mancanegara dengan fitur dan harga terbaik di kelasnya.
               </h5> */}
-
             </div>
-
           </div>
-          
-          
-          
-
         </div>
-
       </Container>
-      
     </>
   );
 };

@@ -26,6 +26,13 @@ const FormFlight = () => {
       key: "selection",
     },
   ]);
+  const [calendar2, setCalendar2] = useState([
+    {
+      startDate: new Date(),
+      endDate: addDays(new Date(), 0),
+      key: "selection",
+    },
+  ])
 
   const navigate = useNavigate();
   const [depart, setDepart] = useState("");
@@ -34,6 +41,7 @@ const FormFlight = () => {
   const [recentSearches, setRecentSearches] = useState([]);
 
   const [open, setOpen] = useState(false);
+
   const refOne = useRef(null);
 
   const handleSubmit = async (e) => {
@@ -52,6 +60,13 @@ const FormFlight = () => {
         departure: depart,
         arrival: arrive,
         date: format(range[0].startDate, "MM/dd/yyyy"),
+      };
+      setRecentSearches((prevSearches) => [newSearch, ...prevSearches]);
+
+      const newSearch2 = {
+        departure: depart,
+        arrival: arrive,
+        date: format(calendar2[0].startDate, "MM/dd/yyyy"),
       };
       setRecentSearches((prevSearches) => [newSearch, ...prevSearches]);
 
@@ -149,15 +164,15 @@ const FormFlight = () => {
                       onClick={() => setOpen((open) => !open)}
                     />
                   </div>
-                  <div ref={refOne} className="calendarWrap">
+                  <div>
                     {open && (
                       <DateRange
                         onChange={(item) => setRange([item.selection])}
                         editableDateInputs={true}
                         moveRangeOnFirstSelection={false}
                         ranges={range}
-                        months={2}
-                        direction="horizontal"
+                        months={1}
+                        direction
                         showMonthAndYearPickers={false}
                         showDateDisplay={false}
                         preventSnapRefocus={true}
@@ -166,14 +181,43 @@ const FormFlight = () => {
                       />
                     )}
                   </div>
+
                   <div className="col-md-5 col-xl-6 ms-3 ms-sm-4 ms-md-4">
                     <h3 className="mb-0">Return</h3>
                     <input
                       className="card-date__input border-0 border-bottom pb-3 mt-1 col-12"
-                      value={`${format(range[0].endDate, "MM/dd/yyyy")} `}
+                      value={`${format(calendar2[0].startDate, "MM/dd/yyyy")} `}
+                      readOnly
                       onClick={() => setOpen((open) => !open)}
                     />
+                    <div ref={refOne} className="calendarWrap">
+                    {open && (
+                      <DateRange
+                        onChange={(item) => setCalendar2([item.selection])}
+                        editableDateInputs={true}
+                        moveRangeOnFirstSelection={false}
+                        ranges={calendar2}
+                        months={1}
+                        direction="horizontal"
+                        showMonthAndYearPickers={false}
+                        showDateDisplay={false}
+                        preventSnapRefocus={true}
+                        rangeColors={["#7126B5"]}
+                        className="calendarElement2 rounded-4 mt-3"
+                      />
+                    )}
                   </div>
+
+                    
+                    
+                    {/* <input
+                      className="card-date__input border-0 border-bottom pb-3 mt-1 col-12"
+                      value={`${format(range[0].endDate, "MM/dd/yyyy")} `}
+                      onClick={() => setOpen((open) => !open)}
+                    /> */}
+                  </div>
+
+
                   <label className="switch" style={{ cursor: "pointer" }}>
                     <input
                       className="switch__input"
@@ -183,6 +227,7 @@ const FormFlight = () => {
                     />
                     <span className="slider"></span>
                   </label>
+
                 </div>
               </div>
               <div className="car-date-passengers col-12 col-md-6 d-flex flex-wrap ms-md-4 ms-xl-0 mt-2 mt-sm-0">
@@ -207,6 +252,7 @@ const FormFlight = () => {
               </div>
             </div>
           </div>
+
           <Link to={`/result/${depart}/${arrive}`}>
             <Button
               className="flight-schedule__btn col-12 border-0 mb-0"

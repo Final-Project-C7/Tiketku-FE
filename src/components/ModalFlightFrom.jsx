@@ -55,14 +55,16 @@ function ModalFlightFrom(props) {
       width: 12px;
       height: 12px;
     }
+
+    .modal-flight-from__select:active, .modal-flight-from__select:focus {
+      outline: none !important;
+    }
   `;
 
   useEffect(() => {
     const fetchOptions = async () => {
       try {
-        const response = await axios.get(
-          "https://c7-tiketku.up.railway.app/api/v1/airports"
-        ); // Replace with your API endpoint
+        const response = await axios.get("https://c7-tiketku.up.railway.app/api/v1/airports"); // Replace with your API endpoint
         const data = response.data.data.airport;
         console.log(data);
 
@@ -95,46 +97,19 @@ function ModalFlightFrom(props) {
   return (
     <>
       <style>{style}</style>
-      <div
-        className="col-sm-12 col-md-7 border-bottom text-dark fw-bold pb-3 ms-sm-3 ms-md-4 ms-xl-0 me-5"
-        onClick={handleShow}
-        style={{ cursor: "pointer" }}
-      >
-        <input
-          className="border-0 bg-transparent"
-          type="search"
-          aria-label="Search"
-          value={props.departure}
-          onChange={(e) => props.setDeparture(e.target.value)}
-          disabled
-          hidden
-        />
+      <div className="col-sm-12 col-md-7 border-bottom text-dark fw-bold pb-3 ms-sm-3 ms-md-4 ms-xl-0 me-5" onClick={handleShow} style={{ cursor: "pointer" }}>
+        <input className="border-0 bg-transparent" type="search" aria-label="Search" value={props.departure} onChange={(e) => props.setDeparture(e.target.value)} disabled hidden />
         {props.departure === "" ? "Jakarta" : props.departure}
       </div>
 
       <Modal size="lg" show={show} onHide={handleClose} centered>
         <Modal.Body>
           <div className="d-flex align-items-center">
-            <Form
-              className="modal-search d-flex py-1 px-1 rounded-2 col-11 me-auto"
-              onSubmit={handleSubmit}
-            >
-              <Button
-                className="delete-btn bg-transparent border-0"
-                type="submit"
-                onClick={handleClose}
-              >
-                <Image
-                  className="modal-search__img "
-                  src="/search.svg"
-                  alt="search"
-                />
+            <Form className="modal-search d-flex py-1 px-1 rounded-2 col-11 me-auto" onSubmit={handleSubmit}>
+              <Button className="delete-btn bg-transparent border-0" type="submit" onClick={handleClose}>
+                <Image className="modal-search__img " src="/search.svg" alt="search" />
               </Button>
-              <select
-                className="bg-transparent border-0 col-11"
-                value={props.departure}
-                onChange={(e) => props.setDeparture(e.target.value)}
-              >
+              <select className="modal-flight-from__select bg-transparent border-0 col-11" value={props.departure} onChange={(e) => props.setDeparture(e.target.value)}>
                 {options.map((option) => (
                   <option key={option.value} value={option.value}>
                     {option.label}
@@ -142,10 +117,7 @@ function ModalFlightFrom(props) {
                 ))}
               </select>
             </Form>
-            <Button
-              className="delete-btn bg-transparent border-0"
-              onClick={handleClose}
-            >
+            <Button className="delete-btn bg-transparent border-0" onClick={handleClose}>
               <Image className="close-btn__img" src="/close-button.svg" />
             </Button>
           </div>
@@ -158,18 +130,10 @@ function ModalFlightFrom(props) {
           {recentSearches.length > 0 ? (
             recentSearches.map((search, index) => (
               <div key={index} className="d-flex mt-2">
-                <Button
-                  variant="link"
-                  className="history__text"
-                  onClick={() => handleRecentSearch(search)}
-                >
+                <Button variant="link" className="history__text" onClick={() => handleRecentSearch(search)}>
                   {search}
                 </Button>
-                <Button
-                  variant="link"
-                  className="delete-btn"
-                  onClick={() => handleDeleteRecentSearch(search)}
-                >
+                <Button variant="link" className="delete-btn" onClick={() => handleDeleteRecentSearch(search)}>
                   <Image className="delete-btn__img" src="/delete-button.svg" />
                 </Button>
               </div>

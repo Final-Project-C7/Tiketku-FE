@@ -42,6 +42,10 @@
   outline-style: none;
 }
 
+.card-date__disabled {
+  color: #7126b5;
+}
+
 .calendarWrap {
   display: inline-block;
   position: relative;
@@ -51,12 +55,10 @@
   position: absolute;
   transform: translate(-30%, 17%);
   z-index: 10;
-
 }
 .calendarElement2 {
   position: absolute;
   padding-left: 50px;
-
 }
 
 .card-date .col-8 {

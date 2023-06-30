@@ -2,12 +2,7 @@ import React, { useState } from "react";
 import { Button, Modal, Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const seatOptions = [
-  { name: "Economy", },
-  { name: "Premium Economy", },
-  { name: "Business", },
-  { name: "First Class", },
-];
+const seatOptions = [{ name: "Economy" }, { name: "Premium Economy" }, { name: "Business" }, { name: "First Class" }];
 
 function ModalSeatClass() {
   const [show, setShow] = useState(false);
@@ -20,7 +15,7 @@ function ModalSeatClass() {
     setSelectedSeat(index);
   };
 
-  let seat = seatOptions[selectedSeat].name
+  let seat = seatOptions[selectedSeat].name;
 
   const style = `
   .close-btn__img {
@@ -72,17 +67,17 @@ function ModalSeatClass() {
           {seatOptions.map((seat, index) => (
             <div key={index} className={`border-bottom d-flex align-items-center px-3 py-2 ${selectedSeat === index ? "seat-class-selected" : ""}`} onClick={() => handleSeatClick(index)} style={{ cursor: "pointer" }}>
               <div className="me-auto">
-
                 <p className={`fw-bold pt-0 mb-2 ${selectedSeat === index ? "text-white" : ""}`}>{seat.name}</p>
                 <p className={`seat-class__text mb-0 ${selectedSeat === index ? "text-white" : ""}`}>{seat.price}</p>
-
               </div>
               {selectedSeat === index && <Image src="/Suffix.svg" alt="checklist logo" />}
             </div>
           ))}
 
           <Link to="/" state={seat}>
-            <Button className="save-btn-passengers offset-7 col-5 mt-2 py-3">Simpan</Button>
+            <Button className="save-btn-passengers offset-7 col-5 mt-2 py-3" onClick={handleClose}>
+              Simpan
+            </Button>
           </Link>
         </Modal.Body>
       </Modal>

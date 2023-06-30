@@ -7,6 +7,9 @@ import NavbarUser from "../components/NavbarUser";
 import loadingGif from "/loading-regis.gif";
 import photoChange from "/photochange.png";
 import "./Akun.css";
+import MyProfile from "../components/MyProfile";
+import ChangeProfile from "../components/ChangeProfile";
+
 
 function Akun() {
   const [user, setUser] = useState(null);
@@ -14,7 +17,12 @@ function Akun() {
   const [showUpdateModal, setShowUpdateModal] = useState(false); // State untuk menampilkan modal update
   const [showWaitModal, setShowWaitModal] = useState(false); // State untuk menampilkan modal harap tunggu
   const [updatedUser, setUpdatedUser] = useState({}); // Set initial value to empty object
+  const [activeTab, setActiveTab] = useState("my-profile");
   const [showFullImage, setShowFullImage] = useState(false);
+  const [showMyProfile, setShowMyProfile] = useState(false);
+  const [showChangeProfile, setShowChangeProfile] = useState(false);
+  
+
 
   useEffect(() => {
     const getUserData = async () => {
@@ -94,6 +102,10 @@ function Akun() {
     window.location.reload();
   };
 
+  const handleTabClick = (tab) => {
+    setActiveTab(tab);
+  };
+
   const openFullImage = () => {
     setShowFullImage(true);
   };
@@ -101,6 +113,22 @@ function Akun() {
   const closeFullImage = () => {
     setShowFullImage(false);
   };
+
+  // const showMyProfileHandler = () => {
+  //   setShowMyProfile(true);
+  // };
+
+  // const closeMyProfileHandler = () => {
+  //   setShowMyProfile(false);
+  // };
+  
+  // const showChangeProfileHandler = () => {
+  //   setShowChangeProfile(true);
+  // };
+
+  // const closeChangeProfileHandler = () => {
+  //   setShowChangeProfile(false);
+  // };
 
   return (
     <>
@@ -131,26 +159,25 @@ function Akun() {
           style={{ marginLeft: "120px" }}
         >
           <div className="col-5">
-            <div className="account-list p-3 pb-1 mb-3 rounded-3">
+            <div 
+            className={'account-list p-3 pb-1 mb-3 rounded-3 ${activeTab === "my-profile" ? "active" : ""}'}
+            onClick={() => handleTabClick("my-profile")}
+            >
               <div
-                className="d-flex border-bottom pb-3"
-                style={{
-                  cursor: "pointer",
-                }}
-              >
-                <Image className="me-3" src="fi_edit-3.svg" />
-                <p className="mb-0 ">Ubah Profil</p>
+                className="d-flex border-bottom pb-3" style={{ cursor: "pointer" }}>
+                <Image className="me-3" src="fi_settings.svg" />
+                <p className="mb-0 ">My Profile</p>
               </div>
             </div>
-            <div className="account-list p-3 pb-1 mb-3 rounded-3">
+            <div 
+            
+            className={`account-list p-3 pb-1 mb-3 rounded-3 ${activeTab === "change-profile" ? "active" : ""}`}
+            onClick={() => handleTabClick("change-profile")}
+            >
               <div
-                className="d-flex border-bottom pb-3"
-                style={{
-                  cursor: "pointer",
-                }}
-              >
-                <Image className="me-3" src="fi_settings.svg" />
-                <p className="mb-0">Pengaturan Akun</p>
+                className="d-flex border-bottom pb-3" style={{ cursor: "pointer" }}>
+                <Image className="me-3" src="fi_edit-3.svg" />
+                <p className="mb-0">Ubah Profil</p>
               </div>
             </div>
 
@@ -168,7 +195,7 @@ function Akun() {
             </div>
           </div>
           <div className="col-7">
-            <div className="border rounded-1 p-4 mb-4">
+            {/* <div className="border rounded-1 p-4 mb-4">
               <h4 className="fw-bold">Ubah Data Profil</h4>
               <Form className="mt-4">
                 <div
@@ -300,9 +327,18 @@ function Akun() {
                   Simpan
                 </Button>
               </Form>
-            </div>
+            </div> */}
+
+            {activeTab === "my-profile" && <MyProfile user={user} />}
+            {activeTab === "change-profile" && <ChangeProfile user={user}/>}
           </div>
         </div>
+        {/* <Modal
+        show={showMyProfile}
+        onHide={showMyProfileHandler}
+        >
+        </Modal> */}
+        
         <Modal
           show={showConfirmationModal}
           onHide={cancelLogoutHandler}

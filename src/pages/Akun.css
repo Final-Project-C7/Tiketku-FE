@@ -44,6 +44,15 @@
   height: 48px;
 }
 
+.profile {
+  text-align: center;
+}
+
+.prof {
+  align-content: center;
+  padding-top: 5%;
+}
+
 @media (max-width: 768px) {
   /* untuk tampilan lebih kecil */
   .akun {

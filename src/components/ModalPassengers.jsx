@@ -8,52 +8,7 @@ import { useSelector } from "react-redux";
 
 function ModalPassengers() {
   const [show, setShow] = useState(false);
-  // const [num1, setNum1] = useState(0);
-  // const [num2, setNum2] = useState(0);
-  // const [num3, setNum3] = useState(0);
-
-  // console.log(totalPassengers);
-
-  // const [adult, setAdult] = useState();
-  // const [children, setChildren] = useState();
-  // const [baby, setBaby] = useState();
-
-  // const dispatch = useDispatch();
-
-  // let incToggle1 = () => {
-  //   setNum1(Number(num1) + 1);
-  // };
-  // let incToggle2 = () => {
-  //   setNum2(Number(num2) + 1);
-  // };
-  // let incToggle3 = () => {
-  //   setNum3(Number(num3) + 1);
-  // };
-  // let decToggle1 = () => {
-  //   if (num1 > 0) {
-  //     setNum1(num1 - 1);
-  //   }
-  // };
-  // let decToggle2 = () => {
-  //   if (num2 > 0) {
-  //     setNum2(num2 - 1);
-  //   }
-  // };
-  // let decToggle3 = () => {
-  //   if (num3 > 0) {
-  //     setNum3(num3 - 1);
-  //   }
-  // };
-  // let handleChange1 = (e) => {
-  //   setNum1(e.target.value);
-  // };
-  // let handleChange2 = (e) => {
-  //   setNum2(e.target.value);
-  // };
-  // let handleChange3 = (e) => {
-  //   setNum3(e.target.value);
-  // };
-
+  ;
   const updatePassenger = (e) => {
     e.preventDefault()
     dispatch(update({ adult, children, baby }));
@@ -132,7 +87,6 @@ function ModalPassengers() {
   return (
     <>
       <style>{style}</style>
-      {/* integration-api */}
       <div className="col-11 border-bottom text-dark fw-bold pb-3" onClick={handleShow} style={{ cursor: "pointer" }}>
         <input className="border-0 bg-transparent" style={{ fontSize: "18px" }} defaultValue="" disabled hidden /> {adult + children} Penumpang
       </div>

@@ -13,6 +13,7 @@ import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import Result from "./Result";
 import CheckoutCustomerData from "./CheckoutCustomerData";
+import { useSelector } from "react-redux";
 
 const ResultFlightList = (props) => {
   const [expanded, setExpanded] = useState(false);
@@ -25,6 +26,7 @@ const ResultFlightList = (props) => {
   const handleExpand = () => {
     setExpanded(!expanded);
   };
+  const { selectedClass } = useSelector(state => state.class);
 
   console.log(user_id);
 
@@ -95,7 +97,7 @@ const ResultFlightList = (props) => {
                         className="fw-medium mb-0"
                         style={{ fontSize: "12px" }}
                       >
-                        {flight.airline.airline_name} - Kelas
+                        {flight.airline.airline_name} - {selectedClass}
                       </p>
                     </Col>
                     <Col
@@ -251,7 +253,7 @@ const ResultFlightList = (props) => {
                       </div>
                       <div className="col-10">
                         <p className="fw-bold mb-0">
-                          {flight.airline.airline_name} - Kelas
+                          {flight.airline.airline_name} - {selectedClass}
                         </p>
                         <p className="fw-bold mb-0">{flight.flight_code}</p>
                         <div className="detail-information">

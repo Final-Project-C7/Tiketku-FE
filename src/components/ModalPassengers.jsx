@@ -1,53 +1,38 @@
 import React, { useState } from "react";
 import { Button, Modal, Image, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { update, incrementPassenger, decrementPassenger } from "./redux/reducers/passengerSlice";
+import { useSelector } from "react-redux";
+
 
 function ModalPassengers() {
   const [show, setShow] = useState(false);
-  const [num1, setNum1] = useState(0);
-  const [num2, setNum2] = useState(0);
-  const [num3, setNum3] = useState(0);
-
-  let totalPassengers = num1 + num2;
-
-  console.log(totalPassengers);
-
-  let incToggle1 = () => {
-    setNum1(Number(num1) + 1);
-  };
-  let incToggle2 = () => {
-    setNum2(Number(num2) + 1);
-  };
-  let incToggle3 = () => {
-    setNum3(Number(num3) + 1);
-  };
-  let decToggle1 = () => {
-    if (num1 > 0) {
-      setNum1(num1 - 1);
-    }
-  };
-  let decToggle2 = () => {
-    if (num2 > 0) {
-      setNum2(num2 - 1);
-    }
-  };
-  let decToggle3 = () => {
-    if (num3 > 0) {
-      setNum3(num3 - 1);
-    }
-  };
-  let handleChange1 = (e) => {
-    setNum1(e.target.value);
-  };
-  let handleChange2 = (e) => {
-    setNum2(e.target.value);
-  };
-  let handleChange3 = (e) => {
-    setNum3(e.target.value);
-  };
+  ;
+  const updatePassenger = (e) => {
+    e.preventDefault()
+    dispatch(update({ adult, children, baby }));
+  }
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const { adult, children, baby } = useSelector((state) => state.passenger);
+  const dispatch = useDispatch();
+
+  const handleIncrement = (type) => {
+    dispatch(incrementPassenger({ type }));
+  };
+
+  const handleDecrement = (type) => {
+    dispatch(decrementPassenger({ type }));
+  };
+
+  const handleChange = (event, type) => {
+    const value = Number(event.target.value);
+    dispatch(updatePassenger({ [type]: value }));
+  };
+
 
   const style = `
 
@@ -102,9 +87,8 @@ function ModalPassengers() {
   return (
     <>
       <style>{style}</style>
-      {/* integration-api */}
       <div className="col-11 border-bottom text-dark fw-bold pb-3" onClick={handleShow} style={{ cursor: "pointer" }}>
-        <input className="border-0 bg-transparent" style={{ fontSize: "18px" }} defaultValue="" disabled hidden /> {totalPassengers} Penumpang
+        <input className="border-0 bg-transparent" style={{ fontSize: "18px" }} defaultValue="" disabled hidden /> {adult + children} Penumpang
       </div>
 
       <Modal size="md" show={show} onHide={handleClose} centered>
@@ -122,13 +106,13 @@ function ModalPassengers() {
                 <p className="passengers__text offset-2 fw-normal">(12 tahun keatas)</p>
               </div>
               <div className="d-flex col-6 justify-content-end">
-                <div className="total-passengers__text rounded-1 p-2 me-1 mb-3" onClick={decToggle1} style={{ cursor: "pointer" }}>
+                <div className="total-passengers__text rounded-1 p-2 me-1 mb-3" onClick={() => handleDecrement('adult')} style={{ cursor: "pointer" }}>
                   <Image src="/icon-min.svg" alt="icon min" />
                 </div>
                 <div className="col-3 border rounded-1 me-1 p-2 mb-3">
-                  <input type="number" className="total-passengers__input text-center col-12 border-0" value={num1} onChange={handleChange1} style={{ cursor: "pointer" }}></input>
+                  <input type="number" className="total-passengers__input text-center col-12 border-0" value={adult} onChange={(e) => handleChange(e.target.value)} style={{ cursor: "pointer" }}></input>
                 </div>
-                <div className="total-passengers__text rounded-1 px-2 p-2 mb-3" onClick={incToggle1} style={{ cursor: "pointer" }}>
+                <div className="total-passengers__text rounded-1 px-2 p-2 mb-3" onClick={() => handleIncrement('adult')} style={{ cursor: "pointer" }}>
                   <Image src="/icon-plus.svg" />
                 </div>
               </div>
@@ -140,13 +124,13 @@ function ModalPassengers() {
                 <p className="passengers__text offset-2 fw-normal">(2 - 11 tahun)</p>
               </div>
               <div className="d-flex col-6 justify-content-end">
-                <div className="total-passengers__text rounded-1 p-2 me-1 mb-3" onClick={decToggle2} style={{ cursor: "pointer" }}>
+                <div className="total-passengers__text rounded-1 p-2 me-1 mb-3" onClick={() => handleDecrement('children')} style={{ cursor: "pointer" }}>
                   <Image src="/icon-min.svg" alt="icon min" />
                 </div>
                 <div className="col-3 border rounded-1 me-1 p-2 mb-3">
-                  <input type="number" className="total-passengers__input text-center col-12 border-0" value={num2} onChange={handleChange2} style={{ cursor: "pointer" }}></input>
+                  <input type="number" className="total-passengers__input text-center col-12 border-0" value={children} onChange={(e) => handleChange(e.target.value)} style={{ cursor: "pointer" }}></input>
                 </div>
-                <div className="total-passengers__text rounded-1 px-2 p-2 mb-3" onClick={incToggle2} style={{ cursor: "pointer" }}>
+                <div className="total-passengers__text rounded-1 px-2 p-2 mb-3" onClick={() => handleIncrement('children')} style={{ cursor: "pointer" }}>
                   <Image src="/icon-plus.svg" />
                 </div>
               </div>
@@ -158,18 +142,18 @@ function ModalPassengers() {
                 <p className="passengers__text offset-2 fw-normal">(Dibawah 2 tahun)</p>
               </div>
               <div className="d-flex col-6 justify-content-end">
-                <div className="total-passengers__text rounded-1 p-2 me-1 mb-3" onClick={decToggle3} style={{ cursor: "pointer" }}>
+                <div className="total-passengers__text rounded-1 p-2 me-1 mb-3" onClick={() => handleDecrement('baby')} style={{ cursor: "pointer" }}>
                   <Image src="/icon-min.svg" alt="icon min" />
                 </div>
                 <div className="col-3 border rounded-1 me-1 p-2 mb-3">
-                  <input type="number" className="total-passengers__input text-center col-12 border-0" value={num3} onChange={handleChange3} style={{ cursor: "pointer" }}></input>
+                  <input type="number" className="total-passengers__input text-center col-12 border-0" value={baby} onChange={(e) => handleChange(e.target.value)} style={{ cursor: "pointer" }}></input>
                 </div>
-                <div className="total-passengers__text rounded-1 px-2 p-2 mb-3" onClick={incToggle3} style={{ cursor: "pointer" }}>
+                <div className="total-passengers__text rounded-1 px-2 p-2 mb-3" onClick={() => handleIncrement('baby')} style={{ cursor: "pointer" }}>
                   <Image src="/icon-plus.svg" />
                 </div>
               </div>
             </div>
-            <Link to="/" state={totalPassengers} onClick={handleClose}>
+            <Link to="/" onClick={handleClose}>
               <Button type="submit" className="save-btn-passengers offset-7 col-5 mt-2 py-3">
                 Simpan
               </Button>

@@ -17,14 +17,13 @@ function ModalSeatClass() {
   const dispatch = useDispatch();
 
   const updateClass = (e) => {
-    e.preventDefault()
-    dispatch(update({ selectedClass }))
-  }
+    e.preventDefault();
+    dispatch(update({ selectedClass }));
+  };
 
   const handleClassSelection = (selectedClass) => {
     dispatch(update({ selectedClass }));
   };
-
 
   const style = `
   .close-btn__img {
@@ -43,7 +42,7 @@ function ModalSeatClass() {
 
   .seat-class-selected {
     color: #ffffff !important;
-    background-color: #4B1979
+    background-color: #4B1979 !important;
   }
 
   .seat-class__text {
@@ -74,12 +73,20 @@ function ModalSeatClass() {
         <Modal.Body>
           <Form onSubmit={updateClass}>
             {kelas.map((kelasItem) => (
-              <button key={kelasItem} onClick={() => handleClassSelection(kelasItem)} value={selectedClass} disabled={selectedClass === kelasItem} className={`border-bottom d-flex align-items-center px-3 py-2 ${selectedClass === kelas ? "seat-class-selected" : ""}`} style={{ cursor: "pointer" }}>
-                {kelasItem}
+              <button
+                key={kelasItem}
+                onClick={() => handleClassSelection(kelasItem)}
+                value={selectedClass}
+                disabled={selectedClass === kelasItem}
+                className={`col-12 border-0 border-bottom d-flex align-items-center p-3 ${selectedClass === kelasItem ? "seat-class-selected" : "bg-white"}`}
+                style={{ cursor: "pointer" }}
+              >
+                <p className={`fw-bold pt-0 mb-0 me-auto ${selectedClass === kelasItem ? "text-white" : ""}`}>{kelasItem}</p>
+                {selectedClass === kelasItem && <Image src="/Suffix.svg" alt="checklist logo" />}
               </button>
             ))}
-            <Link to="/" >
-              <Button className="save-btn-passengers offset-7 col-5 mt-2 py-3" type="submit" onClick={handleClose} >
+            <Link to="/">
+              <Button className="save-btn-passengers offset-7 col-5 mt-2 py-3" type="submit" onClick={handleClose}>
                 Simpan
               </Button>
             </Link>

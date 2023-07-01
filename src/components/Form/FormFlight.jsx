@@ -9,7 +9,6 @@ import ModalFlightTo from "../ModalFlightTo";
 import ModalPassengers from "../ModalPassengers";
 import ModalSeatClass from "../ModalSeatClass";
 import axios from "axios";
-// import { useHistory } from "react-router-dom";
 import { useNavigate } from "react-router-dom/dist";
 
 import "react-date-range/dist/styles.css";
@@ -53,8 +52,6 @@ const FormFlight = () => {
       };
       setRecentSearches((prevSearches) => [newSearch, ...prevSearches]);
 
-      // navigate("/result")
-      // navigate("/result")
     } catch (error) {
       console.error(error);
     }
@@ -82,8 +79,6 @@ const FormFlight = () => {
     setIsChecked(!isChecked);
   };
 
-  const location = useLocation();
-  console.log(location.state);
 
   return (
     <>

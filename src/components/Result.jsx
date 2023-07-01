@@ -55,7 +55,7 @@ function Result() {
       {isLoggedIn ? <NavbarUser /> : <NavbarHomepage />}
       <div className="container" id="select-flight">
         <p className="title1">Pilih Penerbangan</p>
-        <SelectDay />
+        <SelectDay depart={depart} arrive={arrive} />
         <div className="d-flex justify-content-end">
           <MyModal />
         </div>

@@ -1,21 +1,30 @@
 import React, { useState } from "react";
-import { Button, Modal, Image } from "react-bootstrap";
+import { Button, Modal, Image, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { update } from "./redux/reducers/classSlice";
+import { useDispatch, useSelector } from "react-redux";
 
-const seatOptions = [{ name: "Economy" }, { name: "Premium Economy" }, { name: "Business" }, { name: "First Class" }];
+const seatOptions = ["Economy", "Premium Economy", "Business", "First Class"];
 
 function ModalSeatClass() {
   const [show, setShow] = useState(false);
-  const [selectedSeat, setSelectedSeat] = useState(0);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const handleSeatClick = (index) => {
-    setSelectedSeat(index);
+  const kelas = useSelector((state) => state.class.nameClass);
+  const selectedClass = useSelector((state) => state.class.selectedClass);
+  const dispatch = useDispatch();
+
+  const updateClass = (e) => {
+    e.preventDefault()
+    dispatch(update({ selectedClass }))
+  }
+
+  const handleClassSelection = (selectedClass) => {
+    dispatch(update({ selectedClass }));
   };
 
-  let seat = seatOptions[selectedSeat].name;
 
   const style = `
   .close-btn__img {
@@ -53,8 +62,7 @@ function ModalSeatClass() {
       <style>{style}</style>
       <div className="col-11 border-bottom text-dark fw-bold pt-0 pb-3" onClick={handleShow} style={{ cursor: "pointer" }}>
         <input className="border-0 bg-transparent" style={{ fontSize: "18px" }} defaultValue="" disabled hidden />
-        {/* Business */}
-        {seat}
+        {selectedClass}
       </div>
 
       <Modal size="md" show={show} onHide={handleClose} centered>
@@ -64,21 +72,18 @@ function ModalSeatClass() {
           </Button>
         </Modal.Header>
         <Modal.Body>
-          {seatOptions.map((seat, index) => (
-            <div key={index} className={`border-bottom d-flex align-items-center px-3 py-2 ${selectedSeat === index ? "seat-class-selected" : ""}`} onClick={() => handleSeatClick(index)} style={{ cursor: "pointer" }}>
-              <div className="me-auto">
-                <p className={`fw-bold pt-0 mb-2 ${selectedSeat === index ? "text-white" : ""}`}>{seat.name}</p>
-                <p className={`seat-class__text mb-0 ${selectedSeat === index ? "text-white" : ""}`}>{seat.price}</p>
-              </div>
-              {selectedSeat === index && <Image src="/Suffix.svg" alt="checklist logo" />}
-            </div>
-          ))}
-
-          <Link to="/" state={seat}>
-            <Button className="save-btn-passengers offset-7 col-5 mt-2 py-3" onClick={handleClose}>
-              Simpan
-            </Button>
-          </Link>
+          <Form onSubmit={updateClass}>
+            {kelas.map((kelasItem) => (
+              <button key={kelasItem} onClick={() => handleClassSelection(kelasItem)} value={selectedClass} disabled={selectedClass === kelasItem} className={`border-bottom d-flex align-items-center px-3 py-2 ${selectedClass === kelas ? "seat-class-selected" : ""}`} style={{ cursor: "pointer" }}>
+                {kelasItem}
+              </button>
+            ))}
+            <Link to="/" >
+              <Button className="save-btn-passengers offset-7 col-5 mt-2 py-3" type="submit" onClick={handleClose} >
+                Simpan
+              </Button>
+            </Link>
+          </Form>
         </Modal.Body>
       </Modal>
     </>

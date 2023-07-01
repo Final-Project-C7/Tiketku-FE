@@ -70,22 +70,22 @@ const ResultFlightList = (props) => {
 
   return (
     <>
-      <div className="col-9 text-center mb-5">
+      <div className="col-12 col-md-9 text-center mt-3 mb-5">
         {props?.items?.map((flight) => (
           <Card
             key={flight.id}
-            md={4}
+            // md={4}
             style={{
               width: "100%",
               border: expanded ? "2px solid rgba(113, 38, 181, 0.5)" : "none",
             }}
-            className="filter-2 mb-2"
+            className="filter-2"
           >
             <Card.Body>
               <Card.Title className="title">
-                <Col className="col-12 d-flex gap-2">
-                  <Row style={{ width: "100%" }}>
-                    <Col md={4} className="d-flex align-items-center">
+                <div className="col-12 d-flex">
+                  <Row style={{ width: "100%", height: "100%" }}>
+                    <Col xs={8} className="d-flex align-items-center">
                       <Card.Img
                         variant="top"
                         src={loading}
@@ -99,7 +99,8 @@ const ResultFlightList = (props) => {
                       </p>
                     </Col>
                     <Col
-                      md={{ span: 1, offset: 7 }}
+                      md={{ span: 1, offset: 3 }}
+                      xs={4}
                       className="d-flex justify-content-end"
                     >
                       <Card.Img
@@ -110,91 +111,89 @@ const ResultFlightList = (props) => {
                       />
                     </Col>
                   </Row>
-                </Col>
+                </div>
               </Card.Title>
-              <Row
-                className="d-flex justify-content-between"
-                style={{ marginLeft: "20px", marginTop: 0 }}
-              >
-                <Col className="col-8 d-flex gap-3 align-items-center">
-                  <div>
+              <div className="container-fluid">
+                <Row className="d-flex justify-content-between">
+                  <div className="col-10">
+                    <div className="row">
+                      <div className="col-3" style={{ padding: "0" }}>
+                        <Card.Text
+                          className="fw-bold mb-1"
+                          style={{ fontSize: "14px" }}
+                        >
+                          {Moment(flight.departure_time).format("HH:mm")}
+                        </Card.Text>
+                        <Card.Text
+                          className="fw-semibold mb-1"
+                          style={{ fontSize: "12px" }}
+                        >
+                          {flight.departureAirport.city}
+                        </Card.Text>
+                      </div>
+                      <div
+                        className="col-3 d-flex align-items-center"
+                        style={{ padding: "0" }}
+                      >
+                        <Card.Text
+                          className="title-departure text-center"
+                          style={{ marginBottom: "1px" }}
+                        >
+                          {/* 4h 0m */}
+                        </Card.Text>
+
+                        <Card.Text className="title-departure text-center border-top w-100">
+                          Direct
+                        </Card.Text>
+                      </div>
+                      <div className="col-3" style={{ padding: "0" }}>
+                        <Card.Text
+                          className="fw-bold mb-1"
+                          style={{ fontSize: "14px" }}
+                        >
+                          {Moment(flight.arrival_time).format("HH:mm")}
+                        </Card.Text>
+                        <Card.Text
+                          className="fw-semibold mb-1"
+                          style={{ fontSize: "12px" }}
+                        >
+                          {flight.arrivalAirport.city}
+                        </Card.Text>
+                      </div>
+                      <div className="col-3" style={{ padding: "0" }}>
+                        <Card.Img
+                          variant="top"
+                          src={koper}
+                          style={{ width: "24px", marginRight: "10px" }}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-1 d-flex flex-column align-items-end">
                     <Card.Text
                       className="fw-bold mb-1"
-                      style={{ fontSize: "14px" }}
+                      style={{
+                        color: "rgba(113, 38, 181, 1)",
+                        fontWeight: "bold",
+                        fontSize: "16px",
+                      }}
                     >
-                      {Moment(flight.departure_time).format("HH:mm")}
+                      IDR 4.950.000{" "}
                     </Card.Text>
-                    <Card.Text
-                      className="fw-semibold mb-1"
-                      style={{ fontSize: "12px" }}
-                    >
-                      {flight.departureAirport.city}
-                    </Card.Text>
-                  </div>
-                  <div style={{ width: "100%" }}>
-                    <Card.Text
-                      className="title-departure text-center"
-                      style={{ marginBottom: "1px" }}
-                    >
-                      {/* 4h 0m */}
-                    </Card.Text>
-                    <hr
-                      align="center"
-                      color="green"
-                      size="2"
-                      width="100%"
-                      style={{ margin: 0 }}
-                    />
-                    <Card.Text className="title-departure text-center">
-                      Direct
-                    </Card.Text>
-                  </div>
-                  <div className="d-flex gap-3 align-items-center">
-                    <div>
-                      <Card.Text
-                        className="fw-bold mb-1"
-                        style={{ fontSize: "14px" }}
+                    <Link to="/checkout" state={flight}>
+                      <Button
+                        className="col-3 py-1.5 btn-ticket text-white"
+                        variant="primary"
+                        value={flight.id}
+                        onClick={(e) => setFlightId(e.target.value)}
+                        oncClick={handleSubmit}
                       >
-                        {Moment(flight.arrival_time).format("HH:mm")}
-                      </Card.Text>
-                      <Card.Text
-                        className="fw-semibold mb-1"
-                        style={{ fontSize: "12px" }}
-                      >
-                        {flight.arrivalAirport.city}
-                      </Card.Text>
-                    </div>
-                    <Card.Img
-                      variant="top"
-                      src={koper}
-                      style={{ width: "24px", marginRight: "10px" }}
-                    />
+                        Pilih
+                      </Button>
+                    </Link>
                   </div>
-                </Col>
-                <Col className="col-4 d-flex flex-column align-items-end">
-                  <Card.Text
-                    className="fw-bold mb-1"
-                    style={{
-                      color: "rgba(113, 38, 181, 1)",
-                      fontWeight: "bold",
-                      fontSize: "16px",
-                    }}
-                  >
-                    IDR 4.950.000{" "}
-                  </Card.Text>
-                  <Link to="/checkout" state={flight}>
-                    <Button
-                      className="col-3 py-1.5 btn-ticket text-white"
-                      variant="primary"
-                      value={flight.id}
-                      onClick={(e) => setFlightId(e.target.value)}
-                      oncClick={handleSubmit}
-                    >
-                      Pilih
-                    </Button>
-                  </Link>
-                </Col>
-              </Row>
+                </Row>
+              </div>
               {expanded && (
                 <>
                   <hr className="divider-ticket" />
@@ -247,10 +246,10 @@ const ResultFlightList = (props) => {
                       </div>
                     </Row>
                     <Row className="d-flex align-items-center">
-                      <Col className="col-1">
+                      <div className="col-1">
                         <Card.Img src={loading} style={{ width: "24px" }} />
-                      </Col>
-                      <Col>
+                      </div>
+                      <div className="col-10">
                         <p className="fw-bold mb-0">
                           {flight.airline.airline_name} - Kelas
                         </p>
@@ -265,7 +264,7 @@ const ResultFlightList = (props) => {
                           </p>
                           <p className="mb-0">In Flight Entertainment</p>
                         </div>
-                      </Col>
+                      </div>
                       <div className="d-flex justify-content-center my-3">
                         <div
                           className="col-8"

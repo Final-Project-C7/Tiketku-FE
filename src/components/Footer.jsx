@@ -22,11 +22,11 @@ export default function Footer() {
   };
 
   return (
-    <div>
-      <footer className="footer-48201">
+    <div style={{ backgroundColor: "#4b1979" }}>
+      <footer className="footer-48201 pt-5">
         <div className="container">
-          <div className="row">
-            <div className="col-md-4 pr-md-5">
+          <div className="row text-center">
+            <div className="col-md-4 pr-md-5 col-12">
               <Image
                 className="history-top__arrow-left my-2"
                 src="./logofinal.png"
@@ -40,7 +40,7 @@ export default function Footer() {
                 journeys, and uncover hidden treasures
               </p>
             </div>
-            <div className="col-md ">
+            <div className="col-md-2 col-12">
               <ul className="list-unstyled nav-links">
                 <li>
                   <a href="#">Home</a>
@@ -61,7 +61,7 @@ export default function Footer() {
                 </li>
               </ul>
             </div>
-            <div className="col-md me-5">
+            <div className="col-md-2 col-12">
               <ul className="list-unstyled nav-links">
                 <li>
                   <a>ferdy.lz2000@gmail.com</a>
@@ -74,7 +74,7 @@ export default function Footer() {
                 </li>
               </ul>
             </div>
-            <div className="col-md me-3">
+            <div className="col-md-2 col-12">
               <ul className="list-unstyled nav-links">
                 <li>
                   <a onClick={toggleModal} style={{ cursor: "pointer" }}>
@@ -89,7 +89,7 @@ export default function Footer() {
                 </li>
               </ul>
             </div>
-            <div className="col-md text-md-center" id="sosmed">
+            <div className="col-md-2 col-12 text-md-center" id="sosmed">
               <ul className="social list-unstyled">
                 <li>
                   <a
@@ -163,15 +163,12 @@ export default function Footer() {
               </p>
             </div>
           </div>
-
-          <div className="row ">
-            <div className="col-12 text-center">
-              <div className="copyright mt-5 pt-5">
-                <p>
-                  <small>&copy; 2019-2023 All rights reserved.</small>
-                </p>
-              </div>
-            </div>
+        </div>
+        <div className="col-12 text-center">
+          <div className="copyright">
+            <p>
+              <small>&copy; 2019-2023 All rights reserved.</small>
+            </p>
           </div>
         </div>
       </footer>
@@ -586,4 +583,3 @@ export default function Footer() {
     </div>
   );
 }
-

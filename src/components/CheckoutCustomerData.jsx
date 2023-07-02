@@ -14,6 +14,7 @@ const CheckoutCustomerData = (props) => {
   console.log(location);
   console.log(location?.state?.business_price);
 
+  const [user, setUser] = useState(null);
   const [isChecked1, setIsChecked1] = useState(false);
   const [isChecked2, setIsChecked2] = useState(false);
   const [isChecked3, setIsChecked3] = useState(false);
@@ -28,6 +29,28 @@ const CheckoutCustomerData = (props) => {
   const [valid_until, setValidUntil] = useState("");
   const [booking_id, setBookingId] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false); // State untuk menyimpan status login pengguna
+
+  useEffect(() => {
+    const getUserData = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        const response = await axios.get(
+          "https://c7-tiketku.up.railway.app/api/v1/user/user-info",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        setUser(response.data.data.user);
+      } catch (error) {
+        // Handle error jika terjadi masalah saat mengambil data pengguna
+        console.log("Error:", error);
+      }
+    };
+
+    getUserData();
+  }, []);
 
   const handleSwitchToggle1 = () => {
     setIsChecked1(!isChecked1);
@@ -145,7 +168,7 @@ const CheckoutCustomerData = (props) => {
                     <input
                       className="border-0 mx-2 p-2"
                       type="text"
-                      defaultValue="Harry"
+                      defaultValue={user ? user.name : ""}
                     />
                   </div>
                   <div className="d-flex">
@@ -161,7 +184,7 @@ const CheckoutCustomerData = (props) => {
                     </label>
                   </div>
                 </div>
-                <div className="mx-4 mt-3">
+                {/* <div className="mx-4 mt-3">
                   <p className="fw-bold mb-1">Nama Keluarga</p>
                   <div className="border rounded-1 border-2 mb-2">
                     <input
@@ -170,14 +193,14 @@ const CheckoutCustomerData = (props) => {
                       defaultValue="Potter"
                     />
                   </div>
-                </div>
+                </div> */}
                 <div className="mx-4 mt-3">
                   <p className="fw-bold mb-1">Nomor Telepon</p>
                   <div className="border rounded-1 border-2 mb-2">
                     <input
                       className="border-0 mx-2 p-2"
                       type="text"
-                      defaultValue="Potter"
+                      defaultValue={user ? user.phoneNumber : ""}
                     />
                   </div>
                 </div>
@@ -187,7 +210,7 @@ const CheckoutCustomerData = (props) => {
                     <input
                       className="border-0 mx-2 p-2"
                       type="email"
-                      defaultValue="Johndoe@gmail.com"
+                      defaultValue={user ? user.email : ""}
                     />
                   </div>
                 </div>

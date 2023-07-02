@@ -67,7 +67,7 @@ const CheckoutCustomerData = (props) => {
 
     try {
       const response = await axios.post(
-        "https://c7-tiketku.up.railway.app/api/v1/passengers",
+        "http://localhost:8000/api/v1/passengers",
         {
           name,
           born_date,
@@ -461,9 +461,11 @@ const CheckoutCustomerData = (props) => {
             </Button>
           </div>
           <div className="col-md-5 mt-md-0 mt-lg-4">
-            <h4 className="fw-bold">Detail Penerbangan</h4>
+            <h4 className="fw-bold">
+              Detail Penerbangan {location?.state?.departure_time}
+            </h4>
             <div className="d-flex">
-              <h5 className="fw-bold me-auto mb-0">07:00</h5>
+              <h5 className="fw-bold me-auto mb-0"></h5>
               <p
                 className="fw-bold mb-0"
                 style={{ fontSize: "12px", color: "#a06ece" }}

@@ -16,17 +16,21 @@ import CheckoutCustomerData from "./CheckoutCustomerData";
 import { useSelector } from "react-redux";
 
 const ResultFlightList = (props) => {
-  const [expanded, setExpanded] = useState(false);
+  const [expandedCards, setExpandedCards] = useState([]);
 
   const [user_id, setUserId] = useState("");
   const [flight_id, setFlightId] = useState("");
   const [order_date, setOrderDate] = useState("");
   const [amount, setAmount] = useState("");
 
-  const handleExpand = () => {
-    setExpanded(!expanded);
+  const handleExpand = (cardId) => {
+    if (expandedCards.includes(cardId)) {
+      setExpandedCards(expandedCards.filter((id) => id !== cardId));
+    } else {
+      setExpandedCards([...expandedCards, cardId]);
+    }
   };
-  const { selectedClass } = useSelector(state => state.class);
+  const { selectedClass } = useSelector((state) => state.class);
 
   console.log(user_id);
 
@@ -35,7 +39,7 @@ const ResultFlightList = (props) => {
 
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/v1/bookings",
+        "https://c7-tiketku.up.railway.app/api/v1/bookings",
         {
           user_id,
           flight_id,
@@ -79,7 +83,9 @@ const ResultFlightList = (props) => {
             // md={4}
             style={{
               width: "100%",
-              border: expanded ? "2px solid rgba(113, 38, 181, 0.5)" : "none",
+              border: expandedCards.includes(flight.id)
+                ? "2px solid rgba(113, 38, 181, 0.5)"
+                : "none",
             }}
             className="filter-2"
           >
@@ -109,12 +115,13 @@ const ResultFlightList = (props) => {
                         variant="top"
                         src={panah}
                         style={{ width: "30px", cursor: "pointer" }}
-                        onClick={handleExpand}
+                        onClick={() => handleExpand(flight.id)}
                       />
                     </Col>
                   </Row>
                 </div>
               </Card.Title>
+
               <div className="container-fluid">
                 <Row className="d-flex justify-content-between">
                   <div className="col-10">
@@ -196,7 +203,7 @@ const ResultFlightList = (props) => {
                   </div>
                 </Row>
               </div>
-              {expanded && (
+              {expandedCards.includes(flight.id) && (
                 <>
                   <hr className="divider-ticket" />
                   <div className="detail-flight d-flex flex-column text-start">

@@ -1,28 +1,34 @@
+import React from "react";
 import "../../pages/SelectFlight.css";
+import { Link } from "react-router-dom";
 import arrowleft from "/fi_arrow-left.svg";
 import Button from "react-bootstrap/Button";
 import { useSelector } from "react-redux";
 
 function SelectDay(props) {
+  const { adult, children, baby } = useSelector((state) => state.passenger);
 
-  const { adult, children, baby } = useSelector(state => state.passenger);
-
-  const { selectedClass } = useSelector(state => state.class);
+  const { selectedClass } = useSelector((state) => state.class);
 
   return (
     <>
       <div className="container-fluid">
         <div className="row search-flight">
           <div className="col-12 col-md-8 lg-8 title-search d-flex align-items-center mb-3">
-            <img
-              src={arrowleft}
-              alt="arrow-left"
-              style={{
-                width: "24px",
-                filter: "invert(100%)",
-              }}
-            />
-            <p className="ms-3 mt-3">{props.depart} &gt; {props.arrive} - {adult + children} Penumpang - {selectedClass}</p>
+            <Link to="/" className="back-link">
+              <img
+                src={arrowleft}
+                alt="arrow-left"
+                style={{
+                  width: "24px",
+                  filter: "invert(100%)",
+                }}
+              />
+            </Link>
+            <p className="ms-3 mt-3">
+              {props.depart} &gt; {props.arrive} - {adult + children} Penumpang
+              - {selectedClass}
+            </p>
           </div>
           <div className="col-12 col-md-4">
             <Button variant="s btn-search" className="">

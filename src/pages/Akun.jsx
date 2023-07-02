@@ -21,7 +21,7 @@ function Akun() {
     const getUserData = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get("http://localhost:8000/api/v1/user/user-info", {
+        const response = await axios.get("https://c7-tiketku.up.railway.app/api/v1/user/user-info", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -48,7 +48,7 @@ function Akun() {
 
       setShowWaitModal(true);
 
-      const response = await axios.put("http://localhost:8000/api/v1/user/update", formData, {
+      const response = await axios.put("https://c7-tiketku.up.railway.app/api/v1/user/update", formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "multipart/form-data", // Set content type as multipart/form-data

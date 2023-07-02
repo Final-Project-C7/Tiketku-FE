@@ -14,7 +14,7 @@
 .filter-akun {
   width: 100%;
   max-width: 900px; /*batasan lebar maksimum */
-  margin: 0 auto; /Pusatkan secara horizontal/
+  margin: 0 auto; 
 }
 
 .account-list:hover {
@@ -73,8 +73,8 @@
   border-color: #a06ece;
 }
 
-@media (min-widht: 1200px) {
-  untuk tampilan layar lebih besar .akun {
+@media (min-width: 1200px) {
+  .akun {
     width: 80%;
     margin-top: 10rem;
   }

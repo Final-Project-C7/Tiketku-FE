@@ -34,7 +34,9 @@ const Payment = () => {
             </h4>
           </div>
           <div className="checkout-breadcrumbs__alert mt-2 mb-4 mx-4">
-            <h5 className="col-12 text-center text-white py-3 rounded-4">Data Anda berhasil tersimpan!</h5>
+            <h5 className="col-12 text-center text-white py-3 rounded-4">
+              Data Anda berhasil tersimpan!
+            </h5>
           </div>
         </Container>
       </div>
@@ -42,26 +44,54 @@ const Payment = () => {
         <div className="row d-flex my-5">
           <div className="payment-data col-7">
             <h4 className="fw-bold mb-3">Isi Data Pembayaran</h4>
-            <div className="d-flex align-items-center bg-dark text-white rounded-2 p-3 mb-3" style={{ cursor: "pointer" }}>
+            <div
+              className="d-flex align-items-center bg-dark text-white rounded-2 p-3 mb-3"
+              style={{ cursor: "pointer" }}
+            >
               <h5 className="mb-0 me-auto">Gopay</h5>
               <Image className="payment-data__img" src="/arrow-down.svg" />
             </div>
-            <div className="d-flex align-items-center bg-dark text-white rounded-2 p-3 mb-3" style={{ cursor: "pointer" }}>
+            <div
+              className="d-flex align-items-center bg-dark text-white rounded-2 p-3 mb-3"
+              style={{ cursor: "pointer" }}
+            >
               <h5 className="mb-0 me-auto">Virtual Account</h5>
               <Image className="payment-data__img" src="/arrow-down.svg" />
             </div>
-            <div className={`${expanded ? "payment-data__list" : "bg-dark"} d-flex align-items-center text-white rounded-2 p-3`} onClick={handleExpand} style={{ cursor: "pointer" }}>
+            <div
+              className={`${
+                expanded ? "payment-data__list" : "bg-dark"
+              } d-flex align-items-center text-white rounded-2 p-3`}
+              onClick={handleExpand}
+              style={{ cursor: "pointer" }}
+            >
               <h5 className="mb-0 me-auto">Credit Card</h5>
-              {expanded ? <Image className="payment-data__img" src="/arrow-up.svg" /> : <Image className="payment-data__img" src="/arrow-down.svg" />}
+              {expanded ? (
+                <Image className="payment-data__img" src="/arrow-up.svg" />
+              ) : (
+                <Image className="payment-data__img" src="/arrow-down.svg" />
+              )}
             </div>
             {expanded && (
               <>
                 <div className="payment-data__expanded mx-auto">
                   <div className="d-flex justify-content-center py-4">
-                    <Image className="payment-data__logo me-2" src="mastercard-logo.svg" />
-                    <Image className="payment-data__logo me-2" src="visa-logo.svg" />
-                    <Image className="payment-data__logo me-2" src="amex-logo.svg" />
-                    <Image className="payment-data__logo" src="paypal-logo.svg" />
+                    <Image
+                      className="payment-data__logo me-2"
+                      src="mastercard-logo.svg"
+                    />
+                    <Image
+                      className="payment-data__logo me-2"
+                      src="visa-logo.svg"
+                    />
+                    <Image
+                      className="payment-data__logo me-2"
+                      src="amex-logo.svg"
+                    />
+                    <Image
+                      className="payment-data__logo"
+                      src="paypal-logo.svg"
+                    />
                   </div>
                   <div>
                     <p className="fw-bold mb-0">Card number</p>
@@ -109,17 +139,27 @@ const Payment = () => {
               </span>
             </h4>
             <div className="d-flex align-items-center">
-              <h5 className="fw-bold me-auto mb-0">07:00</h5>
-              <p className="fw-bold mb-0" style={{ fontSize: "12px", color: "#a06ece" }}>
+              <h5 className="fw-bold me-auto mb-0">
+                {location?.state?.departure_time}
+              </h5>
+              <p
+                className="fw-bold mb-0"
+                style={{ fontSize: "12px", color: "#a06ece" }}
+              >
                 Keberangkatan
               </p>
             </div>
             <p className="mb-0">3 Maret 2023</p>
-            <p className="fw-medium mb-0">Soekarno Hatta - Terminal 1A Domestik</p>
+            <p className="fw-medium mb-0">
+              Soekarno Hatta - Terminal 1A Domestik
+            </p>
             <div className="border-bottom my-2"></div>
             <div className="d-flex align-items-center">
               <div className="col-1">
-                <Image className="payment-booking-code__img" src="/Image-1.svg" />
+                <Image
+                  className="payment-booking-code__img"
+                  src="/Image-1.svg"
+                />
               </div>
               <div className="col-12">
                 <p className="fw-bold mb-0">Jet Air - Economy</p>
@@ -133,7 +173,10 @@ const Payment = () => {
             <div className="border-bottom my-2"></div>
             <div className="d-flex align-items-center">
               <p className="fw-bold me-auto mb-0">11:00</p>
-              <p className="fw-bold mb-0" style={{ fontSize: "12px", color: "#a06ece" }}>
+              <p
+                className="fw-bold mb-0"
+                style={{ fontSize: "12px", color: "#a06ece" }}
+              >
                 Keberangkatan
               </p>
             </div>
@@ -157,7 +200,10 @@ const Payment = () => {
               <div className="border-bottom my-2"></div>
               <div className="d-flex">
                 <h5 className="fw-bold mb-0 me-auto">Total</h5>
-                <h5 className="fw-bold mb-0" style={{ fontSize: "18px", color: "#7126B5" }}>
+                <h5
+                  className="fw-bold mb-0"
+                  style={{ fontSize: "18px", color: "#7126B5" }}
+                >
                   IDR 9.850.000
                 </h5>
               </div>

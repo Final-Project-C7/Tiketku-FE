@@ -4,6 +4,7 @@ import NavbarHomepage from "./NavbarHomepage";
 import NavbarUser from "../components/NavbarUser";
 import SeatCustomer from "./SeatCustomer";
 import { Link, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 import axios from "axios";
 
 import "./CheckoutCustomerData.css";
@@ -29,6 +30,7 @@ const CheckoutCustomerData = (props) => {
   const [valid_until, setValidUntil] = useState("");
   const [booking_id, setBookingId] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false); // State untuk menyimpan status login pengguna
+  const { adult, children, baby } = useSelector((state) => state.passenger);
 
   useEffect(() => {
     const getUserData = async () => {
@@ -461,11 +463,12 @@ const CheckoutCustomerData = (props) => {
             </Button>
           </div>
           <div className="col-md-5 mt-md-0 mt-lg-4">
-            <h4 className="fw-bold">
-              Detail Penerbangan {location?.state?.departure_time}
-            </h4>
+            <h4 className="fw-bold">Detail Pesanan</h4>
+
             <div className="d-flex">
-              <h5 className="fw-bold me-auto mb-0"></h5>
+              <h5 className="fw-bold me-auto mb-0">
+                {location?.state?.departure_time}{" "}
+              </h5>
               <p
                 className="fw-bold mb-0"
                 style={{ fontSize: "12px", color: "#a06ece" }}
@@ -473,9 +476,9 @@ const CheckoutCustomerData = (props) => {
                 Keberangkatan
               </p>
             </div>
-            <p className="mb-0">3 Maret 2023</p>
+            <p className="mb-0">{location?.state?.departure_time} </p>
             <p className="fw-medium mb-0">
-              Soekarno Hatta - Terminal 1A Domestik
+              {location?.state?.departureAirport.airport_name}{" "}
             </p>
             <div className="border-bottom my-2"></div>
             <div className="d-flex align-items-center">
@@ -487,19 +490,25 @@ const CheckoutCustomerData = (props) => {
                   Jet Air - Economy
                 </p>
                 <p className="fw-bold mb-3" style={{ padding: "0" }}>
-                  JT - 203
+                  {location?.state?.flight_code}
                 </p>
                 <p className="fw-bold mb-0" style={{ padding: "0" }}>
                   Informasi:
                 </p>
-                <p className="mb-0">Baggage 20 kg</p>
-                <p className="mb-0">Cabin baggage 7 kg</p>
+                <p className="mb-0">
+                  Baggage {location?.state?.airline.baggage} kg
+                </p>
+                <p className="mb-0">
+                  Cabin baggage {location?.state?.airline.cabin_baggage} kg
+                </p>
                 <p className="mb-0">In Flight Entertainment</p>
               </div>
             </div>
             <div className="border-bottom my-2"></div>
             <div className="d-flex">
-              <h5 className="fw-bold me-auto mb-0">11:00</h5>
+              <h5 className="fw-bold me-auto mb-0">
+                {location?.state?.arrival_time}{" "}
+              </h5>
               <p
                 className="fw-bold mb-0"
                 style={{ fontSize: "12px", color: "#a06ece" }}
@@ -507,17 +516,23 @@ const CheckoutCustomerData = (props) => {
                 Keberangkatan
               </p>
             </div>
-            <p className="mb-0">3 Maret 2023</p>
-            <p className="fw-medium mb-0">Melbourne International Airport</p>
+            <p className="mb-0">{location?.state?.arrival_time} </p>
+            <p className="fw-medium mb-0">
+              {location?.state?.arrivalAirport.airport_name}{" "}
+            </p>
             <div className="border-bottom my-2"></div>
             <div className="mx-2">
               <p className="fw-bold mb-0">Rincian Harga</p>
               <div className="d-flex">
-                <p className="mb-0 me-auto">2 Adults</p>
+                <p className="mb-0 me-auto">{adult} Adults</p>
                 <p className="mb-0">IDR 9.550.000</p>
               </div>
               <div className="d-flex">
-                <p className="mb-0 me-auto">1 Baby</p>
+                <p className="mb-0 me-auto">{children} Children</p>
+                <p className="mb-0">IDR 9.550.000</p>
+              </div>
+              <div className="d-flex">
+                <p className="mb-0 me-auto">{baby} Baby</p>
                 <p className="mb-0">IDR 0</p>
               </div>
               <div className="d-flex">

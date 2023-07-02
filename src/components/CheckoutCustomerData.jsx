@@ -6,6 +6,7 @@ import SeatCustomer from "./SeatCustomer";
 import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 import "./CheckoutCustomerData.css";
 
@@ -31,6 +32,9 @@ const CheckoutCustomerData = (props) => {
   const [booking_id, setBookingId] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false); // State untuk menyimpan status login pengguna
   const { adult, children, baby } = useSelector((state) => state.passenger);
+
+  const { passenger } = useSelector((state) => state);
+  const selectedClass = useSelector((state) => state.class.selectedClass)
 
   useEffect(() => {
     const getUserData = async () => {
@@ -126,7 +130,6 @@ const CheckoutCustomerData = (props) => {
           <div className="checkout-breadcrumbs-1 d-flex">
             <h4 className="fw-bold">
               Isi Data Diri
-              {/* <h1>{location?.state?.business_price}</h1> */}
               <span className="mx-sm-2" style={{ color: "#8A8A8A" }}>
                 &gt;
               </span>
@@ -141,11 +144,11 @@ const CheckoutCustomerData = (props) => {
               Selesai
             </h4>
           </div>
-          <div className="checkout-breadcrumbs__alert mt-2 mb-4 mx-4">
+          {/* <div className="checkout-breadcrumbs__alert mt-2 mb-4 mx-4">
             <h5 className="col-12 text-center text-white py-3 rounded-4">
               Data Anda berhasil tersimpan!
             </h5>
-          </div>
+          </div> */}
         </Container>
       </div>
       <Container className="checkout-biodata">
@@ -173,7 +176,7 @@ const CheckoutCustomerData = (props) => {
                       defaultValue={user ? user.name : ""}
                     />
                   </div>
-                  <div className="d-flex">
+                  {/* <div className="d-flex">
                     <p className="me-auto mb-0">Punya Nama Keluarga?</p>
                     <label className="switch me-1">
                       <input
@@ -184,7 +187,7 @@ const CheckoutCustomerData = (props) => {
                       />
                       <span className="slider"></span>
                     </label>
-                  </div>
+                  </div> */}
                 </div>
                 {/* <div className="mx-4 mt-3">
                   <p className="fw-bold mb-1">Nama Keluarga</p>
@@ -218,234 +221,134 @@ const CheckoutCustomerData = (props) => {
                 </div>
               </div>
             </Form>
-            <Form className="border rounded-1 p-4 mb-3">
-              <h4 className="fw-bold">Isi Data Penumpang </h4>
-              <div className="mt-4">
-                <div className="d-flex align-items-start bg-dark rounded-top-4 py-3 ">
-                  <h5 className="me-auto text-white ms-4 mb-0">
-                    Data Diri Penumpang 1 - Adult
-                  </h5>
-                  <Image
-                    className="checkout-biodata__checklist me-4"
-                    src="/Suffix.svg"
-                    alt="checklist logo"
-                  />
-                </div>
-                <div className="mx-4 mt-3">
-                  <p className="fw-bold mb-1">Title</p>
-                  <div className="border rounded-1 border-2 mb-2">
-                    <select
-                      className="border-0 mx-2 p-2"
-                      name="title"
-                      id="title"
-                    >
-                      <option value="mr">Mr.</option>
-                      <option value="ms">Ms.</option>
-                      <option value="mrs">Mrs</option>
-                    </select>
-                  </div>
-                </div>
-                <div className="mx-4 mt-3">
-                  <p className="fw-bold mb-1">Nama Lengkap</p>
-                  <div className="border rounded-1 border-2 mb-2">
-                    <input
-                      className="border-0 mx-2 p-2"
-                      type="text"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
+
+            {Array.from({ length: passenger.adult + passenger.children + passenger.baby }, (_, index) => (
+              <Form className="border rounded-1 p-4 mb-3" key={index}>
+                <h4 className="fw-bold">Isi Data Penumpang </h4>
+                <div className="mt-4">
+                  <div className="d-flex align-items-start bg-dark rounded-top-4 py-3 ">
+                    <h5 className="me-auto text-white ms-4 mb-0">
+                      Data Diri Penumpang {index + 1}
+                    </h5>
+                    <Image
+                      className="checkout-biodata__checklist me-4"
+                      src="/Suffix.svg"
+                      alt="checklist logo"
                     />
                   </div>
-                  <div className="d-flex">
-                    <p className="me-auto mb-0">Punya Nama Keluarga?</p>
-                    <label className="switch me-1">
+                  <div className="mx-4 mt-3">
+                    <p className="fw-bold mb-1">Title</p>
+                    <div className="border rounded-1 border-2 mb-2">
+                      <select
+                        className="border-0 mx-2 p-2"
+                        name="title"
+                        id="title"
+                      >
+                        <option value="mr">Mr.</option>
+                        <option value="ms">Ms.</option>
+                        <option value="mrs">Mrs</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div className="mx-4 mt-3">
+                    <p className="fw-bold mb-1">Nama Lengkap</p>
+                    <div className="border rounded-1 border-2 mb-2">
                       <input
-                        className="switch__input"
-                        type="checkbox"
-                        checked={isChecked2}
-                        onChange={handleSwitchToggle2}
+                        className="border-0 mx-2 p-2"
+                        type="text"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
                       />
-                      <span className="slider"></span>
-                    </label>
+                    </div>
+                    {/* <div className="d-flex">
+                      <p className="me-auto mb-0">Punya Nama Keluarga?</p>
+                      <label className="switch me-1">
+                        <input
+                          className="switch__input"
+                          type="checkbox"
+                          checked={isChecked2}
+                          onChange={handleSwitchToggle2}
+                        />
+                        <span className="slider"></span>
+                      </label>
+                    </div> */}
                   </div>
-                </div>
-                <div className="mx-4 mt-3">
-                  <p className="fw-bold mb-1">Nama Keluarga</p>
-                  <div className="border rounded-1 border-2 mb-2">
-                    <input
-                      className="border-0 mx-2 p-2"
-                      type="text"
-                      defaultValue="Potter"
-                    />
-                  </div>
-                </div>
-                <div className="mx-4 mt-3">
-                  <p className="fw-bold mb-1">Tanggal Lahir</p>
-                  <div className="border rounded-1 border-2 mb-2">
-                    <input
-                      className="border-0 opacity-50 mx-2 p-2"
-                      type="date"
-                      value={born_date}
-                      onChange={(e) => setBornDate(e.target.value)}
-                    />
-                  </div>
-                </div>
-                <div className="mx-4 mt-3">
-                  <p className="fw-bold mb-1">Kewarganegaraan</p>
-                  <div className="border rounded-1 border-2 mb-2">
-                    <input
-                      className="border-0 mx-2 p-2"
-                      type="text"
-                      value={citizen}
-                      onChange={(e) => setCitizen(e.target.value)}
-                    />
-                  </div>
-                </div>
-                <div className="mx-4 mt-3">
-                  <p className="fw-bold mb-1">KTP/Paspor</p>
-                  <div className="border rounded-1 border-2 mb-2">
-                    <input
-                      className="border-0 mx-2 p-2"
-                      type="text"
-                      value={identity_number}
-                      onChange={(e) => setIdentityNumber(e.target.value)}
-                    />
-                  </div>
-                </div>
-                <div className="mx-4 mt-3">
-                  <p className="fw-bold mb-1">Negara Penerbit</p>
-                  <div className="border rounded-1 border-2 mb-2">
-                    <input
-                      className="border-0 mx-2 p-2"
-                      name="issuing-country"
-                      id="issuing-country"
-                      value={publisher_country}
-                      onChange={(e) => setPublisherCountry(e.target.value)}
-                    ></input>
-                  </div>
-                </div>
-                <div className="mx-4 mt-3">
-                  <p className="fw-bold mb-1">Berlaku Sampai</p>
-                  <div className="border rounded-1 border-2 mb-2">
-                    <input
-                      className="border-0 opacity-50 mx-2 p-2"
-                      type="date"
-                      value={valid_until}
-                      onChange={(e) => setValidUntil(e.target.value)}
-                    />
-                  </div>
-                </div>
-              </div>
-              <Form className="mt-4">
-                <div className="d-flex align-items-start bg-dark rounded-top-3 py-3 ">
-                  <h5 className="me-auto text-white ms-4 mb-0">
-                    Data Diri Penumpang 2 - Adult
-                  </h5>
-                  <Image
-                    className="checkout-biodata__checklist me-4"
-                    src="/Suffix.svg"
-                    alt="checklist logo"
-                  />
-                </div>
-                <div className="mx-4 mt-3">
-                  <p className="fw-bold mb-1">Title</p>
-                  <div className="border rounded-1 border-2 mb-2">
-                    <select
-                      className="border-0 mx-2 p-2"
-                      name="title"
-                      id="title"
-                    >
-                      <option value="mr">Mr.</option>
-                      <option value="ms">Ms.</option>
-                      <option value="mrs">Mrs</option>
-                    </select>
-                  </div>
-                </div>
-                <div className="mx-4 mt-3">
-                  <p className="fw-bold mb-1">Nama Lengkap</p>
-                  <div className="border rounded-1 border-2 mb-2">
-                    <input
-                      className="border-0 mx-2 p-2"
-                      type="text"
-                      defaultValue="Harry"
-                    />
-                  </div>
-                  <div className="d-flex">
-                    <p className="me-auto mb-0">Punya Nama Keluarga?</p>
-                    <label className="switch me-1">
+                  {/* <div className="mx-4 mt-3">
+                    <p className="fw-bold mb-1">Nama Keluarga</p>
+                    <div className="border rounded-1 border-2 mb-2">
                       <input
-                        className="switch__input"
-                        type="checkbox"
-                        checked={isChecked3}
-                        onChange={handleSwitchToggle3}
+                        className="border-0 mx-2 p-2"
+                        type="text"
+                        defaultValue="Potter"
                       />
-                      <span className="slider"></span>
-                    </label>
+                    </div>
+                  </div> */}
+                  <div className="mx-4 mt-3">
+                    <p className="fw-bold mb-1">Tanggal Lahir</p>
+                    <div className="border rounded-1 border-2 mb-2">
+                      <input
+                        className="border-0 opacity-50 mx-2 p-2"
+                        type="date"
+                        value={born_date}
+                        onChange={(e) => setBornDate(e.target.value)}
+                      />
+                    </div>
                   </div>
-                </div>
-                <div className="mx-4 mt-3">
-                  <p className="fw-bold mb-1">Nama Keluarga</p>
-                  <div className="border rounded-1 border-2 mb-2">
-                    <input
-                      className="border-0 mx-2 p-2"
-                      type="text"
-                      defaultValue="Potter"
-                    />
+                  <div className="mx-4 mt-3">
+                    <p className="fw-bold mb-1">Kewarganegaraan</p>
+                    <div className="border rounded-1 border-2 mb-2">
+                      <input
+                        className="border-0 mx-2 p-2"
+                        type="text"
+                        value={citizen}
+                        onChange={(e) => setCitizen(e.target.value)}
+                      />
+                    </div>
                   </div>
-                </div>
-                <div className="mx-4 mt-3">
-                  <p className="fw-bold mb-1">Tanggal Lahir</p>
-                  <div className="border rounded-1 border-2 mb-2">
-                    <input
-                      className="border-0 opacity-50 mx-2 p-2"
-                      type="date"
-                    />
+                  <div className="mx-4 mt-3">
+                    <p className="fw-bold mb-1">KTP/Paspor</p>
+                    <div className="border rounded-1 border-2 mb-2">
+                      <input
+                        className="border-0 mx-2 p-2"
+                        type="text"
+                        value={identity_number}
+                        onChange={(e) => setIdentityNumber(e.target.value)}
+                      />
+                    </div>
                   </div>
-                </div>
-                <div className="mx-4 mt-3">
-                  <p className="fw-bold mb-1">Kewarganegaraan</p>
-                  <div className="border rounded-1 border-2 mb-2">
-                    <input
-                      className="border-0 mx-2 p-2"
-                      type="text"
-                      defaultValue="Indonesia"
-                    />
+                  <div className="mx-4 mt-3">
+                    <p className="fw-bold mb-1">Negara Penerbit</p>
+                    <div className="border rounded-1 border-2 mb-2">
+                      <input
+                        className="border-0 mx-2 p-2"
+                        name="issuing-country"
+                        id="issuing-country"
+                        value={publisher_country}
+                        onChange={(e) => setPublisherCountry(e.target.value)}
+                      ></input>
+                    </div>
                   </div>
-                </div>
-                <div className="mx-4 mt-3">
-                  <p className="fw-bold mb-1">KTP/Paspor</p>
-                  <div className="border rounded-1 border-2 mb-2">
-                    <input className="border-0 mx-2 p-2" type="text" />
-                  </div>
-                </div>
-                <div className="mx-4 mt-3">
-                  <p className="fw-bold mb-1">Negara Penerbit</p>
-                  <div className="border rounded-1 border-2 mb-2">
-                    <select
-                      className="border-0 mx-2 p-2"
-                      name="issuing-country"
-                      id="issuing-country"
-                    >
-                      <option value=""></option>
-                    </select>
-                  </div>
-                </div>
-                <div className="mx-4 mt-3">
-                  <p className="fw-bold mb-1">Berlaku Sampai</p>
-                  <div className="border rounded-1 border-2 mb-2">
-                    <input
-                      className="border-0 opacity-50 mx-2 p-2"
-                      type="date"
-                    />
+                  <div className="mx-4 mt-3">
+                    <p className="fw-bold mb-1">Berlaku Sampai</p>
+                    <div className="border rounded-1 border-2 mb-2">
+                      <input
+                        className="border-0 opacity-50 mx-2 p-2"
+                        type="date"
+                        value={valid_until}
+                        onChange={(e) => setValidUntil(e.target.value)}
+                      />
+                    </div>
                   </div>
                 </div>
               </Form>
-            </Form>
+            ))}
+
             <Form className="border rounded-1 p-4 mb-4">
               <h4 className="fw-bold">Pilih Kursi</h4>
               <div className="mt-4">
                 <div className="d-flex align-items-start bg-dark rounded-top-2 py-3 ">
                   <p className="me-auto text-white ms-4 mb-0">
-                    Economy - 2 Seats Chosen
+                    {selectedClass} - {passenger.adult + passenger.children} Seats Chosen
                   </p>
                   <Image
                     className="checkout-biodata__checklist me-4"

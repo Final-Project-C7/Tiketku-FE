@@ -22,6 +22,9 @@ const ResultFlightList = (props) => {
   const [flight_id, setFlightId] = useState("");
   const [order_date, setOrderDate] = useState("");
   const [amount, setAmount] = useState("");
+  const [error, setError] = useState();
+  const [successMessage, setSuccessMessage] = useState();
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // State untuk menyimpan status login pengguna
 
   const handleExpand = (cardId) => {
     if (expandedCards.includes(cardId)) {
@@ -32,23 +35,48 @@ const ResultFlightList = (props) => {
   };
   const { selectedClass } = useSelector((state) => state.class);
 
-  console.log(user_id);
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    const getUserData = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        const response = await axios.get(
+          "https://c7-tiketku.up.railway.app/api/v1/user/user-info",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        setUser(response.data.data.user);
+      } catch (error) {
+        // Handle error jika terjadi masalah saat mengambil data pengguna
+        console.log("Error:", error);
+      }
+    };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+    getUserData();
+  }, []);
+
+  const handleSubmit = async (data) => {
+    console.log(data)
 
     try {
+      const token = localStorage.getItem("token");
+      const headers = { Authorization: `Bearer ${token}` };
       const response = await axios.post(
         "https://c7-tiketku.up.railway.app/api/v1/bookings",
         {
           user_id,
-          flight_id,
+          flight_id: data.id,
           order_date: new Date(),
-          amount,
-        }
+          amount: 5000,
+        },
+        { headers }
       );
 
       // Handle successful registration
+      console.log(response)
       const { newPassengers } = response.data.data;
       console.log(newPassengers); // Do something with newUser
 
@@ -73,6 +101,14 @@ const ResultFlightList = (props) => {
       setSuccessMessage("");
     }
   };
+
+  useEffect(() => {
+    // Cek apakah pengguna sudah login atau memiliki token di lokal
+    const token = localStorage.getItem("token");
+    if (token) {
+      setIsLoggedIn(true); // Jika ada token, pengguna dianggap sudah login
+    }
+  }, []);
 
   return (
     <>
@@ -187,15 +223,15 @@ const ResultFlightList = (props) => {
                         fontSize: "16px",
                       }}
                     >
-                      IDR 4.950.000{" "}
+                      IDR {flight.business_price}{" "}
                     </Card.Text>
                     <Link to="/checkout" state={flight}>
-                      <Button
+                      <Button type="submit"
                         className="col-3 py-1.5 btn-ticket text-white"
                         variant="primary"
                         value={flight.id}
                         onClick={(e) => setFlightId(e.target.value)}
-                        oncClick={handleSubmit}
+                        onSubmit={handleSubmit(flight)}
                       >
                         Pilih
                       </Button>

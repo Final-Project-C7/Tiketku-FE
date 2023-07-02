@@ -161,7 +161,7 @@ function Akun() {
                         width: "200px",
                         height: "200px",
                         objectFit: "cover",
-                        cursor: "pointer",
+                        cursor: user && user.image ? "pointer" : "auto",
                         ...(user && user.image ? {} : { filter: "invert(66%) sepia(80%) saturate(3432%) hue-rotate(225deg) brightness(86%) contrast(86%)" }),
                       }}
                     />
@@ -319,7 +319,7 @@ function Akun() {
         </Modal>
 
         <Modal
-          show={showFullImage}
+          show={user && user.image ? showFullImage : false}
           onHide={closeFullImage}
           style={{
             display: "flex",

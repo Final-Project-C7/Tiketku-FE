@@ -32,7 +32,7 @@ const CheckoutCustomerData = (props) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false); // State untuk menyimpan status login pengguna
 
   const { passenger } = useSelector((state) => state);
-  console.log(passenger)
+  const selectedClass = useSelector((state) => state.class.selectedClass)
 
   useEffect(() => {
     const getUserData = async () => {
@@ -128,7 +128,6 @@ const CheckoutCustomerData = (props) => {
           <div className="checkout-breadcrumbs-1 d-flex">
             <h4 className="fw-bold">
               Isi Data Diri
-              {/* <h1>{location?.state?.business_price}</h1> */}
               <span className="mx-sm-2" style={{ color: "#8A8A8A" }}>
                 &gt;
               </span>
@@ -143,11 +142,11 @@ const CheckoutCustomerData = (props) => {
               Selesai
             </h4>
           </div>
-          <div className="checkout-breadcrumbs__alert mt-2 mb-4 mx-4">
+          {/* <div className="checkout-breadcrumbs__alert mt-2 mb-4 mx-4">
             <h5 className="col-12 text-center text-white py-3 rounded-4">
               Data Anda berhasil tersimpan!
             </h5>
-          </div>
+          </div> */}
         </Container>
       </div>
       <Container className="checkout-biodata">
@@ -175,7 +174,7 @@ const CheckoutCustomerData = (props) => {
                       defaultValue={user ? user.name : ""}
                     />
                   </div>
-                  <div className="d-flex">
+                  {/* <div className="d-flex">
                     <p className="me-auto mb-0">Punya Nama Keluarga?</p>
                     <label className="switch me-1">
                       <input
@@ -186,7 +185,7 @@ const CheckoutCustomerData = (props) => {
                       />
                       <span className="slider"></span>
                     </label>
-                  </div>
+                  </div> */}
                 </div>
                 {/* <div className="mx-4 mt-3">
                   <p className="fw-bold mb-1">Nama Keluarga</p>
@@ -259,7 +258,7 @@ const CheckoutCustomerData = (props) => {
                         onChange={(e) => setName(e.target.value)}
                       />
                     </div>
-                    <div className="d-flex">
+                    {/* <div className="d-flex">
                       <p className="me-auto mb-0">Punya Nama Keluarga?</p>
                       <label className="switch me-1">
                         <input
@@ -270,9 +269,9 @@ const CheckoutCustomerData = (props) => {
                         />
                         <span className="slider"></span>
                       </label>
-                    </div>
+                    </div> */}
                   </div>
-                  <div className="mx-4 mt-3">
+                  {/* <div className="mx-4 mt-3">
                     <p className="fw-bold mb-1">Nama Keluarga</p>
                     <div className="border rounded-1 border-2 mb-2">
                       <input
@@ -281,7 +280,7 @@ const CheckoutCustomerData = (props) => {
                         defaultValue="Potter"
                       />
                     </div>
-                  </div>
+                  </div> */}
                   <div className="mx-4 mt-3">
                     <p className="fw-bold mb-1">Tanggal Lahir</p>
                     <div className="border rounded-1 border-2 mb-2">
@@ -347,7 +346,7 @@ const CheckoutCustomerData = (props) => {
               <div className="mt-4">
                 <div className="d-flex align-items-start bg-dark rounded-top-2 py-3 ">
                   <p className="me-auto text-white ms-4 mb-0">
-                    Economy - 2 Seats Chosen
+                    {selectedClass} - {passenger.adult + passenger.children} Seats Chosen
                   </p>
                   <Image
                     className="checkout-biodata__checklist me-4"

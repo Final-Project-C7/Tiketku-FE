@@ -7,7 +7,7 @@ import "./Payment.css";
 import Moment from "moment";
 import { useSelector } from "react-redux";
 
-const Payment = () => {
+const Payment = (props) => {
   const [expanded, setExpanded] = useState(false);
   const location = useLocation();
   // console.log(location);
@@ -50,7 +50,7 @@ const Payment = () => {
       <Container className="payment">
         <div className="row d-flex my-5">
           <div className="payment-data col-7">
-            <h4 className="fw-bold mb-3">Isi Data Pembayaran</h4>
+            <h4 className="fw-bold mb-3">Isi Data Pembayaran </h4>
             <div
               className="d-flex align-items-center bg-dark text-white rounded-2 p-3 mb-3"
               style={{ cursor: "pointer" }}

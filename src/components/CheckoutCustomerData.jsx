@@ -6,7 +6,6 @@ import SeatCustomer from "./SeatCustomer";
 import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import axios from "axios";
-import { useSelector } from "react-redux";
 
 import "./CheckoutCustomerData.css";
 

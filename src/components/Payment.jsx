@@ -2,11 +2,18 @@ import React, { useState } from "react";
 import { Image, Button, Container } from "react-bootstrap";
 import NavbarUser from "./NavbarUser";
 import NotifModal from "./Beranda/NotifModal";
-
+import { Link, useLocation } from "react-router-dom"
 import "./Payment.css";
+import Moment from "moment";
+import { useSelector } from "react-redux";
 
 const Payment = (props) => {
   const [expanded, setExpanded] = useState(false);
+  const location = useLocation();
+  // console.log(location);
+  // console.log(location?.state?.state?.business_price);
+  const { selectedClass } = useSelector((state) => state.class);
+  const { adult, children, baby } = useSelector((state) => state.passenger);
 
   const handleExpand = () => {
     setExpanded(!expanded);
@@ -33,11 +40,11 @@ const Payment = (props) => {
               Selesai
             </h4>
           </div>
-          <div className="checkout-breadcrumbs__alert mt-2 mb-4 mx-4">
+          {/* <div className="checkout-breadcrumbs__alert mt-2 mb-4 mx-4">
             <h5 className="col-12 text-center text-white py-3 rounded-4">
               Data Anda berhasil tersimpan!
             </h5>
-          </div>
+          </div> */}
         </Container>
       </div>
       <Container className="payment">
@@ -59,9 +66,8 @@ const Payment = (props) => {
               <Image className="payment-data__img" src="/arrow-down.svg" />
             </div>
             <div
-              className={`${
-                expanded ? "payment-data__list" : "bg-dark"
-              } d-flex align-items-center text-white rounded-2 p-3`}
+              className={`${expanded ? "payment-data__list" : "bg-dark"
+                } d-flex align-items-center text-white rounded-2 p-3`}
               onClick={handleExpand}
               style={{ cursor: "pointer" }}
             >
@@ -140,7 +146,7 @@ const Payment = (props) => {
             </h4>
             <div className="d-flex align-items-center">
               <h5 className="fw-bold me-auto mb-0">
-                {location?.state?.departure_time}
+                {Moment(location?.state?.state?.departure_time).format("HH:mm")}
               </h5>
               <p
                 className="fw-bold mb-0"
@@ -149,9 +155,9 @@ const Payment = (props) => {
                 Keberangkatan
               </p>
             </div>
-            <p className="mb-0">3 Maret 2023</p>
+            <p className="mb-0">{Moment(location?.state?.state?.arrival_time).format('dddd, Do MMMM  YYYY')}</p>
             <p className="fw-medium mb-0">
-              Soekarno Hatta - Terminal 1A Domestik
+              {location?.state?.state?.departureAirport.airport_name}
             </p>
             <div className="border-bottom my-2"></div>
             <div className="d-flex align-items-center">
@@ -162,40 +168,44 @@ const Payment = (props) => {
                 />
               </div>
               <div className="col-12">
-                <p className="fw-bold mb-0">Jet Air - Economy</p>
-                <p className="fw-bold mb-3">JT - 203</p>
+                <p className="fw-bold mb-0">{location?.state?.state?.airline.airline_name} - {selectedClass}</p>
+                <p className="fw-bold mb-3">{location?.state?.state?.flight_code}</p>
                 <p className="fw-bold mb-0">Informasi:</p>
-                <p className="mb-0">Baggage 20 kg</p>
-                <p className="mb-0">Cabin baggage 7 kg</p>
+                <p className="mb-0">Baggage {location?.state?.state?.airline.baggage} kg</p>
+                <p className="mb-0">Cabin baggage {location?.state?.state?.airline.cabin_baggage} kg</p>
                 <p className="mb-0">In Flight Entertainment</p>
               </div>
             </div>
             <div className="border-bottom my-2"></div>
             <div className="d-flex align-items-center">
-              <p className="fw-bold me-auto mb-0">11:00</p>
+              <p className="fw-bold me-auto mb-0">{Moment(location?.state?.state?.arrival_time).format("HH:mm")}</p>
               <p
                 className="fw-bold mb-0"
                 style={{ fontSize: "12px", color: "#a06ece" }}
               >
-                Keberangkatan
+                Kedatangan
               </p>
             </div>
-            <p className="mb-0">3 Maret 2023</p>
-            <p className="fw-medium mb-0">Melbourne International Airport</p>
+            <p className="mb-0">{Moment(location?.state?.state?.arrival_time).format('dddd, Do MMMM  YYYY')}</p>
+            <p className="fw-medium mb-0">{location?.state?.state?.arrivalAirport.airport_name}</p>
             <div className="border-bottom my-2"></div>
             <div className="mx-2">
               <p className="fw-bold mb-0">Rincian Harga</p>
               <div className="d-flex">
-                <p className="mb-0 me-auto">2 Adults</p>
-                <p className="mb-0">IDR 9.550.000</p>
+                <p className="mb-0 me-auto">{adult} Adults</p>
+                <p className="mb-0">IDR {location?.state?.state?.business_price}</p>
               </div>
               <div className="d-flex">
-                <p className="mb-0 me-auto">1 Baby</p>
+                <p className="mb-0 me-auto">{children} Children</p>
+                <p className="mb-0">IDR {location?.state?.state?.business_price}</p>
+              </div>
+              <div className="d-flex">
+                <p className="mb-0 me-auto">{baby} Baby</p>
                 <p className="mb-0">IDR 0</p>
               </div>
               <div className="d-flex">
                 <p className="mb-0 me-auto">Tax</p>
-                <p className="mb-0">IDR 300.000</p>
+                <p className="mb-0">IDR {(Number(location?.state?.state?.business_price) * Number(adult + children)) * 0.1}</p>
               </div>
               <div className="border-bottom my-2"></div>
               <div className="d-flex">
@@ -204,7 +214,7 @@ const Payment = (props) => {
                   className="fw-bold mb-0"
                   style={{ fontSize: "18px", color: "#7126B5" }}
                 >
-                  IDR 9.850.000
+                  IDR {Number(location?.state?.state?.business_price) * Number(adult + children) + (Number(location?.state?.state?.business_price) * Number(adult + children)) * 0.1}
                 </h5>
               </div>
             </div>

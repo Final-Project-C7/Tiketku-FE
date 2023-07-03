@@ -60,6 +60,9 @@ const ResultFlightList = (props) => {
 
   const handleSubmit = async (data) => {
 
+    console.log(data);
+
+
     try {
       const token = localStorage.getItem("token");
       const headers = { Authorization: `Bearer ${token}` };
@@ -75,7 +78,7 @@ const ResultFlightList = (props) => {
       );
 
       // Handle successful registration
-      console.log(response)
+      console.log(response);
       const { newPassengers } = response.data.data;
       console.log(newPassengers); // Do something with newUser
 
@@ -87,6 +90,13 @@ const ResultFlightList = (props) => {
 
       setSuccessMessage("registrasi berhasil");
       setError("");
+
+      if (!isLoggedIn) {
+        // Redirect to "/login"
+        // You can add any query parameters or state to the URL as needed
+        window.location.href = "/login";
+        return; // Return early to prevent further execution
+      }
     } catch (error) {
       if (
         error.response &&
@@ -224,8 +234,9 @@ const ResultFlightList = (props) => {
                     >
                       IDR {flight.business_price}{" "}
                     </Card.Text>
-                    <Link to="/checkout" state={flight}>
-                      <Button type="submit"
+                    <Link to={isLoggedIn ? "/checkout" : "/login"}>
+                      <Button
+                        type="submit"
                         className="col-3 py-1.5 btn-ticket text-white"
                         variant="primary"
                         value={flight.id}

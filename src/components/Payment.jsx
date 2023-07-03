@@ -9,18 +9,30 @@ import { useSelector } from "react-redux";
 
 const Payment = (props) => {
   const [expanded, setExpanded] = useState(false);
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // State untuk menyimpan status login pengguna
+
+  useEffect(() => {
+    // Cek apakah pengguna sudah login atau memiliki token di lokal
+    const token = localStorage.getItem("token");
+    if (token) {
+      setIsLoggedIn(true); // Jika ada token, pengguna dianggap sudah login
+    }
+  }, []);
+
   const location = useLocation();
   // console.log(location);
   // console.log(location?.state?.state?.business_price);
   const { selectedClass } = useSelector((state) => state.class);
   const { adult, children, baby } = useSelector((state) => state.passenger);
 
+
   const handleExpand = () => {
     setExpanded(!expanded);
   };
   return (
     <>
-      <NavbarUser />
+      {isLoggedIn ? <NavbarUser /> : <NavbarHomepage />}
       <div className="border-bottom shadow-sm">
         <Container className="checkout-breadcrumbs">
           <div className="d-flex">

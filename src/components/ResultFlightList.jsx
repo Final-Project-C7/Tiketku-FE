@@ -59,7 +59,9 @@ const ResultFlightList = (props) => {
   }, []);
 
   const handleSubmit = async (data) => {
+
     console.log(data);
+
 
     try {
       const token = localStorage.getItem("token");
@@ -70,7 +72,7 @@ const ResultFlightList = (props) => {
           user_id,
           flight_id: data.id,
           order_date: new Date(),
-          amount: 5000,
+          amount: data.business_price,
         },
         { headers }
       );

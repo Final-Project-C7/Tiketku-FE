@@ -4,8 +4,9 @@ import NavbarHomepage from "./NavbarHomepage";
 import NavbarUser from "../components/NavbarUser";
 import SeatCustomer from "./SeatCustomer";
 import { Link, useLocation } from "react-router-dom";
-import { useSelector } from "react-redux";
 import axios from "axios";
+import { useSelector } from "react-redux";
+import Moment from "moment";
 
 import "./CheckoutCustomerData.css";
 
@@ -30,10 +31,10 @@ const CheckoutCustomerData = (props) => {
   const [valid_until, setValidUntil] = useState("");
   const [booking_id, setBookingId] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false); // State untuk menyimpan status login pengguna
-  const { adult, children, baby } = useSelector((state) => state.passenger);
 
   const { passenger } = useSelector((state) => state);
   const selectedClass = useSelector((state) => state.class.selectedClass)
+  const { adult, children, baby } = useSelector((state) => state.passenger)
 
   useEffect(() => {
     const getUserData = async () => {
@@ -143,11 +144,6 @@ const CheckoutCustomerData = (props) => {
               Selesai
             </h4>
           </div>
-          {/* <div className="checkout-breadcrumbs__alert mt-2 mb-4 mx-4">
-            <h5 className="col-12 text-center text-white py-3 rounded-4">
-              Data Anda berhasil tersimpan!
-            </h5>
-          </div> */}
         </Container>
       </div>
       <Container className="checkout-biodata">
@@ -175,29 +171,7 @@ const CheckoutCustomerData = (props) => {
                       defaultValue={user ? user.name : ""}
                     />
                   </div>
-                  {/* <div className="d-flex">
-                    <p className="me-auto mb-0">Punya Nama Keluarga?</p>
-                    <label className="switch me-1">
-                      <input
-                        className="switch__input"
-                        type="checkbox"
-                        checked={isChecked1}
-                        onChange={handleSwitchToggle1}
-                      />
-                      <span className="slider"></span>
-                    </label>
-                  </div> */}
                 </div>
-                {/* <div className="mx-4 mt-3">
-                  <p className="fw-bold mb-1">Nama Keluarga</p>
-                  <div className="border rounded-1 border-2 mb-2">
-                    <input
-                      className="border-0 mx-2 p-2"
-                      type="text"
-                      defaultValue="Potter"
-                    />
-                  </div>
-                </div> */}
                 <div className="mx-4 mt-3">
                   <p className="fw-bold mb-1">Nomor Telepon</p>
                   <div className="border rounded-1 border-2 mb-2">
@@ -259,29 +233,7 @@ const CheckoutCustomerData = (props) => {
                         onChange={(e) => setName(e.target.value)}
                       />
                     </div>
-                    {/* <div className="d-flex">
-                      <p className="me-auto mb-0">Punya Nama Keluarga?</p>
-                      <label className="switch me-1">
-                        <input
-                          className="switch__input"
-                          type="checkbox"
-                          checked={isChecked2}
-                          onChange={handleSwitchToggle2}
-                        />
-                        <span className="slider"></span>
-                      </label>
-                    </div> */}
                   </div>
-                  {/* <div className="mx-4 mt-3">
-                    <p className="fw-bold mb-1">Nama Keluarga</p>
-                    <div className="border rounded-1 border-2 mb-2">
-                      <input
-                        className="border-0 mx-2 p-2"
-                        type="text"
-                        defaultValue="Potter"
-                      />
-                    </div>
-                  </div> */}
                   <div className="mx-4 mt-3">
                     <p className="fw-bold mb-1">Tanggal Lahir</p>
                     <div className="border rounded-1 border-2 mb-2">
@@ -365,12 +317,11 @@ const CheckoutCustomerData = (props) => {
             </Button>
           </div>
           <div className="col-md-5 mt-md-0 mt-lg-4">
-            <h4 className="fw-bold">Detail Pesanan</h4>
-
+            <h4 className="fw-bold">
+              Detail Penerbangan
+            </h4>
             <div className="d-flex">
-              <h5 className="fw-bold me-auto mb-0">
-                {location?.state?.departure_time}{" "}
-              </h5>
+              <h5 className="fw-bold me-auto mb-0">{Moment(location?.state?.departure_time).format("HH:mm")}</h5>
               <p
                 className="fw-bold mb-0"
                 style={{ fontSize: "12px", color: "#a06ece" }}
@@ -378,9 +329,9 @@ const CheckoutCustomerData = (props) => {
                 Keberangkatan
               </p>
             </div>
-            <p className="mb-0">{location?.state?.departure_time} </p>
+            <p className="mb-0">{Moment(location?.state?.departure_time).format('dddd, Do MMMM  YYYY')}</p>
             <p className="fw-medium mb-0">
-              {location?.state?.departureAirport.airport_name}{" "}
+              {location?.state?.departureAirport.airport_name}
             </p>
             <div className="border-bottom my-2"></div>
             <div className="d-flex align-items-center">
@@ -389,7 +340,7 @@ const CheckoutCustomerData = (props) => {
               </div>
               <div className="col-12">
                 <p className="fw-bold mb-0" style={{ padding: "0" }}>
-                  Jet Air - Economy
+                  {location?.state?.airline.airline_name} - {selectedClass}
                 </p>
                 <p className="fw-bold mb-3" style={{ padding: "0" }}>
                   {location?.state?.flight_code}
@@ -397,41 +348,33 @@ const CheckoutCustomerData = (props) => {
                 <p className="fw-bold mb-0" style={{ padding: "0" }}>
                   Informasi:
                 </p>
-                <p className="mb-0">
-                  Baggage {location?.state?.airline.baggage} kg
-                </p>
-                <p className="mb-0">
-                  Cabin baggage {location?.state?.airline.cabin_baggage} kg
-                </p>
+                <p className="mb-0">Baggage {location?.state?.airline.baggage} kg</p>
+                <p className="mb-0">Cabin baggage {location?.state?.airline.cabin_baggage} kg</p>
                 <p className="mb-0">In Flight Entertainment</p>
               </div>
             </div>
             <div className="border-bottom my-2"></div>
             <div className="d-flex">
-              <h5 className="fw-bold me-auto mb-0">
-                {location?.state?.arrival_time}{" "}
-              </h5>
+              <h5 className="fw-bold me-auto mb-0">{Moment(location?.state?.arrival_time).format("HH:mm")}</h5>
               <p
                 className="fw-bold mb-0"
                 style={{ fontSize: "12px", color: "#a06ece" }}
               >
-                Keberangkatan
+                Kedatangan
               </p>
             </div>
-            <p className="mb-0">{location?.state?.arrival_time} </p>
-            <p className="fw-medium mb-0">
-              {location?.state?.arrivalAirport.airport_name}{" "}
-            </p>
+            <p className="mb-0">{Moment(location?.state?.arrival_time).format('dddd, Do MMMM  YYYY')}</p>
+            <p className="fw-medium mb-0">{location?.state?.arrivalAirport.airport_name}</p>
             <div className="border-bottom my-2"></div>
             <div className="mx-2">
               <p className="fw-bold mb-0">Rincian Harga</p>
               <div className="d-flex">
                 <p className="mb-0 me-auto">{adult} Adults</p>
-                <p className="mb-0">IDR 9.550.000</p>
+                <p className="mb-0">IDR {location?.state?.business_price}</p>
               </div>
               <div className="d-flex">
                 <p className="mb-0 me-auto">{children} Children</p>
-                <p className="mb-0">IDR 9.550.000</p>
+                <p className="mb-0">IDR {location?.state?.business_price}</p>
               </div>
               <div className="d-flex">
                 <p className="mb-0 me-auto">{baby} Baby</p>
@@ -439,7 +382,7 @@ const CheckoutCustomerData = (props) => {
               </div>
               <div className="d-flex">
                 <p className="mb-0 me-auto">Tax</p>
-                <p className="mb-0">IDR 300.000</p>
+                <p className="mb-0">IDR {(Number(location?.state?.business_price) * Number(adult + children)) * 0.1}</p>
               </div>
               <div className="border-bottom my-2"></div>
               <div className="d-flex">
@@ -448,10 +391,10 @@ const CheckoutCustomerData = (props) => {
                   className="fw-bold mb-0"
                   style={{ fontSize: "18px", color: "#7126B5" }}
                 >
-                  IDR 9.850.000
+                  IDR {(Number(location?.state?.business_price) * Number(adult + children) + (Number(location?.state?.business_price) * Number(adult + children)) * 0.1)}
                 </h5>
               </div>
-              <Link to="/payment" className="text-decoration-none">
+              <Link to="/payment" state={location} className="text-decoration-none">
                 <Button className="checkout-biodata__btn-2 border-0 d-flex align-items-center justify-content-center mt-4 py-4">
                   Lanjut Bayar
                 </Button>

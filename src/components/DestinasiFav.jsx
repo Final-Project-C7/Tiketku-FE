@@ -165,7 +165,9 @@ const DestinasiFav = () => {
       <Container>
         <div className="destinasi-card d-flex justify-content-evenly flex-wrap mb-5 mx-auto">
           {data?.data
-            ?.filter((flight, index) => index >= 2 && index <= 18) // Filter data from index 2 to 18
+            ?.filter((flight) =>
+              [3, 4, 6, 7, 9, 8, 12, 14, 15, 16, 17, 19].includes(flight.id)
+            ) // Filter data based on the specified ids
             .filter((flight) => {
               if (selectedCategory === "") {
                 return true; // Tampilkan semua jika tidak ada filter kategori
@@ -185,7 +187,8 @@ const DestinasiFav = () => {
                 <Card.Img
                   variant="top"
                   className="p-2 pb-0"
-                  src="/Frame-152.svg"
+                  style={{ width: "200px", height: "150px" }}
+                  src={flight?.arrivalAirport?.imgURL}
                 />
                 <Card.Body className="pt-2">
                   <Card.Text className="destinasi-card__text-1 fw-bold mb-1">

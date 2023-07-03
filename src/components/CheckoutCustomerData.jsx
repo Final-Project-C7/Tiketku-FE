@@ -34,21 +34,18 @@ const CheckoutCustomerData = (props) => {
 
   const { passenger } = useSelector((state) => state);
 
-  const selectedClass = useSelector((state) => state.class.selectedClass)
-  const { adult, children, baby } = useSelector((state) => state.passenger)
+  const selectedClass = useSelector((state) => state.class.selectedClass);
+  const { adult, children, baby } = useSelector((state) => state.passenger);
 
   useEffect(() => {
     const getUserData = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get(
-          "https://c7-tiketku.up.railway.app/api/v1/user/user-info",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const response = await axios.get("https://c7-tiketku.up.railway.app/api/v1/user/user-info", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         setUser(response.data.data.user);
       } catch (error) {
         // Handle error jika terjadi masalah saat mengambil data pengguna
@@ -73,18 +70,15 @@ const CheckoutCustomerData = (props) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post(
-        "http://localhost:8000/api/v1/passengers",
-        {
-          name,
-          born_date,
-          citizen,
-          identity_number,
-          publisher_country,
-          valid_until,
-          booking_id: "1",
-        }
-      );
+      const response = await axios.post("http://localhost:8000/api/v1/passengers", {
+        name,
+        born_date,
+        citizen,
+        identity_number,
+        publisher_country,
+        valid_until,
+        booking_id: "1",
+      });
 
       // Handle successful registration
       const { newPassengers } = response.data.data;
@@ -102,11 +96,7 @@ const CheckoutCustomerData = (props) => {
       setError("");
       // setShowModal(true);
     } catch (error) {
-      if (
-        error.response &&
-        error.response.data &&
-        error.response.data.message
-      ) {
+      if (error.response && error.response.data && error.response.data.message) {
         setError(error.response.data.message);
       } else {
         setError("Failed to register");
@@ -154,167 +144,98 @@ const CheckoutCustomerData = (props) => {
               <h4 className="fw-bold">Isi Data Pemesan</h4>
               <div className="mt-4">
                 <div className="d-flex align-items-start bg-dark rounded-top-4 py-3 ">
-                  <h5 className="me-auto text-white ms-4 mb-0">
-                    Data Diri Pemesan
-                  </h5>
-                  <Image
-                    className="checkout-biodata__checklist me-4"
-                    src="/Suffix.svg"
-                    alt="checklist logo"
-                  />
+                  <h5 className="me-auto text-white ms-4 mb-0">Data Diri Pemesan</h5>
+                  <Image className="checkout-biodata__checklist me-4" src="/Suffix.svg" alt="checklist logo" />
                 </div>
                 <div className="mx-4 mt-3">
                   <p className="fw-bold mb-1">Nama Lengkap</p>
                   <div className="border rounded-1 border-2 mb-2">
-                    <input
-                      className="border-0 mx-2 p-2"
-                      type="text"
-                      defaultValue={user ? user.name : ""}
-                    />
+                    <input className="border-0 mx-2 p-2" type="text" defaultValue={user ? user.name : ""} />
                   </div>
                 </div>
                 <div className="mx-4 mt-3">
                   <p className="fw-bold mb-1">Nomor Telepon</p>
                   <div className="border rounded-1 border-2 mb-2">
-                    <input
-                      className="border-0 mx-2 p-2"
-                      type="text"
-                      defaultValue={user ? user.phoneNumber : ""}
-                    />
+                    <input className="border-0 mx-2 p-2" type="text" defaultValue={user ? user.phoneNumber : ""} />
                   </div>
                 </div>
                 <div className="mx-4 mt-3 pb-3">
                   <p className="fw-bold mb-1">Email</p>
                   <div className="border rounded-1 border-2 mb-2">
-                    <input
-                      className="border-0 mx-2 p-2"
-                      type="email"
-                      defaultValue={user ? user.email : ""}
-                    />
+                    <input className="border-0 mx-2 p-2" type="email" defaultValue={user ? user.email : ""} />
                   </div>
                 </div>
               </div>
             </Form>
 
-            {Array.from(
-              { length: passenger.adult + passenger.children + passenger.baby },
-              (_, index) => (
-                <Form className="border rounded-1 p-4 mb-3" key={index}>
-                  <h4 className="fw-bold">Isi Data Penumpang </h4>
-                  <div className="mt-4">
-                    <div className="d-flex align-items-start bg-dark rounded-top-4 py-3 ">
-                      <h5 className="me-auto text-white ms-4 mb-0">
-                        Data Diri Penumpang {index + 1}
-                      </h5>
-                      <Image
-                        className="checkout-biodata__checklist me-4"
-                        src="/Suffix.svg"
-                        alt="checklist logo"
-                      />
-                    </div>
-
+            {Array.from({ length: passenger.adult + passenger.children + passenger.baby }, (_, index) => (
+              <Form className="border rounded-1 p-4 mb-3" key={index}>
+                <h4 className="fw-bold">Isi Data Penumpang </h4>
+                <div className="mt-4">
+                  <div className="d-flex align-items-start bg-dark rounded-top-4 py-3 ">
+                    <h5 className="me-auto text-white ms-4 mb-0">Data Diri Penumpang {index + 1}</h5>
+                    <Image className="checkout-biodata__checklist me-4" src="/Suffix.svg" alt="checklist logo" />
+                  </div>
+                </div>
+                <div className="mx-4 mt-3">
+                  <p className="fw-bold mb-1">Tanggal Lahir</p>
+                  <div className="border rounded-1 border-2 mb-2">
+                    <input className="border-0 opacity-50 mx-2 p-2" type="date" value={born_date} onChange={(e) => setBornDate(e.target.value)} />
                   </div>
                   <div className="mx-4 mt-3">
-                    <p className="fw-bold mb-1">Tanggal Lahir</p>
+                    <p className="fw-bold mb-1">Kewarganegaraan</p>
                     <div className="border rounded-1 border-2 mb-2">
-                      <input
-                        className="border-0 opacity-50 mx-2 p-2"
-                        type="date"
-                        value={born_date}
-                        onChange={(e) => setBornDate(e.target.value)}
-                      />
-
-                    </div>
-                    <div className="mx-4 mt-3">
-                      <p className="fw-bold mb-1">Kewarganegaraan</p>
-                      <div className="border rounded-1 border-2 mb-2">
-                        <input
-                          className="border-0 mx-2 p-2"
-                          type="text"
-                          value={citizen}
-                          onChange={(e) => setCitizen(e.target.value)}
-                        />
-                      </div>
-                    </div>
-                    <div className="mx-4 mt-3">
-                      <p className="fw-bold mb-1">KTP/Paspor</p>
-                      <div className="border rounded-1 border-2 mb-2">
-                        <input
-                          className="border-0 mx-2 p-2"
-                          type="text"
-                          value={identity_number}
-                          onChange={(e) => setIdentityNumber(e.target.value)}
-                        />
-                      </div>
-                    </div>
-                    <div className="mx-4 mt-3">
-                      <p className="fw-bold mb-1">Negara Penerbit</p>
-                      <div className="border rounded-1 border-2 mb-2">
-                        <input
-                          className="border-0 mx-2 p-2"
-                          name="issuing-country"
-                          id="issuing-country"
-                          value={publisher_country}
-                          onChange={(e) => setPublisherCountry(e.target.value)}
-                        ></input>
-                      </div>
-                    </div>
-                    <div className="mx-4 mt-3">
-                      <p className="fw-bold mb-1">Berlaku Sampai</p>
-                      <div className="border rounded-1 border-2 mb-2">
-                        <input
-                          className="border-0 opacity-50 mx-2 p-2"
-                          type="date"
-                          value={valid_until}
-                          onChange={(e) => setValidUntil(e.target.value)}
-                        />
-                      </div>
+                      <input className="border-0 mx-2 p-2" type="text" value={citizen} onChange={(e) => setCitizen(e.target.value)} />
                     </div>
                   </div>
-                </Form>
-              )
-            )}
+                  <div className="mx-4 mt-3">
+                    <p className="fw-bold mb-1">KTP/Paspor</p>
+                    <div className="border rounded-1 border-2 mb-2">
+                      <input className="border-0 mx-2 p-2" type="text" value={identity_number} onChange={(e) => setIdentityNumber(e.target.value)} />
+                    </div>
+                  </div>
+                  <div className="mx-4 mt-3">
+                    <p className="fw-bold mb-1">Negara Penerbit</p>
+                    <div className="border rounded-1 border-2 mb-2">
+                      <input className="border-0 mx-2 p-2" name="issuing-country" id="issuing-country" value={publisher_country} onChange={(e) => setPublisherCountry(e.target.value)}></input>
+                    </div>
+                  </div>
+                  <div className="mx-4 mt-3">
+                    <p className="fw-bold mb-1">Berlaku Sampai</p>
+                    <div className="border rounded-1 border-2 mb-2">
+                      <input className="border-0 opacity-50 mx-2 p-2" type="date" value={valid_until} onChange={(e) => setValidUntil(e.target.value)} />
+                    </div>
+                  </div>
+                </div>
+              </Form>
+            ))}
 
             <Form className="border rounded-1 p-4 mb-4">
               <h4 className="fw-bold">Pilih Kursi</h4>
               <div className="mt-4">
                 <div className="d-flex align-items-start bg-dark rounded-top-2 py-3 ">
                   <p className="me-auto text-white ms-4 mb-0">
-                    {selectedClass} - {passenger.adult + passenger.children}{" "}
-                    Seats Chosen
+                    {selectedClass} - {passenger.adult + passenger.children} Seats Chosen
                   </p>
-                  <Image
-                    className="checkout-biodata__checklist me-4"
-                    src="/Suffix.svg"
-                    alt="checklist logo"
-                  />
+                  <Image className="checkout-biodata__checklist me-4" src="/Suffix.svg" alt="checklist logo" />
                 </div>
                 <div className="mx-4 mt-3">
                   <SeatCustomer />
                 </div>
               </div>
             </Form>
-            <Button className="checkout-biodata__btn-1 border-0 d-flex align-items-center justify-content-center mt-4 py-4 mb-5">
-              Simpan
-            </Button>
+            <Button className="checkout-biodata__btn-1 border-0 d-flex align-items-center justify-content-center mt-4 py-4 mb-5">Simpan</Button>
           </div>
           <div className="col-md-5 mt-md-0 mt-lg-4">
-            <h4 className="fw-bold">
-              Detail Penerbangan
-            </h4>
+            <h4 className="fw-bold">Detail Penerbangan</h4>
             <div className="d-flex">
               <h5 className="fw-bold me-auto mb-0">{Moment(location?.state?.departure_time).format("HH:mm")}</h5>
-              <p
-                className="fw-bold mb-0"
-                style={{ fontSize: "12px", color: "#a06ece" }}
-              >
+              <p className="fw-bold mb-0" style={{ fontSize: "12px", color: "#a06ece" }}>
                 Keberangkatan
               </p>
             </div>
-            <p className="mb-0">{Moment(location?.state?.departure_time).format('dddd, Do MMMM  YYYY')}</p>
-            <p className="fw-medium mb-0">
-              {location?.state?.departureAirport.airport_name}
-            </p>
+            <p className="mb-0">{Moment(location?.state?.departure_time).format("dddd, Do MMMM  YYYY")}</p>
+            <p className="fw-medium mb-0">{location?.state?.departureAirport.airport_name}</p>
             <div className="border-bottom my-2"></div>
             <div className="d-flex align-items-center">
               <div className="col-1">
@@ -338,14 +259,11 @@ const CheckoutCustomerData = (props) => {
             <div className="border-bottom my-2"></div>
             <div className="d-flex">
               <h5 className="fw-bold me-auto mb-0">{Moment(location?.state?.arrival_time).format("HH:mm")}</h5>
-              <p
-                className="fw-bold mb-0"
-                style={{ fontSize: "12px", color: "#a06ece" }}
-              >
+              <p className="fw-bold mb-0" style={{ fontSize: "12px", color: "#a06ece" }}>
                 Kedatangan
               </p>
             </div>
-            <p className="mb-0">{Moment(location?.state?.arrival_time).format('dddd, Do MMMM  YYYY')}</p>
+            <p className="mb-0">{Moment(location?.state?.arrival_time).format("dddd, Do MMMM  YYYY")}</p>
             <p className="fw-medium mb-0">{location?.state?.arrivalAirport.airport_name}</p>
             <div className="border-bottom my-2"></div>
             <div className="mx-2">
@@ -364,27 +282,39 @@ const CheckoutCustomerData = (props) => {
               </div>
               <div className="d-flex">
                 <p className="mb-0 me-auto">Tax</p>
-                <p className="mb-0">IDR {(Number(location?.state?.business_price) * Number(adult + children)) * 0.1}</p>
+                <p className="mb-0">IDR {Number(location?.state?.business_price) * Number(adult + children) * 0.1}</p>
               </div>
               <div className="border-bottom my-2"></div>
               <div className="d-flex">
                 <p className="mb-0 me-auto">Total</p>
-                <h5
-                  className="fw-bold mb-0"
-                  style={{ fontSize: "18px", color: "#7126B5" }}
-                >
-                  IDR {(Number(location?.state?.business_price) * Number(adult + children) + (Number(location?.state?.business_price) * Number(adult + children)) * 0.1)}
+                <h5 className="fw-bold mb-0" style={{ fontSize: "18px", color: "#7126B5" }}>
+                  IDR {Number(location?.state?.business_price) * Number(adult + children) + Number(location?.state?.business_price) * Number(adult + children) * 0.1}
                 </h5>
               </div>
               <Link to="/payment" state={location} className="text-decoration-none">
-                <Button className="checkout-biodata__btn-2 border-0 d-flex align-items-center justify-content-center mt-4 py-4">
-                  Lanjut Bayar
-                </Button>
+                <Button className="checkout-biodata__btn-2 border-0 d-flex align-items-center justify-content-center mt-4 py-4">Lanjut Bayar</Button>
               </Link>
             </div>
           </div>
         </div>
       </Container>
+      {isLoggedIn ? (
+        ""
+      ) : (
+        <div className="position-fixed bg-dark bg-opacity-75 top-0 start-0 end-0 bottom-0 overflow-hidden d-flex justify-content-center align-items-center" style={{ zIndex: "9999" }}>
+          <div className="bg-secondary-subtle d-flex justify-content-center align-items-center flex-column opacity-100 rounded-3 p-4 pt-0" style={{ height: "55%", width: "25%" }}>
+            <Image src="/logofinal.png" style={{ width: "40%" }} />
+            <p className="text-dark-emphasis mb-5">Your Best Traveling Partner</p>
+            <h4 className="opacity-75 fw-bold mb-4">Register now to continue</h4>
+            <Link to="/register" className="text-decoration-none rounded-5 text-white shadow px-4 py-2 mb-3" style={{ backgroundColor: "#A06ECE" }}>
+              REGISTER NOW
+            </Link>
+            <Link to="/login" style={{ color: "#A06ECE" }}>
+              ALREADY HAVE AN ACCOUNT?
+            </Link>
+          </div>
+        </div>
+      )}
     </>
   );
 };

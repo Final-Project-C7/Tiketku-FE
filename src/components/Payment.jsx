@@ -7,13 +7,22 @@ import "./Payment.css";
 
 const Payment = (props) => {
   const [expanded, setExpanded] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // State untuk menyimpan status login pengguna
+
+  useEffect(() => {
+    // Cek apakah pengguna sudah login atau memiliki token di lokal
+    const token = localStorage.getItem("token");
+    if (token) {
+      setIsLoggedIn(true); // Jika ada token, pengguna dianggap sudah login
+    }
+  }, []);
 
   const handleExpand = () => {
     setExpanded(!expanded);
   };
   return (
     <>
-      <NavbarUser />
+      {isLoggedIn ? <NavbarUser /> : <NavbarHomepage />}
       <div className="border-bottom shadow-sm">
         <Container className="checkout-breadcrumbs">
           <div className="d-flex">

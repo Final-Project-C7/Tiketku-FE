@@ -163,6 +163,7 @@ function AdminSeats() {
                         <th>Seat Number</th>
                         <th>Flight ID</th>
                         <th>Booking ID</th>
+                        <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>

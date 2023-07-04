@@ -31,11 +31,36 @@ const CheckoutCustomerData = (props) => {
   const [valid_until, setValidUntil] = useState("");
   const [booking_id, setBookingId] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false); // State untuk menyimpan status login pengguna
-
+  const [passengers, setPassengers] = useState([]);
   const { passenger } = useSelector((state) => state);
 
   const selectedClass = useSelector((state) => state.class.selectedClass);
   const { adult, children, baby } = useSelector((state) => state.passenger);
+  const [forms, setForms] = useState([]);
+
+  useEffect(() => {
+    const initialForms = Array.from(
+      { length: adult + children + baby },
+      () => ({
+        name: "",
+        born_date: "",
+        citizen: "",
+        identity_number: "",
+        publisher_country: "",
+        valid_until: "",
+        booking_id: "",
+      })
+    );
+    setForms(initialForms);
+  }, [adult, children, baby]);
+
+  const handleFormChange = (index, field, value) => {
+    setForms((prevForms) =>
+      prevForms.map((form, i) =>
+        i === index ? { ...form, [field]: value } : form
+      )
+    );
+  };
 
   useEffect(() => {
     const getUserData = async () => {
@@ -69,38 +94,43 @@ const CheckoutCustomerData = (props) => {
     setIsChecked3(!isChecked3);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e, index) => {
     e.preventDefault();
+    const form = forms[index];
 
     try {
+      const token = localStorage.getItem("token");
+
       const response = await axios.post(
         "http://localhost:8000/api/v1/passengers",
         {
-          name,
-          born_date,
-          citizen,
-          identity_number,
-          publisher_country,
-          valid_until,
+          name: form.name,
+          born_date: form.born_date,
+          citizen: form.citizen,
+          identity_number: form.identity_number,
+          publisher_country: form.publisher_country,
+          valid_until: form.valid_until,
           booking_id: "1",
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
       );
 
-      // Handle successful registration
       const { newPassengers } = response.data.data;
-      console.log(newPassengers); // Do something with newUser
+      console.log(newPassengers);
 
-      // Reset form field
-      setName("");
-      setBornDate("");
-      setCitizen("");
-      setIdentityNumber("");
-      setPublisherCountry("");
-      setValidUntil("");
-      setBookingId("");
+      handleFormChange(index, "name", "");
+      handleFormChange(index, "born_date", "");
+      handleFormChange(index, "citizen", "");
+      handleFormChange(index, "identity_number", "");
+      handleFormChange(index, "publisher_country", "");
+      handleFormChange(index, "valid_until", "");
+      handleFormChange(index, "booking_id", "");
       setSuccessMessage("registrasi berhasil");
       setError("");
-      // setShowModal(true);
     } catch (error) {
       if (
         error.response &&
@@ -148,7 +178,7 @@ const CheckoutCustomerData = (props) => {
         </Container>
       </div>
       <Container className="checkout-biodata">
-        <div className="row d-flex mt-4" onSubmit={handleSubmit}>
+        <div className="row d-flex mt-4">
           <div className=" col-md-7">
             <Form className="border rounded-1 p-4 mb-4">
               <h4 className="fw-bold">Isi Data Pemesan</h4>
@@ -196,82 +226,125 @@ const CheckoutCustomerData = (props) => {
               </div>
             </Form>
 
-            {Array.from(
-              { length: passenger.adult + passenger.children + passenger.baby },
-              (_, index) => (
-                <Form className="border rounded-1 p-4 mb-3" key={index}>
-                  <h4 className="fw-bold">Isi Data Penumpang </h4>
-                  <div className="mt-4">
-                    <div className="d-flex align-items-start bg-dark rounded-top-4 py-3 ">
-                      <h5 className="me-auto text-white ms-4 mb-0">
-                        Data Diri Penumpang {index + 1}
-                      </h5>
-                      <Image
-                        className="checkout-biodata__checklist me-4"
-                        src="/Suffix.svg"
-                        alt="checklist logo"
+            {forms.map((form, index) => (
+              <Form
+                className="border rounded-1 p-4 mb-3"
+                key={index}
+                onSubmit={(e) => handleSubmit(e, index)}
+              >
+                <h4 className="fw-bold">Isi Data Penumpang</h4>
+                <div className="mt-4">
+                  <div className="d-flex align-items-start bg-dark rounded-top-4 py-3">
+                    <h5 className="me-auto text-white ms-4 mb-0">
+                      Data Diri Penumpang {index + 1}
+                    </h5>
+                    <Image
+                      className="checkout-biodata__checklist me-4"
+                      src="/Suffix.svg"
+                      alt="checklist logo"
+                    />
+                  </div>
+                </div>
+                <div className="mx-4 mt-3">
+                  <p className="fw-bold mb-1">Nama</p>
+                  <div className="border rounded-1 border-2 mb-2">
+                    <input
+                      className="border-0 mx-2 p-2"
+                      type="text"
+                      value={form.name}
+                      onChange={(e) =>
+                        handleFormChange(index, "name", e.target.value)
+                      }
+                    />
+                  </div>
+                  <p className="fw-bold mb-1">Tanggal Lahir</p>
+                  <div className="border rounded-1 border-2 mb-2">
+                    <input
+                      className="border-0 opacity-50 mx-2 p-2"
+                      type="date"
+                      value={form.born_date}
+                      onChange={(e) =>
+                        handleFormChange(index, "born_date", e.target.value)
+                      }
+                    />
+                  </div>
+                  <div className="mx-4 mt-3">
+                    <p className="fw-bold mb-1">Kewarganegaraan</p>
+                    <div className="border rounded-1 border-2 mb-2">
+                      <input
+                        className="border-0 mx-2 p-2"
+                        type="text"
+                        value={form.citizen}
+                        onChange={(e) =>
+                          handleFormChange(index, "citizen", e.target.value)
+                        }
                       />
                     </div>
                   </div>
                   <div className="mx-4 mt-3">
-                    <p className="fw-bold mb-1">Tanggal Lahir</p>
+                    <p className="fw-bold mb-1">KTP/Paspor</p>
+                    <div className="border rounded-1 border-2 mb-2">
+                      <input
+                        className="border-0 mx-2 p-2"
+                        type="text"
+                        value={form.identity_number}
+                        onChange={(e) =>
+                          handleFormChange(
+                            index,
+                            "identity_number",
+                            e.target.value
+                          )
+                        }
+                      />
+                    </div>
+                  </div>
+                  <div className="mx-4 mt-3">
+                    <p className="fw-bold mb-1">Negara Penerbit</p>
+                    <div className="border rounded-1 border-2 mb-2">
+                      <input
+                        className="border-0 mx-2 p-2"
+                        name="issuing-country"
+                        id="issuing-country"
+                        value={form.publisher_country}
+                        onChange={(e) =>
+                          handleFormChange(
+                            index,
+                            "publisher_country",
+                            e.target.value
+                          )
+                        }
+                      ></input>
+                    </div>
+                  </div>
+                  <div className="mx-4 mt-3">
+                    <p className="fw-bold mb-1">Berlaku Sampai</p>
                     <div className="border rounded-1 border-2 mb-2">
                       <input
                         className="border-0 opacity-50 mx-2 p-2"
                         type="date"
-                        value={born_date}
-                        onChange={(e) => setBornDate(e.target.value)}
+                        value={form.valid_until}
+                        onChange={(e) =>
+                          handleFormChange(index, "valid_until", e.target.value)
+                        }
                       />
                     </div>
-                    <div className="mx-4 mt-3">
-                      <p className="fw-bold mb-1">Kewarganegaraan</p>
-                      <div className="border rounded-1 border-2 mb-2">
-                        <input
-                          className="border-0 mx-2 p-2"
-                          type="text"
-                          value={citizen}
-                          onChange={(e) => setCitizen(e.target.value)}
-                        />
-                      </div>
-                    </div>
-                    <div className="mx-4 mt-3">
-                      <p className="fw-bold mb-1">KTP/Paspor</p>
-                      <div className="border rounded-1 border-2 mb-2">
-                        <input
-                          className="border-0 mx-2 p-2"
-                          type="text"
-                          value={identity_number}
-                          onChange={(e) => setIdentityNumber(e.target.value)}
-                        />
-                      </div>
-                    </div>
-                    <div className="mx-4 mt-3">
-                      <p className="fw-bold mb-1">Negara Penerbit</p>
-                      <div className="border rounded-1 border-2 mb-2">
-                        <input
-                          className="border-0 mx-2 p-2"
-                          name="issuing-country"
-                          id="issuing-country"
-                          value={publisher_country}
-                          onChange={(e) => setPublisherCountry(e.target.value)}
-                        ></input>
-                      </div>
-                    </div>
-                    <div className="mx-4 mt-3">
-                      <p className="fw-bold mb-1">Berlaku Sampai</p>
-                      <div className="border rounded-1 border-2 mb-2">
-                        <input
-                          className="border-0 opacity-50 mx-2 p-2"
-                          type="date"
-                          value={valid_until}
-                          onChange={(e) => setValidUntil(e.target.value)}
-                        />
-                      </div>
-                    </div>
                   </div>
-                </Form>
-              )
-            )}
+                  <div className="d-flex justify-content-end">
+                    <button className="btn btn-primary" type="submit">
+                      Simpan
+                    </button>
+                  </div>
+                  {successMessage && (
+                    <div className="alert alert-success mt-3">
+                      {successMessage}
+                    </div>
+                  )}
+                  {error && (
+                    <div className="alert alert-danger mt-3">{error}</div>
+                  )}
+                </div>
+              </Form>
+            ))}
 
             <Form className="border rounded-1 p-4 mb-4">
               <h4 className="fw-bold">Pilih Kursi</h4>

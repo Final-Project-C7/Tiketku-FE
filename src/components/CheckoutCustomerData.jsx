@@ -102,7 +102,7 @@ const CheckoutCustomerData = (props) => {
       const token = localStorage.getItem("token");
 
       const response = await axios.post(
-        "http://localhost:8000/api/v1/passengers",
+        "https://c7-tiketku.up.railway.app/api/v1/passengers",
         {
           name: form.name,
           born_date: form.born_date,

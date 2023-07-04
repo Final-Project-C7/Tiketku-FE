@@ -59,9 +59,7 @@ const ResultFlightList = (props) => {
   }, []);
 
   const handleSubmit = async (data) => {
-
     console.log(data);
-
 
     try {
       const token = localStorage.getItem("token");
@@ -234,7 +232,10 @@ const ResultFlightList = (props) => {
                     >
                       IDR {flight.business_price}{" "}
                     </Card.Text>
-                    <Link to={isLoggedIn ? "/checkout" : "/login"}>
+                    <Link
+                      to={isLoggedIn ? "/checkout" : "/login"}
+                      state={flight}
+                    >
                       <Button
                         type="submit"
                         className="col-3 py-1.5 btn-ticket text-white"

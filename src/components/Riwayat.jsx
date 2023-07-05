@@ -26,8 +26,14 @@ const Riwayat = () => {
               <div className="col-7 mt-0">
                 <div className="mb-3">
                   <h4 className="fw-bold">Maret 2023</h4>
-                  <div className="p-3 rounded-3 mb-2" style={{ border: "2px solid rgba(113, 38, 181, 0.75)" }}>
-                    <p className="col-2 rounded-5 text-white text-center p-1 mb-4 text-un" style={{ backgroundColor: "#73ca5c" }}>
+                  <div
+                    className="p-3 rounded-3 mb-2"
+                    style={{ border: "2px solid rgba(113, 38, 181, 0.75)" }}
+                  >
+                    <p
+                      className="col-2 rounded-5 text-white text-center p-1 mb-4 text-un"
+                      style={{ backgroundColor: "#73ca5c" }}
+                    >
                       Issued
                     </p>
                     <div className="d-flex">
@@ -63,15 +69,21 @@ const Riwayat = () => {
                         <p className="mb-0">Economy</p>
                       </div>
                       <div className="col-3">
-                        <p className="fw-bold mb-0" style={{ color: "#4B1979" }}>
+                        <p
+                          className="fw-bold mb-0"
+                          style={{ color: "#4B1979" }}
+                        >
                           IDR 9.850.000
                         </p>
                       </div>
                     </div>
                   </div>
-                  <Card className="mb-3">
+                  {/* <Card className="mb-3">
                     <div className="p-3 rounded-3 mb-2">
-                      <p className="col-2 rounded-5 text-white text-center p-1 mb-4 text-un" style={{ backgroundColor: "#ff0000" }}>
+                      <p
+                        className="col-2 rounded-5 text-white text-center p-1 mb-4 text-un"
+                        style={{ backgroundColor: "#ff0000" }}
+                      >
                         Unpaid
                       </p>
                       <div className="d-flex">
@@ -99,7 +111,9 @@ const Riwayat = () => {
                       <div className="border-bottom border-2 mt-1 mb-3"></div>
                       <div className="d-flex align-items-center">
                         <div className="col-4">
-                          <p className="fw-bold mb-0 text-dark">Booking Code:</p>
+                          <p className="fw-bold mb-0 text-dark">
+                            Booking Code:
+                          </p>
                           <p className="mb-0">6723y2GHK</p>
                         </div>
                         <div className="col-4 offset-1">
@@ -107,14 +121,17 @@ const Riwayat = () => {
                           <p className="mb-0">Bussines</p>
                         </div>
                         <div className="col-3">
-                          <p className="fw-bold mb-0" style={{ color: "#4B1979" }}>
+                          <p
+                            className="fw-bold mb-0"
+                            style={{ color: "#4B1979" }}
+                          >
                             IDR 3.250.000
                           </p>
                         </div>
                       </div>
                     </div>
-                  </Card>
-                  <h4 className="fw-bold card-pad">Februari 2023</h4>
+                  </Card> */}
+                  {/* <h4 className="fw-bold card-pad">Februari 2023</h4>
                   <Card className="mb-2">
                     <div className="p-3 rounded-3 mb-2">
                       <p className="col-2 rounded-5 text-white text-center p-1 mb-4 text-un" style={{ backgroundColor: "#8a8a8a" }}>
@@ -204,7 +221,7 @@ const Riwayat = () => {
                         </div>
                       </div>
                     </div>
-                  </Card>
+                  </Card> */}
                 </div>
               </div>
 
@@ -212,7 +229,10 @@ const Riwayat = () => {
               <div className="col-5 mt-0">
                 <div className="d-flex card-pad-1">
                   <h4 className="me-auto fw-bold">Detail Pesanan</h4>
-                  <p className="col-2 rounded-5 text-white text-center p-1 mb-4 text-un" style={{ backgroundColor: "#73ca5c" }}>
+                  <p
+                    className="col-2 rounded-5 text-white text-center p-1 mb-4 text-un"
+                    style={{ backgroundColor: "#73ca5c" }}
+                  >
                     Issued
                   </p>
                 </div>
@@ -222,16 +242,24 @@ const Riwayat = () => {
                 </div>
                 <div className="d-flex">
                   <h5 className="fw-bold me-auto mb-0">19:10</h5>
-                  <p className="fw-bold mb-0" style={{ fontSize: "12px", color: "#a06ece" }}>
+                  <p
+                    className="fw-bold mb-0"
+                    style={{ fontSize: "12px", color: "#a06ece" }}
+                  >
                     Keberangkatan
                   </p>
                 </div>
                 <p className="mb-0 text-dark">3 Maret 2023</p>
-                <p className="fw-medium mb-0 text-dark">Soekarno Hatta - Terminal 1A Domestik</p>
+                <p className="fw-medium mb-0 text-dark">
+                  Soekarno Hatta - Terminal 1A Domestik
+                </p>
                 <div className="border-bottom my-2"></div>
                 <div className="d-flex align-items-center">
                   <div className="col-1">
-                    <Image className="checkout-biodata__img" src="/Image-1.svg" />
+                    <Image
+                      className="checkout-biodata__img"
+                      src="/Image-1.svg"
+                    />
                   </div>
                   <div className="col-12">
                     <p className="fw-bold mb-0 text-dark">Jet Air - Economy</p>
@@ -246,12 +274,17 @@ const Riwayat = () => {
                 <div className="border-bottom my-2"></div>
                 <div className="d-flex">
                   <h5 className="fw-bold me-auto mb-0">21:10</h5>
-                  <p className="fw-bold mb-0" style={{ fontSize: "12px", color: "#a06ece" }}>
+                  <p
+                    className="fw-bold mb-0"
+                    style={{ fontSize: "12px", color: "#a06ece" }}
+                  >
                     Kedatangan
                   </p>
                 </div>
                 <p className="mb-0 text-dark">3 Maret 2023</p>
-                <p className="fw-medium mb-0 text-dark">Melbourne International Airport</p>
+                <p className="fw-medium mb-0 text-dark">
+                  Melbourne International Airport
+                </p>
                 <div className="border-bottom my-2"></div>
                 <div className="mx-2">
                   <p className="fw-bold mb-0 text-dark">Rincian Harga</p>
@@ -270,11 +303,16 @@ const Riwayat = () => {
                   <div className="border-bottom my-2"></div>
                   <div className="d-flex">
                     <p className="mb-0 me-auto text-dark">Total</p>
-                    <h5 className="fw-bold mb-0" style={{ fontSize: "18px", color: "#7126B5" }}>
+                    <h5
+                      className="fw-bold mb-0"
+                      style={{ fontSize: "18px", color: "#7126B5" }}
+                    >
                       IDR 9.850.000
                     </h5>
                   </div>
-                  <Button className="checkout-biodata__btn-21 border-0 d-flex align-items-center justify-content-center mt-4 py-4">Cetak Tiket</Button>
+                  <Button className="checkout-biodata__btn-21 border-0 d-flex align-items-center justify-content-center mt-4 py-4">
+                    Cetak Tiket
+                  </Button>
                 </div>
               </div>
             </Form>

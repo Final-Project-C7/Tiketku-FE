@@ -28,6 +28,4 @@ const DestinationFilter = ({ destinations, onFilter }) => {
   );
 };
 
-//test
-
 export default DestinationFilter;

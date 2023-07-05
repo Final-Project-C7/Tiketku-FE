@@ -120,7 +120,7 @@ const DestinasiFav = () => {
             ?.filter((flight) => [3, 4, 6, 7, 9, 8, 12, 14, 15, 16, 17, 19].includes(flight.id)) // Filter data based on the specified ids
             .filter((flight) => {
               if (selectedCategory === "") {
-                return true; // Tampilkan semua jika tidak ada filter kategori
+                return [3, 4, 15,19].includes(flight.id); // Tampilkan semua jika tidak ada filter kategori
               }
               const city = flight?.departureAirport?.city.toLowerCase();
               const continent = dataWithContinent.find((d) => d.city.toLowerCase() === city)?.continent.toLowerCase();

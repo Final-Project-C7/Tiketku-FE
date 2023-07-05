@@ -2,15 +2,17 @@ import React, { useState, useEffect } from "react";
 import { Image, Button, Container, Form } from "react-bootstrap";
 import axios from "axios";
 
-const SeatCustomer = () => {
+const SeatCustomer = (props) => {
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [data, setData] = useState([]);
 
   const handleSeatSelect = (seat) => {
-    if (selectedSeats.includes(seat)) {
-      setSelectedSeats(selectedSeats.filter((s) => s !== seat));
-    } else {
-      setSelectedSeats([...selectedSeats, seat]);
+    if (selectedSeats.length < props.passenger) {
+      if (selectedSeats.includes(seat)) {
+        setSelectedSeats(selectedSeats.filter((s) => s !== seat));
+      } else {
+        setSelectedSeats([...selectedSeats, seat]);
+      }
     }
   };
 
@@ -23,7 +25,7 @@ const SeatCustomer = () => {
         setData(response.data.data.seats);
       })
       .catch((error) => {
-        console.error(error);
+        // console.error(error);
       });
   }, []);
 
@@ -117,8 +119,8 @@ const SeatCustomer = () => {
                         {index / 6 + 1}
                       </p>
                     )}
-                    <label className={`text-white-50 seats ${selectedSeats.includes(seat.seat_number) ? "selected" : ""}`} key={seat.seat_number}>
-                      <input type="checkbox" value={seat.seat_number} checked={selectedSeats.includes(seat.seat_number)} onChange={() => handleSeatSelect(seat.seat_number)} hidden />
+                    <label className={`text-white-50 seats ${seat.flight_id === 1 ? "" : "selected"} ${selectedSeats.includes(seat.seat_number) ? "selected" : ""}`} key={seat.seat_number}>
+                      <input type="checkbox" value={seat.seat_number} checked={selectedSeats.includes(seat.seat_number)} onChange={() => handleSeatSelect(seat.seat_number)} disabled={seat.flight_id === 1 ? false : true} hidden />
                     </label>
                   </React.Fragment>
                 ))}

@@ -39,6 +39,7 @@ const CheckoutCustomerData = (props) => {
   const [forms, setForms] = useState([]);
   const [isFormFilled, setIsFormFilled] = useState(false);
   const [isFormFilled2, setIsFormFilled2] = useState(false);
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
     const initialForms = Array.from({ length: adult + children + baby }, () => ({
@@ -99,8 +100,6 @@ const CheckoutCustomerData = (props) => {
     const form = forms[index];
 
     try {
-      const token = localStorage.getItem("token");
-
       const response = await axios.post(
         "https://c7-tiketku.up.railway.app/api/v1/passengers",
         {
@@ -205,7 +204,7 @@ const CheckoutCustomerData = (props) => {
             </Form>
 
             {forms.map((form, index) => (
-              <Form className="border rounded-1 p-4 mb-3" key={index} onSubmit={(e) => handleSubmit(e, index)}>
+              <Form className="form-passengers border rounded-1 p-4 mb-3" key={index} onSubmit={(e) => handleSubmit(e, index)}>
                 <h4 className="fw-bold">Isi Data Penumpang</h4>
                 <div className="mt-4">
                   <div className="d-flex align-items-start bg-dark rounded-top-4 py-3">
@@ -330,14 +329,20 @@ const CheckoutCustomerData = (props) => {
                   IDR {Number(location?.state?.business_price) * Number(adult + children) + Number(location?.state?.business_price) * Number(adult + children) * 0.1}
                 </h5>
               </div>
-              <Link to="/payment" state={location} className="text-decoration-none">
-                <Button className="checkout-biodata__btn-2 border-0 d-flex align-items-center justify-content-center mt-4 py-4">Lanjut Bayar</Button>
-              </Link>
+              {isFormFilled && (user || isFormFilled2) ? (
+                <Link to="/payment" state={location} className="text-decoration-none">
+                  <Button className="checkout-biodata__btn-2 border-0 d-flex align-items-center justify-content-center mt-4 py-4">Lanjut Bayar</Button>
+                </Link>
+              ) : (
+                <Button className="checkout-biodata__btn-3 border-0 d-flex align-items-center justify-content-center mt-4 py-4" disabled>
+                  Lanjut Bayar
+                </Button>
+              )}
             </div>
           </div>
         </div>
       </Container>
-      {isLoggedIn ? (
+      {token ? (
         ""
       ) : (
         <div className="position-fixed bg-dark bg-opacity-75 top-0 start-0 end-0 bottom-0 overflow-hidden d-flex justify-content-center align-items-center" style={{ zIndex: "9999" }}>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Navbar, Image, Dropdown } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, Navigate } from "react-router-dom";
 import axios from "axios";
 
 import "./Admin.css";

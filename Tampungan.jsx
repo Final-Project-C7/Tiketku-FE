@@ -27,5 +27,7 @@ const DestinationFilter = ({ destinations, onFilter }) => {
     </div>
   );
 };
+
 //test
+
 export default DestinationFilter;

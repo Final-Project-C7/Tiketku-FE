@@ -180,20 +180,34 @@ const DestinasiFav = () => {
               if (selectedCategory === "") {
                 return true;
               }
-              const city = flight?.departureAirport?.city.toLowerCase();
-              const continent = dataWithContinent
-                .find((d) => d.city.toLowerCase() === city)
+              const departureCity =
+                flight?.departureAirport?.city.toLowerCase();
+              const arrivalCity = flight?.arrivalAirport?.city.toLowerCase();
+              const departureContinent = dataWithContinent
+                .find((d) => d.city.toLowerCase() === departureCity)
                 ?.continent.toLowerCase();
-              return continent === selectedCategory.toLowerCase();
+              const arrivalContinent = dataWithContinent
+                .find((d) => d.city.toLowerCase() === arrivalCity)
+                ?.continent.toLowerCase();
+              return (
+                departureContinent === selectedCategory.toLowerCase() ||
+                arrivalContinent === selectedCategory.toLowerCase()
+              );
             })
+
             .filter((flight) => {
               if (searchQuery === "") {
                 return true;
               }
               const departureCity =
                 flight?.departureAirport?.city.toLowerCase();
-              return departureCity.includes(searchQuery.toLowerCase());
+              const arrivalCity = flight?.arrivalAirport?.city.toLowerCase();
+              return (
+                departureCity.includes(searchQuery.toLowerCase()) ||
+                arrivalCity.includes(searchQuery.toLowerCase())
+              );
             })
+
             .map((flight) => (
               <Card
                 className="destinasi-card__list shadow mt-3"
@@ -241,4 +255,3 @@ const DestinasiFav = () => {
 };
 
 export default DestinasiFav;
-

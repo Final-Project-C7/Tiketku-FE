@@ -241,8 +241,7 @@ const ResultFlightList = (props) => {
                         className="col-3 py-1.5 btn-ticket text-white"
                         variant="primary"
                         value={flight.id}
-                        onClick={(e) => setFlightId(e.target.value)}
-                        onSubmit={handleSubmit(flight)}
+                        onClick={(e) => handleSubmit(flight)}
                       >
                         Pilih
                       </Button>

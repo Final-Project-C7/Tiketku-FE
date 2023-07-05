@@ -37,6 +37,7 @@ function App() {
           <Route path="/flight" element={<Flight />} />
           <Route path="/soldout" element={<SelectFlight />} />
           <Route path="/result/:depart/:arrive" element={<Result />} />
+          <Route path="/result/:arrive" element={<Result />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/otp" element={<OTP />} />

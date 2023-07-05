@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const DestinationFilter = ({ destinations, onFilter }) => {
   const [searchQuery, setSearchQuery] = useState('');
-//komen
+
   const handleSearchChange = (event) => {
     setSearchQuery(event.target.value);
   };

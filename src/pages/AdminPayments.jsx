@@ -167,7 +167,7 @@ function AdminPayments() {
                       </tr>
                     </thead>
                     <tbody>
-                      {data?.data?.payments.map((payment, index) => (
+                      {data?.data?.payments?.map((payment, index) => (
                         <tr key={payment.id}>
                           <td>{index + 1}</td>
                           <td>{payment.booking_id}</td>

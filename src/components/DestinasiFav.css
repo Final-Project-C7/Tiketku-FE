@@ -54,10 +54,9 @@
 }
 
 .destinasi-card__text-2 {
-  font-size: 5px;
+  font-size: 10px;
   color: #7126b5;
 }
-
 
 .search-desti {
   /* height: 25px;
@@ -68,13 +67,11 @@
   height: 40px;
   padding-left: 15px;
   border-radius: 5px;
-  
 }
 
 .search-desti:focus {
   outline-style: none !important;
 }
-
 
 @media screen and (max-width: 576px) {
   .container .destinasi-card .destinasi-card__list {

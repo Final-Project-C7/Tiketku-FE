@@ -27,6 +27,7 @@ import AdminPayments from "./pages/AdminPayments";
 import NotFoundPage from "./pages/NotFoundPage";
 import ContactUs from "./pages/ContactUs";
 import AboutUs from "./components/AboutUS";
+import Selesai from "./components/Selesai";
 
 function App() {
   return (
@@ -48,6 +49,7 @@ function App() {
           <Route path="/notifikasi" element={<NotifikasiLogin />} />
           <Route path="/checkout" element={<CheckoutCustomerData />} />
           <Route path="/payment" element={<Payment />} />
+          <Route path="/done" element={<Selesai />} />
           <Route path="/admin-login" element={<AdminLogin />} />
           <Route path="/admin-register" element={<AdminRegister />} />
           <Route path="/admin" element={<Admin />} />

@@ -20,7 +20,7 @@ const SeatCustomer = (props) => {
     const token = localStorage.getItem("token");
     const headers = { Authorization: `Bearer ${token}` };
     axios
-      .get("http://localhost:8000/api/v1/seats", { headers })
+      .get("https://c7-tiketku.up.railway.app/api/v1/seats", { headers })
       .then((response) => {
         setData(response.data.data.seats);
       })

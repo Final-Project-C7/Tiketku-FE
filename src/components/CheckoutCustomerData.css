@@ -60,6 +60,12 @@
   height: 24px;
 }
 
+.form-passengers input[type="date"]::-webkit-inner-spin-button,
+.form-passengers input[type="date"]::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
+}
+
 .checkout-biodata__btn-1 {
   width: 100%;
   height: 42px;
@@ -90,6 +96,14 @@
 
 .checkout-biodata__btn-2:focus {
   background-color: #b00000 !important;
+}
+
+.checkout-biodata__btn-3 {
+  width: 100%;
+  height: 42px;
+  background-color: #d0d0d0 !important;
+  color: white !important;
+  border-radius: 12px;
 }
 
 .switch {

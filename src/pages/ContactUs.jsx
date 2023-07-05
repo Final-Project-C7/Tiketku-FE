@@ -144,6 +144,10 @@ textarea.form-control {
   font-size: 16px;
   font-weight: 500;
   color: #2553b8; }
+
+  .address__logo{
+    width:30px;
+  }
 `}
       </style>
       {isLoggedIn ? <NavbarUser /> : <NavbarHomepage />}
@@ -270,11 +274,12 @@ textarea.form-control {
                   <div className="col-md-3">
                     <div className="dbox w-100 text-center">
                       <div className="icon d-flex align-items-center justify-content-center">
-                        <span className="fa fa-map-marker"></span>
+                        <span className="fa fa-map-marker"><img className="address__logo" src="./address.png" alt=""></img></span>
                       </div>
                       <div className="text">
                         <p>
-                          <span>Address:</span> Jl. BSD Grand Boulevard, BSD
+                          {/* <span>Address:</span> */}
+                           Jl. BSD Grand Boulevard, BSD
                           City,
                         </p>
                       </div>
@@ -283,11 +288,11 @@ textarea.form-control {
                   <div className="col-md-3">
                     <div className="dbox w-100 text-center">
                       <div className="icon d-flex align-items-center justify-content-center">
-                        <span className="fa fa-phone"></span>
+                        <span className="fa fa-phone"><img className="address__logo" src="./phone.png" alt=""></img></span>
                       </div>
                       <div className="text">
                         <p>
-                          <span>Phone:</span>{" "}
+                          {/* <span>Phone:</span>{" "} */}
                           <a href="tel://1234567920">+62 82114103452</a>
                         </p>
                       </div>
@@ -296,11 +301,11 @@ textarea.form-control {
                   <div className="col-md-3">
                     <div className="dbox w-100 text-center">
                       <div className="icon d-flex align-items-center justify-content-center">
-                        <span className="fa fa-paper-plane"></span>
+                        <span className="fa fa-paper-plane"><img className="address__logo" src="./email1.png" alt=""></img></span>
                       </div>
                       <div className="text">
                         <p>
-                          <span>Email:</span>{" "}
+                          {/* <span>Email:</span>{" "} */}
                           <a href="mailto:info@yoursite.com">
                             ferdy.lz2000@gmail.com
                           </a>
@@ -311,11 +316,12 @@ textarea.form-control {
                   <div className="col-md-3">
                     <div className="dbox w-100 text-center">
                       <div className="icon d-flex align-items-center justify-content-center">
-                        <span className="fa fa-globe"></span>
+                        <span className="fa fa-globe"><img className="address__logo" src="./web.png" alt=""></img></span>
                       </div>
                       <div className="text">
                         <p>
-                          <span>Website</span> <a href="#">Travelesia.com</a>
+                          {/* <span>Website</span> */}
+                          <a href="#">Travelesia.com</a>
                         </p>
                       </div>
                     </div>

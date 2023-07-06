@@ -94,12 +94,12 @@ function ModalFlightFrom(props) {
   const renderRecentSearches = () => {
     if (recentSearches.length > 0) {
       return recentSearches.map((search, index) => (
-        <div key={index} className="d-flex mt-2">
-          <Button variant="link" className="history__text" onClick={() => handleRecentSearch(search)}>
+        <div key={index} className="border-bottom border-2 d-flex mt-2">
+          <Button variant="link" className="history__text me-auto ps-0" onClick={() => handleRecentSearch(search)}>
             {search}
           </Button>
-          <Button variant="link" className="delete-btn" onClick={() => handleDeleteRecentSearch(search)}>
-            <Image className="delete-btn__img" src="/delete-button.svg" />
+          <Button variant="link" className="delete-btn border-0 pe-0" onClick={() => handleDeleteRecentSearch(search)}>
+            <Image className="delete-btn__img" src="/close-button.svg" />
           </Button>
         </div>
       ));

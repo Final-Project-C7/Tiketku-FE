@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Button, Modal, Form, Image } from "react-bootstrap";
 import axios from "axios";
 
-function FormModalUpdateAdminPayments() {
+function FormModalUpdateAdminPayments(props) {
   const [show, setShow] = useState(false);
   const [booking_id, setBookingId] = useState("");
   const [payment_method, setPaymentMethod] = useState("");

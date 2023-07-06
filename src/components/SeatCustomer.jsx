@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Image, Button, Container, Form } from "react-bootstrap";
 import axios from "axios";
 
 const SeatCustomer = (props) => {
@@ -20,7 +19,7 @@ const SeatCustomer = (props) => {
     const token = localStorage.getItem("token");
     const headers = { Authorization: `Bearer ${token}` };
     axios
-      .get("https://c7-tiketku.up.railway.app/api/v1/seats", { headers })
+      .get("http://localhost:8000/api/v1/seats", { headers })
       .then((response) => {
         setData(response.data.data.seats);
       })
@@ -119,8 +118,8 @@ const SeatCustomer = (props) => {
                         {index / 6 + 1}
                       </p>
                     )}
-                    <label className={`text-white-50 seats ${seat.flight_id === 1 ? "" : "selected"} ${selectedSeats.includes(seat.seat_number) ? "selected" : ""}`} key={seat.seat_number}>
-                      <input type="checkbox" value={seat.seat_number} checked={selectedSeats.includes(seat.seat_number)} onChange={() => handleSeatSelect(seat.seat_number)} disabled={seat.flight_id === 1 ? false : true} hidden />
+                    <label className={`text-white-50 seats ${selectedSeats.includes(seat.seat_number) ? "selected" : ""}`} key={seat.seat_number}>
+                      <input type="checkbox" value={seat.seat_number} checked={selectedSeats.includes(seat.seat_number)} onChange={() => handleSeatSelect(seat.seat_number)} hidden />
                     </label>
                   </React.Fragment>
                 ))}

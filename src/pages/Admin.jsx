@@ -287,7 +287,7 @@ function Admin() {
                       <Image className="main-admin__icon col-4" src="payment-icon.svg" />
                       <div className="col-8 ms-4">
                         <h4 className="mb-0">Payments</h4>
-                        <p className="mb-0">{payments.data?.payments?.length} Payments</p>
+                        <p className="mb-0">{payments.data?.length} Payments</p>
                       </div>
                     </div>
                     <Link to="/admin-payments" className="text-decoration-none">

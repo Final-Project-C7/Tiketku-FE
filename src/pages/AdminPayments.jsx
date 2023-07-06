@@ -25,6 +25,7 @@ function AdminPayments() {
         console.error("Error fetching Data:", error);
       });
   }, []);
+  // console.log(data.data);
 
   const navigateTo = useNavigate();
 
@@ -129,7 +130,7 @@ function AdminPayments() {
             </div>
             <div className="col-10">
               <Navbar.Collapse className="navbar-admin Container d-flex p-4">
-                <h4 className="me-auto mb-0">Airports</h4>
+                <h4 className="me-auto mb-0">Payments</h4>
                 <Dropdown>
                   <Dropdown.Toggle variant="transparent" id="dropdown-basic" className="border-0">
                     <Image src="/fi_user_org.svg" />
@@ -167,7 +168,7 @@ function AdminPayments() {
                       </tr>
                     </thead>
                     <tbody>
-                      {data?.data?.payments?.map((payment, index) => (
+                      {data?.data?.map((payment, index) => (
                         <tr key={payment.id}>
                           <td>{index + 1}</td>
                           <td>{payment.booking_id}</td>

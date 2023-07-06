@@ -60,12 +60,6 @@ function FormLoginAdmin() {
           <div>
             <p style={{ marginBottom: "0px" }}>Password</p>
           </div>
-          <div className="ms-auto">
-            <p style={{ marginBottom: "0px" }}>
-              {" "}
-              <Link to="/forget-password">Lupa Kata Sandi</Link>
-            </p>
-          </div>
         </div>
 
         <div className="input-group mb-2 mt-1">

@@ -13,7 +13,8 @@ import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import Result from "./Result";
 import CheckoutCustomerData from "./CheckoutCustomerData";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { postDataBookingAsync } from "../components/redux/reducers/bookingSlice";
 
 const ResultFlightList = (props) => {
   const [expandedCards, setExpandedCards] = useState([]);
@@ -34,6 +35,7 @@ const ResultFlightList = (props) => {
     }
   };
   const { selectedClass } = useSelector((state) => state.class);
+  const { adult, children, baby } = useSelector((state) => state.passenger);
 
   const [user, setUser] = useState(null);
   useEffect(() => {
@@ -57,28 +59,29 @@ const ResultFlightList = (props) => {
 
     getUserData();
   }, []);
+  const dispatch = useDispatch();
 
   const handleSubmit = async (data) => {
-    console.log(data);
-
     try {
       const token = localStorage.getItem("token");
       const headers = { Authorization: `Bearer ${token}` };
-      const response = await axios.post(
-        "https://c7-tiketku.up.railway.app/api/v1/bookings",
-        {
+      const action = await dispatch(
+        postDataBookingAsync({
           user_id,
           flight_id: data.id,
           order_date: new Date(),
-          amount: data.business_price,
-        },
-        { headers }
+          amount:
+            (Number(data.business_price) * Number(adult + children) * 110) /
+            100,
+        })
       );
 
+      const respone = action.payload;
+      console.log(respone);
+
       // Handle successful registration
-      console.log(response);
+
       const { newPassengers } = response.data.data;
-      console.log(newPassengers); // Do something with newUser
 
       // Reset form field
       setUserId("");

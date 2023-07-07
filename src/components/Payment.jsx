@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Image, Button, Container } from "react-bootstrap";
+import { Image, Button, Container, Form } from "react-bootstrap";
 import NavbarUser from "./NavbarUser";
 import NavbarHomepage from "./NavbarHomepage";
 import NotifModal from "./Beranda/NotifModal";
 import { Link, useLocation } from "react-router-dom";
 import "./Payment.css";
 import Moment from "moment";
+import axios from "axios";
 import { useSelector } from "react-redux";
 
 const Payment = (props) => {
@@ -25,11 +26,54 @@ const Payment = (props) => {
   // console.log(location);
   // console.log(location?.state?.state?.business_price);
   const { selectedClass } = useSelector((state) => state.class);
+  const { items } = useSelector((state) => state.booking);
+  const bookingId = items[0].newBookings.id;
   const { adult, children, baby } = useSelector((state) => state.passenger);
+  const [bookingData, setBookingData] = useState(null);
+
+  useEffect(() => {
+    const fetchBookingData = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        const headers = { Authorization: `Bearer ${token}` };
+        const response = await axios.get(
+          `https://c7-tiketku.up.railway.app/api/v1/bookings/${bookingId}`,
+          { headers }
+        );
+        setBookingData(response.data.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchBookingData();
+  }, []);
 
   const handleExpand = () => {
     setExpanded(!expanded);
   };
+
+  const handleSubmit = async (e, index) => {
+    e.preventDefault();
+
+    try {
+      const token = localStorage.getItem("token");
+      const headers = { Authorization: `Bearer ${token}` };
+      const response = await axios.post(
+        "https://c7-tiketku.up.railway.app/api/v1/payments",
+        {
+          order_id: bookingData.id,
+        },
+        { headers }
+      );
+
+      const redirectUrl = response.data; // URL yang akan dituju
+      window.open(redirectUrl, "_blank");
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <>
       {isLoggedIn ? <NavbarUser /> : <NavbarHomepage />}
@@ -61,67 +105,6 @@ const Payment = (props) => {
       </div>
       <Container className="payment">
         <div className="row d-flex my-5">
-          <div className="payment-data col-7">
-            <h4 className="fw-bold mb-3">Isi Data Pembayaran </h4>
-            <div className="d-flex align-items-center bg-dark text-white rounded-2 p-3 mb-3" style={{ cursor: "pointer" }}>
-              <h5 className="mb-0 me-auto">Gopay</h5>
-              <Image className="payment-data__img" src="/arrow-down.svg" />
-            </div>
-            <div className="d-flex align-items-center bg-dark text-white rounded-2 p-3 mb-3" style={{ cursor: "pointer" }}>
-              <h5 className="mb-0 me-auto">Virtual Account</h5>
-              <Image className="payment-data__img" src="/arrow-down.svg" />
-            </div>
-            <div className={`${expanded ? "payment-data__list" : "bg-dark"} d-flex align-items-center text-white rounded-2 p-3`} onClick={handleExpand} style={{ cursor: "pointer" }}>
-              <h5 className="mb-0 me-auto">Credit Card</h5>
-              {expanded ? <Image className="payment-data__img" src="/arrow-up.svg" /> : <Image className="payment-data__img" src="/arrow-down.svg" />}
-            </div>
-            {expanded && (
-              <>
-                <div className="payment-data__expanded mx-auto">
-                  <div className="d-flex justify-content-center py-4">
-                    <Image className="payment-data__logo me-2" src="mastercard-logo.svg" />
-                    <Image className="payment-data__logo me-2" src="visa-logo.svg" />
-                    <Image className="payment-data__logo me-2" src="amex-logo.svg" />
-                    <Image className="payment-data__logo" src="paypal-logo.svg" />
-                  </div>
-                  <div>
-                    <p className="fw-bold mb-0">Card number</p>
-                    <p className="mb-0 mx-1" style={{ color: "#8A8A8A" }}>
-                      4480 0000 0000 0000
-                    </p>
-                    <div className="border-bottom border-2 mt-1 mb-3"></div>
-                  </div>
-                  <div>
-                    <p className="fw-bold mb-0">Card holder name</p>
-                    <p className="mb-0 mx-1" style={{ color: "#8A8A8A" }}>
-                      John Doe
-                    </p>
-                    <div className="border-bottom border-2 mt-1 mb-3"></div>
-                  </div>
-                  <div className="d-flex">
-                    <div className="col-5 me-auto">
-                      <p className="fw-bold mb-0">CVV</p>
-                      <p className="mb-0 mx-1" style={{ color: "#8A8A8A" }}>
-                        000
-                      </p>
-                      <div className="border-bottom border-2 mt-1 mb-3"></div>
-                    </div>
-                    <div className="col-5">
-                      <p className="fw-bold mb-0">Expiry date</p>
-                      <p className="mb-0 mx-1" style={{ color: "#8A8A8A" }}>
-                        07/24
-                      </p>
-                      <div className="border-bottom border-2 mt-1 mb-2"></div>
-                    </div>
-                  </div>
-                </div>
-                <NotifModal />
-                {/* <Button className="col-12 text-white rounded-4 border-0 py-3">
-                  <h4 className="mb-0">Bayar</h4>
-                </Button> */}
-              </>
-            )}
-          </div>
           <div className="payment-booking-code col-5 mt-5 mt-md-0">
             <h4 className="fw-bold mb-3">
               Booking Code:
@@ -130,48 +113,85 @@ const Payment = (props) => {
               </span>
             </h4>
             <div className="d-flex align-items-center">
-              <h5 className="fw-bold me-auto mb-0">{Moment(location?.state?.state?.departure_time).format("HH:mm")}</h5>
-              <p className="fw-bold mb-0" style={{ fontSize: "12px", color: "#a06ece" }}>
+              <h5 className="fw-bold me-auto mb-0">
+                {Moment(location?.state?.state?.departure_time).format("HH:mm")}
+              </h5>
+              <p
+                className="fw-bold mb-0"
+                style={{ fontSize: "12px", color: "#a06ece" }}
+              >
                 Keberangkatan
               </p>
             </div>
-            <p className="mb-0">{Moment(location?.state?.state?.arrival_time).format("dddd, Do MMMM  YYYY")}</p>
-            <p className="fw-medium mb-0">{location?.state?.state?.departureAirport.airport_name}</p>
+            <p className="mb-0">
+              {Moment(location?.state?.state?.arrival_time).format(
+                "dddd, Do MMMM  YYYY"
+              )}
+            </p>
+            <p className="fw-medium mb-0">
+              {location?.state?.state?.departureAirport.airport_name}
+            </p>
             <div className="border-bottom my-2"></div>
             <div className="d-flex align-items-center">
               <div className="col-1">
-                <Image className="payment-booking-code__img" src="/Image-1.svg" />
+                <Image
+                  className="payment-booking-code__img"
+                  src="/Image-1.svg"
+                />
               </div>
               <div className="col-12">
                 <p className="fw-bold mb-0">
-                  {location?.state?.state?.airline.airline_name} - {selectedClass}
+                  {location?.state?.state?.airline.airline_name} -{" "}
+                  {selectedClass}
                 </p>
-                <p className="fw-bold mb-3">{location?.state?.state?.flight_code}</p>
+                <p className="fw-bold mb-3">
+                  {location?.state?.state?.flight_code}
+                </p>
                 <p className="fw-bold mb-0">Informasi:</p>
-                <p className="mb-0">Baggage {location?.state?.state?.airline.baggage} kg</p>
-                <p className="mb-0">Cabin baggage {location?.state?.state?.airline.cabin_baggage} kg</p>
+                <p className="mb-0">
+                  Baggage {location?.state?.state?.airline.baggage} kg
+                </p>
+                <p className="mb-0">
+                  Cabin baggage {location?.state?.state?.airline.cabin_baggage}{" "}
+                  kg
+                </p>
                 <p className="mb-0">In Flight Entertainment</p>
               </div>
             </div>
             <div className="border-bottom my-2"></div>
             <div className="d-flex align-items-center">
-              <p className="fw-bold me-auto mb-0">{Moment(location?.state?.state?.arrival_time).format("HH:mm")}</p>
-              <p className="fw-bold mb-0" style={{ fontSize: "12px", color: "#a06ece" }}>
+              <p className="fw-bold me-auto mb-0">
+                {Moment(location?.state?.state?.arrival_time).format("HH:mm")}
+              </p>
+              <p
+                className="fw-bold mb-0"
+                style={{ fontSize: "12px", color: "#a06ece" }}
+              >
                 Kedatangan
               </p>
             </div>
-            <p className="mb-0">{Moment(location?.state?.state?.arrival_time).format("dddd, Do MMMM  YYYY")}</p>
-            <p className="fw-medium mb-0">{location?.state?.state?.arrivalAirport.airport_name}</p>
+            <p className="mb-0">
+              {Moment(location?.state?.state?.arrival_time).format(
+                "dddd, Do MMMM  YYYY"
+              )}
+            </p>
+            <p className="fw-medium mb-0">
+              {location?.state?.state?.arrivalAirport.airport_name}
+            </p>
             <div className="border-bottom my-2"></div>
             <div className="mx-2">
               <p className="fw-bold mb-0">Rincian Harga</p>
               <div className="d-flex">
                 <p className="mb-0 me-auto">{adult} Adults</p>
-                <p className="mb-0">IDR {location?.state?.state?.business_price}</p>
+                <p className="mb-0">
+                  IDR {location?.state?.state?.business_price}
+                </p>
               </div>
               <div className="d-flex">
                 <p className="mb-0 me-auto">{children} Children</p>
-                <p className="mb-0">IDR {location?.state?.state?.business_price}</p>
+                <p className="mb-0">
+                  IDR {location?.state?.state?.business_price}
+                </p>
               </div>
               <div className="d-flex">
                 <p className="mb-0 me-auto">{baby} Baby</p>
@@ -179,28 +199,58 @@ const Payment = (props) => {
               </div>
               <div className="d-flex">
                 <p className="mb-0 me-auto">Tax</p>
-                <p className="mb-0">IDR {Number(location?.state?.state?.business_price) * Number(adult + children) * 0.1}</p>
+                <p className="mb-0">
+                  IDR{" "}
+                  {Number(location?.state?.state?.business_price) *
+                    Number(adult + children) *
+                    0.1}
+                </p>
               </div>
               <div className="border-bottom my-2"></div>
               <div className="d-flex">
                 <h5 className="fw-bold mb-0 me-auto">Total</h5>
-                <h5 className="fw-bold mb-0" style={{ fontSize: "18px", color: "#7126B5" }}>
-                  IDR {Number(location?.state?.state?.business_price) * Number(adult + children) + Number(location?.state?.state?.business_price) * Number(adult + children) * 0.1}
+                <h5
+                  className="fw-bold mb-0"
+                  style={{ fontSize: "18px", color: "#7126B5" }}
+                >
+                  IDR{" "}
+                  {Number(location?.state?.state?.business_price) *
+                    Number(adult + children) +
+                    Number(location?.state?.state?.business_price) *
+                      Number(adult + children) *
+                      0.1}
                 </h5>
               </div>
             </div>
           </div>
+          <Form onSubmit={handleSubmit}>
+            <button type="submit">Bayar</button>
+          </Form>
         </div>
       </Container>
       {isLoggedIn ? (
         ""
       ) : (
-        <div className="position-fixed bg-dark bg-opacity-75 top-0 start-0 end-0 bottom-0 overflow-hidden d-flex justify-content-center align-items-center" style={{ zIndex: "9999" }}>
-          <div className="bg-secondary-subtle d-flex justify-content-center align-items-center flex-column opacity-100 rounded-3 p-4 pt-0" style={{ height: "55%", width: "25%" }}>
+        <div
+          className="position-fixed bg-dark bg-opacity-75 top-0 start-0 end-0 bottom-0 overflow-hidden d-flex justify-content-center align-items-center"
+          style={{ zIndex: "9999" }}
+        >
+          <div
+            className="bg-secondary-subtle d-flex justify-content-center align-items-center flex-column opacity-100 rounded-3 p-4 pt-0"
+            style={{ height: "55%", width: "25%" }}
+          >
             <Image src="/logofinal.png" style={{ width: "40%" }} />
-            <p className="text-dark-emphasis mb-5">Your Best Traveling Partner</p>
-            <h4 className="opacity-75 fw-bold mb-4">Register now to continue</h4>
-            <Link to="/register" className="text-decoration-none rounded-5 text-white shadow px-4 py-2 mb-3" style={{ backgroundColor: "#A06ECE" }}>
+            <p className="text-dark-emphasis mb-5">
+              Your Best Traveling Partner
+            </p>
+            <h4 className="opacity-75 fw-bold mb-4">
+              Register now to continue
+            </h4>
+            <Link
+              to="/register"
+              className="text-decoration-none rounded-5 text-white shadow px-4 py-2 mb-3"
+              style={{ backgroundColor: "#A06ECE" }}
+            >
               REGISTER NOW
             </Link>
             <Link to="/login" style={{ color: "#A06ECE" }}>

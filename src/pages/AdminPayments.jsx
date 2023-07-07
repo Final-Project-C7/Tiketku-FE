@@ -25,7 +25,7 @@ function AdminPayments() {
         console.error("Error fetching Data:", error);
       });
   }, []);
-  // console.log(data.data);
+  console.log(data.data);
 
   const navigateTo = useNavigate();
 
@@ -165,6 +165,9 @@ function AdminPayments() {
                         <th>Payment Method</th>
                         <th>Payment Amount</th>
                         <th>Payment Date</th>
+                        <th>Payment Code</th>
+                        <th>Payment Status</th>
+                        <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -175,6 +178,8 @@ function AdminPayments() {
                           <td>{payment.payment_method}</td>
                           <td>{payment.payment_amount}</td>
                           <td>{payment.payment_date}</td>
+                          <td>{payment.payment_code}</td>
+                          <td>{payment.payment_status}</td>
                           <td>
                             <div className="d-flex">
                               <FormModalUpdateAdminPayments data={payment} />

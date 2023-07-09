@@ -67,7 +67,7 @@ const Riwayat = () => {
                           className="col-2 rounded-5 text-white text-center p-1 mb-4 text-un"
                           style={{ backgroundColor: "#73ca5c" }}
                         >
-                          Success
+                          {booking?.payment?.payment_status}
                         </p>
                         <div className="d-flex">
                           <div className="col-1 text-center">

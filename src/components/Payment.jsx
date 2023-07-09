@@ -105,7 +105,7 @@ const Payment = (props) => {
       </div>
       <Container className="payment">
         <div className="row d-flex my-5">
-          <div className="payment-booking-code col-5 mt-5 mt-md-0">
+          <div className="payment-booking-code col-6 mt-5 mt-md-0">
             <h4 className="fw-bold mb-3">
               Booking Code:
               <span className="fw-bold" style={{ color: "#7126B5" }}>
@@ -159,9 +159,11 @@ const Payment = (props) => {
               </div>
             </div>
             <div className="border-bottom my-2"></div>
-            <div className="d-flex align-items-center">
+          </div>
+          <div className="payment-booking-code col-6 mt-5 mt-md-0">
+            <div className="d-flex align-items-center mt-5">
               <p className="fw-bold me-auto mb-0">
-                {Moment(location?.state?.state?.arrival_time).format("HH:mm")}
+                {/* {Moment(location?.state?.state?.arrival_time).format("HH:mm")} */}
               </p>
               <p
                 className="fw-bold mb-0"
@@ -223,8 +225,15 @@ const Payment = (props) => {
               </div>
             </div>
           </div>
+
           <Form onSubmit={handleSubmit}>
-            <button type="submit">Bayar</button>
+            <Button
+              className="checkout-biodata__btn-2 border-0 d-flex align-items-center justify-content-center mt-4 py-4"
+              type="submit"
+            >
+              Bayar
+            </Button>
+            {/* <button className="btn-pay mt-3 text-white mx-2 py-rounded-2" type="submit">Bayar Lah</button> */}
           </Form>
         </div>
       </Container>

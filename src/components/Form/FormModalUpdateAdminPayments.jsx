@@ -8,6 +8,8 @@ function FormModalUpdateAdminPayments(props) {
   const [payment_method, setPaymentMethod] = useState("");
   const [payment_amount, setPaymentAmount] = useState("");
   const [payment_date, setPaymentDate] = useState("");
+  const [payment_code, setPaymentCode] = useState("");
+  const [payment_status, setPaymentStatus] = useState("");
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -17,6 +19,8 @@ function FormModalUpdateAdminPayments(props) {
     setPaymentMethod(props.data.booking_id);
     setPaymentAmount(props.data.payment_amount);
     setPaymentDate(props.data.payment_date);
+    setPaymentCode(props.data.payment_code);
+    setPaymentStatus(props.data.payment_status);
   };
 
   useEffect(() => {
@@ -36,6 +40,8 @@ function FormModalUpdateAdminPayments(props) {
           payment_method,
           payment_amount,
           payment_date,
+          payment_code,
+          payment_status,
         },
         { headers }
       );
@@ -83,6 +89,14 @@ function FormModalUpdateAdminPayments(props) {
             <Form.Group className="mb-3">
               <Form.Label>Payment Date</Form.Label>
               <Form.Control type="date" value={payment_date} onChange={(e) => setPaymentDate(e.target.value)} />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Payment Code</Form.Label>
+              <Form.Control type="text" placeholder="G407551489" value={payment_code} onChange={(e) => setPaymentCode(e.target.value)} />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Payment Status</Form.Label>
+              <Form.Control type="text" placeholder="capture" value={payment_status} onChange={(e) => setPaymentStatus(e.target.value)} />
             </Form.Group>
           </Modal.Body>
           <Modal.Footer>

@@ -8,6 +8,8 @@ function FormModalAdminPayments() {
   const [payment_method, setPaymentMethod] = useState("");
   const [payment_amount, setPaymentAmount] = useState("");
   const [payment_date, setPaymentDate] = useState("");
+  const [payment_code, setPaymentCode] = useState("");
+  const [payment_status, setPaymentStatus] = useState("");
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -27,6 +29,8 @@ function FormModalAdminPayments() {
           payment_method,
           payment_amount,
           payment_date,
+          payment_code,
+          payment_status,
         },
         { headers }
       );
@@ -36,6 +40,8 @@ function FormModalAdminPayments() {
       setPaymentMethod("");
       setPaymentAmount("");
       setPaymentDate("");
+      setPaymentCode("");
+      setPaymentStatus("");
       setSuccessMessage("Success to create payment");
       setError("");
       window.location.reload();
@@ -82,6 +88,14 @@ function FormModalAdminPayments() {
             <Form.Group className="mb-3">
               <Form.Label>Payment Date</Form.Label>
               <Form.Control type="date" value={payment_date} onChange={(e) => setPaymentDate(e.target.value)} />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Payment Code</Form.Label>
+              <Form.Control type="text" placeholder="G407551489" onChange={(e) => setPaymentCode(e.target.value)} />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Payment Status</Form.Label>
+              <Form.Control type="text" placeholder="capture" onChange={(e) => setPaymentStatus(e.target.value)} />
             </Form.Group>
           </Modal.Body>
           <Modal.Footer>

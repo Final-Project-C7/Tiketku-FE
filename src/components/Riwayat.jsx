@@ -1,13 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import { Image, Button, Container, Form, Card } from "react-bootstrap";
 import NavbarUser from "./NavbarUser";
 import Header from "./Header";
+import axios from "axios";
+import jwt_decode from "jwt-decode";
+import Moment from "moment";
 
 import "./Riwayat.css";
 
 const Riwayat = () => {
   const token = localStorage.getItem("token");
+  const [bookingData, setBookingData] = useState();
+
+  useEffect(() => {
+    const fetchBookingData = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        const decodedToken = jwt_decode(token);
+        const user_id = decodedToken.id;
+        const headers = { Authorization: `Bearer ${token}` };
+        console.log(user_id);
+        const response = await axios.get(
+          `https://c7-tiketku.up.railway.app/api/v1/bookings?user_id=${user_id}`,
+          { headers }
+        );
+        setBookingData(response.data.data.bookings);
+        console.log(response.data.data.bookings[2]);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchBookingData();
+  }, []);
   return (
     <>
       <NavbarUser />
@@ -23,210 +49,90 @@ const Riwayat = () => {
           </div>
           <Container className="checkout-biodata">
             <Form className="row d-flex mt-4">
-              <div className="col-7 mt-0">
-                <div className="mb-3">
-                  <h4 className="fw-bold">Maret 2023</h4>
-                  <div
-                    className="p-3 rounded-3 mb-2"
-                    style={{ border: "2px solid rgba(113, 38, 181, 0.75)" }}
-                  >
-                    <p
-                      className="col-2 rounded-5 text-white text-center p-1 mb-4 text-un"
-                      style={{ backgroundColor: "#73ca5c" }}
-                    >
-                      Issued
-                    </p>
-                    <div className="d-flex">
-                      <div className="col-1 text-center">
-                        <Image src="/Live-area.svg" />
-                      </div>
-                      <div className="col-3">
-                        <p className="fw-bold mb-0 text-dark">Jakarta</p>
-                        <p className="mb-0">5 Maret 2023</p>
-                        <p className="mb-0">19:10</p>
-                      </div>
-                      <div className="col-4 d-flex flex-column justify-content-center align-items-center mb-4">
-                        <p className="mb-0">4h 0m</p>
-                        <Image src="/Union.svg" />
-                      </div>
-                      <div className="col-1 text-center">
-                        <Image src="/Live-area.svg" />
-                      </div>
-                      <div className="col-3 d-flex flex-column">
-                        <p className="fw-bold mb-0 text-dark">Melbourne</p>
-                        <p className="mb-0">5 Maret 2023</p>
-                        <p className="mb-0">21:10</p>
-                      </div>
-                    </div>
-                    <div className="border-bottom border-2 mt-1 mb-3"></div>
-                    <div className="d-flex align-items-center">
-                      <div className="col-4">
-                        <p className="fw-bold mb-0 text-dark">Booking Code:</p>
-                        <p className="mb-0">6723y2GHK</p>
-                      </div>
-                      <div className="col-4 offset-1">
-                        <p className="fw-bold mb-0 text-dark">Class:</p>
-                        <p className="mb-0">Economy</p>
-                      </div>
-                      <div className="col-3">
+              {Array.isArray(bookingData) &&
+                bookingData.map((booking) => (
+                  <div className="col-12 mt-0" key={booking.id}>
+                    <div className="mb-3">
+                      <h4 className="fw-bold">
+                        {" "}
+                        {Moment(booking.createdAt).format(
+                          "dddd, Do MMMM  YYYY"
+                        )}
+                      </h4>
+                      <div
+                        className="p-3 rounded-3 mb-2"
+                        style={{ border: "2px solid rgba(113, 38, 181, 0.75)" }}
+                      >
                         <p
-                          className="fw-bold mb-0"
-                          style={{ color: "#4B1979" }}
+                          className="col-2 rounded-5 text-white text-center p-1 mb-4 text-un"
+                          style={{ backgroundColor: "#73ca5c" }}
                         >
-                          IDR 9.850.000
+                          {booking?.payment?.payment_status}
                         </p>
+                        <div className="d-flex">
+                          <div className="col-1 text-center">
+                            <Image src="/Live-area.svg" />
+                          </div>
+                          <div className="col-3">
+                            <p className="fw-bold mb-0 text-dark">
+                              {booking?.flight?.departureAirport?.city}
+                            </p>
+                            <p className="mb-0">
+                              {Moment(booking?.flight?.departure_time).format(
+                                "dddd, Do MMMM  YYYY"
+                              )}
+                            </p>
+                            <p className="mb-0"></p>
+                          </div>
+                          <div className="col-4 d-flex flex-column justify-content-center align-items-center mb-4">
+                            <p className="mb-0"></p>
+                            <Image src="/Union.svg" />
+                          </div>
+                          <div className="col-1 text-center">
+                            <Image src="/Live-area.svg" />
+                          </div>
+                          <div className="col-3 d-flex flex-column">
+                            <p className="fw-bold mb-0 text-dark">
+                              {booking?.flight?.arrivalAirport?.city}
+                            </p>
+                            <p className="mb-0">
+                              {Moment(booking?.flight?.arrival_time).format(
+                                "dddd, Do MMMM  YYYY"
+                              )}
+                            </p>
+                            <p className="mb-0"></p>
+                          </div>
+                        </div>
+                        <div className="border-bottom border-2 mt-1 mb-3"></div>
+                        <div className="d-flex align-items-center">
+                          <div className="col-4">
+                            <p className="fw-bold mb-0 text-dark">
+                              Booking Code:
+                            </p>
+                            <p className="mb-0">
+                              {booking?.payment?.payment_code}
+                            </p>
+                          </div>
+                          <div className="col-4 offset-1">
+                            <p className="fw-bold mb-0 text-dark">Class:</p>
+                            <p className="mb-0">Economy</p>
+                          </div>
+                          <div className="col-3">
+                            <p
+                              className="fw-bold mb-0"
+                              style={{ color: "#4B1979" }}
+                            >
+                              IDR {booking.amount}
+                            </p>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
-                  {/* <Card className="mb-3">
-                    <div className="p-3 rounded-3 mb-2">
-                      <p
-                        className="col-2 rounded-5 text-white text-center p-1 mb-4 text-un"
-                        style={{ backgroundColor: "#ff0000" }}
-                      >
-                        Unpaid
-                      </p>
-                      <div className="d-flex">
-                        <div className="col-1 text-center">
-                          <Image src="/Live-area.svg" />
-                        </div>
-                        <div className="col-3">
-                          <p className="fw-bold mb-0 text-dark">Jakarta</p>
-                          <p className="mb-0">1 Maret 2023</p>
-                          <p className="mb-0">7:00</p>
-                        </div>
-                        <div className="col-4 d-flex flex-column justify-content-center align-items-center mb-4">
-                          <p className="mb-0">1h 15m</p>
-                          <Image src="/Union.svg" />
-                        </div>
-                        <div className="col-1 text-center">
-                          <Image src="/Live-area.svg" />
-                        </div>
-                        <div className="col-3 d-flex flex-column">
-                          <p className="fw-bold mb-0 text-dark">Bali</p>
-                          <p className="mb-0">1 Maret 2023</p>
-                          <p className="mb-0">8:15</p>
-                        </div>
-                      </div>
-                      <div className="border-bottom border-2 mt-1 mb-3"></div>
-                      <div className="d-flex align-items-center">
-                        <div className="col-4">
-                          <p className="fw-bold mb-0 text-dark">
-                            Booking Code:
-                          </p>
-                          <p className="mb-0">6723y2GHK</p>
-                        </div>
-                        <div className="col-4 offset-1">
-                          <p className="fw-bold mb-0 text-dark">Class:</p>
-                          <p className="mb-0">Bussines</p>
-                        </div>
-                        <div className="col-3">
-                          <p
-                            className="fw-bold mb-0"
-                            style={{ color: "#4B1979" }}
-                          >
-                            IDR 3.250.000
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </Card> */}
-                  {/* <h4 className="fw-bold card-pad">Februari 2023</h4>
-                  <Card className="mb-2">
-                    <div className="p-3 rounded-3 mb-2">
-                      <p className="col-2 rounded-5 text-white text-center p-1 mb-4 text-un" style={{ backgroundColor: "#8a8a8a" }}>
-                        Cancelled
-                      </p>
-                      <div className="d-flex">
-                        <div className="col-1 text-center">
-                          <Image src="/Live-area.svg" />
-                        </div>
-                        <div className="col-3">
-                          <p className="fw-bold mb-0">Jakarta</p>
-                          <p className="mb-0">5 Maret 2023</p>
-                          <p className="mb-0">19:10</p>
-                        </div>
-                        <div className="col-4 d-flex flex-column justify-content-center align-items-center mb-4">
-                          <p className="mb-0">4h 0m</p>
-                          <Image src="/Union.svg" />
-                        </div>
-                        <div className="col-1 text-center">
-                          <Image src="/Live-area.svg" />
-                        </div>
-                        <div className="col-3 d-flex flex-column">
-                          <p className="fw-bold mb-0">Melbourne</p>
-                          <p className="mb-0">5 Maret 2023</p>
-                          <p className="mb-0">21:10</p>
-                        </div>
-                      </div>
-                      <div className="border-bottom border-2 mt-1 mb-3"></div>
-                      <div className="d-flex align-items-center">
-                        <div className="col-4">
-                          <p className="fw-bold mb-0">Booking Code:</p>
-                          <p className="mb-0">6723y2GHK</p>
-                        </div>
-                        <div className="col-4 offset-1">
-                          <p className="fw-bold mb-0">Class:</p>
-                          <p className="mb-0">Economy</p>
-                        </div>
-                        <div className="col-3">
-                          <p className="fw-bold mb-0" style={{ color: "#4B1979" }}>
-                            IDR 9.850.000
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </Card>
-                  <Card>
-                    <div className="p-3 rounded-3 mb-2">
-                      <p className="col-2 rounded-5 text-white text-center p-1 mb-4 text-un" style={{ backgroundColor: "#73ca5c" }}>
-                        Issued
-                      </p>
-                      <div className="d-flex">
-                        <div className="col-1 text-center">
-                          <Image src="/Live-area.svg" />
-                        </div>
-                        <div className="col-3">
-                          <p className="fw-bold mb-0">Jakarta</p>
-                          <p className="mb-0">5 Maret 2023</p>
-                          <p className="mb-0">19:10</p>
-                        </div>
-                        <div className="col-4 d-flex flex-column justify-content-center align-items-center mb-4">
-                          <p className="mb-0">4h 0m</p>
-                          <Image src="/Union.svg" />
-                        </div>
-                        <div className="col-1 text-center">
-                          <Image src="/Live-area.svg" />
-                        </div>
-                        <div className="col-3 d-flex flex-column">
-                          <p className="fw-bold mb-0">Melbourne</p>
-                          <p className="mb-0">5 Maret 2023</p>
-                          <p className="mb-0">21:10</p>
-                        </div>
-                      </div>
-                      <div className="border-bottom border-2 mt-1 mb-3"></div>
-                      <div className="d-flex align-items-center">
-                        <div className="col-4">
-                          <p className="fw-bold mb-0">Booking Code:</p>
-                          <p className="mb-0">6723y2GHK</p>
-                        </div>
-                        <div className="col-4 offset-1">
-                          <p className="fw-bold mb-0">Class:</p>
-                          <p className="mb-0">Economy</p>
-                        </div>
-                        <div className="col-3">
-                          <p className="fw-bold mb-0" style={{ color: "#4B1979" }}>
-                            IDR 9.850.000
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </Card> */}
-                </div>
-              </div>
+                ))}
 
               {/* DETAIL PESANAN */}
-              <div className="col-5 mt-0">
+              {/* <div className="col-5 mt-0">
                 <div className="d-flex card-pad-1">
                   <h4 className="me-auto fw-bold">Detail Pesanan</h4>
                   <p
@@ -314,7 +220,7 @@ const Riwayat = () => {
                     Cetak Tiket
                   </Button>
                 </div>
-              </div>
+              </div> */}
             </Form>
           </Container>
         </div>

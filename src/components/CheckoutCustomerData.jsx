@@ -490,11 +490,22 @@ const CheckoutCustomerData = (props) => {
               <p className="fw-bold mb-0">Rincian Harga</p>
               <div className="d-flex">
                 <p className="mb-0 me-auto">{adult} Adults</p>
-                <p className="mb-0">IDR {location?.state?.business_price}</p>
+                <p className="mb-0">
+                  {" "}
+                  {"IDR " +
+                    Number(location?.state?.business_price)
+                      .toLocaleString("en-ID")
+                      .replace(/,/g, ".")}
+                </p>
               </div>
               <div className="d-flex">
                 <p className="mb-0 me-auto">{children} Children</p>
-                <p className="mb-0">IDR {location?.state?.business_price}</p>
+                <p className="mb-0">
+                  {"IDR " +
+                    Number(location?.state?.business_price)
+                      .toLocaleString("en-ID")
+                      .replace(/,/g, ".")}
+                </p>
               </div>
               <div className="d-flex">
                 <p className="mb-0 me-auto">{baby} Baby</p>
@@ -503,10 +514,17 @@ const CheckoutCustomerData = (props) => {
               <div className="d-flex">
                 <p className="mb-0 me-auto">Tax</p>
                 <p className="mb-0">
-                  IDR{" "}
-                  {Number(location?.state?.business_price) *
-                    Number(adult + children) *
-                    0.1}
+                  {"IDR " +
+                    (
+                      Number(location?.state?.business_price) *
+                      Number(adult + children) *
+                      0.1
+                    )
+                      .toLocaleString("en-ID", {
+                        minimumFractionDigits: 0,
+                        maximumFractionDigits: 0,
+                      })
+                      .replace(/,/g, ".")}
                 </p>
               </div>
               <div className="border-bottom my-2"></div>
@@ -516,12 +534,18 @@ const CheckoutCustomerData = (props) => {
                   className="fw-bold mb-0"
                   style={{ fontSize: "18px", color: "#7126B5" }}
                 >
-                  IDR{" "}
-                  {Number(location?.state?.business_price) *
-                    Number(adult + children) +
+                  {`IDR ${(
+                    Number(location?.state?.business_price) *
+                      Number(adult + children) +
                     Number(location?.state?.business_price) *
                       Number(adult + children) *
-                      0.1}
+                      0.1
+                  )
+                    .toLocaleString("en-ID", {
+                      minimumFractionDigits: 0,
+                      maximumFractionDigits: 0,
+                    })
+                    .replace(/,/g, ".")}`}
                 </h5>
               </div>
               {isFormFilled && (user || isFormFilled2) ? (

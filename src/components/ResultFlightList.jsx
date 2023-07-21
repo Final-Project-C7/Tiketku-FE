@@ -120,6 +120,16 @@ const ResultFlightList = (props) => {
     }
   }, []);
 
+  const calculateDuration = (departureTime, arrivalTime) => {
+    const departureMoment = Moment(departureTime);
+    const arrivalMoment = Moment(arrivalTime);
+
+    const durationMilliseconds = arrivalMoment.diff(departureMoment);
+    const duration = Moment.duration(durationMilliseconds);
+
+    return `${duration.hours()}h ${duration.minutes()}m`;
+  };
+
   return (
     <>
       <div className="col-12 col-md-9 text-center mt-3 mb-5">
@@ -187,14 +197,17 @@ const ResultFlightList = (props) => {
                         </Card.Text>
                       </div>
                       <div
-                        className="col-3 d-flex align-items-center"
+                        className="col-3 d-flex align-items-center flex-column"
                         style={{ padding: "0" }}
                       >
                         <Card.Text
                           className="title-departure text-center"
                           style={{ marginBottom: "1px" }}
                         >
-                          {/* 4h 0m */}
+                          {calculateDuration(
+                            flight.departure_time,
+                            flight.arrival_time
+                          )}
                         </Card.Text>
 
                         <Card.Text className="title-departure text-center border-top w-100">
@@ -233,7 +246,10 @@ const ResultFlightList = (props) => {
                         fontSize: "16px",
                       }}
                     >
-                      IDR {flight.business_price}{" "}
+                      {"IDR " +
+                        Number(flight.business_price)
+                          .toLocaleString("en-ID")
+                          .replace(/,/g, ".")}
                     </Card.Text>
                     <Link
                       to={isLoggedIn ? "/checkout" : "/login"}

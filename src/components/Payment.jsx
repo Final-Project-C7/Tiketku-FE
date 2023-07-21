@@ -3,7 +3,7 @@ import { Image, Button, Container, Form } from "react-bootstrap";
 import NavbarUser from "./NavbarUser";
 import NavbarHomepage from "./NavbarHomepage";
 import NotifModal from "./Beranda/NotifModal";
-import { Link, useLocation } from "react-router-dom";
+import { Link, json, useLocation } from "react-router-dom";
 import "./Payment.css";
 import Moment from "moment";
 import axios from "axios";
@@ -30,6 +30,7 @@ const Payment = (props) => {
   const bookingId = items[0].newBookings.id;
   const { adult, children, baby } = useSelector((state) => state.passenger);
   const [bookingData, setBookingData] = useState(null);
+  const [token, setToken] = useState("");
 
   useEffect(() => {
     const fetchBookingData = async () => {
@@ -66,13 +67,59 @@ const Payment = (props) => {
         },
         { headers }
       );
+      console.log(response);
 
-      const redirectUrl = response.data; // URL yang akan dituju
-      window.open(redirectUrl, "_blank");
+      setToken(response.data.token);
+
+      // const redirectUrl = response.data.url;
+      // window.open(redirectUrl, "_blank");
     } catch (error) {
       console.error(error);
     }
   };
+
+  useEffect(() => {
+    if (token) {
+      window.snap.pay(token, {
+        onSuccess: (result) => {
+          window.location.href =
+            "https://travelesia-fe-production.up.railway.app/";
+          setToken("");
+        },
+        onPending: (result) => {
+          window.location.href =
+            "https://travelesia-fe-production.up.railway.app/";
+          setToken("");
+        },
+        onError: (error) => {
+          console.log(error);
+          setToken("");
+        },
+        onClose: () => {
+          alert("anda belum melakukan pembayaran");
+          setToken("");
+        },
+      });
+    }
+  }, [token]);
+
+  useEffect(() => {
+    const midtransURL = "https://app.sandbox.midtrans.com/snap/snap.js";
+
+    let scriptTag = document.createElement("script");
+    scriptTag.src = midtransURL;
+
+    const midtransClientKey = "SB-Mid-client-ugxqLh-00hfHCHIz";
+    scriptTag.setAttribute("data-client-key", midtransClientKey);
+
+    scriptTag.async = true;
+
+    document.body.appendChild(scriptTag);
+
+    return () => {
+      document.body.removeChild(scriptTag);
+    };
+  });
 
   return (
     <>

@@ -51,15 +51,50 @@ const Riwayat = () => {
           </div>
           <Container className="checkout-biodata">
             <Form className="row d-flex mt-4">
-              <div className="col-7 mt-0">
-                {Array.isArray(bookingData) &&
-                  bookingData.map((booking) => (
-                    <div key={booking.id} onClick={() => handleCardClick(booking.id)}>
-                      <div className="mb-3">
-                        <h4 className="fw-bold"> {Moment(booking.createdAt).format("dddd, Do MMMM  YYYY")}</h4>
-                        <div className="checkout-biodata-card border border-3 p-3 rounded-3 mb-2">
-                          <p className="d-inline-block rounded-5 text-white text-center px-3 py-1 mb-2 text-un" style={{ backgroundColor: "#73ca5c" }}>
-                            {/* {booking?.payment?.payment_status} */} Issued
+
+              {Array.isArray(bookingData) &&
+                bookingData.map((booking) => (
+                  <div className="col-12 mt-0" key={booking.id}>
+                    <div className="mb-3">
+                      <h4 className="fw-bold">
+                        {" "}
+                        {Moment(booking.createdAt).format(
+                          "dddd, Do MMMM  YYYY"
+                        )}
+                      </h4>
+                      <div
+                        className="p-3 rounded-3 mb-2"
+                        style={{ border: "2px solid rgba(113, 38, 181, 0.75)" }}
+                      >
+                        {booking?.payment?.payment_status === "settlement" ||
+                        booking?.payment?.payment_status === "capture" ? (
+                          <p
+                            className="col-2 rounded-5 text-white text-center p-1 mb-4 text-un"
+                            style={{ backgroundColor: "#73ca5c" }}
+                          >
+                            Success
+                          </p>
+                        ) : booking?.payment?.payment_status === "pending" ? (
+                          <p
+                            className="col-2 rounded-5 text-white text-center p-1 mb-4 text-un"
+                            style={{ backgroundColor: "#ff0000" }}
+                          >
+                            Unpaid
+                          </p>
+                        ) : booking?.payment?.payment_status === "expire" ? (
+                          <p
+                            className="col-2 rounded-5 text-white text-center p-1 mb-4 text-un"
+                            style={{ backgroundColor: "#F9CC00" }}
+                          >
+                            Expired
+                          </p>
+                        ) : (
+                          <p
+                            className="col-2 rounded-5 text-white text-center p-1 mb-4 text-un"
+                            style={{ backgroundColor: "#8A8A8A" }}
+                          >
+                            Cancelled
+
                           </p>
                           <div className="d-flex">
                             <div className="col-1 text-center">

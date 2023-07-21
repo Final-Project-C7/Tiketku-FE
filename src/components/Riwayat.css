@@ -116,6 +116,11 @@
   color: white !important;
 }
 
+.checkout-biodata-card:hover {
+  border: 2px solid rgba(113, 38, 181, 0.75) !important;
+  cursor: pointer;
+}
+
 .cardresult {
   border-color: #4b1979 !important;
 }

@@ -51,7 +51,7 @@ function App() {
           <Route path="/payment" element={<Payment />} />
           <Route path="/payment-success" element={<PaymentSuccess />} />
           <Route path="/admin-login" element={<AdminLogin />} />
-          <Route path="/admin-register" element={<AdminRegister />} />
+          {/* <Route path="/admin-register" element={<AdminRegister />} /> */}
           <Route path="/admin" element={<Admin />} />
           <Route path="/admin-users" element={<AdminUsers />} />
           <Route path="/admin-airlines" element={<AdminAirlines />} />

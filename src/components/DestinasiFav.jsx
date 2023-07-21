@@ -210,8 +210,11 @@ const DestinasiFav = () => {
 
             .map((flight) => (
               <Card
-                className="destinasi-card__list shadow mt-3"
-                style={{ cursor: "pointer" }}
+                className="destinasi-card__list mt-3"
+                style={{
+                  cursor: "pointer",
+                  boxShadow: "0px 0px 4px 0px rgba(0, 0, 0, 0.15)",
+                }}
                 key={flight.id}
               >
                 <Link to={`/checkout`} state={flight}>

@@ -73,7 +73,8 @@ const Riwayat = () => {
                         className="p-3 rounded-3 mb-2"
                         style={{ border: "2px solid rgba(113, 38, 181, 0.75)" }}
                       >
-                        {booking?.payment?.payment_status === "settlement" ? (
+                        {booking?.payment?.payment_status === "settlement" ||
+                        booking?.payment?.payment_status === "capture" ? (
                           <p
                             className="col-2 rounded-5 text-white text-center p-1 mb-4 text-un"
                             style={{ backgroundColor: "#73ca5c" }}

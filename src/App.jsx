@@ -10,6 +10,7 @@ import Akun from "./pages/Akun";
 import CheckoutCustomerData from "./components/CheckoutCustomerData";
 import Payment from "./components/Payment";
 import PaymentSuccess from "./pages/PaymentSuccess";
+import PaymentFailed from "./pages/PaymentFailed";
 import Riwayat from "./components/Riwayat";
 import Result from "./components/Result";
 import NotifikasiLogin from "./components/NotifikasiLogin";
@@ -50,8 +51,8 @@ function App() {
           <Route path="/checkout" element={<CheckoutCustomerData />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/payment-success" element={<PaymentSuccess />} />
+          <Route path="/payment-failed" element={<PaymentFailed />} />
           <Route path="/admin-login" element={<AdminLogin />} />
-          {/* <Route path="/admin-register" element={<AdminRegister />} /> */}
           <Route path="/admin" element={<Admin />} />
           <Route path="/admin-users" element={<AdminUsers />} />
           <Route path="/admin-airlines" element={<AdminAirlines />} />

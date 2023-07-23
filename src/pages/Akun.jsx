@@ -132,7 +132,7 @@ function Akun() {
           style={{ marginLeft: "120px" }}
         >
           <div className="col-5">
-            <div className="account-list p-3 pb-1 mb-3 rounded-3">
+            <div className="account-list p-3 pb-1 mb-3 rounded-3  profile-chg">
               <div
                 className="d-flex border-bottom pb-3"
                 style={{

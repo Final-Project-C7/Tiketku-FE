@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Image, Card, Container } from "react-bootstrap";
+import { Image, Card, Container, Modal, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Moment from "moment";
+import ModalPassengers from "./ModalPassengers";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./DestinasiFav.css";
@@ -46,9 +47,20 @@ const DestinasiFav = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [data, setData] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
+  const [showModal, setShowModal] = useState(false);
+  const [selectedFlight, setSelectedFlight] = useState(null);
 
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
+  };
+
+  const handleCardClick = (flight) => {
+    setSelectedFlight(flight);
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
   };
 
   useEffect(() => {
@@ -216,43 +228,107 @@ const DestinasiFav = () => {
                   boxShadow: "0px 0px 4px 0px rgba(0, 0, 0, 0.15)",
                 }}
                 key={flight.id}
+                onClick={() => handleCardClick(flight)} // Add click event handler to toggle modal
               >
-                <Link to={`/checkout`} state={flight}>
-                  <Card.Img
-                    variant="top"
-                    className="p-2 pb-0"
-                    style={{
-                      width: "100%",
-                      height: "120px",
-                      objectFit: "cover",
-                      borderRadius: "13px",
-                    }}
-                    src={flight?.arrivalAirport?.imgURL}
-                  />
-                  <Card.Body className="pt-2">
-                    <Card.Text className="destinasi-card__text-1 fw-bold mb-1">
-                      {flight?.departureAirport?.city} &rarr;{" "}
-                      {flight?.arrivalAirport?.city}
-                    </Card.Text>
-                    <Card.Text className="destinasi-card__text-2 fw-bold mb-1">
-                      {flight.airline.airline_name}
-                    </Card.Text>
-                    <Card.Text className="destinasi-card__text-2 mb-1 text-black">
-                      {Moment(flight.departure_time).format("DD")} -{" "}
-                      {Moment(flight.arrival_time).format("DD MMMM YYYY")}
-                    </Card.Text>
-                    <Card.Text className="destinasi-card__text-1 mb-1 text-black">
-                      Mulai dari{" "}
-                      <span className="text-danger fw-bold">
-                        IDR {flight.economyClass_price}
-                      </span>
-                    </Card.Text>
-                  </Card.Body>
-                </Link>
+                <Card.Img
+                  variant="top"
+                  className="p-2 pb-0"
+                  style={{
+                    width: "100%",
+                    height: "120px",
+                    objectFit: "cover",
+                    borderRadius: "13px",
+                  }}
+                  src={flight?.arrivalAirport?.imgURL}
+                />
+                <Card.Body className="pt-2">
+                  <Card.Text className="destinasi-card__text-1 fw-bold mb-1">
+                    {flight?.departureAirport?.city} &rarr;{" "}
+                    {flight?.arrivalAirport?.city}
+                  </Card.Text>
+                  <Card.Text className="destinasi-card__text-2 fw-bold mb-1">
+                    {flight.airline.airline_name}
+                  </Card.Text>
+                  <Card.Text className="destinasi-card__text-2 mb-1 text-black">
+                    {Moment(flight.departure_time).format("DD")} -{" "}
+                    {Moment(flight.arrival_time).format("DD MMMM YYYY")}
+                  </Card.Text>
+                  <Card.Text className="destinasi-card__text-1 mb-1 text-black">
+                    Mulai dari{" "}
+                    <span className="text-danger fw-bold">
+                      IDR {flight.business_price}
+                    </span>
+                  </Card.Text>
+                </Card.Body>
               </Card>
             ))}
         </div>
       </Container>
+
+      {/* Modal for detailed data */}
+      <Modal show={showModal} onHide={handleCloseModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>Flight Details</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {/* Display detailed flight data here */}
+          {selectedFlight && (
+            <div>
+              <Image
+                variant="top"
+                className="p-2 pb-0"
+                style={{
+                  width: "100%",
+                  height: "120px",
+                  objectFit: "cover",
+                  borderRadius: "13px",
+                }}
+                src={selectedFlight?.arrivalAirport?.imgURL}
+              />
+              <h5>
+                {selectedFlight.departureAirport.city} &rarr;{" "}
+                {selectedFlight.arrivalAirport.city}
+              </h5>
+              <p>Airline: {selectedFlight.airline.airline_name}</p>
+              <p>
+                Departure: {Moment(selectedFlight.departure_time).format("DD")}{" "}
+                - {Moment(selectedFlight.arrival_time).format("DD MMMM YYYY")}
+              </p>
+              <p>
+                Price:{" "}
+                <span className="text-danger fw-bold">
+                  IDR {selectedFlight.business_price}
+                </span>
+              </p>
+              {/* Add more flight details as needed */}
+              <div className="car-date-passengers col-12 col-md-6 d-flex flex-wrap ms-md-4 ms-xl-0 mt-2 mt-sm-0">
+                <div className="col-1 d-flex align-items-center">
+                  <Image
+                    className="card-date__img-1"
+                    src="/Passengers.svg"
+                    alt="flight takeoff"
+                  />
+                  <p className="mt-3">To</p>
+                </div>
+                <div className="col-9 d-flex ms-4 ms-md-4">
+                  <div className="col-6 col-md-6 ms-1 ms-md-0">
+                    <h3 className="mb-1">Passengers</h3>
+                    <ModalPassengers />
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseModal}>
+            Close
+          </Button>
+          <Link to={`/checkout`} state={selectedFlight}>
+            <Button variant="secondary">NEXT</Button>
+          </Link>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Container, Navbar, Button, Modal, Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import logo from "/logo.svg";
 import back from "/fi_arrow-left.svg";
 import correct from "/correct.png";
 import "./OTP.css";
@@ -61,16 +60,13 @@ const OTP = () => {
     const otpString = otp.join(""); // Menggabungkan array OTP menjadi string
 
     try {
-      const response = await fetch(
-        "https://c7-tiketku.up.railway.app/api/v1/user/verify",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email, otp: otpString }),
-        }
-      );
+      const response = await fetch("https://c7-tiketku.up.railway.app/api/v1/user/verify", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, otp: otpString }),
+      });
 
       if (!response.ok) {
         throw new Error("OTP verification failed");
@@ -85,11 +81,7 @@ const OTP = () => {
     }
   };
 
-  const maskedEmail = email
-    ? email.charAt(0) +
-      "*".repeat(email.indexOf("@") - 1) +
-      email.substring(email.indexOf("@"))
-    : "";
+  const maskedEmail = email ? email.charAt(0) + "*".repeat(email.indexOf("@") - 1) + email.substring(email.indexOf("@")) : "";
 
   const handleResendOTP = () => {
     setResendTimer(60); // Mengatur timer kembali ke 60 detik saat dikirim ulang OTP
@@ -102,7 +94,7 @@ const OTP = () => {
         <Container>
           <Navbar.Brand>
             <Link to="/">
-              <img className="logo-navbar" src={logo} alt="logo" />
+              <img className="logo-navbar" src="/logofinal.png" alt="logo" />
             </Link>
           </Navbar.Brand>
         </Container>
@@ -115,41 +107,23 @@ const OTP = () => {
       <div className="container otp-main-2 mt-4 mt-md-0 ">
         <h1 className="fw-bold">Masukkan OTP</h1>
         <p className="text-center mt-3 mt-sm-5 mb-4">
-          Ketik 6 digit kode yang dikirimkan ke{" "}
-          <span className="fw-bolder">{maskedEmail}</span>
+          Ketik 6 digit kode yang dikirimkan ke <span className="fw-bolder">{maskedEmail}</span>
         </p>
         <form className="text-center" onSubmit={handleSubmit}>
           <div className="d-flex justify-content-center">
             {otp.map((value, index) => (
-              <input
-                key={index}
-                type="text"
-                maxLength={1}
-                value={value}
-                onChange={(event) => handleChange(index, event)}
-                onPaste={handlePaste}
-                className="text-center"
-              />
+              <input key={index} type="text" maxLength={1} value={value} onChange={(event) => handleChange(index, event)} onPaste={handlePaste} className="text-center" />
             ))}
           </div>
           {error && <p className="text-danger mt-3 mb-3">{error}</p>}
           {resendTimer > 0 ? (
-            <p className="mt-3 mb-5">
-              Kirim Ulang OTP dalam {resendTimer} detik
-            </p>
+            <p className="mt-3 mb-5">Kirim Ulang OTP dalam {resendTimer} detik</p>
           ) : (
-            <p
-              className="mt-3 mb-5"
-              onClick={handleResendOTP}
-              style={{ cursor: "pointer" }}
-            >
+            <p className="mt-3 mb-5" onClick={handleResendOTP} style={{ cursor: "pointer" }}>
               Kirim Ulang OTP
             </p>
           )}
-          <Button
-            className="otp__btn col-12 rounded-4 border-0 mt-2 mt-sm-5"
-            type="submit"
-          >
+          <Button className="otp__btn col-12 rounded-4 border-0 mt-2 mt-sm-5" type="submit">
             Simpan
           </Button>
         </form>
@@ -158,9 +132,7 @@ const OTP = () => {
       <Modal show={successModalVisible} centered>
         <Modal.Body className="text-center">
           <img src={correct} alt="correct" style={{ width: "50%" }} />
-          <p style={{ fontSize: "20px", fontWeight: "bold" }}>
-            Successful registration
-          </p>
+          <p style={{ fontSize: "20px", fontWeight: "bold" }}>Successful registration</p>
           <p>Click OK to login.</p>
           <Button
             style={{

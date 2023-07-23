@@ -86,13 +86,6 @@ function FormLoginAdmin() {
           </button>
         </div>
       </form>
-      {/* {success && <p>Login successful!</p>} */}
-      <p className="mt-5 mb-1 text-center">
-        Belum punya akun?{"  "}
-        <Link to="/admin-register" className="fw-bold register">
-          Daftar di sini
-        </Link>
-      </p>
     </>
   );
 }

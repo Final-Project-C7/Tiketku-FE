@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import "./SelectFlight.css";
 import Button from "react-bootstrap/Button";
 import SelectDay from "../components/Filter/SelectDay";
@@ -8,16 +9,26 @@ import Notfound from "../components/Notfound";
 import Result from "../components/Result";
 import SoldoutComponent from "../components/Soldout";
 import MyModal from "../components/Beranda/MyModal";
+import NavbarUser from "../components/NavbarUser";
 
 function SelectFlight() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // State untuk menyimpan status login pengguna
+
+  useEffect(() => {
+    // Cek apakah pengguna sudah login atau memiliki token di lokal
+    const token = localStorage.getItem("token");
+    if (token) {
+      setIsLoggedIn(true); // Jika ada token, pengguna dianggap sudah login
+    }
+  }, []);
   return (
     <>
-      <NavbarHomepage />
+      {isLoggedIn ? <NavbarUser /> : <NavbarHomepage />}
       <div className="container" id="select-flight">
         <h4 className="title">Pilih Penerbangan</h4>
         <SelectDay />
         <div className="d-flex justify-content-end">
-          <MyModal/>
+          <MyModal />
         </div>
         <div className="row filter-loading mt-4">
           <div className="col-12 col-md-3 col-sm-12 filter-l">
@@ -32,4 +43,4 @@ function SelectFlight() {
   );
 }
 
-export default SelectFlight;
+export default SelectFlight;

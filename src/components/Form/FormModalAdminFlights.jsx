@@ -26,23 +26,20 @@ function FormModalAdminFlights() {
     setIsLoading(true);
 
     try {
-      const response = await axios.post(
-        "https://c7-tiketku.up.railway.app/api/v1/flight",
-        {
-          airline_id,
-          admin_id,
-          flight_code,
-          departure,
-          arrival,
-          seat_id,
-          economyClass_price,
-          premiumEconomy_price,
-          business_price,
-          firstClass_price,
-          departure_time,
-          arrival_time,
-        }
-      );
+      const response = await axios.post("http://localhost:8000/api/v1/flight", {
+        airline_id,
+        admin_id,
+        flight_code,
+        departure,
+        arrival,
+        seat_id,
+        economyClass_price,
+        premiumEconomy_price,
+        business_price,
+        firstClass_price,
+        departure_time,
+        arrival_time,
+      });
 
       // Reset form field
       setAirlineId("");

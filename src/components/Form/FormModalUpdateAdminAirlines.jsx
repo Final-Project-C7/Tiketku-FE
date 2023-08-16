@@ -25,15 +25,22 @@ function FormModalUpdateAdminAirlines(props) {
     e.preventDefault();
     setIsLoading(true);
     try {
-      const response = await axios.put(`https://c7-tiketku.up.railway.app/api/v1/airline/${props.data.id}`, {
-        airline_name,
-        baggage,
-        cabin_baggage,
-      });
+      const response = await axios.put(
+        `http://localhost:8000/api/v1/airline/${props.data.id}`,
+        {
+          airline_name,
+          baggage,
+          cabin_baggage,
+        }
+      );
 
       window.location.reload();
     } catch (error) {
-      if (error.response && error.response.data && error.response.data.message) {
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
         setError(error.response.data.message);
       } else {
         setError("Failed to edit airline");
@@ -66,15 +73,31 @@ function FormModalUpdateAdminAirlines(props) {
           <Modal.Body>
             <Form.Group className="mb-3">
               <Form.Label>Airline Name</Form.Label>
-              <Form.Control type="text" placeholder="Emirates" autoFocus value={airline_name} onChange={(e) => setAirlineName(e.target.value)} />
+              <Form.Control
+                type="text"
+                placeholder="Emirates"
+                autoFocus
+                value={airline_name}
+                onChange={(e) => setAirlineName(e.target.value)}
+              />
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Baggage</Form.Label>
-              <Form.Control type="number" placeholder="20" value={baggage} onChange={(e) => setBaggage(e.target.value)} />
+              <Form.Control
+                type="number"
+                placeholder="20"
+                value={baggage}
+                onChange={(e) => setBaggage(e.target.value)}
+              />
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Cabin Baggage</Form.Label>
-              <Form.Control type="number" placeholder="7" value={cabin_baggage} onChange={(e) => setCabinBaggage(e.target.value)} />
+              <Form.Control
+                type="number"
+                placeholder="7"
+                value={cabin_baggage}
+                onChange={(e) => setCabinBaggage(e.target.value)}
+              />
             </Form.Group>
           </Modal.Body>
           <Modal.Footer>

@@ -43,7 +43,7 @@ const ResultFlightList = (props) => {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          "https://c7-tiketku.up.railway.app/api/v1/user/user-info",
+          "http://localhost:8000/api/v1/user/user-info",
           {
             headers: {
               Authorization: `Bearer ${token}`,

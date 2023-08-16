@@ -38,7 +38,7 @@ const Payment = (props) => {
         const token = localStorage.getItem("token");
         const headers = { Authorization: `Bearer ${token}` };
         const response = await axios.get(
-          `https://c7-tiketku.up.railway.app/api/v1/bookings/${bookingId}`,
+          `http://localhost:8000/api/v1/bookings/${bookingId}`,
           { headers }
         );
         setBookingData(response.data.data);
@@ -61,7 +61,7 @@ const Payment = (props) => {
       const token = localStorage.getItem("token");
       const headers = { Authorization: `Bearer ${token}` };
       const response = await axios.post(
-        "https://c7-tiketku.up.railway.app/api/v1/payments",
+        "http://localhost:8000/api/v1/payments",
         {
           order_id: bookingData.id,
         },

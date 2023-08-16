@@ -31,12 +31,15 @@ function FormRegister() {
     setIsLoading(true);
 
     try {
-      const response = await axios.post("https://c7-tiketku.up.railway.app/api/v1/admin/register", {
-        name,
-        email,
-        phoneNumber,
-        password,
-      });
+      const response = await axios.post(
+        "http://localhost:8000/api/v1/admin/register",
+        {
+          name,
+          email,
+          phoneNumber,
+          password,
+        }
+      );
 
       // Handle successful registration
       const { newUser, otp } = response.data.data;
@@ -52,7 +55,11 @@ function FormRegister() {
       setError("");
       setShowModal(true);
     } catch (error) {
-      if (error.response && error.response.data && error.response.data.message) {
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
         setError(error.response.data.message);
       } else {
         setError("Failed to register");
@@ -148,14 +155,32 @@ function FormRegister() {
           <p className="mb-1">Nama</p>
         </div>
         <div className="input-group mb-3">
-          <input type="text" className="register__form form-control" placeholder="Nama Lengkap" aria-label="Name" value={name} onChange={(e) => setName(e.target.value)} required style={{ fontFamily: "Poppins" }} />
+          <input
+            type="text"
+            className="register__form form-control"
+            placeholder="Nama Lengkap"
+            aria-label="Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+            style={{ fontFamily: "Poppins" }}
+          />
         </div>
 
         <div>
           <p className="mb-1">Email</p>
         </div>
         <div className="input-group mb-3">
-          <input type="email" className="register__form form-control" placeholder="Contoh: johndoe@gmail.com" aria-label="Email" value={email} onChange={(e) => setEmail(e.target.value)} required style={{ fontFamily: "Poppins" }} />
+          <input
+            type="email"
+            className="register__form form-control"
+            placeholder="Contoh: johndoe@gmail.com"
+            aria-label="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            style={{ fontFamily: "Poppins" }}
+          />
         </div>
 
         <div>
@@ -194,7 +219,13 @@ function FormRegister() {
       </p>
 
       {successMessage && (
-        <Modal show={showModal} onHide={handleCloseModal} backdrop="static" keyboard={false} centered>
+        <Modal
+          show={showModal}
+          onHide={handleCloseModal}
+          backdrop="static"
+          keyboard={false}
+          centered
+        >
           <Modal.Header>
             <Modal.Title>Registration Success</Modal.Title>
           </Modal.Header>
@@ -207,7 +238,11 @@ function FormRegister() {
             </p>
           </Modal.Body>
           <Modal.Footer>
-            <Button style={{ padding: "10px 20px" }} variant="primary" onClick={handleCloseModal}>
+            <Button
+              style={{ padding: "10px 20px" }}
+              variant="primary"
+              onClick={handleCloseModal}
+            >
               Close
             </Button>
           </Modal.Footer>

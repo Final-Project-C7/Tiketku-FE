@@ -8,6 +8,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./DestinasiFav.css";
 
 const dataWithContinent = [
+  { city: "Kuala Lumpur", continent: "Asia" },
+  { city: "Dubai", continent: "Asia" },
+  { city: "Surabaya", continent: "Asia" },
+  { city: "Bangkok", continent: "Asia" },
   { city: "Jakarta", continent: "Asia" },
   { city: "Bali", continent: "Asia" },
   { city: "Beijing", continent: "Asia" },
@@ -18,10 +22,8 @@ const dataWithContinent = [
   { city: "Surabaya", continent: "Asia" },
   { city: "Incheon", continent: "Asia" },
   { city: "Lombok", continent: "Asia" },
-  { city: "Tokyo", continent: "Asia" },
   { city: "Singapura", continent: "Asia" },
   { city: "Bangkok", continent: "Asia" },
-  { city: "New York", continent: "Amerika" },
   { city: "Los Angeles", continent: "Amerika" },
   { city: "Rio De Janeiro", continent: "Amerika" },
   { city: "Miami", continent: "Amerika" },
@@ -53,7 +55,7 @@ const DestinasiFav = () => {
 
   useEffect(() => {
     axios
-      .get("https://c7-tiketku.up.railway.app/api/v1/flight")
+      .get("http://localhost:8000/api/v1/flight")
       .then((response) => {
         setData(response.data);
       })
@@ -172,10 +174,9 @@ const DestinasiFav = () => {
       </div>
       <Container>
         <div className="destinasi-card d-flex justify-content-evenly flex-wrap mb-5 mx-auto">
+          {console.log(data)}
           {data?.data
-            ?.filter((flight) =>
-              [3, 4, 6, 7, 9, 8, 12, 14, 15, 16, 17, 19].includes(flight.id)
-            )
+            ?.filter((flight) => [1, 3, 5, 7, 8, 9, 10, 11].includes(flight.id))
             .filter((flight) => {
               if (selectedCategory === "") {
                 return true;

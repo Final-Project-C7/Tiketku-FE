@@ -33,11 +33,18 @@ function FormModalUpdateAdminAirports(props) {
       formData.append("country", country);
       formData.append("image", selectedImage);
 
-      const response = await axios.put(`https://c7-tiketku.up.railway.app/api/v1/airports/${props.data.id}`, formData);
+      const response = await axios.put(
+        `http://localhost:8000/api/v1/airports/${props.data.id}`,
+        formData
+      );
 
       window.location.reload();
     } catch (error) {
-      if (error.response && error.response.data && error.response.data.message) {
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
         setError(error.response.data.message);
       } else {
         setError("Failed to edit airport");
@@ -70,15 +77,31 @@ function FormModalUpdateAdminAirports(props) {
           <Modal.Body>
             <Form.Group className="mb-3">
               <Form.Label>Airport Name</Form.Label>
-              <Form.Control type="text" placeholder="Soekarno-Hatta International Airport" autoFocus value={airport_name} onChange={(e) => setAirportName(e.target.value)} />
+              <Form.Control
+                type="text"
+                placeholder="Soekarno-Hatta International Airport"
+                autoFocus
+                value={airport_name}
+                onChange={(e) => setAirportName(e.target.value)}
+              />
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>City</Form.Label>
-              <Form.Control type="text" placeholder="Jakarta" value={city} onChange={(e) => setCity(e.target.value)} />
+              <Form.Control
+                type="text"
+                placeholder="Jakarta"
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+              />
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Country</Form.Label>
-              <Form.Control type="text" placeholder="Indonesia" value={country} onChange={(e) => setCountry(e.target.value)} />
+              <Form.Control
+                type="text"
+                placeholder="Indonesia"
+                value={country}
+                onChange={(e) => setCountry(e.target.value)}
+              />
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Image</Form.Label>
@@ -89,7 +112,12 @@ function FormModalUpdateAdminAirports(props) {
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>
-            <Button type="submit" variant="primary" onClick={handleClose} disabled={isLoading}>
+            <Button
+              type="submit"
+              variant="primary"
+              onClick={handleClose}
+              disabled={isLoading}
+            >
               {isLoading ? "Saving..." : "Save Changes"}
             </Button>
           </Modal.Footer>

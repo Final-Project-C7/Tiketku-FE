@@ -23,6 +23,18 @@
   color: white !important;
 }
 
+.profile-chg {
+  background-color: #a06ece;
+  
+}
+.profile-chg p{
+  color: white;
+}
+
+.profile-chg img{
+  filter: brightness(0) invert(1);
+}
+
 .account-list:hover p {
   color: white !important;
 }

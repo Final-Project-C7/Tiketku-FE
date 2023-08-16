@@ -40,7 +40,7 @@ const FormFlight = () => {
 
     try {
       const response = await axios.get(
-        `https://c7-tiketku.up.railway.app/api/v1/flight/search/${depart}/${arrive}`
+        `http://localhost:8000/api/v1/flight/search/${depart}/${arrive}`
       );
 
       console.log(response);
@@ -168,7 +168,7 @@ const FormFlight = () => {
                       value={`${
                         isChecked
                           ? `${format(range[0].endDate, "MM/dd/yyyy")}`
-                          : "-"
+                          : "Pilih Tanggal"
                       } `}
                       onClick={() => setOpen((open) => !open)}
                       disabled={!isChecked}

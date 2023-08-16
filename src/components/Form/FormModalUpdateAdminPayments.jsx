@@ -34,7 +34,7 @@ function FormModalUpdateAdminPayments(props) {
       const token = localStorage.getItem("token");
       const headers = { Authorization: `Bearer ${token}` };
       const response = await axios.put(
-        `https://c7-tiketku.up.railway.app/api/v1/payments/${props.data.id}`,
+        `http://localhost:8000/api/v1/payments/${props.data.id}`,
         {
           booking_id,
           payment_method,
@@ -47,7 +47,11 @@ function FormModalUpdateAdminPayments(props) {
       );
       window.location.reload();
     } catch (error) {
-      if (error.response && error.response.data && error.response.data.message) {
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
         setError(error.response.data.message);
       } else {
         setError("Failed to edit payment");
@@ -76,34 +80,69 @@ function FormModalUpdateAdminPayments(props) {
           <Modal.Body>
             <Form.Group className="mb-3">
               <Form.Label>Booking ID</Form.Label>
-              <Form.Control type="number" placeholder="1" autoFocus value={booking_id} onChange={(e) => setBookingId(e.target.value)} />
+              <Form.Control
+                type="number"
+                placeholder="1"
+                autoFocus
+                value={booking_id}
+                onChange={(e) => setBookingId(e.target.value)}
+              />
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Payment Method</Form.Label>
-              <Form.Control type="text" placeholder="Credit Card" value={payment_method} onChange={(e) => setPaymentMethod(e.target.value)} />
+              <Form.Control
+                type="text"
+                placeholder="Credit Card"
+                value={payment_method}
+                onChange={(e) => setPaymentMethod(e.target.value)}
+              />
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Payment Amount</Form.Label>
-              <Form.Control type="number" placeholder="250000" value={payment_amount} onChange={(e) => setPaymentAmount(e.target.value)} />
+              <Form.Control
+                type="number"
+                placeholder="250000"
+                value={payment_amount}
+                onChange={(e) => setPaymentAmount(e.target.value)}
+              />
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Payment Date</Form.Label>
-              <Form.Control type="date" value={payment_date} onChange={(e) => setPaymentDate(e.target.value)} />
+              <Form.Control
+                type="date"
+                value={payment_date}
+                onChange={(e) => setPaymentDate(e.target.value)}
+              />
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Payment Code</Form.Label>
-              <Form.Control type="text" placeholder="G407551489" value={payment_code} onChange={(e) => setPaymentCode(e.target.value)} />
+              <Form.Control
+                type="text"
+                placeholder="G407551489"
+                value={payment_code}
+                onChange={(e) => setPaymentCode(e.target.value)}
+              />
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Payment Status</Form.Label>
-              <Form.Control type="text" placeholder="capture" value={payment_status} onChange={(e) => setPaymentStatus(e.target.value)} />
+              <Form.Control
+                type="text"
+                placeholder="capture"
+                value={payment_status}
+                onChange={(e) => setPaymentStatus(e.target.value)}
+              />
             </Form.Group>
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>
-            <Button type="submit" onClick={handleClose} variant="primary" disabled={isLoading}>
+            <Button
+              type="submit"
+              onClick={handleClose}
+              variant="primary"
+              disabled={isLoading}
+            >
               {isLoading ? "Saving..." : "Save Changes"}
             </Button>
           </Modal.Footer>

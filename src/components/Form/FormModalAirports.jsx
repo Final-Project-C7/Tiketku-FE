@@ -25,7 +25,7 @@ function FormModalAdminAirports() {
       formData.append("image", selectedImage);
 
       const response = await axios.post(
-        "https://c7-tiketku.up.railway.app/api/v1/airports",
+        "http://localhost:8000/api/v1/airports",
         formData
       );
 

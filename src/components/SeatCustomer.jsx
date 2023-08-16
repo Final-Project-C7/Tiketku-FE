@@ -19,7 +19,7 @@ const SeatCustomer = (props) => {
     const token = localStorage.getItem("token");
     const headers = { Authorization: `Bearer ${token}` };
     axios
-      .get("https://c7-tiketku.up.railway.app/api/v1/seats", { headers })
+      .get("http://localhost:8000/api/v1/seats", { headers })
       .then((response) => {
         setData(response.data.data.seats);
       })
@@ -114,12 +114,28 @@ const SeatCustomer = (props) => {
                 {data.slice(index, index + 6).map((seat, seatIndex) => (
                   <React.Fragment key={seat.seat_number}>
                     {seatIndex === 3 && (
-                      <p className="bg-secondary-subtle d-flex align-items-center justify-content-center rounded-1 px-1 mb-0" style={{ color: "#8A8A8A" }}>
+                      <p
+                        className="bg-secondary-subtle d-flex align-items-center justify-content-center rounded-1 px-1 mb-0"
+                        style={{ color: "#8A8A8A" }}
+                      >
                         {index / 6 + 1}
                       </p>
                     )}
-                    <label className={`text-white-50 seats ${selectedSeats.includes(seat.seat_number) ? "selected" : ""}`} key={seat.seat_number}>
-                      <input type="checkbox" value={seat.seat_number} checked={selectedSeats.includes(seat.seat_number)} onChange={() => handleSeatSelect(seat.seat_number)} hidden />
+                    <label
+                      className={`text-white-50 seats ${
+                        selectedSeats.includes(seat.seat_number)
+                          ? "selected"
+                          : ""
+                      }`}
+                      key={seat.seat_number}
+                    >
+                      <input
+                        type="checkbox"
+                        value={seat.seat_number}
+                        checked={selectedSeats.includes(seat.seat_number)}
+                        onChange={() => handleSeatSelect(seat.seat_number)}
+                        hidden
+                      />
                     </label>
                   </React.Fragment>
                 ))}

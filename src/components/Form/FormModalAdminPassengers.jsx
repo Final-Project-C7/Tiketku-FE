@@ -24,7 +24,7 @@ function FormModalAdminPassengers() {
       const token = localStorage.getItem("token");
       const headers = { Authorization: `Bearer ${token}` };
       const response = await axios.post(
-        "https://c7-tiketku.up.railway.app/api/v1/passengers",
+        "http://localhost:8000/api/v1/passengers",
         {
           name,
           born_date,

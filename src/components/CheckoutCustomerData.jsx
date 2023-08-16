@@ -89,7 +89,7 @@ const CheckoutCustomerData = (props) => {
   //       const token = localStorage.getItem("token");
   //       const headers = { Authorization: `Bearer ${token}` };
   //       const response = await axios.get(
-  //         `https://c7-tiketku.up.railway.app/api/v1/bookings/${bookingId}`,
+  //         `http://localhost:8000/api/v1/bookings/${bookingId}`,
   //         { headers }
   //       );
   //       setBookingData(response.data.data);
@@ -106,7 +106,7 @@ const CheckoutCustomerData = (props) => {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          "https://c7-tiketku.up.railway.app/api/v1/user/user-info",
+          "http://localhost:8000/api/v1/user/user-info",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -142,7 +142,7 @@ const CheckoutCustomerData = (props) => {
 
     try {
       const response = await axios.post(
-        "https://c7-tiketku.up.railway.app/api/v1/passengers",
+        "http://localhost:8000/api/v1/passengers",
         {
           name: form.name,
           born_date: form.born_date,

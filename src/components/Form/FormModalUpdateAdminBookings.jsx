@@ -30,7 +30,7 @@ function FormModalUpdateAdminBookings(props) {
       const token = localStorage.getItem("token");
       const headers = { Authorization: `Bearer ${token}` };
       const response = await axios.put(
-        `https://c7-tiketku.up.railway.app/api/v1/bookings/${props.data.id}`,
+        `http://localhost:8000/api/v1/bookings/${props.data.id}`,
         {
           user_id,
           flight_id,
@@ -42,7 +42,11 @@ function FormModalUpdateAdminBookings(props) {
 
       window.location.reload();
     } catch (error) {
-      if (error.response && error.response.data && error.response.data.message) {
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
         setError(error.response.data.message);
       } else {
         setError("Failed to edit booking");
@@ -71,19 +75,39 @@ function FormModalUpdateAdminBookings(props) {
           <Modal.Body>
             <Form.Group className="mb-3">
               <Form.Label>User ID</Form.Label>
-              <Form.Control type="number" placeholder="1" autoFocus value={user_id} onChange={(e) => setUserId(e.target.value)} />
+              <Form.Control
+                type="number"
+                placeholder="1"
+                autoFocus
+                value={user_id}
+                onChange={(e) => setUserId(e.target.value)}
+              />
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Flight ID</Form.Label>
-              <Form.Control type="number" placeholder="112" value={flight_id} onChange={(e) => setFlightId(e.target.value)} />
+              <Form.Control
+                type="number"
+                placeholder="112"
+                value={flight_id}
+                onChange={(e) => setFlightId(e.target.value)}
+              />
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Order Date</Form.Label>
-              <Form.Control type="date" value={order_date} onChange={(e) => setOrderDate(e.target.value)} />
+              <Form.Control
+                type="date"
+                value={order_date}
+                onChange={(e) => setOrderDate(e.target.value)}
+              />
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Amount</Form.Label>
-              <Form.Control type="number" placeholder="250000" value={amount} onChange={(e) => setAmount(e.target.value)} />
+              <Form.Control
+                type="number"
+                placeholder="250000"
+                value={amount}
+                onChange={(e) => setAmount(e.target.value)}
+              />
             </Form.Group>
           </Modal.Body>
           <Modal.Footer>

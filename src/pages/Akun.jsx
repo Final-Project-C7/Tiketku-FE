@@ -22,7 +22,7 @@ function Akun() {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          "https://c7-tiketku.up.railway.app/api/v1/user/user-info",
+          "http://localhost:8000/api/v1/user/user-info",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -52,7 +52,7 @@ function Akun() {
       setShowWaitModal(true);
 
       const response = await axios.put(
-        "https://c7-tiketku.up.railway.app/api/v1/user/update",
+        "http://localhost:8000/api/v1/user/update",
         formData,
         {
           headers: {

@@ -32,7 +32,7 @@ const Riwayat = () => {
         const headers = { Authorization: `Bearer ${token}` };
         console.log(user_id);
         const response = await axios.get(
-          `https://c7-tiketku.up.railway.app/api/v1/bookings?user_id=${user_id}`,
+          `http://localhost:8000/api/v1/bookings?user_id=${user_id}`,
           { headers }
         );
         setBookingData(response.data.data.bookings);

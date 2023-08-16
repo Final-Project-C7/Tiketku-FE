@@ -3,7 +3,7 @@ import axios from "axios";
 const fetchRegister = async () => {
   try {
     const response = await axios.post(
-      "https://c7-tiketku.up.railway.app/api/v1/user/register",
+      "http://localhost:8000/api/v1/user/register",
       {
         name,
         password,
@@ -19,7 +19,7 @@ const fetchRegister = async () => {
 };
 
 export const fetchDataBookingById = (id) => {
-  return axios.get(`https://c7-tiketku.up.railway.app/api/v1/bookings/${id}`);
+  return axios.get(`http://localhost:8000/api/v1/bookings/${id}`);
 };
 
 export const postDataBooking = async (data, headers) => {
@@ -27,7 +27,7 @@ export const postDataBooking = async (data, headers) => {
     const token = localStorage.getItem("token");
     const headers = { Authorization: `Bearer ${token}` };
     const response = await axios.post(
-      "https://c7-tiketku.up.railway.app/api/v1/bookings",
+      "http://localhost:8000/api/v1/bookings",
       data,
       { headers }
     );
